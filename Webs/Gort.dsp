@@ -64,11 +64,75 @@ MTL=midl.exe
 # PROP Default_Filter ""
 # Begin Source File
 
-SOURCE=.\Gort\java\run\img2src.htm
+SOURCE=.\Gort\java\box.txt
 # End Source File
 # Begin Source File
 
-SOURCE=.\Gort\java\run\jlogo.htm
+SOURCE=.\Gort\java\gort.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\java\icons.gif
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\java\img2src.cab
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\java\img2src.htm
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\java\img2srcs.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\java\jlogo.cab
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\java\jlogo.htm
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\java\jlogos.zip
+# End Source File
+# End Group
+# Begin Group "Win32"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=.\Gort\win32\mdbl.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\pqt01r.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\pqt01s.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\tasktrak35r.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\tasktrak35s.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\utcachemgr10r.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\utcachemgr10s.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\wcl.zip
 # End Source File
 # End Group
 # Begin Source File
@@ -78,14 +142,6 @@ SOURCE=.\Gort\default.htm
 # Begin Source File
 
 SOURCE=.\Gort\dos.htm
-# End Source File
-# Begin Source File
-
-SOURCE=.\Gort\header.htm
-# End Source File
-# Begin Source File
-
-SOURCE=.\Gort\home.htm
 # End Source File
 # Begin Source File
 
