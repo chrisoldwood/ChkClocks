@@ -340,6 +340,14 @@ SOURCE=.\Gort\win16\wcl.zip
 # PROP Default_Filter ""
 # Begin Source File
 
+SOURCE=.\Gort\dos\chtipx10r.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\dos\chtipx10s.zip
+# End Source File
+# Begin Source File
+
 SOURCE=.\Gort\dos\comprt10r.zip
 # End Source File
 # Begin Source File
@@ -348,11 +356,51 @@ SOURCE=.\Gort\dos\comprt10s.zip
 # End Source File
 # Begin Source File
 
+SOURCE=.\Gort\dos\mailudg10r.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\dos\mailudg10s.zip
+# End Source File
+# Begin Source File
+
 SOURCE=.\Gort\dos\nwgfx12s.zip
 # End Source File
 # Begin Source File
 
+SOURCE=.\Gort\dos\prtcap10r.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\dos\prtcap10s.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\dos\qwatch13r.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\dos\qwatch13s.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\dos\sndmsg10r.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\dos\sndmsg10s.zip
+# End Source File
+# Begin Source File
+
 SOURCE=.\Gort\dos\tmgfx10s.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\dos\vwnet10r.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\dos\vwnet10s.zip
 # End Source File
 # End Group
 # Begin Source File
