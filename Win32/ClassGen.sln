@@ -24,7 +24,7 @@ Global
 		CanCheckoutShared = true
 		SccLocalPath2 = .
 		CanCheckoutShared = true
-		SolutionUniqueID = {C689DDF0-4F8D-44A8-9E97-74105FAAA7DE}
+		SolutionUniqueID = {FD0FE997-5E59-4080-8D93-1B0AE66E3AC2}
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
