@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
+import gort.ui.*;
 
 /********************************************************************************
 ** This class is used to store and manage the program commands.
@@ -49,7 +50,7 @@ public class Program
 				m_vStack.push(oCmd);
 
 			// Pop repeat cmd off the stack.
-			if (oCmd instanceof EndRepeatCmd)
+			if (oCmd instanceof EndCmd)
 				m_vStack.pop();
 		}
 	}
