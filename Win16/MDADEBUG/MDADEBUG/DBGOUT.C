@@ -49,9 +49,6 @@ VOID CALLBACK WaitForAppTimerProc(HWND hWnd, UINT uMsg, UINT iID, DWORD dwSysTim
 VOID CALLBACK WaitForDebuggerTimerProc(HWND hWnd, UINT uMsg, UINT iID, DWORD dwSysTime);
 DWORD WINAPI DebugThread(DWORD dwIgnore);
 
-extern VOID OutputMsg32(LPSTR lpszMsg);
-extern VOID ClearOutput32(VOID);
-
 /*****************************************************************************
 ** Output a message to the MDA and the window.
 */
@@ -62,9 +59,6 @@ static CHAR szMsg[DEBUG_BUF_LEN];
 
      /* First copy the message. */
      lstrcpy(szMsg, lpszOrigMsg);
-
-     /* The MDA. */
-     OutputMsg32(szMsg);
 
      /* Remove any unprintable chars. */
      lpszText = szMsg;
@@ -129,7 +123,6 @@ VOID WaitForApp(BOOL bClear)
      /* Clear the display? */
      if (bClear)
      {
-          ClearOutput32();
           SendMessage(hMsgWnd, EM_SETSEL, 0, (LPARAM)-1);
           SendMessage(hMsgWnd, EM_REPLACESEL, FALSE, (LPARAM)"");
      }
@@ -180,7 +173,6 @@ VOID CALLBACK WaitForAppTimerProc(HWND hWnd, UINT uMsg, UINT iID, DWORD dwSysTim
      iTimerID = 0;
 
      /* Clear the MDA and window. */
-     ClearOutput32();
      SendMessage(hMsgWnd, EM_SETSEL, 0, (LPARAM)-1);
      SendMessage(hMsgWnd, EM_REPLACESEL, FALSE, (LPARAM)"");
 
@@ -196,6 +188,7 @@ VOID CALLBACK WaitForAppTimerProc(HWND hWnd, UINT uMsg, UINT iID, DWORD dwSysTim
      dbParams.bActive     = TRUE;
      hDebugThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE) DebugThread, 
                                    (LPVOID) 0, 0, &iDebugThreadID);
+     CloseHandle(hDebugThread);
 }
 
 /*****************************************************************************
@@ -245,12 +238,11 @@ VOID LaunchApp(VOID)
      iTimerID = 0;
 
      /* Clear the MDA and window. */
-     ClearOutput32();
      SendMessage(hMsgWnd, EM_SETSEL, 0, (LPARAM)-1);
      SendMessage(hMsgWnd, EM_REPLACESEL, FALSE, (LPARAM)"");
 
      /* Show status. */
-     OutputMessage("Launching applcation:\n");
+     OutputMessage("Launching application:\n");
      OutputMessage(szAppPathName);
      OutputMessage("\n\n");
 
@@ -262,6 +254,7 @@ VOID LaunchApp(VOID)
      dbParams.bActive     = FALSE;
      hDebugThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE) DebugThread, 
                                    (LPVOID) 0, 0, &iDebugThreadID);
+     CloseHandle(hDebugThread);
 }
 
 // Stop "no return value" compiler warning.
@@ -351,6 +344,9 @@ DWORD WINAPI DebugThread(DWORD dwIgnore)
           }
 
           hProcess = ProcInfo.hProcess;
+
+          // Close thread handle as we dont need it.
+          CloseHandle(ProcInfo.hThread);
      }
 
      /* Loop until error or termination. */
@@ -633,8 +629,6 @@ DWORD WINAPI DebugThread(DWORD dwIgnore)
 
      /* Close handles. */
      CloseHandle(hProcess);
-     if (!dbParams.bActive)
-          CloseHandle(ProcInfo.hThread);
 
      /* Reset thread handle. */
      hDebugThread = NULL;

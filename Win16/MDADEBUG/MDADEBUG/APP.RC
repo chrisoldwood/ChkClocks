@@ -1,4 +1,4 @@
-//Microsoft Visual C++ generated resource script.
+//Microsoft Developer Studio generated resource script.
 //
 #include "resource.h"
 
@@ -17,12 +17,22 @@
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
 
+/////////////////////////////////////////////////////////////////////////////
+// English (U.K.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENG)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_UK
+#pragma code_page(1252)
+#endif //_WIN32
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // Icon
 //
 
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
 APPICON                 ICON    DISCARDABLE     "app.ico"
 
 /////////////////////////////////////////////////////////////////////////////
@@ -69,12 +79,12 @@ END
 
 ABOUT_DIALOG DIALOG DISCARDABLE  110, 35, 172, 90
 STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
-CAPTION "About MDADebug"
+CAPTION "About NTDebug"
 FONT 8, "MS Sans Serif"
 BEGIN
     DEFPUSHBUTTON   "OK",IDOK,65,65,40,14
-    CTEXT           "MDADebug",ABOUT_APPNAME,10,5,150,8
-    CTEXT           "Version 1.5",ABOUT_VERSION,10,18,150,8
+    CTEXT           "NTDebug",ABOUT_APPNAME,10,5,150,8
+    CTEXT           "Version 1.1",ABOUT_VERSION,10,18,150,8
     CTEXT           "(C) Chris Wood 1995",ABOUT_COPYRIGHT,10,31,150,8
     CTEXT           "EMAIL: cwood@gst-soft.demon.co.uk",ABOUT_EMAILADDR,10,
                     44,150,8
@@ -107,14 +117,15 @@ BEGIN
 END
 
 
+#ifndef _MAC
 /////////////////////////////////////////////////////////////////////////////
 //
 // Version
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,5,0,0
- PRODUCTVERSION 1,5,0,0
+ FILEVERSION 1,0,0,0
+ PRODUCTVERSION 1,0,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -131,12 +142,12 @@ BEGIN
         BEGIN
             VALUE "Comments", "Swanky App!\0"
             VALUE "CompanyName", "BodgeJob Software\0"
-            VALUE "FileDescription", "Application Debug Message Watcher\0"
-            VALUE "FileVersion", "1.5\0"
-            VALUE "InternalName", "MDADEBUG.EXE\0"
-            VALUE "LegalCopyright", "Copyright \251 1995 Chris Wood\0"
-            VALUE "OriginalFilename", "MDADEBUG.EXE\0"
-            VALUE "ProductName", "Application Debug Message Watcher\0"
+            VALUE "FileDescription", "NT Application Debug Message Watcher\0"
+            VALUE "FileVersion", "1.0\0"
+            VALUE "InternalName", "NTDEBUG.EXE\0"
+            VALUE "LegalCopyright", "Copyright © 1995 Chris Wood\0"
+            VALUE "OriginalFilename", "NTDEBUG.EXE\0"
+            VALUE "ProductName", "NT Application Debug Message Watcher\0"
             VALUE "ProductVersion", "1.5\0"
         END
     END
@@ -146,6 +157,7 @@ BEGIN
     END
 END
 
+#endif    // !_MAC
 
 
 #ifdef APSTUDIO_INVOKED
@@ -176,7 +188,6 @@ BEGIN
     "\0"
 END
 
-/////////////////////////////////////////////////////////////////////////////
 #endif    // APSTUDIO_INVOKED
 
 
@@ -187,18 +198,18 @@ END
 
 STRINGTABLE DISCARDABLE 
 BEGIN
-    IDS_APPNAME             " MDADebug V1.5 "
-    IDS_VERSION             "1.5"
+    IDS_APPNAME             " NTDebug V1.1 "
+    IDS_VERSION             "1.1"
     IDS_COPYRIGHT           "(C) Chris Wood 1995"
-    IDS_PRGWNDCLASS         "MDADebugMain"
-    IDS_CLIWNDCLASS         "MDADebugClient"
-    IDS_DILWNDCLASS         "MDADebugDIL"
+    IDS_PRGWNDCLASS         "NTDebugMain"
+    IDS_CLIWNDCLASS         "NTDebugClient"
+    IDS_DILWNDCLASS         "NTDebugDIL"
 END
 
 STRINGTABLE DISCARDABLE 
 BEGIN
     2100                    "Set the application to watch"
-    2101                    "Exit MDADebug"
+    2101                    "Exit NTDebug"
 END
 
 STRINGTABLE DISCARDABLE 
@@ -209,7 +220,7 @@ END
 
 STRINGTABLE DISCARDABLE 
 BEGIN
-    2800                    "About MDADebug"
+    2800                    "About NTDebug"
 END
 
 STRINGTABLE DISCARDABLE 
@@ -251,6 +262,10 @@ STRINGTABLE DISCARDABLE
 BEGIN
     63744                   "Switch to another task"
 END
+
+#endif    // English (U.K.) resources
+/////////////////////////////////////////////////////////////////////////////
+
 
 
 #ifndef APSTUDIO_INVOKED

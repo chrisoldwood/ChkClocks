@@ -7,7 +7,6 @@
 */
 
 #include "af.h"
-#include <ctl3d.h>
 #include <direct.h>
 #include "winutils.h"
 #include "strngrsc.h"
@@ -32,7 +31,6 @@ extern VOID FAR CreateAppWnd(VOID);
 extern VOID FAR CleanUpAppWnd(VOID);
 extern BOOL FAR SetApplication(VOID);
 extern VOID OutputMsg32(LPSTR lpszMsg);
-extern VOID SetTitle32(LPSTR lpszMsg);
 extern VOID WaitForApp(BOOL bClear);
 extern VOID IgnoreApp(VOID);
 extern VOID LoadPrefs(VOID);
@@ -69,16 +67,9 @@ int PASCAL WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
 	/* Get the application title. */
 	LoadRscString(IDS_APPNAME, (LPSTR) szTitle, TITLE_LEN);
 
-     /* Display on the MDA. */
-     SetTitle32(szTitle);
-
 	/* Get the keyboard accelerator table. */
 	hAccel = LoadRscAccelerators("AppKeys");	
 
-	/* Kick in ctl3d. */
-	Ctl3dRegister(hAppInst);
-	Ctl3dAutoSubclass(hAppInst);
-	        
 	/* Create the main window. */
 	CreateAppWnd();
 
@@ -105,7 +96,6 @@ int PASCAL WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLi
      SavePrefs();
 
 	/* Cleanup. */
-	Ctl3dUnregister(hAppInst);
      CleanUpAppWnd();
      
      /* Exit. */

@@ -42,7 +42,6 @@ extern VOID WaitForApp(BOOL bClear);
 extern VOID WaitForDebugger(VOID);
 extern VOID LaunchApp(VOID);
 extern VOID IgnoreApp(VOID);
-extern VOID ClearOutput32(VOID);
 
 /*****************************************************************************
 ** Register the main window class.
@@ -171,7 +170,6 @@ WINDOWPROC MainWindowProc(HWND hWnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
                          
 					/* Clear the window. */
      				case IDM_CLEAR:
-                              ClearOutput32();
                               SendMessage(hMsgWnd, EM_SETSEL, 0, (LPARAM)-1);
                               SendMessage(hMsgWnd, EM_REPLACESEL, FALSE, (LPARAM)"");
      					return FALSE;
