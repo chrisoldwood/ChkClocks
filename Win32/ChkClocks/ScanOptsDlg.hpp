@@ -1,31 +1,31 @@
 /******************************************************************************
 ** (C) Chris Oldwood
 **
-** MODULE:		PREFSDLG.HPP
-** COMPONENT:	The Application.
-** DESCRIPTION:	The CPrefsDlg class declaration.
+** MODULE:		SCANOPTSDLG.HPP
+** COMPONENT:	The Application
+** DESCRIPTION:	The CScanOptsDlg class declaration.
 **
 *******************************************************************************
 */
 
 // Check for previous inclusion
-#ifndef PREFSDLG_HPP
-#define PREFSDLG_HPP
+#ifndef SCANOPTSDLG_HPP
+#define SCANOPTSDLG_HPP
 
 /******************************************************************************
 ** 
-** This is the dialog used to edit the preferences.
+** The scanning options dialog.
 **
 *******************************************************************************
 */
 
-class CPrefsDlg : public CDialog
+class CScanOptsDlg : public CDialog
 {
 public:
 	//
 	// Constructors/Destructor.
 	//
-	CPrefsDlg();
+	CScanOptsDlg();
 	
 	//
 	// Members.
@@ -33,11 +33,8 @@ public:
 	CStrArray	m_astrInclude;
 	CStrArray	m_astrExclude;
 	int			m_nThreads;
-	int			m_nFormat;
-	int			m_nTolerance;
-	bool		m_bHideCorrect;
-	bool		m_bHideFailed;
-
+	bool		m_bAutoExclude;
+	
 protected:
 	//
 	// Controls.
@@ -45,11 +42,7 @@ protected:
 	CListBox	m_lbInclude;
 	CListBox	m_lbExclude;
 	CEditBox	m_ebThreads;
-	CRadioBtn	m_rbFmtFixed;
-	CRadioBtn	m_rbFmtVariable;
-	CEditBox	m_ebTolerance;
-	CCheckBox	m_ckHideCorrect;
-	CCheckBox	m_ckHideFailed;
+	CCheckBox	m_ckAutoExclude;
 
 	//
 	// Message handlers.
@@ -70,4 +63,4 @@ protected:
 *******************************************************************************
 */
 
-#endif //PREFSDLG_HPP
+#endif // SCANOPTSDLG_HPP
