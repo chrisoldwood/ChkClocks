@@ -1,6 +1,7 @@
 import java.applet.*;
 import java.awt.*;
 import java.awt.event.*;
+import gort.applet.*;
 
 /********************************************************************************
 ** The applet derived class used as the entry point for the applet.
@@ -19,8 +20,12 @@ public class JLogo extends WebApp
 		setLayout(new BorderLayout());
 		setBackground(SystemColor.control);
 
+		// Layout the left side top inner panel.
+		m_pnlLeftTop.add(BorderLayout.NORTH,  m_pnlGfxCmds);
+		m_pnlLeftTop.add(BorderLayout.SOUTH,  m_pnlFlowCmds);
+
 		// Layout the left side panel.
-		m_pnlLeft.add(BorderLayout.NORTH,  m_pnlCmds);
+		m_pnlLeft.add(BorderLayout.NORTH,  m_pnlLeftTop);
 		m_pnlLeft.add(BorderLayout.CENTER, m_pnlVars);
 
 		// Layout the right side panel.
@@ -145,15 +150,17 @@ public class JLogo extends WebApp
 	private ExecContext m_oEditCtx = new ExecContext(m_oTurtle);
 
 	// GUI panels.
-	private TitleBar			m_oTitleBar  = new TitleBar();
-	private CmdsPanel			m_pnlCmds    = new CmdsPanel(m_oTurtle, m_oProgram, m_oEditCtx);
-	private VarsPanel			m_pnlVars    = new VarsPanel(m_oTurtle, m_oProgram, m_oEditCtx);
-	private ProgramPanel		m_pnlProgram = new ProgramPanel(m_oTurtle, m_oDisplay, m_oProgram);
-	private TurtleStatusPanel	m_pnlTurtle  = new TurtleStatusPanel(m_oTurtle);
-	private DisplayStatusPanel	m_pnlDisplay = new DisplayStatusPanel(m_oDisplay);
+	private TitleBar			m_oTitleBar   = new TitleBar();
+	private GfxCmdsPanel		m_pnlGfxCmds  = new GfxCmdsPanel(m_oTurtle, m_oProgram, m_oEditCtx);
+	private FlowCmdsPanel		m_pnlFlowCmds = new FlowCmdsPanel(m_oProgram, m_oEditCtx);
+	private VarsPanel			m_pnlVars     = new VarsPanel(m_oTurtle, m_oProgram, m_oEditCtx);
+	private ProgramPanel		m_pnlProgram  = new ProgramPanel(m_oTurtle, m_oDisplay, m_oProgram);
+	private TurtleStatusPanel	m_pnlTurtle   = new TurtleStatusPanel(m_oTurtle);
+	private DisplayStatusPanel	m_pnlDisplay  = new DisplayStatusPanel(m_oDisplay);
 
-	// Layout members.
-	private Panel		m_pnlLeft   = new Panel(new BorderLayout());
-	private Panel		m_pnlRight  = new Panel(new BorderLayout());
-	private Panel		m_pnlBottom = new Panel(new FlowLayout(FlowLayout.CENTER));
+	// Layout panels.
+	private Panel		m_pnlLeftTop = new Panel(new BorderLayout());
+	private Panel		m_pnlLeft    = new Panel(new BorderLayout());
+	private Panel		m_pnlRight   = new Panel(new BorderLayout());
+	private Panel		m_pnlBottom  = new Panel(new FlowLayout(FlowLayout.CENTER));
 }
