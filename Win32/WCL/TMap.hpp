@@ -19,7 +19,7 @@
 *******************************************************************************
 */
 
-template<class K, class V> class TMap : protected CMap
+template<class K, class V> class TMap : public CMap
 {
 public:
 	//
@@ -31,14 +31,10 @@ public:
 	//
 	// Methods.
 	//
-	int   Count() const;
-
 	void  Add(K Key, V Value);
 	void  Remove(K Key);
-	void  RemoveAll();
 	bool  Find(K Key, V& Value) const;
-
-	void  Reserve(int nItems);
+	bool  Exists(K Key) const;
 };
 
 /******************************************************************************
@@ -113,11 +109,6 @@ template<class K, class V> inline TMap<K, V>::~TMap()
 {
 }
 
-template<class K, class V> inline int TMap<K, V>::Count() const
-{
-	return CMap::Count();
-}
-
 template<class K, class V> inline void TMap<K, V>::Add(K Key, V Value)
 {
 	CMap::Add(*(new TMapItem<K, V>(Key, Value)));
@@ -126,11 +117,6 @@ template<class K, class V> inline void TMap<K, V>::Add(K Key, V Value)
 template<class K, class V> inline void TMap<K, V>::Remove(K Key)
 {
 	CMap::Remove(TMapItem<K, V>(Key));
-}
-
-template<class K, class V> inline void TMap<K, V>::RemoveAll()
-{
-	CMap::RemoveAll();
 }
 
 template<class K, class V> inline bool TMap<K, V>::Find(K Key, V& Value) const
@@ -143,9 +129,9 @@ template<class K, class V> inline bool TMap<K, V>::Find(K Key, V& Value) const
 	return (pItem != NULL);
 }
 
-template<class K, class V> inline void TMap<K, V>::Reserve(int nItems)
+template<class K, class V> inline bool TMap<K, V>::Exists(K Key) const
 {
-	CMap::Reserve(nItems);
+	return CMap::Exists(TMapItem<K, V>(Key));
 }
 
 template<class K, class V> inline TMapItem<K, V>::TMapItem(K Key)
