@@ -5,8 +5,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NCL", "NCL\NCL.vcproj", "{D
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SockTrace", "SockTrace\SockTrace.vcproj", "{A10BA056-90FE-4CE2-AE66-63750024FAF3}"
 	ProjectSection(ProjectDependencies) = postProject
-		{10366282-0A86-44F0-8730-6BDD79CC03AF} = {10366282-0A86-44F0-8730-6BDD79CC03AF}
 		{D9573581-F97E-469C-BCA0-9A6702DB9286} = {D9573581-F97E-469C-BCA0-9A6702DB9286}
+		{10366282-0A86-44F0-8730-6BDD79CC03AF} = {10366282-0A86-44F0-8730-6BDD79CC03AF}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wcl", "WCL\Wcl.vcproj", "{10366282-0A86-44F0-8730-6BDD79CC03AF}"
@@ -18,22 +18,22 @@ Global
 		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
 	EndGlobalSection
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 3
+		SccNumberOfProjects = 4
 		SccProjectUniqueName0 = NCL\\NCL.vcproj
 		SccProjectName0 = \u0022$/Win32/NCL\u0022,\u0020JRCAAAAA
 		SccLocalPath0 = NCL
-		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
 		SccProjectUniqueName1 = SockTrace\\SockTrace.vcproj
 		SccProjectName1 = \u0022$/Win32/SockTrace\u0022,\u0020EADAAAAA
 		SccLocalPath1 = SockTrace
-		SccProvider1 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
 		SccProjectUniqueName2 = WCL\\Wcl.vcproj
 		SccProjectName2 = \u0022$/Win32/Wcl\u0022,\u0020UAAAAAAA
 		SccLocalPath2 = WCL
-		SccProvider2 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
+		SccLocalPath3 = .
+		CanCheckoutShared = true
+		SolutionUniqueID = {EA10927E-ADFF-42B2-AC1D-5F36FFC0955E}
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
