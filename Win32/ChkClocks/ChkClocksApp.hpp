@@ -36,9 +36,11 @@ public:
 
 	CMDB		m_oMDB;				// Memory database.
 	CClocks		m_oClocks;			// Clocks table.
+	CString		m_strDefStatus;		// Default status bar string.
 
 	CStrArray	m_astrInclude;		// List of computers to include.
 	CStrArray	m_astrExclude;		// List of computers to exclude.
+	bool		m_bAutoExclude;		// Auto exclude empty domains?
 	int			m_nThreads;			// Thread pool size.
 	int			m_nFormat;			// Difference format.
 	int			m_nTolerance;		// Difference tolerance.
@@ -58,6 +60,7 @@ public:
 	//
 	static const char* VERSION;
 	static const char* INI_FILE_VER;
+	static const bool  DEF_AUTO_EXCLUDE;
 	static const int   DEF_THREADS;
 	static const int   DEF_TOLERANCE;
 	static const bool  DEF_HIDE_CORRECT;

@@ -29,11 +29,12 @@ CChkClocksApp App;
 */
 
 #ifdef _DEBUG
-const char* CChkClocksApp::VERSION      = "v1.1 [Debug]";
+const char* CChkClocksApp::VERSION      = "v1.2 Beta [Debug]";
 #else
-const char* CChkClocksApp::VERSION      = "v1.1";
+const char* CChkClocksApp::VERSION      = "v1.2 Beta";
 #endif
 const char* CChkClocksApp::INI_FILE_VER     = "1.0";
+const bool  CChkClocksApp::DEF_AUTO_EXCLUDE = true;
 const int   CChkClocksApp::DEF_THREADS      = 10;
 const int   CChkClocksApp::DEF_TOLERANCE    = 1;
 const bool  CChkClocksApp::DEF_HIDE_CORRECT = false;
@@ -54,6 +55,7 @@ const bool  CChkClocksApp::DEF_HIDE_FAILED  = false;
 CChkClocksApp::CChkClocksApp()
 	: CApp(m_AppWnd, m_AppCmds)
 	, m_oClocks(m_oMDB)
+	, m_bAutoExclude(DEF_AUTO_EXCLUDE)
 	, m_nThreads(DEF_THREADS)
 	, m_nFormat(FMT_FIXED)
 	, m_nTolerance(DEF_TOLERANCE)
@@ -165,6 +167,7 @@ void CChkClocksApp::LoadConfig()
 	m_rcLastPos.bottom = m_oIniFile.ReadInt("UI", "Bottom", 0);
 
 	// Read the misc settings.
+	m_bAutoExclude = m_oIniFile.ReadBool("Main", "AutoExclude", m_bAutoExclude);
 	m_nThreads     = m_oIniFile.ReadInt ("Main", "Threads",     m_nThreads);
 	m_nFormat      = m_oIniFile.ReadInt ("Main", "Format",      m_nFormat);
 	m_nTolerance   = m_oIniFile.ReadInt ("Main", "Tolerance",   m_nTolerance);
@@ -226,6 +229,7 @@ void CChkClocksApp::SaveConfig()
 	m_oIniFile.WriteInt("UI", "Bottom", m_rcLastPos.bottom);
 
 	// Write the misc settings.
+	m_oIniFile.WriteBool("Main", "AutoExclude", m_bAutoExclude);
 	m_oIniFile.WriteInt ("Main", "Threads",     m_nThreads);
 	m_oIniFile.WriteInt ("Main", "Format",      m_nFormat);
 	m_oIniFile.WriteInt ("Main", "Tolerance",   m_nTolerance);
