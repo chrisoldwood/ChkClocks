@@ -96,10 +96,6 @@ SOURCE=.\AboutDlg.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\App.rc
-# End Source File
-# Begin Source File
-
 SOURCE=.\AppCmds.cpp
 # End Source File
 # Begin Source File
@@ -117,6 +113,10 @@ SOURCE=.\AppWnd.cpp
 # Begin Source File
 
 SOURCE=.\CheckJob.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\ChkClocks.rc
 # End Source File
 # Begin Source File
 
