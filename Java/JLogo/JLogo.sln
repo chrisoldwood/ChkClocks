@@ -1,5 +1,9 @@
 Microsoft Visual Studio Solution File, Format Version 1.00
 Project("{66355F20-A65B-11D0-BFB5-00A0C91EBFA0}") = "JLogo", "JLogo.vjp", "{44DB1FEB-D70B-43CE-97B6-C4D07635E49C}"
+	ProjectSection(SourceCodeControl) = preProject
+		SccProjectName = \u0022$/Java/JLogo\u0022,\u0020OOBAAAAA
+		SccLocalPath = .
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(LocalDeployment) = postSolution

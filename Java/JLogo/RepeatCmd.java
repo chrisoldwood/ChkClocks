@@ -21,7 +21,7 @@ public class RepeatCmd extends Cmd
 	{
 		m_vCmds.add(oCmd);
 
-		if (oCmd instanceof EndRepeatCmd)
+		if (oCmd instanceof EndCmd)
 			m_bClosed = true;
 	}
 
@@ -63,44 +63,8 @@ public class RepeatCmd extends Cmd
 	{
 		oLines.add(this, "REPEAT " + m_strParam);
 
-		oLines.adjustIndentation(+4);
+		oLines.adjustIndentation(+1);
 		m_vCmds.getSource(oLines);
-	}
-
-	/********************************************************************************
-	** Queries if the command requires parameters.
-	*/
-
-	public boolean isParameterised()
-	{
-		return true;
-	}
-
-	/********************************************************************************
-	** Get the commands parameter.
-	*/
-
-	public String getParameter()
-	{
-		return m_strParam;
-	}
-
-	/********************************************************************************
-	** Set the commands parameter.
-	*/
-
-	public void setParameter(String strParam)
-	{
-		m_strParam = strParam;
-	}
-
-	/********************************************************************************
-	** Queries if the command can be removed.
-	*/
-
-	public boolean isRemoveable()
-	{
-		return m_bClosed;
 	}
 
 	/********************************************************************************
