@@ -61,6 +61,10 @@ MTL=midl.exe
 # Name "All - Win32 Debug"
 # Begin Source File
 
+SOURCE=.\Clean.cmd
+# End Source File
+# Begin Source File
+
 SOURCE=.\Projects.txt
 # End Source File
 # End Target
