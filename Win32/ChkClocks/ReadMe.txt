@@ -3,12 +3,12 @@ Check Clocks v1.2
 
 1) Installation.
 
-Copy the file ChkClocks.exe to a folder.
+Run Setup.exe or copy the file ChkClocks.exe to a folder.
 
 
 2) Uninstallation.
 
-Delete the files ChkClocks.exe and ChkClocks.ini.
+Delete the files ChkClocks.*
 
 
 3) Manual.
