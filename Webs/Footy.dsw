@@ -23,6 +23,10 @@ Global:
 
 Package=<5>
 {{{
+    begin source code control
+    "$/Win32", YXDAAAAA
+    ..\win32
+    end source code control
 }}}
 
 Package=<3>

@@ -49,8 +49,8 @@ MTL=midl.exe
 # PROP BASE Target_Dir ""
 # PROP Use_MFC 0
 # PROP Use_Debug_Libraries 1
-# PROP Output_Dir "Debug"
-# PROP Intermediate_Dir "Debug"
+# PROP Output_Dir ""
+# PROP Intermediate_Dir ""
 # PROP Target_Dir ""
 
 !ENDIF 
@@ -81,18 +81,6 @@ SOURCE=.\Footy\favicon.ico
 # End Source File
 # Begin Source File
 
-SOURCE=.\Footy\Fix2000.htm
-# End Source File
-# Begin Source File
-
-SOURCE=.\Footy\Fix2000Frm.htm
-# End Source File
-# Begin Source File
-
-SOURCE=.\Footy\Fix2000Nav.htm
-# End Source File
-# Begin Source File
-
 SOURCE=.\Footy\Fix2001.htm
 # End Source File
 # Begin Source File
@@ -102,6 +90,18 @@ SOURCE=.\Footy\Fix2001Frm.htm
 # Begin Source File
 
 SOURCE=.\Footy\Fix2001Nav.htm
+# End Source File
+# Begin Source File
+
+SOURCE=.\Footy\Fix2002.htm
+# End Source File
+# Begin Source File
+
+SOURCE=.\Footy\Fix2002Frm.htm
+# End Source File
+# Begin Source File
+
+SOURCE=.\Footy\Fix2002Nav.htm
 # End Source File
 # Begin Source File
 
