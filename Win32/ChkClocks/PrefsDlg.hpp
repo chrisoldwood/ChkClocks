@@ -32,6 +32,11 @@ public:
 	//
 	CStrArray	m_astrInclude;
 	CStrArray	m_astrExclude;
+	int			m_nThreads;
+	int			m_nFormat;
+	int			m_nTolerance;
+	bool		m_bHideCorrect;
+	bool		m_bHideFailed;
 
 protected:
 	//
@@ -39,6 +44,12 @@ protected:
 	//
 	CListBox	m_lbInclude;
 	CListBox	m_lbExclude;
+	CEditBox	m_ebThreads;
+	CRadioBtn	m_rbFmtFixed;
+	CRadioBtn	m_rbFmtVariable;
+	CEditBox	m_ebTolerance;
+	CCheckBox	m_ckHideCorrect;
+	CCheckBox	m_ckHideFailed;
 
 	//
 	// Message handlers.
