@@ -371,7 +371,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="PrefsDlg.cpp">
+				RelativePath="ProgressDlg.cpp">
 				<FileConfiguration
 					Name="Release|Win32">
 					<Tool
@@ -392,25 +392,10 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="ProgressDlg.cpp">
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"
-						BrowseInformation="1"/>
-				</FileConfiguration>
+				RelativePath=".\ReportOptsDlg.cpp">
+			</File>
+			<File
+				RelativePath=".\ScanOptsDlg.cpp">
 			</File>
 		</Filter>
 		<Filter
@@ -447,13 +432,16 @@
 				RelativePath="NameDlg.hpp">
 			</File>
 			<File
-				RelativePath="PrefsDlg.hpp">
-			</File>
-			<File
 				RelativePath="ProgressDlg.hpp">
 			</File>
 			<File
+				RelativePath=".\ReportOptsDlg.hpp">
+			</File>
+			<File
 				RelativePath="Resource.h">
+			</File>
+			<File
+				RelativePath=".\ScanOptsDlg.hpp">
 			</File>
 		</Filter>
 		<Filter
@@ -468,10 +456,6 @@
 			<File
 				RelativePath="Toolbar.bmp">
 			</File>
-		</Filter>
-		<Filter
-			Name="HelpFile"
-			Filter="">
 		</Filter>
 		<File
 			RelativePath="ReadMe.txt">
