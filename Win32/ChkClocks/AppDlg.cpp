@@ -177,8 +177,9 @@ int CAppDlg::GetTableColumn(int nGridColumn) const
 		case 1:		return CClocks::DOMAIN;
 		case 2:		return CClocks::ABS_DIFF;
 		case 3:		return CClocks::ERROR_CODE;
-		default:	ASSERT(false);	break;
 	}
 
-	return 0;
+	ASSERT_FALSE();
+
+	return CClocks::COMPUTER;
 }
