@@ -1,1 +1,3 @@
-- Helpfile editor.
+- DDE Query (Publish to Web).
+
+- XML library.
