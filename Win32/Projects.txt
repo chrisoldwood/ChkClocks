@@ -1,5 +1,3 @@
-- DDE Recorder.
-
-- Setup program.
+- DDE Query Tool.
 
 - Helpfile editor.
