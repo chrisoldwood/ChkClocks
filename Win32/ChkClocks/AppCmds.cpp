@@ -12,8 +12,20 @@
 #include "AboutDlg.hpp"
 #include "PrefsDlg.hpp"
 #include "ProgressDlg.hpp"
-#include <atlconv.h>
 #include <lm.h>
+
+/******************************************************************************
+**
+** Local variables.
+**
+*******************************************************************************
+*/
+
+static char szExts[] = {	"Text Files (*.txt)\0*.txt\0"
+							"All Files (*.*)\0*.*\0"
+							"\0\0"							};
+
+static char szDefExt[] = { "txt" };
 
 /******************************************************************************
 ** Method:		Constructor.
@@ -32,12 +44,12 @@ CAppCmds::CAppCmds()
 	// Define the command table.
 	DEFINE_CMD_TABLE
 		// File menu.
-		CMD_ENTRY(ID_FILE_CHECK,		OnFileCheck,		NULL,				-1)
+		CMD_ENTRY(ID_FILE_CHECK,		OnFileCheck,		NULL,				 0)
 		CMD_ENTRY(ID_FILE_EXIT,			OnFileExit,			NULL,				-1)
 		// Report menu.
-		CMD_ENTRY(ID_REPORT_CLIPBOARD,	OnReportClipboard,	NULL,				-1)
-		CMD_ENTRY(ID_REPORT_FILE,		OnReportFile,		NULL,				-1)
-		CMD_ENTRY(ID_REPORT_PRINT,		OnReportPrint,		NULL,				-1)
+		CMD_ENTRY(ID_REPORT_CLIPBOARD,	OnReportClipboard,	NULL,				 7)
+		CMD_ENTRY(ID_REPORT_FILE,		OnReportFile,		NULL,				 9)
+		CMD_ENTRY(ID_REPORT_PRINT,		OnReportPrint,		NULL,				 8)
 		// Options menu.
 		CMD_ENTRY(ID_OPTIONS_PREFS,		OnOptionsPrefs,		NULL,				-1)
 		// Help menu.
@@ -85,12 +97,20 @@ void CAppCmds::OnFileCheck()
 
 	Dlg.RunModeless(App.m_AppWnd);
 	Dlg.Title("Checking");
-	Dlg.UpdateLabel("Finding Domains...");
 	App.m_AppWnd.Enable(false);
 
-	CStrArray astrDomains;
+	Dlg.UpdateLabel("Initialising...");
+
+	// Create a thread pool.
+	CThreadPool	oThreadPool(App.m_nThreads);
+
+	oThreadPool.Start();
+
+	Dlg.UpdateLabel("Finding Domains...");
 
 	// Find all domains.
+	CStrArray astrDomains;
+
 	CNetFinder::FindDomains(astrDomains);
 
 	// Find all domain computers...
@@ -117,8 +137,6 @@ void CAppCmds::OnFileCheck()
 
 			oRow[CClocks::COMPUTER]   = astrComputers[j];
 			oRow[CClocks::DOMAIN]     = pszDomain;
-			oRow[CClocks::CLOCK_DIFF] = 0;
-			oRow[CClocks::ERROR_CODE] = 0;
 
 			App.m_oClocks.InsertRow(oRow);
 		}
@@ -132,10 +150,7 @@ void CAppCmds::OnFileCheck()
 	{
 		CRow& oRow = App.m_oClocks.CreateRow();
 
-		oRow[CClocks::COMPUTER]   = App.m_astrInclude[i];
-		oRow[CClocks::DOMAIN]     = "";
-		oRow[CClocks::CLOCK_DIFF] = 0;
-		oRow[CClocks::ERROR_CODE] = 0;
+		oRow[CClocks::COMPUTER] = App.m_astrInclude[i];
 
 		App.m_oClocks.InsertRow(oRow);
 	}
@@ -143,23 +158,30 @@ void CAppCmds::OnFileCheck()
 	Dlg.InitMeter(App.m_oClocks.RowCount());
 	Dlg.UpdateLabel("Checking Clocks...");
 
-	// Check all computers.
+	// Start jobs to check all computers.
 	for (i = 0; (i < App.m_oClocks.RowCount()) && (!Dlg.Abort()); ++i)
+		oThreadPool.AddJob(new CCheckJob(App.m_oClocks[i]));
+
+	// Wait for jobs to complete OR user to cancel.
+	while (oThreadPool.CompletedJobCount() != App.m_oClocks.RowCount())
 	{
-		CRow&       oRow        = App.m_oClocks[i];
-		const char* pszComputer = oRow[CClocks::COMPUTER];
-		CString     strProgress;
-
-		// Update progress.
-		strProgress.Format("Checking: %s", pszComputer);
-		Dlg.UpdateLabel(strProgress);
-
-//		CheckComputer(oRow);
-		Dlg.UpdateMeter(i);
+		Dlg.UpdateMeter(oThreadPool.CompletedJobCount());
 
 		// Check for "Cancel" button.
 		App.m_MainThread.ProcessMsgQueue();
+
+		if (Dlg.Abort())
+		{
+			Dlg.UpdateLabel("Cancelling check...");
+			oThreadPool.CancelAllJobs();
+		}
+
+		Sleep(250);
 	}
+
+	// Stop the thread pool.
+	oThreadPool.DeleteCompletedJobs();
+	oThreadPool.Stop();
 
 	// Remove progress dialog.
 	App.m_AppWnd.Enable(true);
@@ -171,52 +193,6 @@ void CAppCmds::OnFileCheck()
 
 	// Update UI.
 	App.m_AppWnd.m_AppDlg.RefreshView();
-}
-
-/******************************************************************************
-** Method:		CheckComputer()
-**
-** Description:	Check the clock on the given computer.
-**
-** Parameters:	oRow	The table row for the computer.
-**
-** Returns:		Nothing.
-**
-*******************************************************************************
-*/
-
-void CAppCmds::CheckComputer(CRow& oRow)
-{
-	USES_CONVERSION;
-
-	// Get the remote time.
-	const char*         paszComputer = oRow[CClocks::COMPUTER];
-	const wchar_t*      pwszComputer = A2W(paszComputer);
-	LPTIME_OF_DAY_INFO	pTimeInfo    = NULL;
-	NET_API_STATUS		nStatus      = NERR_Success;
-
-	nStatus = ::NetRemoteTOD(pwszComputer, (LPBYTE*)&pTimeInfo);
-
-	// Success?
-	if ( (nStatus == NERR_Success) && (pTimeInfo != NULL) )
-	{
-		// Get Local and Remote times and compare.
-		time_t tLocal  = time(NULL);
-		time_t tRemote = pTimeInfo->tod_elapsedt;
-		int    nDiff   = tRemote - tLocal;
-
-		oRow[CClocks::CLOCK_DIFF] = abs(nDiff);
-	}
-	// Error.
-	else 
-	{
-		oRow[CClocks::CLOCK_DIFF] = -1;
-		oRow[CClocks::ERROR_CODE] = (int)nStatus;
-	}
-
-	// Cleanup.
-	if (pTimeInfo != NULL)
-		::NetApiBufferFree(pTimeInfo);
 }
 
 /******************************************************************************
@@ -237,7 +213,7 @@ void CAppCmds::OnFileExit()
 }
 
 /******************************************************************************
-** Method:		OnReport()
+** Method:		OnReportClipboard()
 **
 ** Description:	Send the report to the clipboard.
 **
@@ -250,10 +226,21 @@ void CAppCmds::OnFileExit()
 
 void CAppCmds::OnReportClipboard()
 {
+	// Ignore if nothing to report.
+	if (App.m_oClocks.RowCount() == 0)
+		return;
+
+	CBusyCursor oCursor;
+
+	// Generate it.
+	CString strReport = GenerateReport();
+
+	// Send to clipboard.
+	CClipboard::CopyText(App.m_AppWnd.Handle(), strReport);
 }
 
 /******************************************************************************
-** Method:		OnReport()
+** Method:		OnReportFile()
 **
 ** Description:	Send the report to a file.
 **
@@ -266,10 +253,39 @@ void CAppCmds::OnReportClipboard()
 
 void CAppCmds::OnReportFile()
 {
+	// Ignore if nothing to report.
+	if (App.m_oClocks.RowCount() == 0)
+		return;
+
+	CPath strFileName;
+
+	// Get the file to save to.
+	if (!strFileName.Select(App.m_AppWnd, CPath::SaveFile, szExts, szDefExt, CPath::ApplicationDir()))
+		return;
+
+	CBusyCursor oCursor;
+
+	// Generate it.
+	CString strReport = GenerateReport();
+
+	try
+	{
+		CFile oFile;
+
+		// Save it.
+		oFile.Create(strFileName);
+		oFile.Write(strReport, strReport.Length());
+		oFile.Close();
+	}
+	catch (CFileException& e)
+	{
+		// Notify user.
+		App.AlertMsg(e.ErrorText());
+	}
 }
 
 /******************************************************************************
-** Method:		OnReport()
+** Method:		OnReportPrint()
 **
 ** Description:	Send the report to a printer.
 **
@@ -282,6 +298,155 @@ void CAppCmds::OnReportFile()
 
 void CAppCmds::OnReportPrint()
 {
+	// Ignore if nothing to report.
+	if (App.m_oClocks.RowCount() == 0)
+		return;
+
+	CPrinter oPrinter;
+
+	// Select a printer.
+	if (!oPrinter.Select(App.m_AppWnd))
+		return;
+
+	CBusyCursor oCursor;
+
+	// Generate it.
+	CString strReport = GenerateReport();
+
+	// Create the printer DC.
+	CPrinterDC oDC(oPrinter);
+
+	// Get printer attributes.
+	CRect rcRect = oDC.PrintableArea();
+	CSize dmFont = oDC.TextExtents("Wy");
+
+	// Calculate number of pages.
+	int nPageSize  = rcRect.Height() / dmFont.cy;
+	int nRptLines  = strReport.Count('\n');
+	int nPages     = nRptLines / nPageSize;
+	int nLineStart = 0;
+
+	// Doesn't end on a page?
+	if ((nRptLines % nPageSize) != 0)
+		nPages++;
+
+	// Start printing.
+	oDC.Start("ChkClocks Report");
+
+	// For all pages.
+	for (int p = 0; p < nPages; ++p)
+	{
+		oDC.StartPage();
+
+		// Calculate first line rect.
+		CRect rcLine  = rcRect;
+		rcLine.bottom = rcLine.top + dmFont.cy;
+
+		// Calculate lines on this page.
+		int nFirstLine = p * nPageSize;
+		int nLastLine  = nFirstLine + nPageSize;
+
+		// Adjust rows, if last page.
+		if (nLastLine > nRptLines)
+			nLastLine = nRptLines;
+
+		// For all lines on the page.
+		for (int l = nFirstLine; l < nLastLine; ++l)
+		{
+			// Find the end of the report line.
+			int nLineEnd = strReport.Find('\n', nLineStart);
+
+			// Extract report line.
+			CString strLine = strReport.Mid(nLineStart, nLineEnd-nLineStart-1);
+
+			// Print it.
+			oDC.DrawText(rcLine, strLine, DT_SINGLELINE | DT_VCENTER | DT_LEFT);
+
+			// Update rect to start of next line.
+			rcLine.top    = rcLine.bottom;
+			rcLine.bottom = rcLine.top + dmFont.cy;
+
+			// Move to the next line.
+			nLineStart = nLineEnd + 1;
+		}
+
+		oDC.EndPage();
+	}
+
+	// Done printing.
+	oDC.End();
+}
+
+/******************************************************************************
+** Method:		GenerateReport()
+**
+** Description:	Generate the report.
+**
+** Parameters:	None.
+**
+** Returns:		The report.
+**
+*******************************************************************************
+*/
+
+CString CAppCmds::GenerateReport()
+{
+	CString strReport;
+
+	// Ignore if nothing to report.
+	if (App.m_oClocks.RowCount() == 0)
+		return strReport;
+
+	// Get the report details.
+	CResultSet oRS = App.m_oClocks.SelectAll();
+
+	// Sort by difference.
+	oRS.OrderBy(CSortColumns(CClocks::ABS_DIFF, CSortColumns::DESC));
+
+	// Report column widths.
+	uint nComputerWidth = 0;
+	uint nDomainWidth   = 0;
+	uint nDiffWidth     = 0;
+	uint nErrorWidth    = 0;
+
+	// Calculate report column widths.
+	for (int i = 0; i < oRS.Count(); ++i)
+	{
+		CRow& oRow = oRS[i];
+
+		nComputerWidth = max(nComputerWidth, strlen(oRow[CClocks::COMPUTER]));
+		nDomainWidth   = max(nDomainWidth,   strlen(oRow[CClocks::DOMAIN])  );
+		nDiffWidth     = max(nDiffWidth,     strlen(App.FmtDifference(oRow)));
+		nErrorWidth    = max(nErrorWidth,    strlen(App.FmtError(oRow))     );
+	}
+
+	// Generate the report.
+	for (i = 0; i < oRS.Count(); ++i)
+	{
+		CString strLine;
+		CRow&   oRow   = oRS[i];
+		int     nError = oRow[CClocks::ERROR_CODE];
+		int     nDiff  = oRow[CClocks::ABS_DIFF];
+
+		// Filter out correct clocks?
+		if ( (App.m_bHideCorrect) && (nError == NERR_Success) && (nDiff <= App.m_nTolerance) )
+			continue;
+
+		// Filter out failed checks?
+		if ( (App.m_bHideFailed) && (nError != NERR_Success) )
+			continue;
+
+
+		strLine.Format("%-*s %-*s %*s %-*s\r\n",
+						nComputerWidth, oRow[CClocks::COMPUTER].GetString(),
+						nDomainWidth,   oRow[CClocks::DOMAIN].GetString(),
+						nDiffWidth,     App.FmtDifference(oRow),
+						nErrorWidth,    App.FmtError(oRow));
+
+		strReport += strLine;		
+	}
+
+	return strReport;
 }
 
 /******************************************************************************
@@ -301,14 +466,24 @@ void CAppCmds::OnOptionsPrefs()
 	CPrefsDlg Dlg;
 
 	// Initialise with current settings.
-	Dlg.m_astrInclude = App.m_astrInclude;
-	Dlg.m_astrExclude = App.m_astrExclude;
+	Dlg.m_astrInclude  = App.m_astrInclude;
+	Dlg.m_astrExclude  = App.m_astrExclude;
+	Dlg.m_nThreads     = App.m_nThreads;
+	Dlg.m_nFormat      = App.m_nFormat;
+	Dlg.m_nTolerance   = App.m_nTolerance;
+	Dlg.m_bHideCorrect = App.m_bHideCorrect;
+	Dlg.m_bHideFailed  = App.m_bHideFailed;
 
 	if (Dlg.RunModal(App.m_AppWnd) == IDOK)
 	{
 		// Save new settings.
-		App.m_astrInclude = Dlg.m_astrInclude;
-		App.m_astrExclude = Dlg.m_astrExclude;
+		App.m_astrInclude  = Dlg.m_astrInclude;
+		App.m_astrExclude  = Dlg.m_astrExclude;
+		App.m_nThreads     = Dlg.m_nThreads;
+		App.m_nFormat      = Dlg.m_nFormat;
+		App.m_nTolerance   = Dlg.m_nTolerance;
+		App.m_bHideCorrect = Dlg.m_bHideCorrect;
+		App.m_bHideFailed  = Dlg.m_bHideFailed;
 	}
 }
 

@@ -55,7 +55,7 @@ protected:
 	//
 	// Internal methods.
 	//
-	void CheckComputer(CRow& oRow);
+	CString GenerateReport();
 };
 
 /******************************************************************************
