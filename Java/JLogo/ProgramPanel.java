@@ -1,5 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
+import gort.ui.*;
+import gort.text.*;
 
 /********************************************************************************
 ** This panel is used to host the program control options.
@@ -14,7 +16,7 @@ public class ProgramPanel extends GroupPanel
 
 	public ProgramPanel(Turtle oTurtle, Display oDisplay, Program oProgram)
 	{
-		super("Program", Label.CENTER, new BorderLayout(5, 5));
+		super("Program", GroupPanel.CENTER, new BorderLayout(5, 5));
 
 		// Save parameters.
 		m_oTurtle  = oTurtle;
@@ -26,16 +28,14 @@ public class ProgramPanel extends GroupPanel
 		add(BorderLayout.CENTER, m_pnlFields);
 
 		// Create the child panels.
-		m_pnlFields.add(m_btnClear, m_btnImport);
-		m_pnlFields.add(m_btnExec,  m_cbSpeed);
-		m_pnlFields.add(m_btnView,  m_btnEdit);
+		m_pnlFields.add(m_btnClear,  m_btnEdit);
+		m_pnlFields.add(m_btnExec,   m_cbSpeed);
+		m_pnlFields.add(m_lblSpace1, m_lblSpace2);
 
 		// Add the event handlers.
 		m_btnClear.addActionListener(this);
-		m_btnImport.addActionListener(this);
-		m_btnExec.addActionListener(this);
-		m_btnView.addActionListener(this);
 		m_btnEdit.addActionListener(this);
+		m_btnExec.addActionListener(this);
 
 		// Add the speeds.
 		m_cbSpeed.add("Fast");
@@ -54,14 +54,10 @@ public class ProgramPanel extends GroupPanel
 	{
 		if (eEvent.getSource() == m_btnClear)
 			onClear();
-		if (eEvent.getSource() == m_btnImport)
-			onImport();
+		if (eEvent.getSource() == m_btnEdit)
+			onEdit();
 		else if (eEvent.getSource() == m_btnExec)
 			onExec();
-		else if (eEvent.getSource() == m_btnView)
-			onView();
-		else if (eEvent.getSource() == m_btnEdit)
-			onEdit();
 	}
 
 	/********************************************************************************
@@ -75,38 +71,65 @@ public class ProgramPanel extends GroupPanel
 	}
 
 	/********************************************************************************
-	** Import action.
+	** Edit source action.
 	*/
 
-	public void onImport()
+	public void onEdit()
 	{
-		ImportProgDlg Dlg = new ImportProgDlg(this);
+		// Generate the source code text.
+		SourceLines oLines = m_oProgram.getSource();
 
-		if (Dlg.prompt() == Dlg.OK)
+		// Format.		
+		StringBuffer sbSource = new StringBuffer(256);
+
+		for(int i = 0; i < oLines.count(); i++)
+			sbSource.append(oLines.getIndentedLine(i) + "\n");
+
+		String  strSource = sbSource.toString();
+		boolean bImported = false;
+
+		// Until success or aborted.
+		while (!bImported)
 		{
-			CmdFactory oCmdFactory = new CmdFactory();
+			bImported = true;
 
-			// Delete the existing program.
-			m_oTurtle.reset(true);
-			m_oProgram.clear();
+			// Display.
+			EditProgDlg Dlg = new EditProgDlg(this, strSource);
 
-			// Break the source code into lines.
-			StrTok   st = new StrTok(true, false);
-			String[] astrSource = st.splitLines(Dlg.m_strSource);
-
-			// Parse all lines.
-			for (int i = 0; i < astrSource.length; i++)
+			if (Dlg.prompt() == Dlg.OK)
 			{
-				try
-				{
-					m_oProgram.add(oCmdFactory.createCmd(astrSource[i]));
-				}
-				catch(InvalidCmdException e)
-				{
-					String strMsg = "Invalid command on line: " + i + "\n\n" + e.getMessage() + "\n\nContinue with import?";
+				// Save source in case of error.
+				strSource = Dlg.m_strSource;
 
-					if (MsgBox.query(this, "JLogo Import", strMsg, MsgBox.YES_NO) == MsgBox.NO)
-						break;
+				CmdFactory oCmdFactory = new CmdFactory();
+
+				// Delete the existing program.
+				m_oTurtle.reset(true);
+				m_oProgram.clear();
+
+				// Break the source code into lines.
+				StrTok   st = new StrTok(true, true);
+				String[] astrSource = st.splitLines(strSource);
+
+				// Parse all lines.
+				for (int i = 0; i < astrSource.length; i++)
+				{
+					try
+					{
+						m_oProgram.add(oCmdFactory.createCmd(astrSource[i]));
+					}
+					catch(InvalidCmdException e)
+					{
+						String strMsg = "Invalid command on line: " + (i+1) + "\n\n"
+										+ e.getMessage() + "\n\n"
+										+ "Continue with import?";
+
+						if (MsgBox.query(this, "JLogo Import", strMsg, MsgBox.YES_NO) == MsgBox.NO)
+						{
+							bImported = false;
+							break;
+						}
+					}
 				}
 			}
 		}
@@ -124,32 +147,6 @@ public class ProgramPanel extends GroupPanel
 	}
 
 	/********************************************************************************
-	** View source action.
-	*/
-
-	public void onView()
-	{
-		SourceLines oLines = m_oProgram.getSource();
-
-		ViewSourceDlg Dlg = new ViewSourceDlg(this, oLines);
-		Dlg.show();
-	}
-
-	/********************************************************************************
-	** Edit source action.
-	*/
-
-	public void onEdit()
-	{
-		EditSourceDlg Dlg = new EditSourceDlg(this, m_oProgram);
-		Dlg.show();
-
-		// Notify, if source modified.
-		if (Dlg.isSrcModified())
-			m_oProgram.notifyListeners(Program.EDITED);
-	}
-
-	/********************************************************************************
 	** Constants.
 	*/
 
@@ -161,14 +158,14 @@ public class ProgramPanel extends GroupPanel
 	private DualColPanel m_pnlFields = new DualColPanel();
 
 	// Child controls.
-	private Button		m_btnClear   = new Button("Clear");
-	private Button 		m_btnImport  = new Button("Import");
+	private Button		m_btnClear = new Button(" Clear ");
+	private Button 		m_btnEdit  = new Button(" Edit... ");
 
-	private Button		m_btnExec    = new Button("Run");
-	private Choice		m_cbSpeed    = new Choice();
+	private Button		m_btnExec  = new Button(" Run ");
+	private Choice		m_cbSpeed  = new Choice();
 
-	private Button		m_btnView    = new Button("View Source");
-	private Button		m_btnEdit    = new Button("Edit Source");
+	private Label		m_lblSpace1 = new Label();
+	private Label		m_lblSpace2 = new Label();
 
 	// Data members.
 	private Turtle		m_oTurtle;
