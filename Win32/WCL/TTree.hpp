@@ -184,6 +184,8 @@ template<class T> inline TTreeNode<T>* TTree<T>::Root() const
 
 template<class T> inline void TTree<T>::Root(TTreeNode<T>* pNode)
 {
+	ASSERT(m_pRoot == NULL);
+
 	m_pRoot = pNode;
 }
 
