@@ -88,7 +88,7 @@ void CMap::Add(CMapItem& rItem)
 	m_pMap[i] = &rItem;
 
 #ifdef _DEBUG
-	int nChainLen = 0;
+/*	int nChainLen = 0;
 
 	CMapItem* pItem = m_pMap[i];
 
@@ -117,7 +117,7 @@ void CMap::Add(CMapItem& rItem)
 		}
 
 		TRACE("\n");
-	}
+	}*/
 #endif
 
 	m_iCount++;
