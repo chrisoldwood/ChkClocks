@@ -15,7 +15,13 @@
 #define	ATLASSERT
 #endif
 
+// conditional expression is constant
+#pragma warning ( disable : 4127 )
+
 #include <atlconv.h>
+
+// conditional expression is constant
+#pragma warning ( default : 4127 )
 
 /******************************************************************************
 ** Method:		Constructor.
