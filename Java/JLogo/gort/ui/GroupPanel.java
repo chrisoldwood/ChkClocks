@@ -1,3 +1,5 @@
+package gort.ui;
+
 import java.awt.*;
 
 /********************************************************************************
@@ -13,7 +15,7 @@ public class GroupPanel extends BorderPanel
 
 	public GroupPanel()
 	{
-		this(null, Label.CENTER, new BorderLayout(5, 5));
+		this(null, CENTER, new BorderLayout(5, 5));
 	}
 
 	/********************************************************************************
@@ -22,7 +24,16 @@ public class GroupPanel extends BorderPanel
 
 	public GroupPanel(String strLabel)
 	{
-		this(strLabel, Label.CENTER, new BorderLayout(5, 5));
+		this(strLabel, CENTER, new BorderLayout(5, 5));
+	}
+
+	/********************************************************************************
+	** Constructor.
+	*/
+
+	public GroupPanel(String strLabel, int nAlignment)
+	{
+		this(strLabel, nAlignment, new BorderLayout(5, 5));
 	}
 
 	/********************************************************************************
@@ -31,7 +42,7 @@ public class GroupPanel extends BorderPanel
 
 	public GroupPanel(String strLabel, LayoutManager lmManager)
 	{
-		this(strLabel, Label.CENTER, lmManager);
+		this(strLabel, CENTER, lmManager);
 	}
 
 	/********************************************************************************
@@ -114,7 +125,7 @@ public class GroupPanel extends BorderPanel
 
 	// Data members.
 	private String		m_strLabel   = "";
-	private int			m_nAlignment = Label.CENTER;
+	private int			m_nAlignment = CENTER;
 
 	// Graphics members.
 	private Rectangle	m_rcLabel    = new Rectangle();
