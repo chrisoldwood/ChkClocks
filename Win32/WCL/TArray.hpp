@@ -22,6 +22,9 @@
 template<class T> class TArray : protected CArray
 {
 public:
+	// Sort callback function.
+	typedef int (*PFNCOMPARE)(const T* pItem1, const T* pItem2);
+
 	//
 	// Constructors/Destructor.
 	//
@@ -45,6 +48,8 @@ public:
 
 	int  Find(T Item) const;
 	void Swap(int nIndex1, int nIndex2);
+
+	void Sort(PFNCOMPARE pfnCompare);
 
 private:
 	// Disallow copies for now.
@@ -197,6 +202,11 @@ template<class T> inline void TArray<T>::Swap(int nIndex1, int nIndex2)
 
 	Set(nIndex1, Item2);
 	Set(nIndex2, Item1);
+}
+
+template<class T> inline void TArray<T>::Sort(PFNCOMPARE pfnCompare)
+{
+	CArray::Sort((PFNQSCOMPARE)pfnCompare);
 }
 
 /******************************************************************************
