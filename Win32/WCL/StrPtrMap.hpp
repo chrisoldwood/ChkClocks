@@ -93,22 +93,16 @@ inline CStrPtrMap::~CStrPtrMap()
 
 inline void CStrPtrMap::Add(const CString& strKey, void* pObject)
 {
-	ASSERT(strKey != NULL);
-
 	CMap::Add(*(new CStrPtrMapItem(strKey, pObject)));
 }
 
 inline void CStrPtrMap::Remove(const CString& strKey)
 {
-	ASSERT(strKey != NULL);
-
 	CMap::Remove(CStrPtrMapItem(strKey, NULL));
 }
 
 inline void* CStrPtrMap::Find(const CString& strKey) const
 {
-	ASSERT(strKey);
-
 	CStrPtrMapItem* pItem = (CStrPtrMapItem*) CMap::Find(CStrPtrMapItem(strKey, NULL));
 
 	return (pItem != NULL) ? pItem->m_pObject : NULL;
@@ -126,12 +120,10 @@ inline CStrPtrMapItem::~CStrPtrMapItem()
 
 inline uint CStrPtrMapItem::Key() const
 {
-	ASSERT(false);
-
 	uint nKey = 0;
 
 	for (const char* psz = m_strKey; *psz != '\0'; psz++)
-		nKey = (nKey << 1) ^ *psz;
+		nKey = (nKey * 17) | *psz;
 
 	return nKey;
 }
