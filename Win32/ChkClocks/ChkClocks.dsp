@@ -43,7 +43,7 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /c
-# ADD CPP /nologo /W4 /WX /GX /O2 /I "..\wcl" /I "..\mdbl" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /YX"AppHeaders.hpp" /FD /c
+# ADD CPP /nologo /MT /W4 /WX /GX /O2 /I "..\wcl" /I "..\mdbl" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /YX"AppHeaders.hpp" /FD /c
 # ADD BASE MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "NDEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x809 /d "NDEBUG"
@@ -69,7 +69,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /YX /FD /GZ /c
-# ADD CPP /nologo /W4 /WX /Gm /GX /ZI /Od /I "..\wcl" /I "..\mdbl" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /FR /YX"AppHeaders.hpp" /FD /GZ /c
+# ADD CPP /nologo /MTd /W4 /WX /Gm /GX /ZI /Od /I "..\wcl" /I "..\mdbl" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /FR /YX"AppHeaders.hpp" /FD /GZ /c
 # ADD BASE MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD MTL /nologo /D "_DEBUG" /mktyplib203 /win32
 # ADD BASE RSC /l 0x809 /d "_DEBUG"
@@ -113,6 +113,10 @@ SOURCE=.\AppToolBar.cpp
 # Begin Source File
 
 SOURCE=.\AppWnd.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\CheckJob.cpp
 # End Source File
 # Begin Source File
 
@@ -164,6 +168,10 @@ SOURCE=.\AppWnd.hpp
 # End Source File
 # Begin Source File
 
+SOURCE=.\CheckJob.hpp
+# End Source File
+# Begin Source File
+
 SOURCE=.\ChkClocksApp.hpp
 # End Source File
 # Begin Source File
@@ -196,13 +204,17 @@ SOURCE=.\App.ico
 # End Source File
 # Begin Source File
 
+SOURCE=.\App.rcv
+# End Source File
+# Begin Source File
+
 SOURCE=.\Toolbar.bmp
 # End Source File
 # End Group
-# Begin Source File
+# Begin Group "HelpFile"
 
-SOURCE=.\App.rcv
-# End Source File
+# PROP Default_Filter ""
+# End Group
 # Begin Source File
 
 SOURCE=.\TODO.txt
