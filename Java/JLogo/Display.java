@@ -131,7 +131,7 @@ public class Display extends Canvas
 	}
 
 	/********************************************************************************
-	** Adaptor to handle component events.
+	** Adapter to handle component events.
 	*/
 
 	public class ResizeListener extends ComponentAdapter
@@ -139,6 +139,10 @@ public class Display extends Canvas
 		public void componentResized(ComponentEvent eEvent)
 		{
 			Dimension dmSize = getSize();
+
+			// Ensure we create a valid buffer.
+			if (dmSize.width  < 5)	dmSize.width  = 5;
+			if (dmSize.height < 5)	dmSize.height = 5;
 
 			// Create off-screen buffer to fill canvas inner area.
 			m_dmBuffer   = new Dimension(dmSize.width-4, dmSize.height-4);
