@@ -88,139 +88,151 @@
 			Name="Win32"
 			Filter="">
 			<File
-				RelativePath="Gort\win32\chkclocks.gif">
+				RelativePath=".\Gort\win32\chkclocks.gif">
 			</File>
 			<File
-				RelativePath="Gort\win32\chkclocks11d.zip">
+				RelativePath=".\Gort\win32\chkclocks12d.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\chkclocks11r.zip">
+				RelativePath=".\Gort\win32\chkclocks12r.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\chkclocks11s.zip">
+				RelativePath=".\Gort\win32\chkclocks12s.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\classgen11d.zip">
+				RelativePath=".\Gort\win32\classgen11d.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\classgen11r.zip">
+				RelativePath=".\Gort\win32\classgen11r.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\classgen11s.zip">
+				RelativePath=".\Gort\win32\classgen11s.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\fcmanager.gif">
+				RelativePath=".\Gort\win32\ddequery.gif">
 			</File>
 			<File
-				RelativePath="Gort\win32\fcmanager03d.zip">
+				RelativePath=".\Gort\win32\ddequery10d.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\fcmanager03r.zip">
+				RelativePath=".\Gort\win32\ddequery10r.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\fcmanager03s.zip">
+				RelativePath=".\Gort\win32\ddequery10s.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\httpquery.gif">
+				RelativePath=".\Gort\win32\fcmanager.gif">
 			</File>
 			<File
-				RelativePath="Gort\win32\httpquery11d.zip">
+				RelativePath=".\Gort\win32\fcmanager03d.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\httpquery11r.zip">
+				RelativePath=".\Gort\win32\fcmanager03r.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\httpquery11s.zip">
+				RelativePath=".\Gort\win32\fcmanager03s.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\mdadbg10s.zip">
+				RelativePath=".\Gort\win32\httpquery.gif">
 			</File>
 			<File
-				RelativePath="Gort\win32\mdbl.zip">
+				RelativePath=".\Gort\win32\httpquery11d.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\ncl.zip">
+				RelativePath=".\Gort\win32\httpquery11r.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\netdde11d.zip">
+				RelativePath=".\Gort\win32\httpquery11s.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\netdde11r.zip">
+				RelativePath=".\Gort\win32\mdadbg10s.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\netdde11s.zip">
+				RelativePath=".\Gort\win32\mdbl.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\pqt.gif">
+				RelativePath=".\Gort\win32\ncl.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\pqt11d.zip">
+				RelativePath=".\Gort\win32\netdde20d.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\pqt11r.zip">
+				RelativePath=".\Gort\win32\netdde20r.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\pqt11s.zip">
+				RelativePath=".\Gort\win32\netdde20s.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\setup.gif">
+				RelativePath=".\Gort\win32\pqt.gif">
 			</File>
 			<File
-				RelativePath="Gort\win32\setup10d.zip">
+				RelativePath=".\Gort\win32\pqt11d.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\setup10r.zip">
+				RelativePath=".\Gort\win32\pqt11r.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\setup10s.zip">
+				RelativePath=".\Gort\win32\pqt11s.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\socktrace11d.zip">
+				RelativePath=".\Gort\win32\setup.gif">
 			</File>
 			<File
-				RelativePath="Gort\win32\socktrace11r.zip">
+				RelativePath=".\Gort\win32\setup11d.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\socktrace11s.zip">
+				RelativePath=".\Gort\win32\setup11r.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\tasktrak.gif">
+				RelativePath=".\Gort\win32\setup11s.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\tasktrak36d.zip">
+				RelativePath=".\Gort\win32\socktrace15d.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\tasktrak36r.zip">
+				RelativePath=".\Gort\win32\socktrace15r.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\tasktrak36s.zip">
+				RelativePath=".\Gort\win32\socktrace15s.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\utcachemgr.gif">
+				RelativePath=".\Gort\win32\tasktrak.gif">
 			</File>
 			<File
-				RelativePath="Gort\win32\utcachemgr20d.zip">
+				RelativePath=".\Gort\win32\tasktrak36d.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\utcachemgr20r.zip">
+				RelativePath=".\Gort\win32\tasktrak36r.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\utcachemgr20s.zip">
+				RelativePath=".\Gort\win32\tasktrak36s.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\utsvrbrw.gif">
+				RelativePath=".\Gort\win32\utcachemgr.gif">
 			</File>
 			<File
-				RelativePath="Gort\win32\utsvrbrw09d.zip">
+				RelativePath=".\Gort\win32\utcachemgr25d.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\utsvrbrw09r.zip">
+				RelativePath=".\Gort\win32\utcachemgr25r.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\utsvrbrw09s.zip">
+				RelativePath=".\Gort\win32\utcachemgr25s.zip">
 			</File>
 			<File
-				RelativePath="Gort\win32\wcl.zip">
+				RelativePath=".\Gort\win32\utsvrbrw.gif">
+			</File>
+			<File
+				RelativePath=".\Gort\win32\utsvrbrw09d.zip">
+			</File>
+			<File
+				RelativePath=".\Gort\win32\utsvrbrw09r.zip">
+			</File>
+			<File
+				RelativePath=".\Gort\win32\utsvrbrw09s.zip">
+			</File>
+			<File
+				RelativePath=".\Gort\win32\wcl.zip">
 			</File>
 		</Filter>
 		<Filter

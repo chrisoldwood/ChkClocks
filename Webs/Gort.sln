@@ -9,12 +9,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SourceCodeControl) = preSolution
 		SccNumberOfProjects = 2
-		SccProjectUniqueName0 = Gort.vcproj
 		SccLocalPath0 = .
 		CanCheckoutShared = true
+		SolutionUniqueID = {CD8C4B75-7A79-4E3D-BED0-390357894EB8}
+		SccProjectUniqueName1 = Gort.vcproj
+		SccProjectName1 = \u0022$/Webs\u0022,\u0020RKDAAAAA
 		SccLocalPath1 = .
 		CanCheckoutShared = true
-		SolutionUniqueID = {CD8C4B75-7A79-4E3D-BED0-390357894EB8}
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
