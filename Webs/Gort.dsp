@@ -164,6 +164,10 @@ SOURCE=.\Gort\win32\httpquery11s.zip
 # End Source File
 # Begin Source File
 
+SOURCE=.\Gort\win32\mdadbg10s.zip
+# End Source File
+# Begin Source File
+
 SOURCE=.\Gort\win32\mdbl.zip
 # End Source File
 # Begin Source File
