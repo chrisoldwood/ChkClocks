@@ -63,12 +63,14 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NCL", "NCL\NCL.vcproj", "{3
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NetDDEClient", "NetDDE\Client\NetDDEClient.vcproj", "{ACD94EB7-2192-47AF-96D5-E0BBC5BA02FD}"
 	ProjectSection(ProjectDependencies) = postProject
+		{FF44612A-69E1-42B8-B8B2-E1E3CDF9ADA0} = {FF44612A-69E1-42B8-B8B2-E1E3CDF9ADA0}
 		{A5D70395-BEF8-4864-B197-4B9A4ACF8ABB} = {A5D70395-BEF8-4864-B197-4B9A4ACF8ABB}
 		{35190AD1-A9A3-4A8E-B548-D7869FF5AAB6} = {35190AD1-A9A3-4A8E-B548-D7869FF5AAB6}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NetDDEServer", "NetDDE\Server\NetDDEServer.vcproj", "{0054ED3A-36DE-4B1A-815B-3013493DBB2B}"
 	ProjectSection(ProjectDependencies) = postProject
+		{FF44612A-69E1-42B8-B8B2-E1E3CDF9ADA0} = {FF44612A-69E1-42B8-B8B2-E1E3CDF9ADA0}
 		{A5D70395-BEF8-4864-B197-4B9A4ACF8ABB} = {A5D70395-BEF8-4864-B197-4B9A4ACF8ABB}
 		{35190AD1-A9A3-4A8E-B548-D7869FF5AAB6} = {35190AD1-A9A3-4A8E-B548-D7869FF5AAB6}
 	EndProjectSection
@@ -112,12 +114,16 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wcl", "WCL\Wcl.vcproj", "{A
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NetDDEShared", "NetDDE\Shared\NetDDEShared.vcproj", "{FF44612A-69E1-42B8-B8B2-E1E3CDF9ADA0}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
 		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
 	EndGlobalSection
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 19
+		SccNumberOfProjects = 20
 		SccLocalPath0 = .
 		CanCheckoutShared = true
 		SolutionUniqueID = {7C711A93-67BE-4C05-8146-6586018B83E9}
@@ -191,6 +197,10 @@ Global
 		SccProjectUniqueName18 = WCL\\Wcl.vcproj
 		SccProjectName18 = \u0022$/Win32/Wcl\u0022,\u0020UAAAAAAA
 		SccLocalPath18 = WCL
+		CanCheckoutShared = true
+		SccProjectUniqueName19 = NetDDE\\Shared\\NetDDEShared.vcproj
+		SccProjectName19 = \u0022$/Win32/NetDDE/Shared\u0022,\u0020IRCAAAAA
+		SccLocalPath19 = NetDDE\\Shared
 		CanCheckoutShared = true
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
@@ -270,6 +280,10 @@ Global
 		{A5D70395-BEF8-4864-B197-4B9A4ACF8ABB}.Debug.Build.0 = Debug|Win32
 		{A5D70395-BEF8-4864-B197-4B9A4ACF8ABB}.Release.ActiveCfg = Release|Win32
 		{A5D70395-BEF8-4864-B197-4B9A4ACF8ABB}.Release.Build.0 = Release|Win32
+		{FF44612A-69E1-42B8-B8B2-E1E3CDF9ADA0}.Debug.ActiveCfg = Debug|Win32
+		{FF44612A-69E1-42B8-B8B2-E1E3CDF9ADA0}.Debug.Build.0 = Debug|Win32
+		{FF44612A-69E1-42B8-B8B2-E1E3CDF9ADA0}.Release.ActiveCfg = Release|Win32
+		{FF44612A-69E1-42B8-B8B2-E1E3CDF9ADA0}.Release.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection
