@@ -77,6 +77,11 @@ protected:
 *******************************************************************************
 */
 
+#ifdef _DEBUG
+// For memory leak detection.
+#define new DBGCRT_NEW
+#endif
+
 inline CStrPtrMap::CStrPtrMap()
 	: CMap()
 {
@@ -137,5 +142,9 @@ inline bool CStrPtrMapItem::operator==(const CMapItem& rRHS) const
 
 	return (m_strKey == pRHS->m_strKey);
 }
+
+#ifdef _DEBUG
+#undef new
+#endif
 
 #endif //STRPTRMAP_HPP
