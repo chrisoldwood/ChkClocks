@@ -25,27 +25,26 @@ Global
 		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
 	EndGlobalSection
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 4
+		SccNumberOfProjects = 5
 		SccProjectUniqueName0 = NCL\\NCL.vcproj
 		SccProjectName0 = \u0022$/Win32/NCL\u0022,\u0020JRCAAAAA
 		SccLocalPath0 = NCL
-		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
 		SccProjectUniqueName1 = NetDDE\\Client\\NetDDEClient.vcproj
 		SccProjectName1 = \u0022$/Win32/NetDDE/Client\u0022,\u0020FRCAAAAA
 		SccLocalPath1 = NetDDE\\Client
-		SccProvider1 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
 		SccProjectUniqueName2 = NetDDE\\Server\\NetDDEServer.vcproj
 		SccProjectName2 = \u0022$/Win32/NetDDE/Server\u0022,\u0020HRCAAAAA
 		SccLocalPath2 = NetDDE\\Server
-		SccProvider2 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
 		SccProjectUniqueName3 = wcl\\Wcl.vcproj
 		SccProjectName3 = \u0022$/Win32/Wcl\u0022,\u0020UAAAAAAA
 		SccLocalPath3 = wcl
-		SccProvider3 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
+		SccLocalPath4 = .
+		CanCheckoutShared = true
+		SolutionUniqueID = {4443AF89-FA7A-4E0C-B032-32BF9A6F0696}
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
