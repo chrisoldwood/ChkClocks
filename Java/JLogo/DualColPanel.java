@@ -1,7 +1,7 @@
 import java.awt.*;
 
 /********************************************************************************
-** This panel derived class has two child panels, a left and a right.
+** This panel derived class has two vertical child panels, a left and a right.
 */
 
 public class DualColPanel extends Panel
@@ -20,7 +20,7 @@ public class DualColPanel extends Panel
 	}
 
 	/********************************************************************************
-	** Add a componet to the left and right child panels.
+	** Add a componet to each of the left and right child panels.
 	*/
 
 	public void add(Component cmpLeft, Component cmpRight)
