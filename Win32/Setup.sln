@@ -1,0 +1,60 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MkSetup", "MkSetup\MkSetup.vcproj", "{5344202D-AE96-4006-A03E-E8FEFF17D736}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C54C8C8D-7443-4733-A7E8-B38CE6BA6D1C} = {C54C8C8D-7443-4733-A7E8-B38CE6BA6D1C}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Setup", "setup\Setup.vcproj", "{2928AEA9-D7A7-48F3-9F72-8E36E685A913}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C54C8C8D-7443-4733-A7E8-B38CE6BA6D1C} = {C54C8C8D-7443-4733-A7E8-B38CE6BA6D1C}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wcl", "wcl\Wcl.vcproj", "{C54C8C8D-7443-4733-A7E8-B38CE6BA6D1C}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 3
+		SccProjectUniqueName0 = MkSetup\\MkSetup.vcproj
+		SccProjectName0 = \u0022$/Win32/MkSetup\u0022,\u0020YLDAAAAA
+		SccLocalPath0 = MkSetup
+		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		CanCheckoutShared = true
+		SccProjectUniqueName1 = setup\\Setup.vcproj
+		SccProjectName1 = \u0022$/Win32/Setup\u0022,\u0020IIDAAAAA
+		SccLocalPath1 = setup
+		SccProvider1 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		CanCheckoutShared = true
+		SccProjectUniqueName2 = wcl\\Wcl.vcproj
+		SccProjectName2 = \u0022$/Win32/Wcl\u0022,\u0020UAAAAAAA
+		SccLocalPath2 = wcl
+		SccProvider2 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		CanCheckoutShared = true
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{5344202D-AE96-4006-A03E-E8FEFF17D736}.Debug.ActiveCfg = Debug|Win32
+		{5344202D-AE96-4006-A03E-E8FEFF17D736}.Debug.Build.0 = Debug|Win32
+		{5344202D-AE96-4006-A03E-E8FEFF17D736}.Release.ActiveCfg = Release|Win32
+		{5344202D-AE96-4006-A03E-E8FEFF17D736}.Release.Build.0 = Release|Win32
+		{2928AEA9-D7A7-48F3-9F72-8E36E685A913}.Debug.ActiveCfg = Debug|Win32
+		{2928AEA9-D7A7-48F3-9F72-8E36E685A913}.Debug.Build.0 = Debug|Win32
+		{2928AEA9-D7A7-48F3-9F72-8E36E685A913}.Release.ActiveCfg = Release|Win32
+		{2928AEA9-D7A7-48F3-9F72-8E36E685A913}.Release.Build.0 = Release|Win32
+		{C54C8C8D-7443-4733-A7E8-B38CE6BA6D1C}.Debug.ActiveCfg = Debug|Win32
+		{C54C8C8D-7443-4733-A7E8-B38CE6BA6D1C}.Debug.Build.0 = Debug|Win32
+		{C54C8C8D-7443-4733-A7E8-B38CE6BA6D1C}.Release.ActiveCfg = Release|Win32
+		{C54C8C8D-7443-4733-A7E8-B38CE6BA6D1C}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

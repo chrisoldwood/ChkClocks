@@ -1,0 +1,76 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NCL", "NCL\NCL.vcproj", "{F08A23C9-FE88-4F33-8EA5-12698CD8C9F5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{14B83F3C-A167-4BD5-BB3D-E5BA21FAE2B3} = {14B83F3C-A167-4BD5-BB3D-E5BA21FAE2B3}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NetDDEClient", "NetDDE\Client\NetDDEClient.vcproj", "{4B147C1C-7D8C-4902-9EB6-0AA8237AA8B4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{14B83F3C-A167-4BD5-BB3D-E5BA21FAE2B3} = {14B83F3C-A167-4BD5-BB3D-E5BA21FAE2B3}
+		{F08A23C9-FE88-4F33-8EA5-12698CD8C9F5} = {F08A23C9-FE88-4F33-8EA5-12698CD8C9F5}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NetDDEServer", "NetDDE\Server\NetDDEServer.vcproj", "{4EEF4FBB-6C94-4D80-B54C-7EA0D36655B7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{14B83F3C-A167-4BD5-BB3D-E5BA21FAE2B3} = {14B83F3C-A167-4BD5-BB3D-E5BA21FAE2B3}
+		{F08A23C9-FE88-4F33-8EA5-12698CD8C9F5} = {F08A23C9-FE88-4F33-8EA5-12698CD8C9F5}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wcl", "wcl\Wcl.vcproj", "{14B83F3C-A167-4BD5-BB3D-E5BA21FAE2B3}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 4
+		SccProjectUniqueName0 = NCL\\NCL.vcproj
+		SccProjectName0 = \u0022$/Win32/NCL\u0022,\u0020JRCAAAAA
+		SccLocalPath0 = NCL
+		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		CanCheckoutShared = true
+		SccProjectUniqueName1 = NetDDE\\Client\\NetDDEClient.vcproj
+		SccProjectName1 = \u0022$/Win32/NetDDE/Client\u0022,\u0020FRCAAAAA
+		SccLocalPath1 = NetDDE\\Client
+		SccProvider1 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		CanCheckoutShared = true
+		SccProjectUniqueName2 = NetDDE\\Server\\NetDDEServer.vcproj
+		SccProjectName2 = \u0022$/Win32/NetDDE/Server\u0022,\u0020HRCAAAAA
+		SccLocalPath2 = NetDDE\\Server
+		SccProvider2 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		CanCheckoutShared = true
+		SccProjectUniqueName3 = wcl\\Wcl.vcproj
+		SccProjectName3 = \u0022$/Win32/Wcl\u0022,\u0020UAAAAAAA
+		SccLocalPath3 = wcl
+		SccProvider3 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		CanCheckoutShared = true
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{F08A23C9-FE88-4F33-8EA5-12698CD8C9F5}.Debug.ActiveCfg = Debug|Win32
+		{F08A23C9-FE88-4F33-8EA5-12698CD8C9F5}.Debug.Build.0 = Debug|Win32
+		{F08A23C9-FE88-4F33-8EA5-12698CD8C9F5}.Release.ActiveCfg = Release|Win32
+		{F08A23C9-FE88-4F33-8EA5-12698CD8C9F5}.Release.Build.0 = Release|Win32
+		{4B147C1C-7D8C-4902-9EB6-0AA8237AA8B4}.Debug.ActiveCfg = Debug|Win32
+		{4B147C1C-7D8C-4902-9EB6-0AA8237AA8B4}.Debug.Build.0 = Debug|Win32
+		{4B147C1C-7D8C-4902-9EB6-0AA8237AA8B4}.Release.ActiveCfg = Release|Win32
+		{4B147C1C-7D8C-4902-9EB6-0AA8237AA8B4}.Release.Build.0 = Release|Win32
+		{4EEF4FBB-6C94-4D80-B54C-7EA0D36655B7}.Debug.ActiveCfg = Debug|Win32
+		{4EEF4FBB-6C94-4D80-B54C-7EA0D36655B7}.Debug.Build.0 = Debug|Win32
+		{4EEF4FBB-6C94-4D80-B54C-7EA0D36655B7}.Release.ActiveCfg = Release|Win32
+		{4EEF4FBB-6C94-4D80-B54C-7EA0D36655B7}.Release.Build.0 = Release|Win32
+		{14B83F3C-A167-4BD5-BB3D-E5BA21FAE2B3}.Debug.ActiveCfg = Debug|Win32
+		{14B83F3C-A167-4BD5-BB3D-E5BA21FAE2B3}.Debug.Build.0 = Debug|Win32
+		{14B83F3C-A167-4BD5-BB3D-E5BA21FAE2B3}.Release.ActiveCfg = Release|Win32
+		{14B83F3C-A167-4BD5-BB3D-E5BA21FAE2B3}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
