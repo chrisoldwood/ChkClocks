@@ -1,5 +1,8 @@
+package gort.ui;
+
 import java.awt.*;
 import java.util.*;
+import gort.text.*;
 
 /********************************************************************************
 ** This is an enhanced Label class that supports multiple lines.

@@ -1,3 +1,5 @@
+package gort.ui;
+
 /********************************************************************************
 ** This class holds the raw image data for the MsgBox icons.
 */
