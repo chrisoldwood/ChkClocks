@@ -104,6 +104,14 @@ SOURCE=.\Gort\java\jlogos.zip
 # PROP Default_Filter ""
 # Begin Source File
 
+SOURCE=.\Gort\win32\chkclocks10r.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\chkclocks10s.zip
+# End Source File
+# Begin Source File
+
 SOURCE=.\Gort\win32\fcmanager03r.zip
 # End Source File
 # Begin Source File
@@ -154,6 +162,10 @@ SOURCE=.\Gort\dos.htm
 # Begin Source File
 
 SOURCE=.\Gort\java.htm
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\TODO.txt
 # End Source File
 # Begin Source File
 
