@@ -11,6 +11,18 @@
 #include "wcl.hpp"
 #include <typeinfo.h>
 
+#ifdef _DEBUG
+// For memory leak detection.
+#define new DBGCRT_NEW
+#endif
+
+/******************************************************************************
+**
+** Class members.
+**
+*******************************************************************************
+*/
+
 // Array of map sizes.
 int CMap::s_aiSizes[NUM_MAP_SIZES] =
 {

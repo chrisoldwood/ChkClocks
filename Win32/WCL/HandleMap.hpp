@@ -77,6 +77,11 @@ protected:
 *******************************************************************************
 */
 
+#ifdef _DEBUG
+// For memory leak detection.
+#define new DBGCRT_NEW
+#endif
+
 inline CHandleMap::CHandleMap()
 	: CMap()
 {
@@ -130,5 +135,9 @@ inline bool CHandleMapItem::operator==(const CMapItem& rRHS) const
 
 	return (m_hHandle == pRHS->m_hHandle);
 }
+
+#ifdef _DEBUG
+#undef new
+#endif
 
 #endif //HANDLEMAP_HPP
