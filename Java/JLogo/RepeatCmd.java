@@ -8,9 +8,9 @@ public class RepeatCmd extends Cmd
 	** Constructor.
 	*/
 
-	public RepeatCmd(int nCount)
+	public RepeatCmd(String strParam)
 	{
-		m_nCount = nCount;
+		m_strParam = strParam;
 	}
 
 	/********************************************************************************
@@ -19,74 +19,109 @@ public class RepeatCmd extends Cmd
 
 	public void add(Cmd oCmd)
 	{
-		if (m_oFirstCmd == null)
-			m_oFirstCmd = oCmd;
-		else
-			m_oLastCmd.setNext(oCmd);
+		m_vCmds.add(oCmd);
 
-		m_oLastCmd = oCmd;
+		if (oCmd instanceof EndRepeatCmd)
+			m_bClosed = true;
 	}
 
 	/********************************************************************************
 	** Execute the command.
 	*/
 
-	public void execute(Turtle oTurtle)
+	public void execute(ExecContext oContext)
 	{
-		m_nExecCount = m_nCount;
-		m_oNextCmd   = m_oFirstCmd;
+		int nCount = 1;
+
+		if (m_bClosed)
+			nCount = (int) oContext.getExprParser().evaluate(m_strParam);
+
+		for (int i = 0; i < nCount; i++)
+			m_vCmds.execute(oContext);
 	}
 
 	/********************************************************************************
-	** Get the next command.
+	** Execute the all but the first iteration of the loop.
+	** NB: Used when editing to repeat the edited steps of the loop.
 	*/
 
-	public Cmd getNext(boolean bExecuting)
+	public void executeEndRepeat(ExecContext oContext)
 	{
-		if (bExecuting)
-		{
-			if (m_nExecCount == 0)
-				return super.getNext(bExecuting);
+		int nCount = (int) oContext.getExprParser().evaluate(m_strParam);
 
-			if (!(m_oNextCmd instanceof EndRepeatCmd))
-			{
-				Cmd oNext = m_oNextCmd;
-				m_oNextCmd = m_oNextCmd.getNext(bExecuting);
+		nCount--;
 
-				return oNext;
-			}
-
-			m_nExecCount--;
-			m_oNextCmd = m_oFirstCmd;
-
-			return getNext(bExecuting);
-		}
-		else // !bExecuting
-		{
-			if (m_oNextCmd == null)
-			{
-				m_oNextCmd = m_oFirstCmd;
-
-				if (m_oNextCmd != null)
-					return m_oNextCmd;
-				else
-					return super.getNext(bExecuting);
-			}
-			else
-			{
-				m_oNextCmd = null;
-				return super.getNext(bExecuting);
-			}
-		}
+		for (int i = 0; i < nCount; i++)
+			m_vCmds.execute(oContext);
 	}
 
 	/********************************************************************************
 	** Get the source code for the command.
 	*/
 
-	public String getSource()
+	public void getSource(SourceLines oLines)
 	{
-		return "REPEAT " + m_nCount + "\n";
+		oLines.add(this, "REPEAT " + m_strParam);
+
+		oLines.adjustIndentation(+4);
+		m_vCmds.getSource(oLines);
+	}
+
+	/********************************************************************************
+	** Queries if the command requires parameters.
+	*/
+
+	public boolean isParameterised()
+	{
+		return true;
+	}
+
+	/********************************************************************************
+	** Get the commands parameter.
+	*/
+
+	public String getParameter()
+	{
+		return m_strParam;
+	}
+
+	/********************************************************************************
+	** Set the commands parameter.
+	*/
+
+	public void setParameter(String strParam)
+	{
+		m_strParam = strParam;
+	}
+
+	/********************************************************************************
+	** Queries if the command can be removed.
+	*/
+
+	public boolean isRemoveable()
+	{
+		return m_bClosed;
+	}
+
+	/********************************************************************************
+	** Get the commands' factory.
+	*/
+
+	public static CmdFactory.CmdHandler getFactory()
+	{
+		// Anonymous inner class used by the command factory.
+		return new CmdFactory.CmdHandler()
+		{
+			public String getName()
+			{
+				return "REPEAT";
+			}
+
+			public Cmd createCmd(String strSource)
+			{
+				return new RepeatCmd(strSource);
+			}
+		};
 	}
 
 	/********************************************************************************
@@ -97,10 +132,7 @@ public class RepeatCmd extends Cmd
 	** Members.
 	*/
 
-	private int	m_nCount;
-	private Cmd	m_oFirstCmd;
-	private Cmd	m_oLastCmd;
-
-	private int m_nExecCount;
-	private Cmd	m_oNextCmd;
+	private String		m_strParam;
+	private CmdBlock	m_vCmds    = new CmdBlock();
+	private boolean		m_bClosed  = false;
 }

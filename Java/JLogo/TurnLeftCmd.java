@@ -8,27 +8,78 @@ public class TurnLeftCmd extends Cmd
 	** Constructor.
 	*/
 
-	public TurnLeftCmd(int nDegrees)
+	public TurnLeftCmd(String strParam)
 	{
-		m_nDegrees = nDegrees;
+		m_strParam = strParam;
 	}
 
 	/********************************************************************************
 	** Execute the command.
 	*/
 
-	public void execute(Turtle oTurtle)
+	public void execute(ExecContext oContext)
 	{
-		oTurtle.turnLeft(m_nDegrees);
+		double dDegrees = oContext.getExprParser().evaluate(m_strParam);
+
+		oContext.getTurtle().turnLeft(dDegrees);
+		oContext.pause();
 	}
 
 	/********************************************************************************
 	** Get the source code for the command.
 	*/
 
-	public String getSource()
+	public void getSource(SourceLines oLines)
 	{
-		return "LEFT " + m_nDegrees + "\n";
+		oLines.add(this, "LEFT " + m_strParam);
+	}
+
+	/********************************************************************************
+	** Queries if the command requires parameters.
+	*/
+
+	public boolean isParameterised()
+	{
+		return true;
+	}
+
+	/********************************************************************************
+	** Get the commands parameter.
+	*/
+
+	public String getParameter()
+	{
+		return m_strParam;
+	}
+
+	/********************************************************************************
+	** Set the commands parameter.
+	*/
+
+	public void setParameter(String strParam)
+	{
+		m_strParam = strParam;
+	}
+
+	/********************************************************************************
+	** Get the commands' factory.
+	*/
+
+	public static CmdFactory.CmdHandler getFactory()
+	{
+		// Anonymous inner class used by the command factory.
+		return new CmdFactory.CmdHandler()
+		{
+			public String getName()
+			{
+				return "LEFT";
+			}
+
+			public Cmd createCmd(String strSource)
+			{
+				return new TurnLeftCmd(strSource);
+			}
+		};
 	}
 
 	/********************************************************************************
@@ -39,5 +90,5 @@ public class TurnLeftCmd extends Cmd
 	** Members.
 	*/
 
-	private int	m_nDegrees;
+	private String	m_strParam;
 }

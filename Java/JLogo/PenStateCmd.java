@@ -8,36 +8,99 @@ public class PenStateCmd extends Cmd
 	** Constructor.
 	*/
 
-	public PenStateCmd(boolean bDown)
+	public PenStateCmd(String strParam)
 	{
-		m_bDown = bDown;
+		m_strParam = strParam.trim();
 	}
 
 	/********************************************************************************
 	** Execute the command.
 	*/
 
-	public void execute(Turtle oTurtle)
+	public void execute(ExecContext oContext)
 	{
-		oTurtle.setPenDown(m_bDown);
+		int nState = 0;
+
+		for (nState = 0; nState < s_astrStates.length; nState++)
+		{
+			if (s_astrStates[nState].equalsIgnoreCase(m_strParam))
+				break;
+		}
+
+		if (nState >= s_astrStates.length)
+			throw new ExpressionException("Invalid pen state: " + m_strParam);
+
+		oContext.getTurtle().setPenDown(s_abStates[nState]);
 	}
 
 	/********************************************************************************
 	** Get the source code for the command.
 	*/
 
-	public String getSource()
+	public void getSource(SourceLines oLines)
 	{
-		return "PEN " + ((m_bDown) ? "DOWN" : "UP") + "\n";
+		oLines.add(this, "PEN " + m_strParam);
+	}
+
+	/********************************************************************************
+	** Queries if the command requires parameters.
+	*/
+
+	public boolean isParameterised()
+	{
+		return true;
+	}
+
+	/********************************************************************************
+	** Get the commands parameter.
+	*/
+
+	public String getParameter()
+	{
+		return m_strParam;
+	}
+
+	/********************************************************************************
+	** Set the commands parameter.
+	*/
+
+	public void setParameter(String strParam)
+	{
+		m_strParam = strParam;
+	}
+
+	/********************************************************************************
+	** Get the commands' factory.
+	*/
+
+	public static CmdFactory.CmdHandler getFactory()
+	{
+		// Anonymous inner class used by the command factory.
+		return new CmdFactory.CmdHandler()
+		{
+			public String getName()
+			{
+				return "PEN";
+			}
+
+			public Cmd createCmd(String strSource)
+			{
+				return new PenStateCmd(strSource);
+			}
+		};
 	}
 
 	/********************************************************************************
 	** Constants.
 	*/
 
+	// States.
+	private static final String[]  s_astrStates = new String[]  { "down", "up"  };
+	private static final boolean[] s_abStates   = new boolean[] { true,   false };
+
 	/********************************************************************************
 	** Members.
 	*/
 
-	private boolean	m_bDown;
+	private String	m_strParam;
 }

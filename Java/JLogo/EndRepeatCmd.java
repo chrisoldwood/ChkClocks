@@ -13,38 +13,51 @@ public class EndRepeatCmd extends Cmd
 	}
 
 	/********************************************************************************
-	** Set the owning loop command.
-	*/
-
-	public void setRepeatCmd(RepeatCmd oCmd)
-	{
-		m_oRepeat = oCmd;
-	}
-
-	/********************************************************************************
 	** Execute the command.
 	*/
 
-	public void execute(Turtle oTurtle)
+	public void execute(ExecContext oContext)
 	{
-	}
-
-	/********************************************************************************
-	** Get the next command.
-	*/
-
-	public Cmd getNext(boolean bExecuting)
-	{
-		return m_oRepeat.getNext(bExecuting);
 	}
 
 	/********************************************************************************
 	** Get the source code for the command.
 	*/
 
-	public String getSource()
+	public void getSource(SourceLines oLines)
 	{
-		return "END REPEAT\n";
+		oLines.adjustIndentation(-4);
+		oLines.add(this, "ENDREPEAT");
+	}
+
+	/********************************************************************************
+	** Queries if the command can be removed.
+	*/
+
+	public boolean isRemoveable()
+	{
+		return false;
+	}
+
+	/********************************************************************************
+	** Get the commands' factory.
+	*/
+
+	public static CmdFactory.CmdHandler getFactory()
+	{
+		// Anonymous inner class used by the command factory.
+		return new CmdFactory.CmdHandler()
+		{
+			public String getName()
+			{
+				return "ENDREPEAT";
+			}
+
+			public Cmd createCmd(String strSource)
+			{
+				return new EndRepeatCmd();
+			}
+		};
 	}
 
 	/********************************************************************************
@@ -54,6 +67,4 @@ public class EndRepeatCmd extends Cmd
 	/********************************************************************************
 	** Members.
 	*/
-
-	private RepeatCmd	m_oRepeat;
 }
