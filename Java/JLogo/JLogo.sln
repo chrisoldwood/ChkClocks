@@ -1,0 +1,13 @@
+Microsoft Visual Studio Solution File, Format Version 1.00
+Project("{66355F20-A65B-11D0-BFB5-00A0C91EBFA0}") = "JLogo", "JLogo.vjp", "{44DB1FEB-D70B-43CE-97B6-C4D07635E49C}"
+EndProject
+Global
+	GlobalSection(LocalDeployment) = postSolution
+		StartupProject = {44DB1FEB-D70B-43CE-97B6-C4D07635E49C}
+	EndGlobalSection
+	GlobalSection(BuildOrder) = postSolution
+		0 = {44DB1FEB-D70B-43CE-97B6-C4D07635E49C}
+	EndGlobalSection
+	GlobalSection(DeploymentRoot) = postSolution
+	EndGlobalSection
+EndGlobal
