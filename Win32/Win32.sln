@@ -1,0 +1,278 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "All", "All.vcproj", "{CC24DBF5-E80F-4292-AAB8-09F3A19916F8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6BC65B7F-25B9-4AFE-B4D8-42B5D16641BD} = {6BC65B7F-25B9-4AFE-B4D8-42B5D16641BD}
+		{E095BF4E-3260-4F1A-9693-3795D3B8417D} = {E095BF4E-3260-4F1A-9693-3795D3B8417D}
+		{FD4F8430-5A89-4D9F-B67E-21FD4F662B08} = {FD4F8430-5A89-4D9F-B67E-21FD4F662B08}
+		{9D1FDC26-0CDB-4213-B7AF-EE9BD032501C} = {9D1FDC26-0CDB-4213-B7AF-EE9BD032501C}
+		{B0D5BED4-849C-49DD-B67A-973AC6458C29} = {B0D5BED4-849C-49DD-B67A-973AC6458C29}
+		{B255E291-9FA7-4385-9746-8B908A3D448F} = {B255E291-9FA7-4385-9746-8B908A3D448F}
+		{6D561928-D2E4-4A7C-9B93-CD7F6EF8F358} = {6D561928-D2E4-4A7C-9B93-CD7F6EF8F358}
+		{24DF8ED9-98FB-421C-AAFF-0008CBC7F1C7} = {24DF8ED9-98FB-421C-AAFF-0008CBC7F1C7}
+		{0054ED3A-36DE-4B1A-815B-3013493DBB2B} = {0054ED3A-36DE-4B1A-815B-3013493DBB2B}
+		{ACD94EB7-2192-47AF-96D5-E0BBC5BA02FD} = {ACD94EB7-2192-47AF-96D5-E0BBC5BA02FD}
+		{C9D9BDE9-EF7B-499F-AF10-DDBFFCEA8329} = {C9D9BDE9-EF7B-499F-AF10-DDBFFCEA8329}
+		{F8B989C0-7550-429A-BD8C-4C685336B31A} = {F8B989C0-7550-429A-BD8C-4C685336B31A}
+		{56ECA9BB-281A-4A1E-986F-2A69B4ABB305} = {56ECA9BB-281A-4A1E-986F-2A69B4ABB305}
+		{B88DAD30-D0E3-4D22-B797-48EEE7EFA6B5} = {B88DAD30-D0E3-4D22-B797-48EEE7EFA6B5}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ChkClocks", "ChkClocks\ChkClocks.vcproj", "{B88DAD30-D0E3-4D22-B797-48EEE7EFA6B5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{83C10702-047B-4F99-B9A5-6199400118FE} = {83C10702-047B-4F99-B9A5-6199400118FE}
+		{A5D70395-BEF8-4864-B197-4B9A4ACF8ABB} = {A5D70395-BEF8-4864-B197-4B9A4ACF8ABB}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ClassGen", "ClassGen\ClassGen.vcproj", "{56ECA9BB-281A-4A1E-986F-2A69B4ABB305}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A5D70395-BEF8-4864-B197-4B9A4ACF8ABB} = {A5D70395-BEF8-4864-B197-4B9A4ACF8ABB}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DDEQuery", "DDEQuery\DDEQuery.vcproj", "{E095BF4E-3260-4F1A-9693-3795D3B8417D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{35190AD1-A9A3-4A8E-B548-D7869FF5AAB6} = {35190AD1-A9A3-4A8E-B548-D7869FF5AAB6}
+		{A5D70395-BEF8-4864-B197-4B9A4ACF8ABB} = {A5D70395-BEF8-4864-B197-4B9A4ACF8ABB}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FCManager", "FCManager\FCManager.vcproj", "{F8B989C0-7550-429A-BD8C-4C685336B31A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A5D70395-BEF8-4864-B197-4B9A4ACF8ABB} = {A5D70395-BEF8-4864-B197-4B9A4ACF8ABB}
+		{83C10702-047B-4F99-B9A5-6199400118FE} = {83C10702-047B-4F99-B9A5-6199400118FE}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HttpQuery", "HttpQuery\HttpQuery.vcproj", "{C9D9BDE9-EF7B-499F-AF10-DDBFFCEA8329}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A5D70395-BEF8-4864-B197-4B9A4ACF8ABB} = {A5D70395-BEF8-4864-B197-4B9A4ACF8ABB}
+		{35190AD1-A9A3-4A8E-B548-D7869FF5AAB6} = {35190AD1-A9A3-4A8E-B548-D7869FF5AAB6}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MDBL", "MDBL\MDBL.vcproj", "{83C10702-047B-4F99-B9A5-6199400118FE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A5D70395-BEF8-4864-B197-4B9A4ACF8ABB} = {A5D70395-BEF8-4864-B197-4B9A4ACF8ABB}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MkSetup", "MkSetup\MkSetup.vcproj", "{6BC65B7F-25B9-4AFE-B4D8-42B5D16641BD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A5D70395-BEF8-4864-B197-4B9A4ACF8ABB} = {A5D70395-BEF8-4864-B197-4B9A4ACF8ABB}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NCL", "NCL\NCL.vcproj", "{35190AD1-A9A3-4A8E-B548-D7869FF5AAB6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A5D70395-BEF8-4864-B197-4B9A4ACF8ABB} = {A5D70395-BEF8-4864-B197-4B9A4ACF8ABB}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NetDDEClient", "NetDDE\Client\NetDDEClient.vcproj", "{ACD94EB7-2192-47AF-96D5-E0BBC5BA02FD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A5D70395-BEF8-4864-B197-4B9A4ACF8ABB} = {A5D70395-BEF8-4864-B197-4B9A4ACF8ABB}
+		{35190AD1-A9A3-4A8E-B548-D7869FF5AAB6} = {35190AD1-A9A3-4A8E-B548-D7869FF5AAB6}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NetDDEServer", "NetDDE\Server\NetDDEServer.vcproj", "{0054ED3A-36DE-4B1A-815B-3013493DBB2B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A5D70395-BEF8-4864-B197-4B9A4ACF8ABB} = {A5D70395-BEF8-4864-B197-4B9A4ACF8ABB}
+		{35190AD1-A9A3-4A8E-B548-D7869FF5AAB6} = {35190AD1-A9A3-4A8E-B548-D7869FF5AAB6}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PQT", "PQT\PQT.vcproj", "{24DF8ED9-98FB-421C-AAFF-0008CBC7F1C7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A5D70395-BEF8-4864-B197-4B9A4ACF8ABB} = {A5D70395-BEF8-4864-B197-4B9A4ACF8ABB}
+		{83C10702-047B-4F99-B9A5-6199400118FE} = {83C10702-047B-4F99-B9A5-6199400118FE}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Setup", "Setup\Setup.vcproj", "{FD4F8430-5A89-4D9F-B67E-21FD4F662B08}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A5D70395-BEF8-4864-B197-4B9A4ACF8ABB} = {A5D70395-BEF8-4864-B197-4B9A4ACF8ABB}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SockTrace", "SockTrace\SockTrace.vcproj", "{6D561928-D2E4-4A7C-9B93-CD7F6EF8F358}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A5D70395-BEF8-4864-B197-4B9A4ACF8ABB} = {A5D70395-BEF8-4864-B197-4B9A4ACF8ABB}
+		{35190AD1-A9A3-4A8E-B548-D7869FF5AAB6} = {35190AD1-A9A3-4A8E-B548-D7869FF5AAB6}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TaskTracker", "TaskTracker\TaskTracker.vcproj", "{B255E291-9FA7-4385-9746-8B908A3D448F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A5D70395-BEF8-4864-B197-4B9A4ACF8ABB} = {A5D70395-BEF8-4864-B197-4B9A4ACF8ABB}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UTCacheMgr", "UTCacheMgr\UTCacheMgr.vcproj", "{B0D5BED4-849C-49DD-B67A-973AC6458C29}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A5D70395-BEF8-4864-B197-4B9A4ACF8ABB} = {A5D70395-BEF8-4864-B197-4B9A4ACF8ABB}
+		{83C10702-047B-4F99-B9A5-6199400118FE} = {83C10702-047B-4F99-B9A5-6199400118FE}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UTSvrBrowser", "UTSvrBrowser\UTSvrBrowser.vcproj", "{9D1FDC26-0CDB-4213-B7AF-EE9BD032501C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A5D70395-BEF8-4864-B197-4B9A4ACF8ABB} = {A5D70395-BEF8-4864-B197-4B9A4ACF8ABB}
+		{35190AD1-A9A3-4A8E-B548-D7869FF5AAB6} = {35190AD1-A9A3-4A8E-B548-D7869FF5AAB6}
+		{83C10702-047B-4F99-B9A5-6199400118FE} = {83C10702-047B-4F99-B9A5-6199400118FE}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wcl", "WCL\Wcl.vcproj", "{A5D70395-BEF8-4864-B197-4B9A4ACF8ABB}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 19
+		SccProjectUniqueName0 = All.vcproj
+		SccLocalPath0 = .
+		CanCheckoutShared = true
+		SccProjectUniqueName1 = ChkClocks\\ChkClocks.vcproj
+		SccProjectName1 = \u0022$/Win32/ChkClocks\u0022,\u0020DNCAAAAA
+		SccLocalPath1 = ChkClocks
+		CanCheckoutShared = true
+		SccProjectUniqueName2 = ClassGen\\ClassGen.vcproj
+		SccProjectName2 = \u0022$/Win32/ClassGen\u0022,\u0020CNCAAAAA
+		SccLocalPath2 = ClassGen
+		CanCheckoutShared = true
+		SccProjectUniqueName3 = DDEQuery\\DDEQuery.vcproj
+		SccProjectName3 = \u0022$/Win32/DDEQuery\u0022,\u0020SNDAAAAA
+		SccLocalPath3 = DDEQuery
+		CanCheckoutShared = true
+		SccProjectUniqueName4 = FCManager\\FCManager.vcproj
+		SccProjectName4 = \u0022$/Win32/FCManager\u0022,\u0020MAAAAAAA
+		SccLocalPath4 = FCManager
+		CanCheckoutShared = true
+		SccProjectUniqueName5 = HttpQuery\\HttpQuery.vcproj
+		SccProjectName5 = \u0022$/Win32/HttpQuery\u0022,\u0020ZWCAAAAA
+		SccLocalPath5 = HttpQuery
+		CanCheckoutShared = true
+		SccProjectUniqueName6 = MDBL\\MDBL.vcproj
+		SccProjectName6 = \u0022$/Win32/MDBL\u0022,\u0020OAAAAAAA
+		SccLocalPath6 = MDBL
+		CanCheckoutShared = true
+		SccProjectUniqueName7 = MkSetup\\MkSetup.vcproj
+		SccProjectName7 = \u0022$/Win32/MkSetup\u0022,\u0020YLDAAAAA
+		SccLocalPath7 = MkSetup
+		CanCheckoutShared = true
+		SccProjectUniqueName8 = NCL\\NCL.vcproj
+		SccProjectName8 = \u0022$/Win32/NCL\u0022,\u0020JRCAAAAA
+		SccLocalPath8 = NCL
+		CanCheckoutShared = true
+		SccProjectUniqueName9 = NetDDE\\Client\\NetDDEClient.vcproj
+		SccProjectName9 = \u0022$/Win32/NetDDE/Client\u0022,\u0020FRCAAAAA
+		SccLocalPath9 = NetDDE\\Client
+		CanCheckoutShared = true
+		SccProjectUniqueName10 = NetDDE\\Server\\NetDDEServer.vcproj
+		SccProjectName10 = \u0022$/Win32/NetDDE/Server\u0022,\u0020HRCAAAAA
+		SccLocalPath10 = NetDDE\\Server
+		CanCheckoutShared = true
+		SccProjectUniqueName11 = PQT\\PQT.vcproj
+		SccProjectName11 = \u0022$/Win32/PQT\u0022,\u0020PAAAAAAA
+		SccLocalPath11 = PQT
+		CanCheckoutShared = true
+		SccProjectUniqueName12 = Setup\\Setup.vcproj
+		SccProjectName12 = \u0022$/Win32/Setup\u0022,\u0020IIDAAAAA
+		SccLocalPath12 = Setup
+		CanCheckoutShared = true
+		SccProjectUniqueName13 = SockTrace\\SockTrace.vcproj
+		SccProjectName13 = \u0022$/Win32/SockTrace\u0022,\u0020EADAAAAA
+		SccLocalPath13 = SockTrace
+		CanCheckoutShared = true
+		SccProjectUniqueName14 = TaskTracker\\TaskTracker.vcproj
+		SccProjectName14 = \u0022$/Win32/TaskTracker\u0022,\u0020RAAAAAAA
+		SccLocalPath14 = TaskTracker
+		CanCheckoutShared = true
+		SccProjectUniqueName15 = UTCacheMgr\\UTCacheMgr.vcproj
+		SccProjectName15 = \u0022$/Win32/UTCacheMgr\u0022,\u0020QICAAAAA
+		SccLocalPath15 = UTCacheMgr
+		CanCheckoutShared = true
+		SccProjectUniqueName16 = UTSvrBrowser\\UTSvrBrowser.vcproj
+		SccProjectName16 = \u0022$/Win32/UTSvrBrowser\u0022,\u0020FADAAAAA
+		SccLocalPath16 = UTSvrBrowser
+		CanCheckoutShared = true
+		SccProjectUniqueName17 = WCL\\Wcl.vcproj
+		SccProjectName17 = \u0022$/Win32/Wcl\u0022,\u0020UAAAAAAA
+		SccLocalPath17 = WCL
+		CanCheckoutShared = true
+		SccLocalPath18 = .
+		CanCheckoutShared = true
+		SolutionUniqueID = {7C711A93-67BE-4C05-8146-6586018B83E9}
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{CC24DBF5-E80F-4292-AAB8-09F3A19916F8}.Debug.ActiveCfg = Debug|Win32
+		{CC24DBF5-E80F-4292-AAB8-09F3A19916F8}.Debug.Build.0 = Debug|Win32
+		{CC24DBF5-E80F-4292-AAB8-09F3A19916F8}.Release.ActiveCfg = Release|Win32
+		{CC24DBF5-E80F-4292-AAB8-09F3A19916F8}.Release.Build.0 = Release|Win32
+		{B88DAD30-D0E3-4D22-B797-48EEE7EFA6B5}.Debug.ActiveCfg = Debug|Win32
+		{B88DAD30-D0E3-4D22-B797-48EEE7EFA6B5}.Debug.Build.0 = Debug|Win32
+		{B88DAD30-D0E3-4D22-B797-48EEE7EFA6B5}.Release.ActiveCfg = Release|Win32
+		{B88DAD30-D0E3-4D22-B797-48EEE7EFA6B5}.Release.Build.0 = Release|Win32
+		{56ECA9BB-281A-4A1E-986F-2A69B4ABB305}.Debug.ActiveCfg = Debug|Win32
+		{56ECA9BB-281A-4A1E-986F-2A69B4ABB305}.Debug.Build.0 = Debug|Win32
+		{56ECA9BB-281A-4A1E-986F-2A69B4ABB305}.Release.ActiveCfg = Release|Win32
+		{56ECA9BB-281A-4A1E-986F-2A69B4ABB305}.Release.Build.0 = Release|Win32
+		{E095BF4E-3260-4F1A-9693-3795D3B8417D}.Debug.ActiveCfg = Debug|Win32
+		{E095BF4E-3260-4F1A-9693-3795D3B8417D}.Debug.Build.0 = Debug|Win32
+		{E095BF4E-3260-4F1A-9693-3795D3B8417D}.Release.ActiveCfg = Release|Win32
+		{E095BF4E-3260-4F1A-9693-3795D3B8417D}.Release.Build.0 = Release|Win32
+		{F8B989C0-7550-429A-BD8C-4C685336B31A}.Debug.ActiveCfg = Debug|Win32
+		{F8B989C0-7550-429A-BD8C-4C685336B31A}.Debug.Build.0 = Debug|Win32
+		{F8B989C0-7550-429A-BD8C-4C685336B31A}.Release.ActiveCfg = Release|Win32
+		{F8B989C0-7550-429A-BD8C-4C685336B31A}.Release.Build.0 = Release|Win32
+		{C9D9BDE9-EF7B-499F-AF10-DDBFFCEA8329}.Debug.ActiveCfg = Debug|Win32
+		{C9D9BDE9-EF7B-499F-AF10-DDBFFCEA8329}.Debug.Build.0 = Debug|Win32
+		{C9D9BDE9-EF7B-499F-AF10-DDBFFCEA8329}.Release.ActiveCfg = Release|Win32
+		{C9D9BDE9-EF7B-499F-AF10-DDBFFCEA8329}.Release.Build.0 = Release|Win32
+		{83C10702-047B-4F99-B9A5-6199400118FE}.Debug.ActiveCfg = Debug|Win32
+		{83C10702-047B-4F99-B9A5-6199400118FE}.Debug.Build.0 = Debug|Win32
+		{83C10702-047B-4F99-B9A5-6199400118FE}.Release.ActiveCfg = Release|Win32
+		{83C10702-047B-4F99-B9A5-6199400118FE}.Release.Build.0 = Release|Win32
+		{6BC65B7F-25B9-4AFE-B4D8-42B5D16641BD}.Debug.ActiveCfg = Debug|Win32
+		{6BC65B7F-25B9-4AFE-B4D8-42B5D16641BD}.Debug.Build.0 = Debug|Win32
+		{6BC65B7F-25B9-4AFE-B4D8-42B5D16641BD}.Release.ActiveCfg = Release|Win32
+		{6BC65B7F-25B9-4AFE-B4D8-42B5D16641BD}.Release.Build.0 = Release|Win32
+		{35190AD1-A9A3-4A8E-B548-D7869FF5AAB6}.Debug.ActiveCfg = Debug|Win32
+		{35190AD1-A9A3-4A8E-B548-D7869FF5AAB6}.Debug.Build.0 = Debug|Win32
+		{35190AD1-A9A3-4A8E-B548-D7869FF5AAB6}.Release.ActiveCfg = Release|Win32
+		{35190AD1-A9A3-4A8E-B548-D7869FF5AAB6}.Release.Build.0 = Release|Win32
+		{ACD94EB7-2192-47AF-96D5-E0BBC5BA02FD}.Debug.ActiveCfg = Debug|Win32
+		{ACD94EB7-2192-47AF-96D5-E0BBC5BA02FD}.Debug.Build.0 = Debug|Win32
+		{ACD94EB7-2192-47AF-96D5-E0BBC5BA02FD}.Release.ActiveCfg = Release|Win32
+		{ACD94EB7-2192-47AF-96D5-E0BBC5BA02FD}.Release.Build.0 = Release|Win32
+		{0054ED3A-36DE-4B1A-815B-3013493DBB2B}.Debug.ActiveCfg = Debug|Win32
+		{0054ED3A-36DE-4B1A-815B-3013493DBB2B}.Debug.Build.0 = Debug|Win32
+		{0054ED3A-36DE-4B1A-815B-3013493DBB2B}.Release.ActiveCfg = Release|Win32
+		{0054ED3A-36DE-4B1A-815B-3013493DBB2B}.Release.Build.0 = Release|Win32
+		{24DF8ED9-98FB-421C-AAFF-0008CBC7F1C7}.Debug.ActiveCfg = Debug|Win32
+		{24DF8ED9-98FB-421C-AAFF-0008CBC7F1C7}.Debug.Build.0 = Debug|Win32
+		{24DF8ED9-98FB-421C-AAFF-0008CBC7F1C7}.Release.ActiveCfg = Release|Win32
+		{24DF8ED9-98FB-421C-AAFF-0008CBC7F1C7}.Release.Build.0 = Release|Win32
+		{FD4F8430-5A89-4D9F-B67E-21FD4F662B08}.Debug.ActiveCfg = Debug|Win32
+		{FD4F8430-5A89-4D9F-B67E-21FD4F662B08}.Debug.Build.0 = Debug|Win32
+		{FD4F8430-5A89-4D9F-B67E-21FD4F662B08}.Release.ActiveCfg = Release|Win32
+		{FD4F8430-5A89-4D9F-B67E-21FD4F662B08}.Release.Build.0 = Release|Win32
+		{6D561928-D2E4-4A7C-9B93-CD7F6EF8F358}.Debug.ActiveCfg = Debug|Win32
+		{6D561928-D2E4-4A7C-9B93-CD7F6EF8F358}.Debug.Build.0 = Debug|Win32
+		{6D561928-D2E4-4A7C-9B93-CD7F6EF8F358}.Release.ActiveCfg = Release|Win32
+		{6D561928-D2E4-4A7C-9B93-CD7F6EF8F358}.Release.Build.0 = Release|Win32
+		{B255E291-9FA7-4385-9746-8B908A3D448F}.Debug.ActiveCfg = Debug|Win32
+		{B255E291-9FA7-4385-9746-8B908A3D448F}.Debug.Build.0 = Debug|Win32
+		{B255E291-9FA7-4385-9746-8B908A3D448F}.Release.ActiveCfg = Release|Win32
+		{B255E291-9FA7-4385-9746-8B908A3D448F}.Release.Build.0 = Release|Win32
+		{B0D5BED4-849C-49DD-B67A-973AC6458C29}.Debug.ActiveCfg = Debug|Win32
+		{B0D5BED4-849C-49DD-B67A-973AC6458C29}.Debug.Build.0 = Debug|Win32
+		{B0D5BED4-849C-49DD-B67A-973AC6458C29}.Release.ActiveCfg = Release|Win32
+		{B0D5BED4-849C-49DD-B67A-973AC6458C29}.Release.Build.0 = Release|Win32
+		{9D1FDC26-0CDB-4213-B7AF-EE9BD032501C}.Debug.ActiveCfg = Debug|Win32
+		{9D1FDC26-0CDB-4213-B7AF-EE9BD032501C}.Debug.Build.0 = Debug|Win32
+		{9D1FDC26-0CDB-4213-B7AF-EE9BD032501C}.Release.ActiveCfg = Release|Win32
+		{9D1FDC26-0CDB-4213-B7AF-EE9BD032501C}.Release.Build.0 = Release|Win32
+		{A5D70395-BEF8-4864-B197-4B9A4ACF8ABB}.Debug.ActiveCfg = Debug|Win32
+		{A5D70395-BEF8-4864-B197-4B9A4ACF8ABB}.Debug.Build.0 = Debug|Win32
+		{A5D70395-BEF8-4864-B197-4B9A4ACF8ABB}.Release.ActiveCfg = Release|Win32
+		{A5D70395-BEF8-4864-B197-4B9A4ACF8ABB}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
