@@ -54,6 +54,7 @@ public:
 	//
 	// Methods.
 	//
+	int  Count() const;
 	void RemoveAll();
 
 protected:
@@ -89,6 +90,11 @@ protected:
 **
 *******************************************************************************
 */
+
+inline int CMap::Count() const
+{
+	return m_iCount;
+}
 
 inline bool CMapItem::operator!=(const CMapItem& rRHS) const
 {
