@@ -79,21 +79,47 @@ void CAppWnd::OnCreate(const CRect& rcClient)
 }
 
 /******************************************************************************
-** Method:		OnQueryClose()
+** Method:		ProcessMsg()
 **
-** Description:	Check if the app can close.
+** Description:	Show default status bar text if moving over main window/dialog
+**				or its children.
 **
-** Parameters:	None.
+** Parameters:	rMsg	The message.
 **
 ** Returns:		true or false.
 **
 *******************************************************************************
 */
 
-bool CAppWnd::OnQueryClose()
+bool CAppWnd::ProcessMsg(MSG& rMsg)
+{
+	// Only interested in mouse moves over the main window/dialog
+	if ( (rMsg.message == WM_MOUSEMOVE)
+	  && ((rMsg.hwnd == Handle()) || (rMsg.hwnd == m_AppDlg.Handle())
+	   || (::GetParent(rMsg.hwnd) == m_AppDlg.Handle())) )
+	{
+		// Show default status message.
+		m_StatusBar.Hint(App.m_strDefStatus);
+	}
+
+	// Forward to base class.
+	return CDlgFrame::ProcessMsg(rMsg);
+}
+
+/******************************************************************************
+** Method:		OnClose()
+**
+** Description:	Window closing.
+**
+** Parameters:	None.
+**
+** Returns:		Nothing.
+**
+*******************************************************************************
+*/
+
+void CAppWnd::OnClose()
 {
 	// Fetch windows final placement.
 	App.m_rcLastPos = Placement();
-
-	return true;
 }
