@@ -3,6 +3,8 @@ import java.awt.event.*;
 import java.applet.*;
 import java.net.*;
 import java.awt.image.*;
+import gort.applet.*;
+import gort.ui.*;
 
 /********************************************************************************
 ** The applet main class.

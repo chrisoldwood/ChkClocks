@@ -1,5 +1,9 @@
 Microsoft Visual Studio Solution File, Format Version 1.00
 Project("{66355F20-A65B-11D0-BFB5-00A0C91EBFA0}") = "Img2Src", "Img2Src.vjp", "{10969FD0-E336-4406-92B6-DC8994AB48CC}"
+	ProjectSection(SourceCodeControl) = preProject
+		SccProjectName = \u0022$/Java/Img2Src\u0022,\u0020HHDAAAAA
+		SccLocalPath = .
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(LocalDeployment) = postSolution
@@ -7,6 +11,10 @@ Global
 	EndGlobalSection
 	GlobalSection(BuildOrder) = postSolution
 		0 = {10969FD0-E336-4406-92B6-DC8994AB48CC}
+	EndGlobalSection
+	GlobalSection(SourceCodeControl) = preSolution
+		SccProjectName = \u0022$/Java/Img2Src\u0022,\u0020HHDAAAAA
+		SccLocalPath = .
 	EndGlobalSection
 	GlobalSection(DeploymentRoot) = postSolution
 	EndGlobalSection

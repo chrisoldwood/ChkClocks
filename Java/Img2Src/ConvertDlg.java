@@ -1,4 +1,5 @@
 import java.awt.*;
+import gort.ui.*;
 
 /********************************************************************************
 ** The dialog used to enter the conversion parameters.
