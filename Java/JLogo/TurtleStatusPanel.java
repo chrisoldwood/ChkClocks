@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
+import gort.ui.*;
 
 /********************************************************************************
 ** This panel is used to host the turtle status contols.
@@ -14,7 +15,7 @@ public class TurtleStatusPanel extends GroupPanel
 
 	public TurtleStatusPanel(Turtle oTurtle)
 	{
-		super("Turtle Status", Label.CENTER, new BorderLayout(5, 5));
+		super("Turtle Status", GroupPanel.CENTER, new BorderLayout(5, 5));
 
 		// Save parameters.
 		m_oTurtle  = oTurtle;

@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
+import gort.ui.*;
 
 /********************************************************************************
 ** This panel is used to host the variables controls.
