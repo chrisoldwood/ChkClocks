@@ -25,6 +25,7 @@
 
 CNameDlg::CNameDlg()
 	: CDialog(IDD_INCEXC_NAME)
+	, m_bInclude(true)
 {
 	DEFINE_CTRL_TABLE
 		CTRL(IDC_NAME,	&m_ebName)
@@ -45,6 +46,11 @@ CNameDlg::CNameDlg()
 
 void CNameDlg::OnInitDialog()
 {
+	// Set title.
+	if (m_bInclude)
+		Title("Computer Name");
+	else
+		Title("Computer/Domain Name");
 }
 
 /******************************************************************************
@@ -69,10 +75,6 @@ bool CNameDlg::OnOk()
 		AlertMsg("Please supply the name.");
 		return false;
 	}
-
-	// Prepend \\ if missing.
-	if (m_strName.Compare("\\\\", 2) != 0)
-		m_strName = "\\\\" + m_strName;
 
 	return true;
 }

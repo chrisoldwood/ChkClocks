@@ -30,6 +30,7 @@ public:
 	//
 	// Members.
 	//
+	bool		m_bInclude;
 	CString		m_strName;
 
 protected:
