@@ -29,9 +29,9 @@ CChkClocksApp App;
 */
 
 #ifdef _DEBUG
-const char* CChkClocksApp::VERSION      = "v1.0 [Debug]";
+const char* CChkClocksApp::VERSION      = "v1.1 [Debug]";
 #else
-const char* CChkClocksApp::VERSION      = "v1.0";
+const char* CChkClocksApp::VERSION      = "v1.1";
 #endif
 const char* CChkClocksApp::INI_FILE_VER     = "1.0";
 const int   CChkClocksApp::DEF_THREADS      = 10;
