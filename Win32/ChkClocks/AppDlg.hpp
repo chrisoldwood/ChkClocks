@@ -49,6 +49,11 @@ protected:
 	//
 	virtual void OnInitDialog();
 	     LRESULT OnClickColumn(NMHDR& rMsgHdr);
+
+	//
+	// Internal methods.
+	//
+	int GetTableColumn(int nGridColumn) const;
 };
 
 /******************************************************************************

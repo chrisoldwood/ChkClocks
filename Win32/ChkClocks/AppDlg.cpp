@@ -9,6 +9,7 @@
 */
 
 #include "AppHeaders.hpp"
+#include <lm.h>
 
 /******************************************************************************
 ** Method:		Default constructor.
@@ -24,7 +25,7 @@
 
 CAppDlg::CAppDlg()
 	: CMainDlg(IDD_MAIN)
-	, m_nSortColumn(CClocks::CLOCK_DIFF)
+	, m_nSortColumn(CClocks::ABS_DIFF)
 	, m_eSortOrder(CSortColumns::DESC)
 {
 	DEFINE_CTRL_TABLE
@@ -60,9 +61,10 @@ void CAppDlg::OnInitDialog()
 //	m_lvGrid.GridLines(true);
 
 	// Create grid columns.
-	m_lvGrid.InsertColumn(0, "Computer",   100, LVCFMT_LEFT );
+	m_lvGrid.InsertColumn(0, "Computer",   125, LVCFMT_LEFT );
 	m_lvGrid.InsertColumn(1, "Domain",     100, LVCFMT_LEFT );
 	m_lvGrid.InsertColumn(2, "Difference", 100, LVCFMT_RIGHT);
+	m_lvGrid.InsertColumn(3, "Error",      200, LVCFMT_LEFT );
 }
 
 /******************************************************************************
@@ -91,12 +93,24 @@ void CAppDlg::RefreshView()
 	for (int i = 0; i < oRS.Count(); ++i)
 	{
 		CRow& oRow = oRS[i];
-		int   nRow = m_lvGrid.ItemCount();
+		int   nError = oRow[CClocks::ERROR_CODE];
+		int   nDiff  = oRow[CClocks::ABS_DIFF];
+
+		// Filter out correct clocks?
+		if ( (App.m_bHideCorrect) && (nError == NERR_Success) && (nDiff <= App.m_nTolerance) )
+			continue;
+
+		// Filter out failed checks?
+		if ( (App.m_bHideFailed) && (nError != NERR_Success) )
+			continue;
+
+		int nRow = m_lvGrid.ItemCount();
 
 		// Add to the grid.
 		m_lvGrid.InsertItem(nRow,    oRow[CClocks::COMPUTER], &oRow);
 		m_lvGrid.ItemText  (nRow, 1, oRow[CClocks::DOMAIN]);
-		m_lvGrid.ItemText  (nRow, 2, CChkClocksApp::FmtDifference(oRow));
+		m_lvGrid.ItemText  (nRow, 2, App.FmtDifference(oRow));
+		m_lvGrid.ItemText  (nRow, 3, App.FmtError(oRow));
 	}
 }
 
@@ -116,14 +130,13 @@ LRESULT CAppDlg::OnClickColumn(NMHDR& rMsgHdr)
 {
 	NMLISTVIEW& oMsgHdr = reinterpret_cast<NMLISTVIEW&>(rMsgHdr);
 
-	// Get the column clicked.
-	uint nColumn = oMsgHdr.iSubItem;
+	// Get the table column clicked.
+	uint nColumn = GetTableColumn(oMsgHdr.iSubItem);
 
 	// Reverse sort order?
 	if (nColumn == m_nSortColumn)
 	{
 		m_eSortOrder = (m_eSortOrder == CSortColumns::ASC) ? CSortColumns::DESC : CSortColumns::ASC;
-		RefreshView();
 	}
 	// Change sort column.
 	else
@@ -132,9 +145,38 @@ LRESULT CAppDlg::OnClickColumn(NMHDR& rMsgHdr)
 		m_nSortColumn = nColumn;
 		m_eSortOrder  = CSortColumns::ASC;
 
-		// For difference column, use descending sort.
-		if (m_nSortColumn == CClocks::CLOCK_DIFF)
+		// For difference and error columns
+		// use a descending sort.
+		if ( (m_nSortColumn == CClocks::ABS_DIFF) || (m_nSortColumn == CClocks::ERROR_CODE) )
 			m_eSortOrder  = CSortColumns::DESC;
+	}
+
+	RefreshView();
+
+	return 0;
+}
+
+/******************************************************************************
+** Method:		GetTableColumn()
+**
+** Description:	Gets the table column that maps onto the grid column.
+**
+** Parameters:	nGridColumn		The grid column.
+**
+** Returns:		The table column.
+**
+*******************************************************************************
+*/
+
+int CAppDlg::GetTableColumn(int nGridColumn) const
+{
+	switch (nGridColumn)
+	{
+		case 0:		return CClocks::COMPUTER;
+		case 1:		return CClocks::DOMAIN;
+		case 2:		return CClocks::ABS_DIFF;
+		case 3:		return CClocks::ERROR_CODE;
+		default:	ASSERT(false);	break;
 	}
 
 	return 0;
