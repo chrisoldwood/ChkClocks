@@ -252,3 +252,20 @@ void CArray::RemoveAll()
 	m_nSize      = 0;
 	m_nAllocSize = 0;
 }
+
+/******************************************************************************
+** Method:		Sort()
+**
+** Description:	Sort the array using a quicksort.
+**
+** Parameters:	pfnCompare		The compare function.
+**
+** Returns:		Nothing.
+**
+*******************************************************************************
+*/
+
+void CArray::Sort(PFNQSCOMPARE pfnCompare)
+{
+	qsort(m_pData, m_nSize, m_nItemSize, pfnCompare);
+}

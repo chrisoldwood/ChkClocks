@@ -33,6 +33,9 @@ public:
 	virtual void Reserve(int nSize);
 
 protected:
+	// Sort callback function.
+	typedef int (*PFNQSCOMPARE)(const void* pItem1, const void* pItem2);
+
 	//
 	// Constructors/Destructor.
 	//
@@ -59,6 +62,8 @@ protected:
 	void Insert(int nIndex, const void* pItem);
 	void Remove(int nIndex);
 	void RemoveAll();
+
+	void Sort(PFNQSCOMPARE pfnCompare);
 };
 
 /******************************************************************************
