@@ -17,6 +17,8 @@
 #define new DBGCRT_NEW
 #endif
 
+#ifdef _DEBUG
+
 /******************************************************************************
 ** Function:	AssertFail()
 **
@@ -33,14 +35,11 @@
 *******************************************************************************
 */
 
-void AssertFail(const char* pszExpression, const char*pszFile, uint iLine)
+void AssertFail(const char* pszExpression, const char* pszFile, uint iLine)
 {
-	CString str;
-
-	str.Format("Code:\t%s\nFile:\t%s\nLine:\t%d\n\nDebug?", pszExpression, pszFile, iLine);
-	
-	if (MessageBox(NULL, str, "ASSERT FAILED", MB_YESNO | MB_ICONSTOP) == IDYES)
-		__asm int 3;
+	// Output using CRT function.
+	if (_CrtDbgReport(_CRT_ASSERT, pszFile, iLine, NULL, pszExpression) == 1)
+		_CrtDbgBreak();
 }
 
 /******************************************************************************
@@ -60,15 +59,18 @@ void AssertFail(const char* pszExpression, const char*pszFile, uint iLine)
 
 void TraceEx(const char* pszFormat, ...)
 {
-	CString str;
-
-	// Setup arguments.
 	va_list	args;
 	va_start(args, pszFormat);
-	
-	// Form message.
+
+	CString str;
+
 	str.FormatEx(pszFormat, args);
-	
-	// Display.
-	OutputDebugString(str);
+
+	// Output using CRT function.
+	if (_CrtDbgReport(_CRT_WARN, NULL, 0, NULL, str) == 1)
+		_CrtDbgBreak();
+
+	va_end(args);
 }
+
+#endif // _DEBUG
