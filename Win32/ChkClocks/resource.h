@@ -33,6 +33,12 @@
 #define IDC_EXC_ADD                     1091
 #define IDC_ABORT                       1091
 #define IDC_EXC_REMOVE                  1092
+#define IDC_FMT_FIXED                   1093
+#define IDC_FMT_VARIABLE                1094
+#define IDC_TOLERANCE                   1095
+#define IDC_THREADS                     1096
+#define IDC_CORRECT                     1097
+#define IDC_FAILED                      1098
 #define IDD_MAIN                        5000
 #define IDD_ABOUT                       5001
 #define IDD_PREFS                       5002
@@ -46,7 +52,7 @@
 #define _APS_NO_MFC                     1
 #define _APS_NEXT_RESOURCE_VALUE        133
 #define _APS_NEXT_COMMAND_VALUE         168
-#define _APS_NEXT_CONTROL_VALUE         1092
+#define _APS_NEXT_CONTROL_VALUE         1098
 #define _APS_NEXT_SYMED_VALUE           104
 #endif
 #endif
