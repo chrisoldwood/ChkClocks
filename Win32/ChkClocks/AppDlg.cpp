@@ -38,6 +38,7 @@ CAppDlg::CAppDlg()
 
 	DEFINE_CTRLMSG_TABLE
 		NFY_CTRLMSG(IDC_GRID, LVN_COLUMNCLICK, OnClickColumn)
+		NFY_CTRLMSG(IDC_GRID, NM_RCLICK,       OnRightClick)
 	END_CTRLMSG_TABLE
 }
 
@@ -157,6 +158,38 @@ LRESULT CAppDlg::OnClickColumn(NMHDR& rMsgHdr)
 	return 0;
 }
 
+/******************************************************************************
+** Method:		OnRightClick()
+**
+** Description:	Right click on the grid, show context menu.
+**
+** Parameters:	None.
+**
+** Returns:		Nothing.
+**
+*******************************************************************************
+*/
+
+LRESULT CAppDlg::OnRightClick(NMHDR& /*rMsgHdr*/)
+{
+	// Only show menu, if a selection.
+	if (m_lvGrid.IsSelection())
+	{
+		CPopupMenu oMenu(IDR_CONTEXT);
+
+		// Get co-ordinates of mouse click.
+		const MSG& oCurrMsg = App.m_MainThread.CurrentMsg();
+
+		// Show menu.
+		uint nCmdID = oMenu.TrackMenu(App.m_AppWnd, CPoint(oCurrMsg.pt.x, oCurrMsg.pt.y));
+
+		// Dispatch command.
+		if (nCmdID != NULL)
+			App.m_AppWnd.PostCommand(nCmdID);
+	}
+
+	return 0;
+}
 /******************************************************************************
 ** Method:		GetTableColumn()
 **

@@ -32,6 +32,8 @@ public:
 	//
 	void RefreshView();
 
+	CRow* SelectedRow();
+
 protected:
 	//
 	// Controls.
@@ -48,7 +50,8 @@ protected:
 	// Message handlers.
 	//
 	virtual void OnInitDialog();
-	     LRESULT OnClickColumn(NMHDR& rMsgHdr);
+    LRESULT OnClickColumn(NMHDR& rMsgHdr);
+	LRESULT OnRightClick(NMHDR& rMsgHdr);
 
 	//
 	// Internal methods.
@@ -62,5 +65,15 @@ protected:
 **
 *******************************************************************************
 */
+
+inline CRow* CAppDlg::SelectedRow()
+{
+	CRow* pRow = NULL;
+
+	if (m_lvGrid.IsSelection())
+		pRow = static_cast<CRow*>(m_lvGrid.ItemPtr(m_lvGrid.Selection()));
+
+	return pRow;
+}
 
 #endif //APPDLG_HPP
