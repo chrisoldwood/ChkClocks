@@ -117,10 +117,6 @@ SOURCE=.\Footy\Links.htm
 # End Source File
 # Begin Source File
 
-SOURCE=.\Footy\Stats.htm
-# End Source File
-# Begin Source File
-
 SOURCE=.\Footy\Tables.htm
 # End Source File
 # End Target
