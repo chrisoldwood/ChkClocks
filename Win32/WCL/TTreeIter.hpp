@@ -71,6 +71,8 @@ template<class T> inline TTreeFwdIter<T>::TTreeFwdIter(TTreeNode<T>* pNode)
 
 template<class T> inline TTreeFwdIter<T>::~TTreeFwdIter()
 {
+	// Cleanup stack.
+	m_vIterStack.DeleteAll();
 }
 
 template<class T> inline TTreeNode<T>* TTreeFwdIter<T>::Next()
