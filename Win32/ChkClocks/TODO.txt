@@ -1,5 +1,3 @@
 - Allow domain searching to be cancelled.
 
 - Handle "Access Denied" by prompting for account to use.
-
-- Move "Auto-Exclude" to the exclusions group box.
