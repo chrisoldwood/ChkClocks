@@ -62,6 +62,12 @@ public:
 	//
 	void Delete(int nIndex);
 	void DeleteAll();
+
+protected:
+	//
+	// Internal methods.
+	//
+	void Copy(const TPtrArray<T>& oRHS, bool bDeep);
 };
 
 /******************************************************************************
@@ -183,6 +189,14 @@ template<class T> inline void TPtrArray<T>::DeleteAll()
 		delete TArray<T*>::At(i);
 
 	RemoveAll();
+}
+
+template<class T> inline void TPtrArray<T>::Copy(const TPtrArray<T>& oRHS, bool bDeep)
+{
+	for (int i = 0; i < oRHS.Size(); i++)
+	{
+		Add(bDeep ? new T(*oRHS.At(i)) : oRHS.At(i));
+	}
 }
 
 /******************************************************************************
