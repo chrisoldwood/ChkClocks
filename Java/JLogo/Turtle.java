@@ -27,7 +27,7 @@ public class Turtle
 
 	public int     getXPos()		{ return m_ptOrigin.x;  }
 	public int     getYPos()		{ return m_ptOrigin.y;  }
-	public int     getAngle()		{ return m_nAngle;      }
+	public double  getAngle()		{ return m_dAngle;      }
 	public boolean getPenDown()		{ return m_bPenDown;    }
 	public String  getPenColour()	{ return m_strPenClr;   }
 	public boolean isVisible()		{ return m_bShowTurtle; }
@@ -36,20 +36,21 @@ public class Turtle
 	** Reset the turtles state.
 	*/
 
-	public void reset()
+	public void reset(boolean bShow)
 	{
 		Dimension dmDisplay = m_oDisplay.getDimensions();
 
-		// Move to home position (centre).
-		rotate(0);
-		move(dmDisplay.width / 2, dmDisplay.height / 2);
-		m_bPenDown  = true;
-		m_clrPen    = Color.black;
-		m_strPenClr = "Black";
+		showTurtle(false);
 
 		// Clear display.
 		m_oDisplay.clear();
-		drawTurtle();
+
+		// Reset state.
+		rotate(0);
+		move(dmDisplay.width / 2, dmDisplay.height / 2);
+		setPenDown(true);
+		setPenColour(Color.black, "Black");
+		showTurtle(bShow);
 
 		m_oDisplay.repaint();
 	}
@@ -60,10 +61,6 @@ public class Turtle
 
 	public void showTurtle(boolean bShow)
 	{
-		// Ignore, if no change.
-		if (m_bShowTurtle == bShow)
-			return;
-
 		if (m_bShowTurtle)
 			drawTurtle();
 
@@ -73,7 +70,7 @@ public class Turtle
 			drawTurtle();
 
 		m_oDisplay.repaint();
-		notifyListeners();
+		notifyListeners(VISIBILITY);
 	}
 
 	/********************************************************************************
@@ -101,7 +98,7 @@ public class Turtle
 	{
 		m_bPenDown = bDown;
 
-		notifyListeners();
+		notifyListeners(PENSTATE);
 	}
 
 	/********************************************************************************
@@ -113,20 +110,20 @@ public class Turtle
 		m_clrPen    = clr;
 		m_strPenClr = str;
 
-		notifyListeners();
+		notifyListeners(PENCOLOR);
 	}
 
 	/********************************************************************************
 	** Move the turtle forward by the given number of pixels.
 	*/
 
-	public void forward(int nPixels)
+	public void forward(double dPixels)
 	{
-		double dRad = m_nAngle * (Math.PI / 180.0);
+		double dRad = m_dAngle * (Math.PI / 180.0);
 
 		// Calculate the turtles destination.
-		int dx = (int) Math.round(m_ptOrigin.x + (nPixels * Math.sin(dRad)));
-		int dy = (int) Math.round(m_ptOrigin.y - (nPixels * Math.cos(dRad)));
+		int dx = (int) Math.round(m_ptOrigin.x + (dPixels * Math.sin(dRad)));
+		int dy = (int) Math.round(m_ptOrigin.y - (dPixels * Math.cos(dRad)));
 
 		if (m_bShowTurtle)
 			drawTurtle();
@@ -152,12 +149,12 @@ public class Turtle
 	** Turn the turtle right by the given number of degrees.
 	*/
 
-	public void turnRight(int nDegrees)
+	public void turnRight(double dDegrees)
 	{
 		if (m_bShowTurtle)
 			drawTurtle();
 
-		rotate(m_nAngle + nDegrees);
+		rotate(m_dAngle + dDegrees);
 
 		if (m_bShowTurtle)
 			drawTurtle();
@@ -169,12 +166,12 @@ public class Turtle
 	** Turn the turtle left by the given number of degrees.
 	*/
 
-	public void turnLeft(int nDegrees)
+	public void turnLeft(double dDegrees)
 	{
 		if (m_bShowTurtle)
 			drawTurtle();
 
-		rotate(m_nAngle - nDegrees);
+		rotate(m_dAngle - dDegrees);
 
 		if (m_bShowTurtle)
 			drawTurtle();
@@ -207,19 +204,19 @@ public class Turtle
 		m_ptOrigin.y = y;
 
 		calcShape();
-		notifyListeners();
+		notifyListeners(MOVED);
 	}
 
 	/********************************************************************************
 	** Rotate the turtle to the new angle.
 	*/
 
-	private void rotate(int nDegrees)
+	private void rotate(double dDegrees)
 	{
-		m_nAngle = (nDegrees + 360) % 360;
+		m_dAngle = (dDegrees + 360) % 360;
 
 		calcShape();
-		notifyListeners();
+		notifyListeners(ROTATED);
 	}
 
 	/********************************************************************************
@@ -230,7 +227,7 @@ public class Turtle
 	{
 		for (int i = 0; i < m_aptTurtle.length; i++)
 		{
-			double dRad = ((ANGLES[i] + m_nAngle) % 360) * (Math.PI / 180.0);
+			double dRad = ((ANGLES[i] + m_dAngle) % 360) * (Math.PI / 180.0);
 
 			// Calculate the point.
 			m_aptTurtle[i].x = (int) (m_ptOrigin.x + (RADIUS * Math.sin(dRad)));
@@ -253,10 +250,10 @@ public class Turtle
 	** Notify event listeners of the status change.
 	*/
 
-	private void notifyListeners()
+	private void notifyListeners(String strEvent)
 	{
 		if (m_oListeners != null)
-			m_oListeners.actionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, ""));
+			m_oListeners.actionPerformed(new ActionEvent(this, ActionEvent.ACTION_PERFORMED, strEvent));
 	}
 
 	/********************************************************************************
@@ -267,6 +264,13 @@ public class Turtle
 	private static final double	RADIUS = 10.0;
 	private static final int[]	ANGLES = new int[] { 0, 135, 225, 0 };
 
+	// Turtle events.
+	public static final String VISIBILITY = "Visibility";
+	public static final String PENSTATE   = "PenState";
+	public static final String PENCOLOR   = "PenColor";
+	public static final String MOVED      = "Moved";
+	public static final String ROTATED    = "Rotated";
+
 	/********************************************************************************
 	** Members.
 	*/
@@ -275,7 +279,7 @@ public class Turtle
 	private boolean	m_bShowTurtle = true;
 	private Color	m_clrTurtle   = Color.red;
 	private Point	m_ptOrigin    = new Point(0, 0);
-	private	int		m_nAngle      = 0;
+	private	double	m_dAngle      = 0.0;
 	private Point[]	m_aptTurtle   = new Point[ANGLES.length];
 	private boolean	m_bPenDown    = true;
 	private Color	m_clrPen      = Color.black;
