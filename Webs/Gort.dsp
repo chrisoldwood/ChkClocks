@@ -120,7 +120,35 @@ SOURCE=.\Gort\win32\fcmanager03s.zip
 # End Source File
 # Begin Source File
 
+SOURCE=.\Gort\win32\httpquery10d.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\httpquery10r.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\httpquery10s.zip
+# End Source File
+# Begin Source File
+
 SOURCE=.\Gort\win32\mdbl.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\ncl.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\netdde10d.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\netdde10r.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\netdde10s.zip
 # End Source File
 # Begin Source File
 
