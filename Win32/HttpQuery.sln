@@ -19,22 +19,22 @@ Global
 		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
 	EndGlobalSection
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 3
+		SccNumberOfProjects = 4
 		SccProjectUniqueName0 = HttpQuery\\HttpQuery.vcproj
 		SccProjectName0 = \u0022$/Win32/HttpQuery\u0022,\u0020ZWCAAAAA
 		SccLocalPath0 = HttpQuery
-		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
 		SccProjectUniqueName1 = NCL\\NCL.vcproj
 		SccProjectName1 = \u0022$/Win32/NCL\u0022,\u0020JRCAAAAA
 		SccLocalPath1 = NCL
-		SccProvider1 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
 		SccProjectUniqueName2 = WCL\\Wcl.vcproj
 		SccProjectName2 = \u0022$/Win32/Wcl\u0022,\u0020UAAAAAAA
 		SccLocalPath2 = WCL
-		SccProvider2 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
+		SccLocalPath3 = .
+		CanCheckoutShared = true
+		SolutionUniqueID = {17F022DA-BA45-441F-924A-9CD0F1CB5683}
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
