@@ -72,7 +72,7 @@ SOURCE=.\Leagues\Shared\ado.asp
 # End Source File
 # Begin Source File
 
-SOURCE=.\Leagues\Shared\mainmenu.asp
+SOURCE=.\Leagues\Shared\main_menu.asp
 # End Source File
 # Begin Source File
 
@@ -93,11 +93,11 @@ SOURCE=.\Leagues\browse.asp
 # End Source File
 # Begin Source File
 
-SOURCE=.\Leagues\browsebygame.asp
+SOURCE=.\Leagues\browse_by_game.asp
 # End Source File
 # Begin Source File
 
-SOURCE=.\Leagues\browsebyregion.asp
+SOURCE=.\Leagues\browse_by_region.asp
 # End Source File
 # Begin Source File
 
@@ -113,7 +113,7 @@ SOURCE=.\Leagues\search.asp
 # End Source File
 # Begin Source File
 
-SOURCE=.\Leagues\searchleagues.asp
+SOURCE=.\Leagues\search_leagues.asp
 # End Source File
 # End Target
 # End Project
