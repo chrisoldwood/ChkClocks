@@ -1,2 +1,4 @@
 @echo off
-del *.class
+del /s *.class
+del *.jar
+del *.cab
