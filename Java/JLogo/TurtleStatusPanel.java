@@ -17,7 +17,7 @@ public class TurtleStatusPanel extends GroupPanel
 		super("Turtle Status", Label.CENTER, new BorderLayout(5, 5));
 
 		// Save parameters.
-		m_oTurtle = oTurtle;
+		m_oTurtle  = oTurtle;
 
 		// Create this panel.
 		setBackground(SystemColor.control);
@@ -41,7 +41,7 @@ public class TurtleStatusPanel extends GroupPanel
 		m_ebColour.setEditable(false);
 		m_ckVisible.addItemListener(this);
 
-		// Add event handler.
+		// Add event handlers.
 		m_oTurtle.addActionListener(this);
 	}
 
@@ -51,13 +51,37 @@ public class TurtleStatusPanel extends GroupPanel
 
 	public void actionPerformed(ActionEvent eEvent)
 	{
-		m_ebXPos.setText(String.valueOf(m_oTurtle.getXPos()));
-		m_ebYPos.setText(String.valueOf(m_oTurtle.getYPos()));
-		m_ebAngle.setText(String.valueOf(m_oTurtle.getAngle()));
+		// From the turtle?
+		if (eEvent.getSource() == m_oTurtle)
+		{
+			String strEvent = eEvent.getActionCommand();
 
-		m_ebState.setText(m_oTurtle.getPenDown() ? "Down" : "Up");
-		m_ebColour.setText(m_oTurtle.getPenColour());
-		m_ckVisible.setState(m_oTurtle.isVisible());
+			if (strEvent.equals(Turtle.MOVED))
+			{
+				m_ebXPos.setText(String.valueOf(m_oTurtle.getXPos()));
+				m_ebYPos.setText(String.valueOf(m_oTurtle.getYPos()));
+			}
+
+			if (strEvent.equals(Turtle.ROTATED))
+			{
+				m_ebAngle.setText(String.valueOf(m_oTurtle.getAngle()));
+			}
+
+			if (strEvent.equals(Turtle.PENSTATE))
+			{
+				m_ebState.setText(m_oTurtle.getPenDown() ? "Down" : "Up");
+			}
+
+			if (strEvent.equals(Turtle.PENCOLOR))
+			{
+				m_ebColour.setText(m_oTurtle.getPenColour());
+			}
+
+			if (strEvent.equals(Turtle.VISIBILITY))
+			{
+				m_ckVisible.setState(m_oTurtle.isVisible());
+			}
+		}
 	}
 
 	/********************************************************************************
@@ -99,9 +123,9 @@ public class TurtleStatusPanel extends GroupPanel
 	private Label		m_lblAngle = new Label("Angle:", Label.RIGHT);
 	private TextField	m_ebAngle  = new TextField(3);
 
-	private Label		m_lblState   = new Label("State:", Label.RIGHT);
+	private Label		m_lblState   = new Label("Pen State:", Label.RIGHT);
 	private TextField	m_ebState    = new TextField(4);
-	private Label		m_lblColour  = new Label("Color:", Label.RIGHT);
+	private Label		m_lblColour  = new Label("Pen Color:", Label.RIGHT);
 	private TextField	m_ebColour   = new TextField(4);
 	private Label		m_lblVisible = new Label("Visible?", Label.RIGHT);
 	private Checkbox 	m_ckVisible  = new Checkbox();
