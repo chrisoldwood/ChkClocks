@@ -1,4 +1,5 @@
 import java.awt.*;
+import gort.ui.*;
 
 /********************************************************************************
 ** This dialog is used to enter an expression.
@@ -12,17 +13,26 @@ public class ExpressionDlg extends ModalDialog
 
 	public ExpressionDlg(Component oParent, String strExpr)
 	{
-		super(oParent, "Enter An Expression", OK_CANCEL);
+		this(oParent, "Enter An Expression", strExpr);
+	}
+
+	/********************************************************************************
+	** Full Constructor.
+	*/
+
+	public ExpressionDlg(Component oParent, String strTitle, String strExpr)
+	{
+		super(oParent, strTitle, OK_CANCEL);
 
 		// Create the dialog panel.
 		m_pnlControls.add(BorderLayout.CENTER, m_ebExpr);
 
 		// Display the source code.
 		m_ebExpr.setText(strExpr);
+		m_ebExpr.setFont(new Font("Monospaced", Font.PLAIN, 12));
 
 		setResizable(true);
 	}
-
 	/********************************************************************************
 	** OK pressed.
 	*/
