@@ -1,5 +1,5 @@
 - DDE Recorder.
 
-- UT Server browser.
+- Setup program.
 
-- Socket proxy/trace.
+- Helpfile editor.
