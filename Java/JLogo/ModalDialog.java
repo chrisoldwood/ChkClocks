@@ -102,11 +102,13 @@ public class ModalDialog extends Dialog
 	}
 
 	/********************************************************************************
-	** Gets the dialog button used to close it.
+	** Shows the dialog and returns the result code.
 	*/
 
-	public int result()
+	public int prompt()
 	{
+		show();
+
 		return m_nResult;
 	}
 
