@@ -51,7 +51,7 @@ protected:
 	//
 	// Internal Methods.
 	//
-	void* Item(int nIndex) const;
+	void* At(int nIndex) const;
 	void* operator[](int nIndex) const;
 
 	void Set(int nIndex, const void* pItem);
@@ -73,7 +73,7 @@ inline int CArray::Size() const
 	return m_nSize;
 }
 
-inline void* CArray::Item(int nIndex) const
+inline void* CArray::At(int nIndex) const
 {
 	ASSERT((nIndex >= 0) && (nIndex < m_nSize));
 
@@ -82,7 +82,7 @@ inline void* CArray::Item(int nIndex) const
 
 inline void* CArray::operator[](int nIndex) const
 {
-	return Item(nIndex);
+	return At(nIndex);
 }
 
 #endif //ARRAY_HPP
