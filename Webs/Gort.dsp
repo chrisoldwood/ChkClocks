@@ -124,11 +124,11 @@ SOURCE=.\Gort\win32\mdbl.zip
 # End Source File
 # Begin Source File
 
-SOURCE=.\Gort\win32\pqt01r.zip
+SOURCE=.\Gort\win32\pqt10r.zip
 # End Source File
 # Begin Source File
 
-SOURCE=.\Gort\win32\pqt01s.zip
+SOURCE=.\Gort\win32\pqt10s.zip
 # End Source File
 # Begin Source File
 
