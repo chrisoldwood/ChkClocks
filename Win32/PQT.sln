@@ -5,8 +5,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MDBL", "MDBL\MDBL.vcproj", 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PQT", "PQT\PQT.vcproj", "{3FA5F489-FDA1-452B-9E7D-0175EDB4B269}"
 	ProjectSection(ProjectDependencies) = postProject
-		{F449D18C-D53D-4565-A2FA-E5CB80D4A549} = {F449D18C-D53D-4565-A2FA-E5CB80D4A549}
 		{399DF470-C0D2-4B8D-9036-555795B57B9D} = {399DF470-C0D2-4B8D-9036-555795B57B9D}
+		{F449D18C-D53D-4565-A2FA-E5CB80D4A549} = {F449D18C-D53D-4565-A2FA-E5CB80D4A549}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wcl", "WCL\Wcl.vcproj", "{399DF470-C0D2-4B8D-9036-555795B57B9D}"
@@ -18,22 +18,22 @@ Global
 		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
 	EndGlobalSection
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 3
+		SccNumberOfProjects = 4
 		SccProjectUniqueName0 = MDBL\\MDBL.vcproj
 		SccProjectName0 = \u0022$/Win32/MDBL\u0022,\u0020OAAAAAAA
 		SccLocalPath0 = MDBL
-		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
 		SccProjectUniqueName1 = PQT\\PQT.vcproj
 		SccProjectName1 = \u0022$/Win32/PQT\u0022,\u0020PAAAAAAA
 		SccLocalPath1 = PQT
-		SccProvider1 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
 		SccProjectUniqueName2 = WCL\\Wcl.vcproj
 		SccProjectName2 = \u0022$/Win32/Wcl\u0022,\u0020UAAAAAAA
 		SccLocalPath2 = WCL
-		SccProvider2 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
+		SccLocalPath3 = .
+		CanCheckoutShared = true
+		SolutionUniqueID = {42731DF9-78BE-44CC-AE59-266622F2D82D}
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
