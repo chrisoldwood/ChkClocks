@@ -1,0 +1,67 @@
+<script language="VBScript" runat="Server">
+
+'*******************************************************************************
+'
+' Application starting.
+'
+'*******************************************************************************
+
+Sub Application_OnStart
+
+'	On Error Resume Next    
+'	Application.Lock
+
+'	Application.UnLock
+
+End Sub
+
+'*******************************************************************************
+'
+' Application stopping.
+'
+'*******************************************************************************
+
+Sub Application_OnEnd
+
+'	On Error Resume Next    
+'	Application.Lock
+
+'	Application.UnLock
+
+End Sub
+
+'*******************************************************************************
+'
+' Client connected.
+'
+'*******************************************************************************
+
+Sub Session_OnStart
+
+	On Error Resume Next    
+	Application.Lock
+
+	' Setup session variables.
+	Session("DB")       = "Driver={SQL Server}; Server=ORAC; Database=Leagues;"
+	Session("LoggedIn") = False
+
+	Application.UnLock
+
+End Sub
+
+'*******************************************************************************
+'
+' Client disconected.
+'
+'*******************************************************************************
+
+Sub Session_OnEnd
+
+'	On Error Resume Next    
+'	Application.Lock
+
+'Application.UnLock
+
+End Sub
+
+</script>
