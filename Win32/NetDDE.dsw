@@ -7,6 +7,10 @@ Project: "NCL"=.\NCL\NCL.dsp - Package Owner=<4>
 
 Package=<5>
 {{{
+    begin source code control
+    "$/Win32/NCL", JRCAAAAA
+    .\ncl
+    end source code control
 }}}
 
 Package=<4>
@@ -22,6 +26,10 @@ Project: "NetDDEClient"=.\NetDDE\Client\NetDDEClient.dsp - Package Owner=<4>
 
 Package=<5>
 {{{
+    begin source code control
+    "$/Win32/NetDDE/Client", FRCAAAAA
+    .\NetDDE\Client
+    end source code control
 }}}
 
 Package=<4>
@@ -40,6 +48,10 @@ Project: "NetDDEServer"=.\NetDDE\Server\NetDDEServer.dsp - Package Owner=<4>
 
 Package=<5>
 {{{
+    begin source code control
+    "$/Win32/NetDDE/Server", HRCAAAAA
+    .\NetDDE\Server
+    end source code control
 }}}
 
 Package=<4>
@@ -74,6 +86,10 @@ Global:
 
 Package=<5>
 {{{
+    begin source code control
+    "$/Win32", YOAAAAAA
+    .
+    end source code control
 }}}
 
 Package=<3>
