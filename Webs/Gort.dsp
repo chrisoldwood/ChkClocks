@@ -200,6 +200,22 @@ SOURCE=.\Gort\win32\pqt11s.zip
 # End Source File
 # Begin Source File
 
+SOURCE=.\Gort\win32\setup.gif
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\setup10d.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\setup10r.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\setup10s.zip
+# End Source File
+# Begin Source File
+
 SOURCE=.\Gort\win32\socktrace11d.zip
 # End Source File
 # Begin Source File
@@ -261,6 +277,78 @@ SOURCE=.\Gort\win32\utsvrbrw09s.zip
 # Begin Source File
 
 SOURCE=.\Gort\win32\wcl.zip
+# End Source File
+# End Group
+# Begin Group "Win16"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=.\Gort\win16\hfgen.gif
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win16\hfgen10r.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win16\hfgen10s.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win16\killapp10r.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win16\killapp10s.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win16\mailtoss10s.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win16\mdalib10r.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win16\mdalib10s.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win16\tasktrak.gif
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win16\tasktrak20r.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win16\tasktrak20s.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win16\wcl.zip
+# End Source File
+# End Group
+# Begin Group "DOS"
+
+# PROP Default_Filter ""
+# Begin Source File
+
+SOURCE=.\Gort\dos\comprt10r.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\dos\comprt10s.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\dos\nwgfx12s.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\dos\tmgfx10s.zip
 # End Source File
 # End Group
 # Begin Source File
