@@ -1,0 +1,47 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ClassGen", "ClassGen\ClassGen.vcproj", "{87D352CB-42BE-4FFF-B98A-F435A6D9C329}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BD32FFD4-7F49-471D-8435-53443A5F6F90} = {BD32FFD4-7F49-471D-8435-53443A5F6F90}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wcl", "wcl\Wcl.vcproj", "{BD32FFD4-7F49-471D-8435-53443A5F6F90}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 3
+		SccProjectUniqueName0 = ClassGen\\ClassGen.vcproj
+		SccProjectName0 = \u0022$/Win32/ClassGen\u0022,\u0020CNCAAAAA
+		SccLocalPath0 = ClassGen
+		CanCheckoutShared = true
+		SccProjectUniqueName1 = wcl\\Wcl.vcproj
+		SccProjectName1 = \u0022$/Win32/Wcl\u0022,\u0020UAAAAAAA
+		SccLocalPath1 = wcl
+		CanCheckoutShared = true
+		SccLocalPath2 = .
+		CanCheckoutShared = true
+		SolutionUniqueID = {C689DDF0-4F8D-44A8-9E97-74105FAAA7DE}
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{87D352CB-42BE-4FFF-B98A-F435A6D9C329}.Debug.ActiveCfg = Debug|Win32
+		{87D352CB-42BE-4FFF-B98A-F435A6D9C329}.Debug.Build.0 = Debug|Win32
+		{87D352CB-42BE-4FFF-B98A-F435A6D9C329}.Release.ActiveCfg = Release|Win32
+		{87D352CB-42BE-4FFF-B98A-F435A6D9C329}.Release.Build.0 = Release|Win32
+		{BD32FFD4-7F49-471D-8435-53443A5F6F90}.Debug.ActiveCfg = Debug|Win32
+		{BD32FFD4-7F49-471D-8435-53443A5F6F90}.Debug.Build.0 = Debug|Win32
+		{BD32FFD4-7F49-471D-8435-53443A5F6F90}.Release.ActiveCfg = Release|Win32
+		{BD32FFD4-7F49-471D-8435-53443A5F6F90}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
