@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
+import gort.ui.*;
 
 /********************************************************************************
 ** This panel is used to host the display status controls.
@@ -13,7 +14,7 @@ public class DisplayStatusPanel extends GroupPanel
 
 	public DisplayStatusPanel(Display oDisplay)
 	{
-		super("Display Status", Label.CENTER, new BorderLayout(5, 5));
+		super("Display Status", GroupPanel.CENTER, new BorderLayout(5, 5));
 
 		// Save parameters.
 		m_oDisplay = oDisplay;
