@@ -1,7 +1,7 @@
 # Microsoft Visual C++ generated build script - Do not modify
 
 PROJ = MDALIB16
-DEBUG = 1
+DEBUG = 0
 PROGTYPE = 1
 CALLER = 
 ARGS = 
@@ -10,7 +10,7 @@ D_RCDEFINES = -d_DEBUG
 R_RCDEFINES = -dNDEBUG
 ORIGIN = MSVC
 ORIGIN_VER = 1.00
-PROJPATH = K:\PROJECTS\PWKS32\CHRIS\MONODBG\MDALIB16\
+PROJPATH = C:\DEV\MONODBG\MDADEBUG\MDALIB16\
 USEMFC = 0
 CC = cl
 CPP = cl
@@ -22,9 +22,9 @@ CPPUSEPCHFLAG =
 FIRSTC = MDABASE.C   
 FIRSTCPP =             
 RC = rc
-CFLAGS_D_WDLL = /nologo /G2 /Zp1 /W3 /Zi /ALw /Od /D "_DEBUG" /FR /Zn /GD /Fd"MDALIB16.PDB"
-CFLAGS_R_WDLL = /nologo /Zp1 /W3 /ALw /O1 /D "NDEBUG" /FR /Zn /GD 
-LFLAGS_D_WDLL = /NOLOGO /NOD /NOE /PACKC:61440 /ALIGN:16 /ONERROR:NOEXE /CO /MAP:FULL
+CFLAGS_D_WDLL = /nologo /G2 /Zp1 /W3 /ALw /Od /D "_DEBUG" /FR /Zn /GD 
+CFLAGS_R_WDLL = /nologo /Gs /G3 /Zp1 /W3 /ALw /O2 /D "NDEBUG" /GD 
+LFLAGS_D_WDLL = /NOLOGO /NOD /NOE /PACKC:61440 /ALIGN:16 /ONERROR:NOEXE /MAP:FULL
 LFLAGS_R_WDLL = /NOLOGO /NOD /NOE /PACKC:61440 /ALIGN:16 /ONERROR:NOEXE /MAP:FULL
 LIBS_D_WDLL = libw ldllcew oldnames 
 LIBS_R_WDLL = libw ldllcew oldnames 
@@ -60,30 +60,33 @@ SBRS = MDATHUNK.SBR \
 
 32TO16_DEP = 
 
-MDATHUNK_DEP = 
-
-MDABASE_DEP = k:\projects\pwks32\chris\monodbg\mdalib16\mdadefs.h
-
-
-MDAMAIN_DEP = k:\projects\pwks32\chris\monodbg\mdalib16\mdadefs.h \
-	k:\projects\pwks32\chris\monodbg\mdalib16\mdafuncs.h
+MDATHUNK_DEP = c:\dev\monodbg\mdadebug\mdalib16\mdalib.h \
+	c:\dev\monodbg\mdadebug\mdalib16\mdadefs.h \
+	c:\dev\monodbg\mdadebug\mdalib16\mdafuncs.h
 
 
-MDAFILL_DEP = k:\projects\pwks32\chris\monodbg\mdalib16\mdadefs.h
+MDABASE_DEP = c:\dev\monodbg\mdadebug\mdalib16\mdadefs.h
 
 
-MDAFRAME_DEP = k:\projects\pwks32\chris\monodbg\mdalib16\mdalib.h \
-	k:\projects\pwks32\chris\monodbg\mdalib16\mdadefs.h \
-	k:\projects\pwks32\chris\monodbg\mdalib16\mdafuncs.h
+MDAMAIN_DEP = c:\dev\monodbg\mdadebug\mdalib16\mdadefs.h \
+	c:\dev\monodbg\mdadebug\mdalib16\mdafuncs.h
 
 
-MDASCROL_DEP = k:\projects\pwks32\chris\monodbg\mdalib16\mdadefs.h
+MDAFILL_DEP = c:\dev\monodbg\mdadebug\mdalib16\mdadefs.h
 
 
-MDASTRNG_DEP = k:\projects\pwks32\chris\monodbg\mdalib16\mdadefs.h
+MDAFRAME_DEP = c:\dev\monodbg\mdadebug\mdalib16\mdalib.h \
+	c:\dev\monodbg\mdadebug\mdalib16\mdadefs.h \
+	c:\dev\monodbg\mdadebug\mdalib16\mdafuncs.h
 
 
-all:	$(PROJ).DLL $(PROJ).BSC
+MDASCROL_DEP = c:\dev\monodbg\mdadebug\mdalib16\mdadefs.h
+
+
+MDASTRNG_DEP = c:\dev\monodbg\mdadebug\mdalib16\mdadefs.h
+
+
+all:	$(PROJ).DLL
 
 MDATHUNK.OBJ:	MDATHUNK.C $(MDATHUNK_DEP)
 	$(CC) $(CFLAGS) $(CUSEPCHFLAG) /c MDATHUNK.C
@@ -120,7 +123,8 @@ MDASTRNG.OBJ +
 $(OBJS_EXT)
 $(PROJ).DLL
 $(MAPFILE)
-s:\public\vc151\lib\+
+S:\PUBLIC\VC151\LIB\+
+S:\PUBLIC\VC151\MFC\LIB\+
 lib\+
 $(LIBS)
 $(DEFFILE);

@@ -21,6 +21,27 @@ BOOL FAR PASCAL thk_ThunkConnect16(LPSTR pszDll16, LPSTR pszDll32, WORD hInst,
                                    DWORD dwReason);
 
 /******************************************************************************
+** This is the 16-bit call that draws the program title on the MDA.
+*/
+void FAR PASCAL __export SetTitle16(LPSTR lpszTitle)
+{
+	MDADrawLftString(2, 0, lpszTitle, BRIGHT);
+}			
+
+/******************************************************************************
+** This is the 16-bit call that outputs the actual debug message.
+*/
+void FAR PASCAL __export ClearOutput16(void)
+{
+	/* Call inside window. */
+	MDAClearRect(1, 1, 78, 23);
+	
+	/* Reset cursor. */
+	iCursorX = 1;
+	iCursorY = 1;
+}
+
+/******************************************************************************
 ** This is the 16-bit call that outputs the actual debug message.
 */
 void FAR PASCAL __export OutputMsg16(LPSTR lpszMsg)
@@ -48,6 +69,14 @@ void FAR PASCAL __export OutputMsg16(LPSTR lpszMsg)
 			continue;
 		}
 	
+		/* Check for unprintable chars. */
+		if (*lpszMsg < ' ')
+		{
+			/* Skip it. */
+			lpszMsg++;
+			continue;
+		}
+		
 		/* Write out a character. */
 		MDADrawChar(iCursorX, iCursorY, *lpszMsg, NORMAL);
 		
@@ -82,7 +111,7 @@ BOOL FAR PASCAL __export DllEntryPoint (DWORD dwReason, WORD hInst, WORD wDS,
                                		WORD wHeapSize, DWORD dwReserved1, 
                                		WORD wReserved2)
 {
-    	if (!thk_ThunkConnect16("MDALIB16.DLL", "MDALIB32.DLL", hInst, dwReason))
+    	if (!thk_ThunkConnect16("MDALIB16.DLL", "MDATHUNK.DLL", hInst, dwReason))
     	{	
     		MessageBox(NULL, "Thunk connection failed" , "DllEntryPoint16", MB_OK | MB_ICONASTERISK);
      	return FALSE;

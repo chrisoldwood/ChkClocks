@@ -63,9 +63,6 @@ int CALLBACK LibMain(HINSTANCE hInst, WORD wDataSeg, WORD wHeapSize, LPSTR lpszC
 			/* Draw outer frame. */
 			MDADrawDFrame(0, 0, 79, 24, NORMAL);
 			
-			/* Draw title. */
-			MDADrawLftString(2, 0, " Woodys Debug Message Watcher v1.0 ", BRIGHT);
-			
 			/* Reset cursor position. */
 			iCursorX = 1;
 			iCursorY = 1;
@@ -81,7 +78,7 @@ int CALLBACK LibMain(HINSTANCE hInst, WORD wDataSeg, WORD wHeapSize, LPSTR lpszC
 int EXPORTFUNC WEP(int nExitType)
 {
      /* Clear the display. */
-     /*MDARestore();*/
+     MDARestore();
 
 	return 1;
 }

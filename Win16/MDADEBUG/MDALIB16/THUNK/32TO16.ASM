@@ -1,9 +1,9 @@
 	page	,132
 
 ;Thunk Compiler Version 1.8  May 11 1995 13:16:19
-;File Compiled Wed Oct 18 15:50:06 1995
+;File Compiled Mon Oct 23 09:39:14 1995
 
-;Command Line: K:\PROJECTS\PWKS32\CHRIS\MONODBG\MDALIB16\THUNK\THUNK.EXE -t thk -o 32to16.asm 32to16.thk 
+;Command Line: K:\PROJECTS\PWKS32\CHRIS\MONODBG\MDADEBUG\MDALIB16\THUNK\THUNK.EXE -t thk -o 32to16.asm 32to16.thk 
 
 	TITLE	$32to16.asm
 
@@ -88,7 +88,7 @@ MapSL	PROTO NEAR STDCALL p32:DWORD
 public thk_ThunkData32	;This symbol must be exported.
 thk_ThunkData32 label dword
 	dd	3130534ch	;Protocol 'LS01'
-	dd	033fh	;Checksum
+	dd	01410h	;Checksum
 	dd	0	;Jump table address.
 	dd	3130424ch	;'LB01'
 	dd	0	;Flags
@@ -140,15 +140,40 @@ FT_Prolog_thk label byte
 
 
 ;
+public ClearOutput16@0
+ClearOutput16@0:
+	mov	cl,1
+; ClearOutput16(16) = ClearOutput16(32) {}
+;
+;
+public IIClearOutput16@0
+IIClearOutput16@0:
+	push	ebp
+	mov	ebp,esp
+	push	ecx
+	sub	esp,60
+	call	dword ptr [pfnQT_Thunk_thk]
+	leave
+	retn
+
+
+
+
+
+;
+public SetTitle16@4
+SetTitle16@4:
+	mov	cl,0
+	jmp	IISetTitle16@4
 public OutputMsg16@4
 OutputMsg16@4:
-	mov	cl,0
-; OutputMsg16(16) = OutputMsg16(32) {}
+	mov	cl,2
+; SetTitle16(16) = SetTitle16(32) {}
 ;
-; dword ptr [ebp+8]:  lpszMsg
+; dword ptr [ebp+8]:  lpszTitle
 ;
-public IIOutputMsg16@4
-IIOutputMsg16@4:
+public IISetTitle16@4
+IISetTitle16@4:
 	push	ebp
 	mov	ebp,esp
 	push	ecx
@@ -177,10 +202,16 @@ ELSE
 
 
 
+externDef SetTitle16:far16
+externDef ClearOutput16:far16
 externDef OutputMsg16:far16
 
 
 FT_thkTargetTable label word
+	dw	offset SetTitle16
+	dw	   seg SetTitle16
+	dw	offset ClearOutput16
+	dw	   seg ClearOutput16
 	dw	offset OutputMsg16
 	dw	   seg OutputMsg16
 
@@ -191,7 +222,7 @@ FT_thkTargetTable label word
 
 public thk_ThunkData16	;This symbol must be exported.
 thk_ThunkData16	dd	3130534ch	;Protocol 'LS01'
-	dd	033fh	;Checksum
+	dd	01410h	;Checksum
 	dw	offset FT_thkTargetTable
 	dw	seg    FT_thkTargetTable
 	dd	0	;First-time flag.

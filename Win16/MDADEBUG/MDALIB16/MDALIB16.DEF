@@ -18,5 +18,6 @@ EXPORTS
         THK_THUNKDATA16	@1	RESIDENTNAME
         DllEntryPoint   	@2  	RESIDENTNAME
         OutputMsg16     	@3  	RESIDENTNAME
-        WEP             	@4  	RESIDENTNAME
-
+	   ClearOutput16    @4	RESIDENTNAME
+	   SetTitle16		@5	RESIDENTNAME
+        WEP             	@6  	RESIDENTNAME
