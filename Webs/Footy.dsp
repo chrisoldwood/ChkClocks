@@ -81,18 +81,6 @@ SOURCE=.\Footy\favicon.ico
 # End Source File
 # Begin Source File
 
-SOURCE=.\Footy\Fix2001.htm
-# End Source File
-# Begin Source File
-
-SOURCE=.\Footy\Fix2001Frm.htm
-# End Source File
-# Begin Source File
-
-SOURCE=.\Footy\Fix2001Nav.htm
-# End Source File
-# Begin Source File
-
 SOURCE=.\Footy\Fix2002.htm
 # End Source File
 # Begin Source File
@@ -102,6 +90,18 @@ SOURCE=.\Footy\Fix2002Frm.htm
 # Begin Source File
 
 SOURCE=.\Footy\Fix2002Nav.htm
+# End Source File
+# Begin Source File
+
+SOURCE=.\Footy\Fix2003.htm
+# End Source File
+# Begin Source File
+
+SOURCE=.\Footy\Fix2003Frm.htm
+# End Source File
+# Begin Source File
+
+SOURCE=.\Footy\Fix2003Nav.htm
 # End Source File
 # Begin Source File
 
