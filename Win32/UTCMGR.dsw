@@ -7,6 +7,10 @@ Project: "MDBL"=.\MDBL\MDBL.dsp - Package Owner=<4>
 
 Package=<5>
 {{{
+    begin source code control
+    "$/Win32/MDBL", OAAAAAAA
+    .\mdbl
+    end source code control
 }}}
 
 Package=<4>
@@ -22,6 +26,10 @@ Project: "UTCacheMgr"=.\UTCacheMgr\UTCacheMgr.dsp - Package Owner=<4>
 
 Package=<5>
 {{{
+    begin source code control
+    "$/Win32/UTCacheMgr", QICAAAAA
+    .\utcachemgr
+    end source code control
 }}}
 
 Package=<4>
@@ -40,6 +48,10 @@ Project: "Wcl"=.\WCL\Wcl.dsp - Package Owner=<4>
 
 Package=<5>
 {{{
+    begin source code control
+    "$/Win32/Wcl", UAAAAAAA
+    .\wcl
+    end source code control
 }}}
 
 Package=<4>
