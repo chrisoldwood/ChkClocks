@@ -10,7 +10,8 @@
 
 #include "AppHeaders.hpp"
 #include "AboutDlg.hpp"
-#include "PrefsDlg.hpp"
+#include "ScanOptsDlg.hpp"
+#include "ReportOptsDlg.hpp"
 #include "ProgressDlg.hpp"
 #include <lm.h>
 
@@ -51,9 +52,13 @@ CAppCmds::CAppCmds()
 		CMD_ENTRY(ID_REPORT_FILE,		OnReportFile,		NULL,				 9)
 		CMD_ENTRY(ID_REPORT_PRINT,		OnReportPrint,		NULL,				 8)
 		// Options menu.
-		CMD_ENTRY(ID_OPTIONS_PREFS,		OnOptionsPrefs,		NULL,				-1)
+		CMD_ENTRY(ID_OPTIONS_SCANNING,	OnOptionsScan,		NULL,				-1)
+		CMD_ENTRY(ID_OPTIONS_REPORTING,	OnOptionsReport,	NULL,				-1)
 		// Help menu.
 		CMD_ENTRY(ID_HELP_ABOUT,		OnHelpAbout,		NULL,				10)
+		// Context menu.
+		CMD_ENTRY(ID_EXCLUDE_COMPUTER,	OnExcludeComputer,	NULL,				-1)
+		CMD_ENTRY(ID_EXCLUDE_DOMAIN,	OnExcludeDomain,	NULL,				-1)
 	END_CMD_TABLE
 }
 
@@ -92,6 +97,8 @@ void CAppCmds::OnFileCheck()
 	// Trash old table.
 	App.m_oClocks.Truncate();
 
+	App.m_strDefStatus = "";
+
 	// Show the progress dialog.
 	CProgressDlg Dlg;
 
@@ -120,6 +127,10 @@ void CAppCmds::OnFileCheck()
 		CStrArray   astrComputers;
 		CString     strProgress;
 
+		// Ignore, if on the exclude list.
+		if (App.m_astrExclude.Find(pszDomain, true) != -1)
+			continue;
+
 		// Update progress.
 		strProgress.Format("Finding %s Computers...", pszDomain);
 		Dlg.UpdateLabel(strProgress);
@@ -129,17 +140,23 @@ void CAppCmds::OnFileCheck()
 		// Add all computers to the table.
 		for (int j = 0; j < astrComputers.Size(); ++j)
 		{
+			const char* pszComputer = astrComputers[j];
+
 			// Ignore, if on the exclude list.
-			if (App.m_astrExclude.Find(astrComputers[j], true) != -1)
+			if (App.m_astrExclude.Find(pszComputer, true) != -1)
 				continue;
 
 			CRow& oRow = App.m_oClocks.CreateRow();
 
-			oRow[CClocks::COMPUTER]   = astrComputers[j];
-			oRow[CClocks::DOMAIN]     = pszDomain;
+			oRow[CClocks::COMPUTER] = pszComputer;
+			oRow[CClocks::DOMAIN]   = pszDomain;
 
 			App.m_oClocks.InsertRow(oRow);
 		}
+
+		// Exclude domain, if domain empty AND auto-exlude is on.
+		if ( (astrComputers.Size() == 0) && (App.m_bAutoExclude) )
+			App.m_astrExclude.Add(pszDomain);
 
 		// Check for "Cancel" button.
 		App.m_MainThread.ProcessMsgQueue();
@@ -190,6 +207,10 @@ void CAppCmds::OnFileCheck()
 	// Trash table, if aborted.
 	if (Dlg.Abort())
 		App.m_oClocks.Truncate();
+
+	// Format status bar text.
+	if (!Dlg.Abort())
+		App.m_strDefStatus.Format("%d computer(s) checked", App.m_oClocks.RowCount());
 
 	// Update UI.
 	App.m_AppWnd.m_AppDlg.RefreshView();
@@ -450,9 +471,9 @@ CString CAppCmds::GenerateReport()
 }
 
 /******************************************************************************
-** Method:		OnOptionsPrefs()
+** Method:		OnOptionsScan()
 **
-** Description:	Show the preferences dialog.
+** Description:	Show the scanning options dialog.
 **
 ** Parameters:	None.
 **
@@ -461,14 +482,43 @@ CString CAppCmds::GenerateReport()
 *******************************************************************************
 */
 
-void CAppCmds::OnOptionsPrefs()
+void CAppCmds::OnOptionsScan()
 {
-	CPrefsDlg Dlg;
+	CScanOptsDlg Dlg;
 
 	// Initialise with current settings.
 	Dlg.m_astrInclude  = App.m_astrInclude;
 	Dlg.m_astrExclude  = App.m_astrExclude;
 	Dlg.m_nThreads     = App.m_nThreads;
+	Dlg.m_bAutoExclude = App.m_bAutoExclude;
+
+	if (Dlg.RunModal(App.m_AppWnd) == IDOK)
+	{
+		// Save new settings.
+		App.m_astrInclude  = Dlg.m_astrInclude;
+		App.m_astrExclude  = Dlg.m_astrExclude;
+		App.m_nThreads     = Dlg.m_nThreads;
+		App.m_bAutoExclude = Dlg.m_bAutoExclude;
+	}
+}
+
+/******************************************************************************
+** Method:		OnOptionsReport()
+**
+** Description:	Show the reporting options dialog.
+**
+** Parameters:	None.
+**
+** Returns:		Nothing.
+**
+*******************************************************************************
+*/
+
+void CAppCmds::OnOptionsReport()
+{
+	CReportOptsDlg Dlg;
+
+	// Initialise with current settings.
 	Dlg.m_nFormat      = App.m_nFormat;
 	Dlg.m_nTolerance   = App.m_nTolerance;
 	Dlg.m_bHideCorrect = App.m_bHideCorrect;
@@ -477,13 +527,13 @@ void CAppCmds::OnOptionsPrefs()
 	if (Dlg.RunModal(App.m_AppWnd) == IDOK)
 	{
 		// Save new settings.
-		App.m_astrInclude  = Dlg.m_astrInclude;
-		App.m_astrExclude  = Dlg.m_astrExclude;
-		App.m_nThreads     = Dlg.m_nThreads;
 		App.m_nFormat      = Dlg.m_nFormat;
 		App.m_nTolerance   = Dlg.m_nTolerance;
 		App.m_bHideCorrect = Dlg.m_bHideCorrect;
 		App.m_bHideFailed  = Dlg.m_bHideFailed;
+
+		// Redisplay results.
+		App.m_AppWnd.m_AppDlg.RefreshView();
 	}
 }
 
@@ -504,6 +554,70 @@ void CAppCmds::OnHelpAbout()
 	CAboutDlg Dlg;
 
 	Dlg.RunModal(App.m_rMainWnd);
+}
+
+/******************************************************************************
+** Method:		OnExcludeComputer()
+**
+** Description:	Add the selected computer to the exclusions.
+**
+** Parameters:	None.
+**
+** Returns:		Nothing.
+**
+*******************************************************************************
+*/
+
+void CAppCmds::OnExcludeComputer()
+{
+	// Get the selected computer.
+	CRow* pRow = App.m_AppWnd.m_AppDlg.SelectedRow();
+
+	ASSERT(pRow != NULL);
+
+	const char* pszComputer = pRow->Field(CClocks::COMPUTER);
+
+	// Add if not already included.
+	if (App.m_astrExclude.Find(pszComputer, true) == -1)
+		App.m_astrExclude.Add(pszComputer);
+
+	// Remove from results.
+	App.m_oClocks.DeleteRow(*pRow);
+
+	// Redisplay results.
+	App.m_AppWnd.m_AppDlg.RefreshView();
+}
+
+/******************************************************************************
+** Method:		OnHelpAbout()
+**
+** Description:	Add the selected domain to the exclusions.
+**
+** Parameters:	None.
+**
+** Returns:		Nothing.
+**
+*******************************************************************************
+*/
+
+void CAppCmds::OnExcludeDomain()
+{
+	// Get the selected domain.
+	CRow* pRow = App.m_AppWnd.m_AppDlg.SelectedRow();
+
+	ASSERT(pRow != NULL);
+
+	const char* pszDomain = pRow->Field(CClocks::DOMAIN);
+
+	// Add if not already included.
+	if (App.m_astrExclude.Find(pszDomain, true) == -1)
+		App.m_astrExclude.Add(pszDomain);
+
+	// Remove all domain computers from the results.
+	App.m_oClocks.DeleteRows(App.m_oClocks.Select(CWhereCmp(CClocks::DOMAIN, CWhereCmp::EQUALS, pszDomain)));
+
+	// Redisplay results.
+	App.m_AppWnd.m_AppDlg.RefreshView();
 }
 
 /******************************************************************************

@@ -42,10 +42,15 @@ public:
 	void OnReportPrint();
 
 	// Options menu.
-	void OnOptionsPrefs();
+	void OnOptionsScan();
+	void OnOptionsReport();
 
 	// Help menu.
 	void OnHelpAbout();
+
+	// Context menu.
+	void OnExcludeComputer();
+	void OnExcludeDomain();
 
 	//
 	// UI handlers.
