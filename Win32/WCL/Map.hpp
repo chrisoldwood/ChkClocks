@@ -67,11 +67,12 @@ protected:
 	~CMap();
 	
 	//
-	// External methods.
+	// Derived class methods.
 	//
 	void      Add(CMapItem& rItem);
 	void      Remove(const CMapItem& rItem);
 	CMapItem* Find(const CMapItem& rItem) const;
+	bool      Exists(const CMapItem& rItem) const;
 
 	//
 	// Internal methods.
@@ -113,6 +114,11 @@ private:
 inline int CMap::Count() const
 {
 	return m_iCount;
+}
+
+inline bool CMap::Exists(const CMapItem& rItem) const
+{
+	return (Find(rItem) != NULL);
 }
 
 inline bool CMapItem::operator!=(const CMapItem& rRHS) const
