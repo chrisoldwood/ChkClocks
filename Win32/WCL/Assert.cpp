@@ -35,18 +35,12 @@
 
 void AssertFail(const char* pszExpression, const char*pszFile, uint iLine)
 {
-	static char	szMsg[256];
+	CString str;
 
-	// First create the full message.
-	wsprintf((LPSTR)szMsg, (LPSTR)"Code:\t%s\nFile:\t%s\nLine:\t%d\n\nDebug?", 
-				(LPCSTR)pszExpression, (LPCSTR)pszFile, iLine);
+	str.Format("Code:\t%s\nFile:\t%s\nLine:\t%d\n\nDebug?", pszExpression, pszFile, iLine);
 	
-	// Now display the message.
-	if (MessageBox(NULL, (LPCSTR)szMsg, "ASSERT FAILED", MB_YESNO | MB_ICONSTOP) == IDYES)
-	{
-		// Cause an INT 3.
-		DebugBreak();
-	}
+	if (MessageBox(NULL, str, "ASSERT FAILED", MB_YESNO | MB_ICONSTOP) == IDYES)
+		__asm int 3;
 }
 
 /******************************************************************************
@@ -66,15 +60,15 @@ void AssertFail(const char* pszExpression, const char*pszFile, uint iLine)
 
 void TraceEx(const char* pszFormat, ...)
 {
-	static char	szMsg[256];
+	CString str;
 
 	// Setup arguments.
 	va_list	args;
 	va_start(args, pszFormat);
 	
 	// Form message.
-	vsprintf((char*)szMsg, pszFormat, args);
+	str.FormatEx(pszFormat, args);
 	
 	// Display.
-	OutputDebugString((LPCSTR)szMsg);
+	OutputDebugString(str);
 }
