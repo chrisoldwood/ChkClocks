@@ -181,8 +181,9 @@ void CMap::RemoveAll()
 
 CMapItem* CMap::Find(const CMapItem& rItem) const
 {
-	ASSERT(m_pMap);
-	ASSERT(m_iCount);
+	// Map not allocated yet?
+	if (m_pMap == NULL)
+		return NULL;
 
 	// Calculate map bucket.
 	int i = Hash(rItem);
