@@ -7,6 +7,10 @@ Project: "DDEQuery"=.\DDEQuery\DDEQuery.dsp - Package Owner=<4>
 
 Package=<5>
 {{{
+    begin source code control
+    "$/Win32/DDEQuery", SNDAAAAA
+    .\ddequery
+    end source code control
 }}}
 
 Package=<4>
@@ -14,6 +18,25 @@ Package=<4>
     Begin Project Dependency
     Project_Dep_Name Wcl
     End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name NCL
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "NCL"=.\NCL\NCL.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Win32/NCL", JRCAAAAA
+    .\ncl
+    end source code control
+}}}
+
+Package=<4>
+{{{
 }}}
 
 ###############################################################################
@@ -22,6 +45,10 @@ Project: "Wcl"=.\WCL\Wcl.dsp - Package Owner=<4>
 
 Package=<5>
 {{{
+    begin source code control
+    "$/Win32/Wcl", UAAAAAAA
+    .\wcl
+    end source code control
 }}}
 
 Package=<4>
@@ -34,6 +61,10 @@ Global:
 
 Package=<5>
 {{{
+    begin source code control
+    "$/Win32", YOAAAAAA
+    .
+    end source code control
 }}}
 
 Package=<3>
