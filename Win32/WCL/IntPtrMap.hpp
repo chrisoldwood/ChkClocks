@@ -54,7 +54,7 @@ public:
 	//
 	// Constructors/Destructor.
 	//
-	CIntPtrMap(int iSize);
+	CIntPtrMap();
 	~CIntPtrMap();
 
 	//
@@ -77,8 +77,8 @@ protected:
 *******************************************************************************
 */
 
-inline CIntPtrMap::CIntPtrMap(int iSize)
-	: CMap(iSize)
+inline CIntPtrMap::CIntPtrMap()
+	: CMap()
 {
 }
 
