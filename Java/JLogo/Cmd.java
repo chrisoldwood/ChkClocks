@@ -17,41 +17,6 @@ public abstract class Cmd
 	public abstract void getSource(SourceLines oLines);
 
 	/********************************************************************************
-	** Queries if the command requires parameters.
-	*/
-
-	public boolean isParameterised()
-	{
-		return false;
-	}
-
-	/********************************************************************************
-	** Get the commands parameter.
-	*/
-
-	public String getParameter()
-	{
-		return null;
-	}
-
-	/********************************************************************************
-	** Set the commands parameter.
-	*/
-
-	public void setParameter(String strParam)
-	{
-	}
-
-	/********************************************************************************
-	** Queries if the command can be removed.
-	*/
-
-	public boolean isRemoveable()
-	{
-		return true;
-	}
-
-	/********************************************************************************
 	** Parent accessor/modifier.
 	*/
 

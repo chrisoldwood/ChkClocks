@@ -31,33 +31,6 @@ public class CommentCmd extends Cmd
 	}
 
 	/********************************************************************************
-	** Queries if the command requires parameters.
-	*/
-
-	public boolean isParameterised()
-	{
-		return true;
-	}
-
-	/********************************************************************************
-	** Get the commands parameter.
-	*/
-
-	public String getParameter()
-	{
-		return m_strParam;
-	}
-
-	/********************************************************************************
-	** Set the commands parameter.
-	*/
-
-	public void setParameter(String strParam)
-	{
-		m_strParam = strParam;
-	}
-
-	/********************************************************************************
 	** Get the commands' factory.
 	*/
 

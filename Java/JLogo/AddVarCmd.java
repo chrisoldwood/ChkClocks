@@ -35,42 +35,6 @@ public class AddVarCmd extends Cmd
 	}
 
 	/********************************************************************************
-	** Queries if the command requires parameters.
-	*/
-
-	public boolean isParameterised()
-	{
-		return true;
-	}
-
-	/********************************************************************************
-	** Get the commands parameter.
-	*/
-
-	public String getParameter()
-	{
-		return m_strParam;
-	}
-
-	/********************************************************************************
-	** Set the commands parameter.
-	*/
-
-	public void setParameter(String strParam)
-	{
-		m_strParam = strParam;
-	}
-
-	/********************************************************************************
-	** Queries if the command can be removed.
-	*/
-
-	public boolean isRemoveable()
-	{
-		return false;
-	}
-
-	/********************************************************************************
 	** Get the commands' factory.
 	*/
 
@@ -98,7 +62,7 @@ public class AddVarCmd extends Cmd
 
 				// Extract name and value.
 				String strName  = strSource.substring(0, nEquals).trim();
-				String strValue = strSource.substring(nEquals+1, nLen);
+				String strValue = strSource.substring(nEquals+1, nLen).trim();
 
 				if (!Variables.isValidName(strName))
 					throw new InvalidCmdException("Invalid variable name: " + strName);

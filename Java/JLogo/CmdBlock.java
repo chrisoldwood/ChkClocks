@@ -35,15 +35,6 @@ public class CmdBlock extends Cmd
 	}
 
 	/********************************************************************************
-	** Queries if the command requires parameters.
-	*/
-
-	public boolean isParameterised()
-	{
-		return false;
-	}
-
-	/********************************************************************************
 	** Adds a command to the block.
 	*/
 
@@ -52,15 +43,6 @@ public class CmdBlock extends Cmd
 		oCmd.setParent(this);
 
 		m_vCmds.addElement(oCmd);
-	}
-
-	/********************************************************************************
-	** Removes a command from the block.
-	*/
-
-	public void remove(Cmd oCmd)
-	{
-		m_vCmds.removeElement(oCmd);
 	}
 
 	/********************************************************************************
