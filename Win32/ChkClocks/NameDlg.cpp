@@ -63,11 +63,16 @@ bool CNameDlg::OnOk()
 {
 	m_strName = m_ebName.Text();
 
-	if ( (m_strName.Length() < 3) || (m_strName[0] != '\\') || (m_strName[1] != '\\') )
+	// Validate name.
+	if (m_strName.Length() == 0)
 	{
-		AlertMsg("Please supply the name in the form: \\\\Name.");
+		AlertMsg("Please supply the name.");
 		return false;
 	}
+
+	// Prepend \\ if missing.
+	if (m_strName.Compare("\\\\", 2) != 0)
+		m_strName = "\\\\" + m_strName;
 
 	return true;
 }
