@@ -7,6 +7,10 @@ Project: "All"=.\All.dsp - Package Owner=<4>
 
 Package=<5>
 {{{
+    begin source code control
+    "$/Win32", YOAAAAAA
+    .
+    end source code control
 }}}
 
 Package=<4>
@@ -345,6 +349,10 @@ Global:
 
 Package=<5>
 {{{
+    begin source code control
+    "$/Win32", YOAAAAAA
+    .
+    end source code control
 }}}
 
 Package=<3>
