@@ -57,11 +57,13 @@ public:
 	int  Count() const;
 	void RemoveAll();
 
+	void Reserve(int nItems);
+
 protected:
 	//
 	// Constructors/Destructor.
 	//
-	CMap(int iSize);
+	CMap();
 	~CMap();
 	
 	//
@@ -79,9 +81,18 @@ protected:
 	//
 	// Members.
 	//
-	int			m_iSize;	// The size of the map.
-	CMapItem**	m_pMap;		// The array of map buckets.
-	int			m_iCount;	// The number of items in the map.
+	int			m_iSize;		// The size of the map.
+	CMapItem**	m_pMap;			// The array of map buckets.
+	int			m_iCount;		// The number of items in the map.
+
+	// Map size table size.
+	enum { NUM_MAP_SIZES = 15};
+
+	// Array of map sizes.
+	static int s_aiSizes[NUM_MAP_SIZES];
+
+	// Max expected chain length.
+	enum { MAX_CHAIN_LEN = 4 };
 };
 
 /******************************************************************************

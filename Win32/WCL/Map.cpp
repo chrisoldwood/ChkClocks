@@ -9,6 +9,13 @@
 */
 
 #include "wcl.hpp"
+#include <typeinfo.h>
+
+// Array of map sizes.
+int CMap::s_aiSizes[NUM_MAP_SIZES] =
+{
+	3, 7, 17, 31, 61, 127, 257, 509, 1021, 2053, 4093, 8191, 16381, 32771, 65537
+};
 
 /******************************************************************************
 ** Method:		Constructor.
@@ -22,8 +29,8 @@
 *******************************************************************************
 */
 
-CMap::CMap(int iSize)
-	: m_iSize(iSize)
+CMap::CMap()
+	: m_iSize(s_aiSizes[0])
 	, m_pMap(NULL)
 	, m_iCount(0)
 {
@@ -63,6 +70,8 @@ CMap::~CMap()
 
 void CMap::Add(CMapItem& rItem)
 {
+	ASSERT(Find(rItem) == NULL);
+
 	// Map allocated?
 	if (m_iCount == 0)
 		m_pMap = (CMapItem**) calloc(m_iSize, sizeof(CMapItem*));
@@ -77,6 +86,39 @@ void CMap::Add(CMapItem& rItem)
 	// Add to head of collision chain.
 	rItem.m_pNext = m_pMap[i];
 	m_pMap[i] = &rItem;
+
+#ifdef _DEBUG
+	int nChainLen = 0;
+
+	CMapItem* pItem = m_pMap[i];
+
+	// Find chain length.
+	while (pItem != NULL)
+	{
+		pItem = pItem->m_pNext;
+		nChainLen++;
+	}
+
+	// Chain bigger than expected?
+	if (nChainLen > MAX_CHAIN_LEN)
+	{
+		TRACE5("CMap::Add() chain length exceeded: %d (Size: %d Count: %d)(Key: 0x%08X Bucket: %d)\n",
+				nChainLen, m_iSize, m_iCount, rItem.Key(), i);
+
+		TRACE("Chain keys...");
+
+		CMapItem* pItem = m_pMap[i];
+
+		// Dump chain keys.
+		while (pItem != NULL)
+		{
+			TRACE1("0x%08X ", pItem->Key());
+			pItem = pItem->m_pNext;
+		}
+
+		TRACE("\n");
+	}
+#endif
 
 	m_iCount++;
 }
@@ -191,11 +233,15 @@ CMapItem* CMap::Find(const CMapItem& rItem) const
 	ASSERT((i >= 0) && (i < m_iSize));
 
 	// Get head of collision chain.
-	CMapItem* pItem = m_pMap[i];
+	CMapItem*	pItem = m_pMap[i];
+	int			nProbes = 0;
 
 	// Find item.
 	while ( (pItem) && (rItem != *pItem) )
+	{
 		pItem = pItem->m_pNext;
+		nProbes++;
+	}
 
 	return pItem;
 }
@@ -215,6 +261,39 @@ CMapItem* CMap::Find(const CMapItem& rItem) const
 int CMap::Hash(const CMapItem& rItem) const
 {
 	return (rItem.Key() % m_iSize);
+}
+
+/******************************************************************************
+** Method:		Reserve()
+**
+** Description:	Allocates the hash table to hold the specified number of items.
+**				It will grow the table if already allocated.
+**
+** Parameters:	nItems		The number of items that will be stored.
+**
+** Returns:		The bucket array index.
+**
+*******************************************************************************
+*/
+
+void CMap::Reserve(int nItems)
+{
+	ASSERT(m_pMap == NULL);
+
+	// Calculate min table size.
+	int nMinSize = nItems / MAX_CHAIN_LEN;
+
+	// Search the map 'size' table.
+	for (int i = NUM_MAP_SIZES-1; i > 0; i--)
+	{
+		// Size too small?
+		if (s_aiSizes[i] < nMinSize)
+			break;
+
+		m_iSize = s_aiSizes[i];
+	}
+
+	ASSERT(m_iSize >= nMinSize);
 }
 
 /******************************************************************************
