@@ -11,8 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NCL", "NCL\NCL.vcproj", "{7
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UTSvrBrowser", "UTSvrBrowser\UTSvrBrowser.vcproj", "{320A407B-ED04-4C79-AEC0-3FA2076105D7}"
 	ProjectSection(ProjectDependencies) = postProject
-		{8DA8BCB1-DC42-46F0-BF57-AF6260386D2F} = {8DA8BCB1-DC42-46F0-BF57-AF6260386D2F}
 		{73409F1F-0D6C-4291-B17B-57F61D2F2227} = {73409F1F-0D6C-4291-B17B-57F61D2F2227}
+		{8DA8BCB1-DC42-46F0-BF57-AF6260386D2F} = {8DA8BCB1-DC42-46F0-BF57-AF6260386D2F}
 		{821794FF-E200-475D-8C05-E68F87E29CBD} = {821794FF-E200-475D-8C05-E68F87E29CBD}
 	EndProjectSection
 EndProject
@@ -25,27 +25,26 @@ Global
 		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
 	EndGlobalSection
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 4
+		SccNumberOfProjects = 5
 		SccProjectUniqueName0 = MDBL\\MDBL.vcproj
 		SccProjectName0 = \u0022$/Win32/MDBL\u0022,\u0020OAAAAAAA
 		SccLocalPath0 = MDBL
-		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
 		SccProjectUniqueName1 = NCL\\NCL.vcproj
 		SccProjectName1 = \u0022$/Win32/NCL\u0022,\u0020JRCAAAAA
 		SccLocalPath1 = NCL
-		SccProvider1 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
 		SccProjectUniqueName2 = UTSvrBrowser\\UTSvrBrowser.vcproj
 		SccProjectName2 = \u0022$/Win32/UTSvrBrowser\u0022,\u0020FADAAAAA
 		SccLocalPath2 = UTSvrBrowser
-		SccProvider2 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
 		SccProjectUniqueName3 = WCL\\Wcl.vcproj
 		SccProjectName3 = \u0022$/Win32/Wcl\u0022,\u0020UAAAAAAA
 		SccLocalPath3 = WCL
-		SccProvider3 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
+		SccLocalPath4 = .
+		CanCheckoutShared = true
+		SolutionUniqueID = {39535321-273A-4337-B748-97318E995B2C}
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
