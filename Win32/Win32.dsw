@@ -51,6 +51,12 @@ Package=<4>
     Begin Project Dependency
     Project_Dep_Name Setup
     End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name DDEQuery
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name MkSetup
+    End Project Dependency
 }}}
 
 ###############################################################################
@@ -91,6 +97,28 @@ Package=<4>
 {{{
     Begin Project Dependency
     Project_Dep_Name Wcl
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "DDEQuery"=.\DDEQuery\DDEQuery.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Win32/DDEQuery", SNDAAAAA
+    .\ddequery
+    end source code control
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name Wcl
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name NCL
     End Project Dependency
 }}}
 
@@ -147,6 +175,25 @@ Package=<5>
     begin source code control
     "$/Win32/MDBL", OAAAAAAA
     .\mdbl
+    end source code control
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name Wcl
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "MkSetup"=.\MkSetup\MkSetup.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Win32/MkSetup", YLDAAAAA
+    .\mksetup
     end source code control
 }}}
 
