@@ -107,10 +107,11 @@ void CAppDlg::RefreshView()
 		int nRow = m_lvGrid.ItemCount();
 
 		// Add to the grid.
-		m_lvGrid.InsertItem(nRow,    oRow[CClocks::COMPUTER], &oRow);
+		m_lvGrid.InsertItem(nRow,    oRow[CClocks::COMPUTER]);
 		m_lvGrid.ItemText  (nRow, 1, oRow[CClocks::DOMAIN]);
 		m_lvGrid.ItemText  (nRow, 2, App.FmtDifference(oRow));
 		m_lvGrid.ItemText  (nRow, 3, App.FmtError(oRow));
+		m_lvGrid.ItemPtr   (nRow,    &oRow);
 	}
 }
 
