@@ -1,4 +1,4 @@
-Check Clocks v1.0
+Check Clocks v1.1
 =================
 
 1) Installation.
@@ -22,4 +22,4 @@ Web:   http://www.cix.co.uk/~gort
 Chris Oldwood 
 (gort@cix.co.uk)
 
-13th January 2003
+19th June 2003
