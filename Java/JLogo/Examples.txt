@@ -1,0 +1,55 @@
+//****************************************
+//
+// Example programs.
+//
+//****************************************
+
+//****************************************
+// Draw a box.
+
+repeat 4
+  forward 50
+  right 90
+end
+
+//****************************************
+// Draw 8 boxes in a star.
+
+var box_sides   = 4
+var side_length = 50
+var side_angle  = 90
+var num_boxes   = 8
+var box_angle   = 360 / num_boxes
+
+repeat num_boxes
+  repeat box_sides
+    forward side_length
+    right   side_angle
+  end
+  right box_angle
+end
+
+//****************************************
+// Draw 8 large boxes in a star, with
+// 8 smaller ones inside.
+
+var box_sides   = 4
+var side_length = 150
+var side_angle  = 90
+var num_boxes   = 24
+var box_angle   = 360 / num_boxes
+
+repeat num_boxes
+
+  repeat box_sides
+    forward side_length
+    right   side_angle
+  end
+
+  repeat box_sides
+    forward (side_length / 2)
+    right   side_angle
+  end
+
+  right box_angle
+end
