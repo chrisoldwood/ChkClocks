@@ -2,7 +2,7 @@
 
 <head>
 <title>UK Leagues</title>
-<!-- #INCLUDE VIRTUAL="/shared/metatags.asp" -->
+<!-- #INCLUDE VIRTUAL="/uk-leagues/shared/metatags.asp" -->
 </head>
 
 <%
@@ -15,7 +15,7 @@
 <body>
 <div align="center">
 
-<!-- #INCLUDE VIRTUAL="/shared/mainmenu.asp" -->
+<!-- #INCLUDE VIRTUAL="/uk-leagues/shared/main_menu.asp" -->
 
 <!-- Content table -->
 <table width="600">
