@@ -93,6 +93,14 @@ protected:
 
 	// Max expected chain length.
 	enum { MAX_CHAIN_LEN = 4 };
+
+	// Friends.
+	friend class CMapIter;
+
+private:
+	// Disallow copying and assignment.
+	CMap(const CMap&);
+	void operator=(const CMap&);
 };
 
 /******************************************************************************
