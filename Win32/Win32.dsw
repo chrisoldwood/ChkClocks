@@ -48,6 +48,9 @@ Package=<4>
     Begin Project Dependency
     Project_Dep_Name UTSvrBrowser
     End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Setup
+    End Project Dependency
 }}}
 
 ###############################################################################
@@ -234,6 +237,25 @@ Package=<4>
     Begin Project Dependency
     Project_Dep_Name MDBL
     End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name Wcl
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "Setup"=.\Setup\Setup.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Win32/Setup", IIDAAAAA
+    .\setup
+    end source code control
+}}}
+
+Package=<4>
+{{{
     Begin Project Dependency
     Project_Dep_Name Wcl
     End Project Dependency
