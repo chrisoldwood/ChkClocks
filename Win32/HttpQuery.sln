@@ -1,0 +1,61 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HttpQuery", "HttpQuery\HttpQuery.vcproj", "{7081E8C5-3330-4925-B2A3-95C6D7449F9F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{80993361-4E85-429B-8749-3B70006B3E30} = {80993361-4E85-429B-8749-3B70006B3E30}
+		{50A7D5A0-D25D-491B-A177-05AC060DDB6F} = {50A7D5A0-D25D-491B-A177-05AC060DDB6F}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NCL", "NCL\NCL.vcproj", "{50A7D5A0-D25D-491B-A177-05AC060DDB6F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{80993361-4E85-429B-8749-3B70006B3E30} = {80993361-4E85-429B-8749-3B70006B3E30}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wcl", "WCL\Wcl.vcproj", "{80993361-4E85-429B-8749-3B70006B3E30}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 3
+		SccProjectUniqueName0 = HttpQuery\\HttpQuery.vcproj
+		SccProjectName0 = \u0022$/Win32/HttpQuery\u0022,\u0020ZWCAAAAA
+		SccLocalPath0 = HttpQuery
+		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		CanCheckoutShared = true
+		SccProjectUniqueName1 = NCL\\NCL.vcproj
+		SccProjectName1 = \u0022$/Win32/NCL\u0022,\u0020JRCAAAAA
+		SccLocalPath1 = NCL
+		SccProvider1 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		CanCheckoutShared = true
+		SccProjectUniqueName2 = WCL\\Wcl.vcproj
+		SccProjectName2 = \u0022$/Win32/Wcl\u0022,\u0020UAAAAAAA
+		SccLocalPath2 = WCL
+		SccProvider2 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		CanCheckoutShared = true
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{7081E8C5-3330-4925-B2A3-95C6D7449F9F}.Debug.ActiveCfg = Debug|Win32
+		{7081E8C5-3330-4925-B2A3-95C6D7449F9F}.Debug.Build.0 = Debug|Win32
+		{7081E8C5-3330-4925-B2A3-95C6D7449F9F}.Release.ActiveCfg = Release|Win32
+		{7081E8C5-3330-4925-B2A3-95C6D7449F9F}.Release.Build.0 = Release|Win32
+		{50A7D5A0-D25D-491B-A177-05AC060DDB6F}.Debug.ActiveCfg = Debug|Win32
+		{50A7D5A0-D25D-491B-A177-05AC060DDB6F}.Debug.Build.0 = Debug|Win32
+		{50A7D5A0-D25D-491B-A177-05AC060DDB6F}.Release.ActiveCfg = Release|Win32
+		{50A7D5A0-D25D-491B-A177-05AC060DDB6F}.Release.Build.0 = Release|Win32
+		{80993361-4E85-429B-8749-3B70006B3E30}.Debug.ActiveCfg = Debug|Win32
+		{80993361-4E85-429B-8749-3B70006B3E30}.Debug.Build.0 = Debug|Win32
+		{80993361-4E85-429B-8749-3B70006B3E30}.Release.ActiveCfg = Release|Win32
+		{80993361-4E85-429B-8749-3B70006B3E30}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
