@@ -7,6 +7,24 @@ import java.util.Vector;
 public class SourceLines
 {
 	/********************************************************************************
+	** Default Constructor.
+	*/
+
+	public SourceLines()
+	{
+		this(DEF_INDENT_SIZE);
+	}
+
+	/********************************************************************************
+	** Full Constructor.
+	*/
+
+	public SourceLines(int nIndentSize)
+	{
+		m_nIndSize = nIndentSize;
+	}
+
+	/********************************************************************************
 	** Get the number of lines.
 	*/
 
@@ -23,7 +41,7 @@ public class SourceLines
 	{
 		m_vCmds.addElement(oCmd);
 		m_vLines.addElement(strText);
-		m_vIndents.addElement(new Integer(m_nIndent));
+		m_vIndents.addElement(new Integer(m_nIndents));
 	}
 
 	/********************************************************************************
@@ -60,7 +78,7 @@ public class SourceLines
 	public String getIndentedLine(int i)
 	{
 		String       strLine   = getLine(i);
-		int          nIndent   = getIndent(i);
+		int          nIndent   = getIndent(i) * m_nIndSize;
 		StringBuffer strBuffer = new StringBuffer(strLine.length() + nIndent);
 
 		for (int n = 0; n < nIndent; n++)
@@ -77,12 +95,14 @@ public class SourceLines
 
 	public void adjustIndentation(int nOffset)
 	{
-		m_nIndent += nOffset;
+		m_nIndents += nOffset;
 	}
 
 	/********************************************************************************
 	** Constants.
 	*/
+
+	public static final int DEF_INDENT_SIZE = 4;
 
 	/********************************************************************************
 	** Members.
@@ -91,5 +111,6 @@ public class SourceLines
 	private Vector	m_vCmds    = new Vector();
 	private Vector	m_vLines   = new Vector();
 	private Vector	m_vIndents = new Vector();
-	private int		m_nIndent  = 0;
+	private int		m_nIndSize = DEF_INDENT_SIZE;
+	private int		m_nIndents = 0;
 }
