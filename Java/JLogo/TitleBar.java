@@ -27,9 +27,12 @@ public class TitleBar extends Label
 	{
 		StringBuffer strLabel = new StringBuffer(APP_NAME);
 
-		strLabel.append(" [");
-		strLabel.append(strStatus);
-		strLabel.append("]");
+		if ( (strStatus != null) && (strStatus.length() > 0) )
+		{
+			strLabel.append(" [");
+			strLabel.append(strStatus);
+			strLabel.append("]");
+		}
 
 		setText(strLabel.toString());
 	}
