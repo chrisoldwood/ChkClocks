@@ -131,6 +131,9 @@ public class ProgramPanel extends GroupPanel
 						}
 					}
 				}
+
+				// Notify listeners of edited program.
+				m_oProgram.notifyListeners(Program.EDITED);
 			}
 		}
 	}

@@ -189,8 +189,8 @@ public class VarsPanel extends GroupPanel
 	{
 		String strEvent = eEvent.getActionCommand();
 
-		// Old program deleted?
-		if (strEvent.equals(Program.CLEARED))
+		// If program deleted or edited, reset controls.
+		if (strEvent.equals(Program.CLEARED) || strEvent.equals(Program.EDITED))
 		{
 			// Reset controls.
 			m_ebAdd.setText("");
@@ -199,6 +199,11 @@ public class VarsPanel extends GroupPanel
 			m_ebCurVal.setText("");
 			m_ebSetVal.setText("");
 			m_btnSet.setEnabled(false);
+		}
+
+		// If program edited, reload variable names.
+		if (strEvent.equals(Program.EDITED))
+		{
 		}
 	}
 
