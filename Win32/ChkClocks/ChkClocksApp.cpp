@@ -189,7 +189,7 @@ void CChkClocksApp::LoadConfig()
 	// Load the list of computers to exclude.
 	int nExcCount = m_oIniFile.ReadInt("Exclude", "Count", 0);
 
-	for (i = 0; i < nExcCount; ++i)
+	for (int i = 0; i < nExcCount; ++i)
 	{
 		CString strEntry, strValue;
 
@@ -246,7 +246,7 @@ void CChkClocksApp::SaveConfig()
 	// Save the list of computers to exclude.
 	m_oIniFile.WriteInt("Exclude", "Count", m_astrExclude.Size());
 
-	for (i = 0; i < m_astrExclude.Size(); ++i)
+	for (int i = 0; i < m_astrExclude.Size(); ++i)
 	{
 		CString strEntry;
 

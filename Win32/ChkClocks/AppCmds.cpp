@@ -146,7 +146,7 @@ void CAppCmds::OnFileCheck()
 	}
 
 	// Append those on the include list.
-	for (i = 0; (i < App.m_astrInclude.Size()) && (!Dlg.Abort()); ++i)
+	for (int i = 0; (i < App.m_astrInclude.Size()) && (!Dlg.Abort()); ++i)
 	{
 		CRow& oRow = App.m_oClocks.CreateRow();
 
@@ -159,7 +159,7 @@ void CAppCmds::OnFileCheck()
 	Dlg.UpdateLabel("Checking Clocks...");
 
 	// Start jobs to check all computers.
-	for (i = 0; (i < App.m_oClocks.RowCount()) && (!Dlg.Abort()); ++i)
+	for (int i = 0; (i < App.m_oClocks.RowCount()) && (!Dlg.Abort()); ++i)
 		oThreadPool.AddJob(new CCheckJob(App.m_oClocks[i]));
 
 	// Wait for jobs to complete OR user to cancel.
@@ -421,7 +421,7 @@ CString CAppCmds::GenerateReport()
 	}
 
 	// Generate the report.
-	for (i = 0; i < oRS.Count(); ++i)
+	for (int i = 0; i < oRS.Count(); ++i)
 	{
 		CString strLine;
 		CRow&   oRow   = oRS[i];

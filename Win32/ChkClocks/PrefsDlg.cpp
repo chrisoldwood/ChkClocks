@@ -69,7 +69,7 @@ void CPrefsDlg::OnInitDialog()
 		m_lbInclude.CurSel(0);
 
 	// Load the existing list of excluded computers.
-	for (i = 0; i < m_astrExclude.Size(); ++i)
+	for (int i = 0; i < m_astrExclude.Size(); ++i)
 		m_lbExclude.Add(m_astrExclude[i]);
 
 	// Select 1st by default.
