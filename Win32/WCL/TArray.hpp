@@ -45,6 +45,11 @@ public:
 
 	int  Find(T Item) const;
 	void Swap(int nIndex1, int nIndex2);
+
+private:
+	// Disallow copies for now.
+	TArray(const TArray<T>&);
+	void operator=(const TArray<T>&);
 };
 
 /******************************************************************************
@@ -58,6 +63,12 @@ template<class T> class TPtrArray : public TArray<T*>
 {
 public:
 	//
+	// Constructors/Destructor.
+	//
+	TPtrArray();
+	~TPtrArray();
+
+	//
 	// Methods.
 	//
 	void Delete(int nIndex);
@@ -68,6 +79,11 @@ protected:
 	// Internal methods.
 	//
 	void Copy(const TPtrArray<T>& oRHS, bool bDeep);
+
+private:
+	// Disallow copies for now.
+	TPtrArray(const TPtrArray<T>&);
+	void operator=(const TPtrArray<T>&);
 };
 
 /******************************************************************************
@@ -81,6 +97,12 @@ template<class T> class TRefArray : public TPtrArray<T>
 {
 public:
 	//
+	// Constructors/Destructor.
+	//
+	TRefArray();
+	~TRefArray();
+
+	//
 	// Methods.
 	//
 	T& At(int nIndex) const;
@@ -92,6 +114,11 @@ public:
 	int  Add(T* rItem);
 	void Insert(int nIndex, T& rItem);
 	void Insert(int nIndex, T* pItem);
+
+private:
+	// Disallow copies for now.
+	TRefArray(const TRefArray<T>&);
+	void operator=(const TRefArray<T>&);
 };
 
 /******************************************************************************
@@ -177,6 +204,14 @@ template<class T> inline void TArray<T>::Swap(int nIndex1, int nIndex2)
 *******************************************************************************
 */
 
+template<class T> inline TPtrArray<T>::TPtrArray()
+{
+}
+
+template<class T> inline TPtrArray<T>::~TPtrArray()
+{
+}
+
 template<class T> inline void TPtrArray<T>::Delete(int nIndex)
 {
 	delete TArray<T*>::At(nIndex);
@@ -205,6 +240,14 @@ template<class T> inline void TPtrArray<T>::Copy(const TPtrArray<T>& oRHS, bool 
 **
 *******************************************************************************
 */
+
+template<class T> inline TRefArray<T>::TRefArray()
+{
+}
+
+template<class T> inline TRefArray<T>::~TRefArray()
+{
+}
 
 template<class T> inline T& TRefArray<T>::At(int nIndex) const
 {
