@@ -29,11 +29,15 @@ CChkClocksApp App;
 */
 
 #ifdef _DEBUG
-const char* CChkClocksApp::VERSION      = "v1.0 [Debug]";
+const char* CChkClocksApp::VERSION      = "v1.0 Beta [Debug]";
 #else
-const char* CChkClocksApp::VERSION      = "v1.0";
+const char* CChkClocksApp::VERSION      = "v1.0 Beta";
 #endif
-const char* CChkClocksApp::INI_FILE_VER = "1.0";
+const char* CChkClocksApp::INI_FILE_VER     = "1.0";
+const int   CChkClocksApp::DEF_THREADS      = 10;
+const int   CChkClocksApp::DEF_TOLERANCE    = 1;
+const bool  CChkClocksApp::DEF_HIDE_CORRECT = false;
+const bool  CChkClocksApp::DEF_HIDE_FAILED  = false;
 
 /******************************************************************************
 ** Method:		Constructor
@@ -50,6 +54,11 @@ const char* CChkClocksApp::INI_FILE_VER = "1.0";
 CChkClocksApp::CChkClocksApp()
 	: CApp(m_AppWnd, m_AppCmds)
 	, m_oClocks(m_oMDB)
+	, m_nThreads(DEF_THREADS)
+	, m_nFormat(FMT_FIXED)
+	, m_nTolerance(DEF_TOLERANCE)
+	, m_bHideCorrect(DEF_HIDE_CORRECT)
+	, m_bHideFailed(DEF_HIDE_FAILED)
 {
 	// Create the MDB.
 	m_oMDB.AddTable(m_oClocks);
@@ -155,6 +164,13 @@ void CChkClocksApp::LoadConfig()
 	m_rcLastPos.right  = m_oIniFile.ReadInt("UI", "Right",  0);
 	m_rcLastPos.bottom = m_oIniFile.ReadInt("UI", "Bottom", 0);
 
+	// Read the misc settings.
+	m_nThreads     = m_oIniFile.ReadInt ("Main", "Threads",     m_nThreads);
+	m_nFormat      = m_oIniFile.ReadInt ("Main", "Format",      m_nFormat);
+	m_nTolerance   = m_oIniFile.ReadInt ("Main", "Tolerance",   m_nTolerance);
+	m_bHideCorrect = m_oIniFile.ReadBool("Main", "HideCorrect", m_bHideCorrect);
+	m_bHideFailed  = m_oIniFile.ReadBool("Main", "HideFailed",  m_bHideFailed);
+
 	// Load the list of computers to include.
 	int nIncCount = m_oIniFile.ReadInt("Include", "Count", 0);
 
@@ -209,6 +225,13 @@ void CChkClocksApp::SaveConfig()
 	m_oIniFile.WriteInt("UI", "Right",  m_rcLastPos.right );
 	m_oIniFile.WriteInt("UI", "Bottom", m_rcLastPos.bottom);
 
+	// Write the misc settings.
+	m_oIniFile.WriteInt ("Main", "Threads",     m_nThreads);
+	m_oIniFile.WriteInt ("Main", "Format",      m_nFormat);
+	m_oIniFile.WriteInt ("Main", "Tolerance",   m_nTolerance);
+	m_oIniFile.WriteBool("Main", "HideCorrect", m_bHideCorrect);
+	m_oIniFile.WriteBool("Main", "HideFailed",  m_bHideFailed);
+
 	// Save the list of computers to include.
 	m_oIniFile.WriteInt("Include", "Count", m_astrInclude.Size());
 
@@ -235,11 +258,11 @@ void CChkClocksApp::SaveConfig()
 /******************************************************************************
 ** Method:		FmtDifference()
 **
-** Description:	Formats the clock difference, or an error code if one is set.
+** Description:	Formats the clock difference.
 **
 ** Parameters:	oRow	The CClocks row for the computer.
 **
-** Returns:		The difference or an error string.
+** Returns:		The difference.
 **
 *******************************************************************************
 */
@@ -247,25 +270,75 @@ void CChkClocksApp::SaveConfig()
 CString CChkClocksApp::FmtDifference(CRow& oRow)
 {
 	CString str;
-	int     nDifference = oRow[CClocks::CLOCK_DIFF];
-	int     nErrorCode  = oRow[CClocks::ERROR_CODE];
 
 	// Check was successful?
-	if (nErrorCode == NERR_Success)
+	if (oRow[CClocks::ERROR_CODE] == NERR_Success)
 	{
-		// Format differnence with +- sign.
-		str.Format("%d", nDifference);
-	}
-	else // (nErrorCode != NERR_Success)
-	{
-		// Format error string.
-		switch(nErrorCode)
+		int nDiff = oRow[CClocks::REL_DIFF];
+
+		// Outside "zero" tolerace?
+		if (abs(nDiff) > m_nTolerance)
 		{
-			case 0x00000005:	str = "Access Denied";				break;
-			case 0x00000035:	str = "Unknown Host";				break;
-			default:			str.Format("0x%08X", nErrorCode);	break;
+			// Format according to preference.
+			if (m_nFormat == FMT_FIXED)
+			{
+				// Format as seconds with +- sign.
+				str.Format("%+d s", nDiff);
+			}
+			else // (m_nFormat == FMT_VARIABLE)
+			{
+				// Get sign character.
+				char cSign = (nDiff >= 0) ? '+' : '-';
+
+				// Calculate off +ve value.
+				nDiff = abs(nDiff);
+
+				int nHours, nMins, nSecs;
+
+				// Calculate hours out.
+				nHours = nDiff / SECS_PER_HOUR;
+				nDiff -= nHours * SECS_PER_HOUR;
+
+				// Calculate minutes out.
+				nMins = nDiff / SECS_PER_MIN;
+				nDiff -= nMins * SECS_PER_MIN;
+
+				// Calculate seconds out.
+				nSecs = nDiff;
+
+				// Format difference.
+				if (nHours > 0)
+					str.Format("%c%d h %02d m %02d s", cSign, nHours, nMins, nSecs);
+				else if (nMins > 0)
+					str.Format("%c%d m %02d s", cSign, nMins, nSecs);
+				else
+					str.Format("%c%d s", cSign, nSecs);
+			}
 		}
 	}
+
+	return str;
+}
+
+/******************************************************************************
+** Method:		FmtError()
+**
+** Description:	Formats the error code if one is set.
+**
+** Parameters:	oRow	The CClocks row for the computer.
+**
+** Returns:		The error string.
+**
+*******************************************************************************
+*/
+
+CString CChkClocksApp::FmtError(CRow& oRow)
+{
+	CString str;
+
+	// Error occurred?
+	if (oRow[CClocks::ERROR_CODE] != NERR_Success)
+		str = App.FormatError(oRow[CClocks::ERROR_CODE].GetInt());
 
 	return str;
 }
