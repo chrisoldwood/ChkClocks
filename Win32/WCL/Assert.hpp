@@ -27,14 +27,13 @@ void AssertFail(const char* pszExpression, const char* pszFile, uint iLine);
 
 // Basic assert macro.
 #define ASSERT(x)		if (x) {} else AssertFail(#x, __FILE__, __LINE__)
-
-// Basic trace message.
-#define	TRACE(x)		OutputDebugString(x)
+#define ASSERT_FALSE()	AssertFail("FALSE", __FILE__, __LINE__)
 
 // Prototype for the real TRACE fucntion.
 void TraceEx(const char* pszFormat, ...);
 
 // Printf style trace messaging.
+#define	TRACE(x)				TraceEx(x)
 #define TRACE1(x,a)				TraceEx(x, a)
 #define TRACE2(x,a,b)			TraceEx(x, a, b)
 #define TRACE3(x,a,b,c)			TraceEx(x, a, b, c)
@@ -55,6 +54,7 @@ void TraceEx(const char* pszFormat, ...);
 */
 
 #define ASSERT(x)
+#define ASSERT_FALSE()
 
 #define	TRACE(x)
 #define TRACE1(x,a)
