@@ -1,1 +1,7 @@
 - Helpfile.
+
+- Fix bug where preferences changes don't affect the current report.
+
+- Allow exclusions for domains.
+
+- Allow domain searching to be cancelled.
