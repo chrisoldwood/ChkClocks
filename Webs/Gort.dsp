@@ -176,6 +176,10 @@ SOURCE=.\Gort\win32\utcachemgr10s.zip
 # End Source File
 # Begin Source File
 
+SOURCE=.\Gort\win32\utcmgr.gif
+# End Source File
+# Begin Source File
+
 SOURCE=.\Gort\win32\wcl.zip
 # End Source File
 # End Group
