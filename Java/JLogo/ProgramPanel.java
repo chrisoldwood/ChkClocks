@@ -26,14 +26,24 @@ public class ProgramPanel extends GroupPanel
 		add(BorderLayout.CENTER, m_pnlFields);
 
 		// Create the child panels.
-		m_pnlFields.add(m_btnClear);
-		m_pnlFields.add(m_btnExec);
-		m_pnlFields.add(m_btnView);
+		m_pnlFields.add(m_btnClear, m_btnImport);
+		m_pnlFields.add(m_btnExec,  m_cbSpeed);
+		m_pnlFields.add(m_btnView,  m_btnEdit);
 
 		// Add the event handlers.
 		m_btnClear.addActionListener(this);
+		m_btnImport.addActionListener(this);
 		m_btnExec.addActionListener(this);
 		m_btnView.addActionListener(this);
+		m_btnEdit.addActionListener(this);
+
+		// Add the speeds.
+		m_cbSpeed.add("Fast");
+		m_cbSpeed.add("Medium");
+		m_cbSpeed.add("Slow");
+
+		// Set defaults.
+		m_cbSpeed.select(0);
 	}
 
 	/********************************************************************************
@@ -44,10 +54,14 @@ public class ProgramPanel extends GroupPanel
 	{
 		if (eEvent.getSource() == m_btnClear)
 			onClear();
+		if (eEvent.getSource() == m_btnImport)
+			onImport();
 		else if (eEvent.getSource() == m_btnExec)
 			onExec();
 		else if (eEvent.getSource() == m_btnView)
 			onView();
+		else if (eEvent.getSource() == m_btnEdit)
+			onEdit();
 	}
 
 	/********************************************************************************
@@ -56,8 +70,46 @@ public class ProgramPanel extends GroupPanel
 
 	public void onClear()
 	{
-		m_oTurtle.reset();
+		m_oTurtle.reset(true);
 		m_oProgram.clear();
+	}
+
+	/********************************************************************************
+	** Import action.
+	*/
+
+	public void onImport()
+	{
+		ImportProgDlg Dlg = new ImportProgDlg(this);
+
+		if (Dlg.prompt() == Dlg.OK)
+		{
+			CmdFactory oCmdFactory = new CmdFactory();
+
+			// Delete the existing program.
+			m_oTurtle.reset(true);
+			m_oProgram.clear();
+
+			// Break the source code into lines.
+			StrTok   st = new StrTok(true, false);
+			String[] astrSource = st.splitLines(Dlg.m_strSource);
+
+			// Parse all lines.
+			for (int i = 0; i < astrSource.length; i++)
+			{
+				try
+				{
+					m_oProgram.add(oCmdFactory.createCmd(astrSource[i]));
+				}
+				catch(InvalidCmdException e)
+				{
+					String strMsg = "Invalid command on line: " + i + "\n\n" + e.getMessage() + "\n\nContinue with import?";
+
+					if (MsgBox.query(this, "JLogo Import", strMsg, MsgBox.YES_NO) == MsgBox.NO)
+						break;
+				}
+			}
+		}
 	}
 
 	/********************************************************************************
@@ -66,7 +118,9 @@ public class ProgramPanel extends GroupPanel
 
 	public void onExec()
 	{
-		m_oProgram.execute(m_oTurtle, EXEC_INTERVAL);
+		int nSpeed = m_cbSpeed.getSelectedIndex() * Program.SPEED_FACTOR;
+
+		m_oProgram.execute(this, m_oTurtle, nSpeed);
 	}
 
 	/********************************************************************************
@@ -75,30 +129,46 @@ public class ProgramPanel extends GroupPanel
 
 	public void onView()
 	{
-		String str = m_oProgram.getSource();
+		SourceLines oLines = m_oProgram.getSource();
 
-		SourceDlg Dlg = new SourceDlg(this, str);
+		ViewSourceDlg Dlg = new ViewSourceDlg(this, oLines);
 		Dlg.show();
+	}
+
+	/********************************************************************************
+	** Edit source action.
+	*/
+
+	public void onEdit()
+	{
+		EditSourceDlg Dlg = new EditSourceDlg(this, m_oProgram);
+		Dlg.show();
+
+		// Notify, if source modified.
+		if (Dlg.isSrcModified())
+			m_oProgram.notifyListeners(Program.EDITED);
 	}
 
 	/********************************************************************************
 	** Constants.
 	*/
 
-	// Default execute interval.
-	public static final int EXEC_INTERVAL = 500;
-
 	/********************************************************************************
 	** Members.
 	*/
 
 	// Child panels.
-	private Panel		m_pnlFields  = new Panel(new GridLayout(0, 1, 5, 5));
+	private DualColPanel m_pnlFields = new DualColPanel();
 
 	// Child controls.
-	private Button		m_btnClear = new Button("Clear");
-	private Button		m_btnExec  = new Button("Run");
-	private Button		m_btnView  = new Button("View Source");
+	private Button		m_btnClear   = new Button("Clear");
+	private Button 		m_btnImport  = new Button("Import");
+
+	private Button		m_btnExec    = new Button("Run");
+	private Choice		m_cbSpeed    = new Choice();
+
+	private Button		m_btnView    = new Button("View Source");
+	private Button		m_btnEdit    = new Button("Edit Source");
 
 	// Data members.
 	private Turtle		m_oTurtle;
