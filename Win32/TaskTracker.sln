@@ -13,17 +13,18 @@ Global
 		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
 	EndGlobalSection
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 2
+		SccNumberOfProjects = 3
 		SccProjectUniqueName0 = TaskTracker\\TaskTracker.vcproj
 		SccProjectName0 = \u0022$/Win32/TaskTracker\u0022,\u0020RAAAAAAA
 		SccLocalPath0 = TaskTracker
-		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
 		SccProjectUniqueName1 = WCL\\Wcl.vcproj
 		SccProjectName1 = \u0022$/Win32/Wcl\u0022,\u0020UAAAAAAA
 		SccLocalPath1 = WCL
-		SccProvider1 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
+		SccLocalPath2 = .
+		CanCheckoutShared = true
+		SolutionUniqueID = {1C5717E7-3F57-4C19-87B5-DF1F012C5E6B}
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
