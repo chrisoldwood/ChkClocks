@@ -19,7 +19,7 @@ public class CmdFactory
 		m_vHandlers.addElement(TurnRightCmd.getFactory());
 		m_vHandlers.addElement(TurnLeftCmd.getFactory());
 		m_vHandlers.addElement(RepeatCmd.getFactory());
-		m_vHandlers.addElement(EndRepeatCmd.getFactory());
+		m_vHandlers.addElement(EndCmd.getFactory());
 		m_vHandlers.addElement(AddVarCmd.getFactory());
 		m_vHandlers.addElement(SetVarCmd.getFactory());
 	}
@@ -30,6 +30,10 @@ public class CmdFactory
 
 	public Cmd createCmd(String strSource) throws InvalidCmdException
 	{
+		// Handle empty line specially.
+		if (strSource.length() == 0)
+			return new EmptyCmd();
+
 		// For all handlers...
 		for (int i = 0; i < m_vHandlers.size(); i++)
 		{
