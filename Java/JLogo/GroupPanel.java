@@ -13,7 +13,25 @@ public class GroupPanel extends BorderPanel
 
 	public GroupPanel()
 	{
-		this(null, Label.CENTER, new BorderLayout());
+		this(null, Label.CENTER, new BorderLayout(5, 5));
+	}
+
+	/********************************************************************************
+	** Constructor.
+	*/
+
+	public GroupPanel(String strLabel)
+	{
+		this(strLabel, Label.CENTER, new BorderLayout(5, 5));
+	}
+
+	/********************************************************************************
+	** Full constructor.
+	*/
+
+	public GroupPanel(String strLabel, LayoutManager lmManager)
+	{
+		this(strLabel, Label.CENTER, lmManager);
 	}
 
 	/********************************************************************************
@@ -22,7 +40,7 @@ public class GroupPanel extends BorderPanel
 
 	public GroupPanel(String strLabel, int nAlignment, LayoutManager lmManager)
 	{
-		super(ETCHED, new Insets(20, 10, 10, 10), lmManager);
+		super(ETCHED, new Insets(20, 14, 14, 14), lmManager);
 
 		m_strLabel   = strLabel;
 		m_nAlignment = nAlignment;
@@ -68,11 +86,12 @@ public class GroupPanel extends BorderPanel
 		m_rcLabel.height = getInsets().top;
 		m_rcLabel.x      = (dmSize.width - m_rcLabel.width) / 2;
 		m_rcLabel.y      = 0;
+		int nBaseline    = oMetrics.getHeight();
 
 		// Draw the label.
 		g.clearRect(m_rcLabel.x-LEFT_MARGIN, m_rcLabel.y, m_rcLabel.width+MARGINS, m_rcLabel.height);
 		g.setColor(Color.black);
-		g.drawString(m_strLabel, m_rcLabel.x, m_rcLabel.y+oMetrics.getHeight());
+		g.drawString(m_strLabel, m_rcLabel.x, ((m_rcLabel.height-nBaseline)/2)+nBaseline);
 	}
 
 	/********************************************************************************
