@@ -124,6 +124,6 @@ void CFileFinder::Find(CFileTreeNode& oNode, const char* pszMask, bool bRecurse)
 	// Recurse into subdirectories?
 	if (bRecurse)
 	{
-		ASSERT(false);
+		ASSERT_FALSE();
 	}
 }
