@@ -7,6 +7,10 @@ Project: "MDBL"=.\MDBL\MDBL.dsp - Package Owner=<4>
 
 Package=<5>
 {{{
+    begin source code control
+    "$/Win32/MDBL", OAAAAAAA
+    .\mdbl
+    end source code control
 }}}
 
 Package=<4>
@@ -19,6 +23,10 @@ Project: "PQT"=.\PQT\PQT.dsp - Package Owner=<4>
 
 Package=<5>
 {{{
+    begin source code control
+    "$/Win32/PQT", PAAAAAAA
+    .\PQT
+    end source code control
 }}}
 
 Package=<4>
@@ -37,6 +45,10 @@ Project: "Wcl"=.\WCL\Wcl.dsp - Package Owner=<4>
 
 Package=<5>
 {{{
+    begin source code control
+    "$/Win32/Wcl", UAAAAAAA
+    .\wcl
+    end source code control
 }}}
 
 Package=<4>
@@ -49,6 +61,10 @@ Global:
 
 Package=<5>
 {{{
+    begin source code control
+    "$/Win32", KAAAAAAA
+    .
+    end source code control
 }}}
 
 Package=<3>

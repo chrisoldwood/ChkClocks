@@ -7,6 +7,10 @@ Project: "TaskTracker"=.\TaskTracker\TaskTracker.dsp - Package Owner=<4>
 
 Package=<5>
 {{{
+    begin source code control
+    "$/Win32/TaskTracker", RAAAAAAA
+    .\TaskTracker
+    end source code control
 }}}
 
 Package=<4>
@@ -22,6 +26,10 @@ Project: "Wcl"=.\WCL\Wcl.dsp - Package Owner=<4>
 
 Package=<5>
 {{{
+    begin source code control
+    "$/Win32/WCL", UAAAAAAA
+    .\WCL
+    end source code control
 }}}
 
 Package=<4>
@@ -34,6 +42,10 @@ Global:
 
 Package=<5>
 {{{
+    begin source code control
+    "$/Win32", KAAAAAAA
+    .
+    end source code control
 }}}
 
 Package=<3>
