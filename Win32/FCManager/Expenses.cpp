@@ -1,13 +1,14 @@
 /******************************************************************************
+** (C) Chris Oldwood
 **
-** MODULE:		ROWSET.CPP
-** COMPONENT:	Memory Database Library.
-** DESCRIPTION:	CRowSet class definition.
+** MODULE:		EXPENSES.CPP
+** COMPONENT:	The Application.
+** DESCRIPTION:	CExpenses class definition.
 **
 *******************************************************************************
 */
 
-#include "MDBL.hpp"
+#include "AppHeaders.hpp"
 
 /******************************************************************************
 ** Method:		Constructor.
@@ -21,14 +22,19 @@
 *******************************************************************************
 */
 
-CRowSet::CRowSet()
+CExpenses::CExpenses(CMDB& oDB, CBalSheet& oBalSheet, CExpenseTypes& oTypes)
+	: CTable(oDB, "Expenses")
 {
+	// Create the table schema.
+	AddColumn("ItemID", oBalSheet, CBalSheet::ID,     CColumn::FOREIGNKEY);
+	AddColumn("TypeID", oTypes,    CExpenseTypes::ID, CColumn::FOREIGNKEY);
+	AddColumn("Paid",   MDCT_INT,  0,                 CColumn::DEFAULTS  );
 }
 
 /******************************************************************************
 ** Method:		Destructor.
 **
-** Description:	Free all rows.
+** Description:	.
 **
 ** Parameters:	None.
 **
@@ -37,30 +43,29 @@ CRowSet::CRowSet()
 *******************************************************************************
 */
 
-CRowSet::~CRowSet()
+CExpenses::~CExpenses()
 {
-	DeleteAll();
 }
 
 /******************************************************************************
-** Method:		Modified()
+** Method:		CreateRow()
 **
-** Description:	Checks if any of the rows have been modified.
+** Description:	Creates a new row and initialises it.
 **
 ** Parameters:	None.
 **
-** Returns:		true or false.
+** Returns:		The new row.
 **
 *******************************************************************************
 */
 
-bool CRowSet::Modified() const
+CRow& CExpenses::CreateRow()
 {
-	for (int i = 0; i < Count(); i++)
-	{
-		if (Row(i).Modified())
-			return true;
-	}
+	CRow& oRow = CTable::CreateRow();
 
-	return false;
+//	oRow[ITEM_ID] = 0;
+//	oRow[TYPE_ID] = 0;
+	oRow[PAID]    = 0;
+	
+	return oRow;
 }
