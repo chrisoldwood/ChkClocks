@@ -104,11 +104,39 @@ SOURCE=.\Gort\java\jlogos.zip
 # PROP Default_Filter ""
 # Begin Source File
 
-SOURCE=.\Gort\win32\chkclocks10r.zip
+SOURCE=.\Gort\win32\chkclocks.gif
 # End Source File
 # Begin Source File
 
-SOURCE=.\Gort\win32\chkclocks10s.zip
+SOURCE=.\Gort\win32\chkclocks11d.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\chkclocks11r.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\chkclocks11s.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\classgen11d.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\classgen11r.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\classgen11s.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\fcmanager.gif
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\fcmanager03d.zip
 # End Source File
 # Begin Source File
 
@@ -120,15 +148,19 @@ SOURCE=.\Gort\win32\fcmanager03s.zip
 # End Source File
 # Begin Source File
 
-SOURCE=.\Gort\win32\httpquery10d.zip
+SOURCE=.\Gort\win32\httpquery.gif
 # End Source File
 # Begin Source File
 
-SOURCE=.\Gort\win32\httpquery10r.zip
+SOURCE=.\Gort\win32\httpquery11d.zip
 # End Source File
 # Begin Source File
 
-SOURCE=.\Gort\win32\httpquery10s.zip
+SOURCE=.\Gort\win32\httpquery11r.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\httpquery11s.zip
 # End Source File
 # Begin Source File
 
@@ -140,43 +172,91 @@ SOURCE=.\Gort\win32\ncl.zip
 # End Source File
 # Begin Source File
 
-SOURCE=.\Gort\win32\netdde10d.zip
+SOURCE=.\Gort\win32\netdde11d.zip
 # End Source File
 # Begin Source File
 
-SOURCE=.\Gort\win32\netdde10r.zip
+SOURCE=.\Gort\win32\netdde11r.zip
 # End Source File
 # Begin Source File
 
-SOURCE=.\Gort\win32\netdde10s.zip
+SOURCE=.\Gort\win32\netdde11s.zip
 # End Source File
 # Begin Source File
 
-SOURCE=.\Gort\win32\pqt10r.zip
+SOURCE=.\Gort\win32\pqt.gif
 # End Source File
 # Begin Source File
 
-SOURCE=.\Gort\win32\pqt10s.zip
+SOURCE=.\Gort\win32\pqt11d.zip
 # End Source File
 # Begin Source File
 
-SOURCE=.\Gort\win32\tasktrak35r.zip
+SOURCE=.\Gort\win32\pqt11r.zip
 # End Source File
 # Begin Source File
 
-SOURCE=.\Gort\win32\tasktrak35s.zip
+SOURCE=.\Gort\win32\pqt11s.zip
 # End Source File
 # Begin Source File
 
-SOURCE=.\Gort\win32\utcachemgr10r.zip
+SOURCE=.\Gort\win32\socktrace11d.zip
 # End Source File
 # Begin Source File
 
-SOURCE=.\Gort\win32\utcachemgr10s.zip
+SOURCE=.\Gort\win32\socktrace11r.zip
 # End Source File
 # Begin Source File
 
-SOURCE=.\Gort\win32\utcmgr.gif
+SOURCE=.\Gort\win32\socktrace11s.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\tasktrak.gif
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\tasktrak36d.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\tasktrak36r.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\tasktrak36s.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\utcachemgr.gif
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\utcachemgr20d.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\utcachemgr20r.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\utcachemgr20s.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\utsvrbrw.gif
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\utsvrbrw09d.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\utsvrbrw09r.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\utsvrbrw09s.zip
 # End Source File
 # Begin Source File
 
@@ -190,6 +270,10 @@ SOURCE=.\Gort\default.htm
 # Begin Source File
 
 SOURCE=.\Gort\dos.htm
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\index.htm
 # End Source File
 # Begin Source File
 
