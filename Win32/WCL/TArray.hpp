@@ -74,11 +74,8 @@ public:
 	void Delete(int nIndex);
 	void DeleteAll();
 
-protected:
-	//
-	// Internal methods.
-	//
-	void Copy(const TPtrArray<T>& oRHS, bool bDeep);
+	void ShallowCopy(const TPtrArray<T>& oRHS);
+	void DeepCopy(const TPtrArray<T>& oRHS);
 
 private:
 	// Disallow copies for now.
@@ -127,6 +124,11 @@ private:
 **
 *******************************************************************************
 */
+
+#ifdef _DEBUG
+// For memory leak detection.
+#define new DBGCRT_NEW
+#endif
 
 template<class T> inline TArray<T>::TArray<T>()
 	: CArray(sizeof(T))
@@ -226,17 +228,23 @@ template<class T> inline void TPtrArray<T>::DeleteAll()
 	RemoveAll();
 }
 
-template<class T> inline void TPtrArray<T>::Copy(const TPtrArray<T>& oRHS, bool bDeep)
+template<class T> inline void TPtrArray<T>::ShallowCopy(const TPtrArray<T>& oRHS)
+{
+	for (int i = 0; i < oRHS.Size(); i++)
+		Add(oRHS.At(i));
+}
+
+template<class T> inline void TPtrArray<T>::DeepCopy(const TPtrArray<T>& oRHS)
 {
 	for (int i = 0; i < oRHS.Size(); i++)
 	{
-		Add(bDeep ? new T(*oRHS.At(i)) : oRHS.At(i));
+		Add(new T(*oRHS.At(i)));
 	}
 }
 
 /******************************************************************************
 **
-** Implementation of inline functions.
+** Implementation of TRefArray inline functions.
 **
 *******************************************************************************
 */
@@ -294,5 +302,9 @@ template<class T> inline void TRefArray<T>::Insert(int nIndex, T* pItem)
 
 	TPtrArray<T>::Insert(nIndex, pItem);
 }
+
+#ifdef _DEBUG
+#undef new
+#endif
 
 #endif //TARRAY_HPP
