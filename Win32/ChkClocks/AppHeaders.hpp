@@ -33,6 +33,7 @@
 
 // App data classes.
 #include "Clocks.hpp"
+#include "CheckJob.hpp"
 
 // App GUI classes.
 #include "AppCmds.hpp"
