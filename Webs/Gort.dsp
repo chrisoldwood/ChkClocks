@@ -104,6 +104,14 @@ SOURCE=.\Gort\java\jlogos.zip
 # PROP Default_Filter ""
 # Begin Source File
 
+SOURCE=.\Gort\win32\fcmanager03r.zip
+# End Source File
+# Begin Source File
+
+SOURCE=.\Gort\win32\fcmanager03s.zip
+# End Source File
+# Begin Source File
+
 SOURCE=.\Gort\win32\mdbl.zip
 # End Source File
 # Begin Source File
