@@ -75,7 +75,7 @@ public:
 	void DeleteAll();
 
 	void ShallowCopy(const TPtrArray<T>& oRHS);
-	void DeepCopy(const TPtrArray<T>& oRHS);
+	void DeepCopy   (const TPtrArray<T>& oRHS);
 
 private:
 	// Disallow copies for now.
@@ -230,12 +230,16 @@ template<class T> inline void TPtrArray<T>::DeleteAll()
 
 template<class T> inline void TPtrArray<T>::ShallowCopy(const TPtrArray<T>& oRHS)
 {
+	Reserve(oRHS.Size());
+
 	for (int i = 0; i < oRHS.Size(); i++)
 		Add(oRHS.At(i));
 }
 
 template<class T> inline void TPtrArray<T>::DeepCopy(const TPtrArray<T>& oRHS)
 {
+	Reserve(oRHS.Size());
+
 	for (int i = 0; i < oRHS.Size(); i++)
 	{
 		Add(new T(*oRHS.At(i)));
