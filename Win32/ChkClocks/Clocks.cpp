@@ -29,7 +29,8 @@ CClocks::CClocks(CMDB& oDB)
 	AddColumn("ID",        MDCT_IDENTITY, 0,            CColumn::IDENTITY);
 	AddColumn("Computer",  MDCT_FXDSTR,   COMPUTER_LEN, CColumn::DEFAULTS);
 	AddColumn("Domain",    MDCT_FXDSTR,   DOMAIN_LEN,   CColumn::DEFAULTS);
-	AddColumn("ClockDiff", MDCT_INT,      0,            CColumn::DEFAULTS);
+	AddColumn("AbsDiff",   MDCT_INT,      0,            CColumn::DEFAULTS);
+	AddColumn("RelDiff",   MDCT_INT,      0,            CColumn::DEFAULTS);
 	AddColumn("ErrorCode", MDCT_INT,      0,            CColumn::DEFAULTS);
 }
 
@@ -67,9 +68,10 @@ CRow& CClocks::CreateRow()
 
 //	oRow[ID]         = 
 //	oRow[COMPUTER]   =
-//	oRow[DOMAIN]     =
-//	oRow[CLOCK_DIFF] =
-//	oRow[ERROR_CODE] =
+	oRow[DOMAIN]     = "";
+	oRow[ABS_DIFF]   = 0;
+	oRow[REL_DIFF]   = 0;
+	oRow[ERROR_CODE] = 0;
 	
 	return oRow;
 }

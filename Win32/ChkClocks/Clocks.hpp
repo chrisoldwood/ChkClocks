@@ -36,7 +36,8 @@ public:
 		ID,
 		COMPUTER,
 		DOMAIN,
-		CLOCK_DIFF,
+		ABS_DIFF,
+		REL_DIFF,
 		ERROR_CODE,
 	};
 
