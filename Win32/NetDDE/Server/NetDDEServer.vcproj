@@ -2,8 +2,8 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="7.10"
-	Name="PQT"
-	SccProjectName="&quot;$/Win32/PQT&quot;, PAAAAAAA"
+	Name="NetDDEServer"
+	SccProjectName="&quot;$/Win32/NetDDE/Server&quot;, HRCAAAAA"
 	SccAuxPath=""
 	SccLocalPath="."
 	SccProvider="MSSCCI:Microsoft Visual SourceSafe">
@@ -23,7 +23,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\WCL,..\MDBL"
+				AdditionalIncludeDirectories="..\shared,..\..\wcl,..\..\ncl"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
@@ -35,7 +35,7 @@
 				RuntimeTypeInfo="TRUE"
 				UsePrecompiledHeader="2"
 				PrecompiledHeaderThrough="AppHeaders.hpp"
-				PrecompiledHeaderFile=".\Debug/PQT.pch"
+				PrecompiledHeaderFile=".\Debug/NetDDEServer.pch"
 				AssemblerListingLocation=".\Debug/"
 				ObjectFile=".\Debug/"
 				ProgramDataBaseFileName=".\Debug/"
@@ -49,11 +49,11 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				OutputFile=".\Debug/PQT.exe"
+				OutputFile=".\Debug/NetDDEServer.exe"
 				LinkIncremental="2"
 				SuppressStartupBanner="TRUE"
 				GenerateDebugInformation="TRUE"
-				ProgramDatabaseFile=".\Debug/PQT.pdb"
+				ProgramDatabaseFile=".\Debug/NetDDEServer.pdb"
 				SubSystem="2"
 				TargetMachine="1"/>
 			<Tool
@@ -62,7 +62,7 @@
 				MkTypLibCompatible="TRUE"
 				SuppressStartupBanner="TRUE"
 				TargetEnvironment="1"
-				TypeLibraryName=".\Debug/PQT.tlb"
+				TypeLibraryName=".\Debug/NetDDEServer.tlb"
 				HeaderFileName=""/>
 			<Tool
 				Name="VCPostBuildEventTool"/>
@@ -74,7 +74,7 @@
 				Name="VCResourceCompilerTool"
 				PreprocessorDefinitions="_DEBUG"
 				Culture="2057"
-				AdditionalIncludeDirectories="..\WCL"/>
+				AdditionalIncludeDirectories="..\..\wcl"/>
 			<Tool
 				Name="VCWebServiceProxyGeneratorTool"/>
 			<Tool
@@ -98,7 +98,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="..\WCL,..\MDBL"
+				AdditionalIncludeDirectories="..\shared,..\..\wcl,..\..\ncl"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
 				StringPooling="TRUE"
 				RuntimeLibrary="0"
@@ -107,7 +107,7 @@
 				RuntimeTypeInfo="TRUE"
 				UsePrecompiledHeader="2"
 				PrecompiledHeaderThrough="AppHeaders.hpp"
-				PrecompiledHeaderFile=".\Release/PQT.pch"
+				PrecompiledHeaderFile=".\Release/NetDDEServer.pch"
 				AssemblerListingLocation=".\Release/"
 				ObjectFile=".\Release/"
 				ProgramDataBaseFileName=".\Release/"
@@ -119,10 +119,10 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				OutputFile=".\Release/PQT.exe"
+				OutputFile=".\Release/NetDDEServer.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
-				ProgramDatabaseFile=".\Release/PQT.pdb"
+				ProgramDatabaseFile=".\Release/NetDDEServer.pdb"
 				SubSystem="2"
 				TargetMachine="1"/>
 			<Tool
@@ -131,7 +131,7 @@
 				MkTypLibCompatible="TRUE"
 				SuppressStartupBanner="TRUE"
 				TargetEnvironment="1"
-				TypeLibraryName=".\Release/PQT.tlb"
+				TypeLibraryName=".\Release/NetDDEServer.tlb"
 				HeaderFileName=""/>
 			<Tool
 				Name="VCPostBuildEventTool"/>
@@ -143,7 +143,7 @@
 				Name="VCResourceCompilerTool"
 				PreprocessorDefinitions="NDEBUG"
 				Culture="2057"
-				AdditionalIncludeDirectories="..\WCL"/>
+				AdditionalIncludeDirectories="..\..\wcl"/>
 			<Tool
 				Name="VCWebServiceProxyGeneratorTool"/>
 			<Tool
@@ -162,27 +162,6 @@
 		<Filter
 			Name="Source Files"
 			Filter="cpp;c;cxx;rc;def;r;odl;idl;hpj;bat">
-			<File
-				RelativePath="AboutDlg.cpp">
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-			</File>
 			<File
 				RelativePath="AppCmds.cpp">
 				<FileConfiguration
@@ -226,27 +205,6 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="AppToolBar.cpp">
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-			</File>
-			<File
 				RelativePath="AppWnd.cpp">
 				<FileConfiguration
 					Name="Debug|Win32">
@@ -268,7 +226,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="CfgConDlg.cpp">
+				RelativePath="ClientConnsDlg.cpp">
 				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
@@ -289,7 +247,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="ConnectDlg.cpp">
+				RelativePath="DDEConvsDlg.cpp">
 				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
@@ -310,49 +268,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="FindDlg.cpp">
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="ParamsDlg.cpp">
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="PQT.rc">
+				RelativePath="NetDDESvr.rc">
 				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
@@ -369,7 +285,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="PQTApp.cpp">
+				RelativePath="NetDDESvrApp.cpp">
 				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
@@ -390,7 +306,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="Query.cpp">
+				RelativePath="NetDDESvrPipe.cpp">
 				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
@@ -411,112 +327,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="QueryPrefsDlg.cpp">
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="RowDataDlg.cpp">
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="Scripts.cpp">
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="SelDriverDlg.cpp">
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="SelDSNDlg.cpp">
-				<FileConfiguration
-					Name="Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="0"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""
-						BasicRuntimeChecks="3"
-						BrowseInformation="1"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						Optimization="2"
-						AdditionalIncludeDirectories=""
-						PreprocessorDefinitions=""/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="TableGrid.cpp">
+				RelativePath="OptionsDlg.cpp">
 				<FileConfiguration
 					Name="Debug|Win32">
 					<Tool
@@ -541,7 +352,7 @@
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl">
 			<File
-				RelativePath="AboutDlg.hpp">
+				RelativePath="..\Shared\AboutDlg.hpp">
 			</File>
 			<File
 				RelativePath="AppCmds.hpp">
@@ -553,52 +364,40 @@
 				RelativePath="AppHeaders.hpp">
 			</File>
 			<File
-				RelativePath="AppToolBar.hpp">
-			</File>
-			<File
 				RelativePath="AppWnd.hpp">
 			</File>
 			<File
-				RelativePath="CfgConDlg.hpp">
+				RelativePath="ClientConnsDlg.hpp">
 			</File>
 			<File
-				RelativePath="ConConfig.hpp">
+				RelativePath="DDEConvsDlg.hpp">
 			</File>
 			<File
-				RelativePath="ConnectDlg.hpp">
+				RelativePath="..\Shared\LinkValue.hpp">
 			</File>
 			<File
-				RelativePath="FindDlg.hpp">
+				RelativePath="..\Shared\NetDDEDefs.hpp">
 			</File>
 			<File
-				RelativePath="ParamsDlg.hpp">
+				RelativePath="..\Shared\NetDDEPacket.hpp">
 			</File>
 			<File
-				RelativePath="PQTApp.hpp">
+				RelativePath="..\Shared\NetDDEPipe.hpp">
 			</File>
 			<File
-				RelativePath="Query.hpp">
+				RelativePath="NetDDESvrApp.hpp">
 			</File>
 			<File
-				RelativePath="QueryPrefsDlg.hpp">
+				RelativePath="NetDDESvrPipe.hpp">
+			</File>
+			<File
+				RelativePath="OptionsDlg.hpp">
 			</File>
 			<File
 				RelativePath="Resource.h">
 			</File>
 			<File
-				RelativePath="RowDataDlg.hpp">
-			</File>
-			<File
-				RelativePath="Scripts.hpp">
-			</File>
-			<File
-				RelativePath="SelDriverDlg.hpp">
-			</File>
-			<File
-				RelativePath="SelDSNDlg.hpp">
-			</File>
-			<File
-				RelativePath="TableGrid.hpp">
+				RelativePath="..\Shared\TraceOptionsDlg.hpp">
 			</File>
 		</Filter>
 		<Filter
@@ -611,34 +410,32 @@
 				RelativePath="App.rcv">
 			</File>
 			<File
-				RelativePath="Toolbar.bmp">
+				RelativePath="NetBoth.ico">
+			</File>
+			<File
+				RelativePath="NetIdle.ico">
+			</File>
+			<File
+				RelativePath="NetLost.ico">
+			</File>
+			<File
+				RelativePath="NetRecv.ico">
+			</File>
+			<File
+				RelativePath="NetSend.ico">
 			</File>
 		</Filter>
-		<Filter
-			Name="Scripts"
-			Filter="">
-			<Filter
-				Name="Pubs"
-				Filter="">
-				<File
-					RelativePath="Scripts\Pubs\Authors.sql">
-				</File>
-				<File
-					RelativePath="Scripts\Pubs\Publishers.sql">
-				</File>
-			</Filter>
-		</Filter>
 		<File
-			RelativePath="PQT.ini">
+			RelativePath="NetDDEServer.ini">
 		</File>
 		<File
-			RelativePath="ReadMe.txt">
+			RelativePath="..\Shared\ReadMe.txt">
 		</File>
 		<File
-			RelativePath="RelNotes.txt">
+			RelativePath="..\Shared\RelNotes.txt">
 		</File>
 		<File
-			RelativePath="TODO.Txt">
+			RelativePath="..\Shared\TODO.txt">
 		</File>
 	</Files>
 	<Globals>
