@@ -31,8 +31,9 @@ public:
 };
 
 // Template shortname.
-typedef TTreeNode<CDirFiles> CFileTreeNode;
-typedef TTree<CDirFiles>     CFileTree;
+typedef TTreeNode<CDirFiles>    CFileTreeNode;
+typedef TTree<CDirFiles>        CFileTree;
+typedef TTreeFwdIter<CDirFiles>	CFileTreeIter;
 
 /******************************************************************************
 ** 

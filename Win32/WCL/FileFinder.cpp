@@ -109,11 +109,19 @@ void CFileFinder::Find(CFileTreeNode& oNode, const char* pszMask, bool bRecurse)
 	{
 		do
 		{
+			CString strFileName = oInfo.cFileName;
+
 			// Is a directory?
 			if (oInfo.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
-				oNode.m_oData.m_astrDirs.Add(oInfo.cFileName);
+			{
+				if ((strFileName != ".") && (strFileName != ".."))
+					oNode.m_oData.m_astrDirs.Add(strFileName);
+			}
+			// Is a file.
 			else
-				oNode.m_oData.m_astrFiles.Add(oInfo.cFileName);
+			{
+				oNode.m_oData.m_astrFiles.Add(strFileName);
+			}
 		}
 		while (::FindNextFile(hFind, &oInfo));
 
@@ -124,6 +132,16 @@ void CFileFinder::Find(CFileTreeNode& oNode, const char* pszMask, bool bRecurse)
 	// Recurse into subdirectories?
 	if (bRecurse)
 	{
-		ASSERT_FALSE();
+		for (int i = 0; i < oNode.m_oData.m_astrDirs.Size(); ++i)
+		{
+			CFileTreeNode* pNode = new CFileTreeNode();
+
+			// Add new node to the tree.
+			pNode->m_oData.m_strPath = oNode.m_oData.m_strPath + oNode.m_oData.m_astrDirs[i];
+			oNode.AddNode(pNode);
+
+			// Enumerate sub-folder.
+			Find(*pNode, pszMask, true);
+		}
 	}
 }
