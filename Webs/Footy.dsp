@@ -23,8 +23,8 @@ CFG=Footy - Win32 Debug
 
 # Begin Project
 # PROP AllowPerConfigDependencies 0
-# PROP Scc_ProjName ""
-# PROP Scc_LocalPath ""
+# PROP Scc_ProjName ""$/Webs", HRBAAAAA"
+# PROP Scc_LocalPath "."
 MTL=midl.exe
 
 !IF  "$(CFG)" == "Footy - Win32 Release"
