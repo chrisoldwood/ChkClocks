@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.*;
 
 /********************************************************************************
 ** This is a dialog based class used to simulate Windows message boxes.
@@ -16,15 +17,22 @@ public class MsgBox extends ModalDialog
 	{
 		super(oParent, strTitle, NONE);
 
+		// Create the icons image, if not already.
+		if (s_imgIcons == null)
+		{
+			s_imgIcons = createImage(new MemoryImageSource(MsgBoxIcons.WIDTH, MsgBoxIcons.HEIGHT,
+															MsgBoxIcons.PIXELS, 0, MsgBoxIcons.WIDTH));
+		}
+
 		// Construct the dialog body.
-		m_pnlBody.add(BorderLayout.WEST,   m_imgIcon);
+		m_pnlBody.add(BorderLayout.WEST,   m_icnIcon);
 		m_pnlBody.add(BorderLayout.CENTER, m_lblText);
 		m_pnlControls.add(BorderLayout.CENTER, m_pnlBody);
 		setButtons(nButtons);
 
 		// Setup the icon and message.
 		m_lblText.setText(strMsg);
-//		m_imgIcon.setImage();
+		m_icnIcon.setImage(s_imgIcons, new Rectangle((ICON_HEIGHT * nIcon), 0, ICON_WIDTH, ICON_HEIGHT));
 	}
 
 	/********************************************************************************
@@ -112,9 +120,7 @@ public class MsgBox extends ModalDialog
 	{
 		MsgBox oDlg = new MsgBox(oParent, strTitle, strMsg, nButtons, nIcon);
 
-		oDlg.show();
-
-		return oDlg.m_nResult;
+		return oDlg.prompt();
 	}
 
 	/********************************************************************************
@@ -168,16 +174,23 @@ public class MsgBox extends ModalDialog
 	private static final String YES_LABEL = "  Yes   ";
 	private static final String NO_LABEL  = "   No   ";
 
+	// Icon dims.
+	public static final int ICON_WIDTH  = 32;
+	public static final int ICON_HEIGHT = 32;
+
 	/********************************************************************************
 	** Members.
 	*/
 
 	// The dialog controls.
 	private BorderPanel	m_pnlBody = new BorderPanel(new BorderLayout(5, 5));
-	private Icon		m_imgIcon = new Icon();
+	private Icon		m_icnIcon = new Icon();
 	private	LabelEx 	m_lblText = new LabelEx();
 
 	// The buttons.
 	private Button	m_btnYes;
 	private Button	m_btnNo;
+
+	// The icons image.
+	private static Image s_imgIcons;
 }
