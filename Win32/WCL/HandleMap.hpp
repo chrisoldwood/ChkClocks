@@ -54,7 +54,7 @@ public:
 	//
 	// Constructors/Destructor.
 	//
-	CHandleMap(int iSize);
+	CHandleMap();
 	~CHandleMap();
 
 	//
@@ -77,8 +77,8 @@ protected:
 *******************************************************************************
 */
 
-inline CHandleMap::CHandleMap(int iSize)
-	: CMap(iSize)
+inline CHandleMap::CHandleMap()
+	: CMap()
 {
 }
 
@@ -121,7 +121,7 @@ inline CHandleMapItem::~CHandleMapItem()
 
 inline uint CHandleMapItem::Key() const
 {
-	return (uint)m_hHandle;
+	return (uint) m_hHandle;
 }
 
 inline bool CHandleMapItem::operator==(const CMapItem& rRHS) const
