@@ -30,7 +30,7 @@ del /s /f *.ncb
 del /s /f *.opt
 del /s /f *.aps
 del /s /f *.bsc
-del /s /f *.scc
+REM del /s /f *.scc
 
 @ECHO Removing VC++ profiling/instrumentation files...
 
