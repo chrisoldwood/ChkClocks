@@ -72,11 +72,38 @@ public:
 };
 
 /******************************************************************************
+** 
+** Map hashing functions.
+**
+*******************************************************************************
+*/
+
+template<class K> inline uint HashKey(K Key)
+{
+	return (uint) Key;
+}
+
+template<> inline uint HashKey<CString>(CString Key)
+{
+	uint nValue  = 0;
+
+	for (const char* pChar = Key; *pChar != '\0'; ++pChar)
+		nValue = (nValue * 17) | *pChar;
+
+	return nValue;
+}
+
+/******************************************************************************
 **
 ** Implementation of inline functions.
 **
 *******************************************************************************
 */
+
+#ifdef _DEBUG
+// For memory leak detection.
+#define new DBGCRT_NEW
+#endif
 
 template<class K, class V> inline TMap<K, V>::TMap()
 {
@@ -108,7 +135,7 @@ template<class K, class V> inline void TMap<K, V>::RemoveAll()
 
 template<class K, class V> inline bool TMap<K, V>::Find(K Key, V& Value) const
 {
-	TMapItem<K, V>* pItem = (TMapItem<K, V>*) CMap::Find(TMapItem<K, V>(Key));
+	TMapItem<K, V>* pItem = static_cast<TMapItem<K, V>*>(CMap::Find(TMapItem<K, V>(Key)));
 
 	if (pItem != NULL)
 		Value = pItem->m_Value;
@@ -138,14 +165,18 @@ template<class K, class V> inline TMapItem<K, V>::~TMapItem()
 
 template<class K, class V> inline uint TMapItem<K, V>::Key() const
 {
-	return (uint) m_Key;
+	return HashKey(m_Key);
 }
 
 template<class K, class V> inline bool TMapItem<K, V>::operator==(const CMapItem& rRHS) const
 {
-	TMapItem<K, V>* pRHS = (TMapItem<K, V>*) &rRHS;
+	const TMapItem<K, V>* pRHS = static_cast<const TMapItem<K, V>*>(&rRHS);
 
 	return (m_Key == pRHS->m_Key);
 }
+
+#ifdef _DEBUG
+#undef new
+#endif
 
 #endif // TMAP_HPP
