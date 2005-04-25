@@ -15,7 +15,7 @@ public class TurtleStatusPanel extends GroupPanel
 
 	public TurtleStatusPanel(Turtle oTurtle)
 	{
-		super("Turtle Status", GroupPanel.CENTER, new BorderLayout(5, 5));
+		super("Turtle Status", GroupPanel.CENTER, new BorderLayout(0, 5));
 
 		// Save parameters.
 		m_oTurtle  = oTurtle;

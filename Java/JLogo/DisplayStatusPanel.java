@@ -14,7 +14,7 @@ public class DisplayStatusPanel extends GroupPanel
 
 	public DisplayStatusPanel(Display oDisplay)
 	{
-		super("Display Status", GroupPanel.CENTER, new BorderLayout(5, 5));
+		super("Display Status", GroupPanel.CENTER, new BorderLayout(0, 5));
 
 		// Save parameters.
 		m_oDisplay = oDisplay;

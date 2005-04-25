@@ -16,7 +16,7 @@ public class ProgramPanel extends GroupPanel
 
 	public ProgramPanel(Turtle oTurtle, Display oDisplay, Program oProgram)
 	{
-		super("Program", GroupPanel.CENTER, new BorderLayout(5, 5));
+		super("Program", GroupPanel.CENTER, new BorderLayout(0, 5));
 
 		// Save parameters.
 		m_oTurtle  = oTurtle;
