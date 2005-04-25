@@ -18,6 +18,18 @@ public class Icon extends Canvas
 	}
 
 	/********************************************************************************
+	** Constructor.
+	*/
+
+	public Icon(int nHorzAlign, int nVertAlign)
+	{
+		m_nHorzAlign = nHorzAlign;
+		m_nVertAlign = nVertAlign;
+		
+		setBackground(SystemColor.control);
+	}
+
+	/********************************************************************************
 	** Set the image to display.
 	*/
 
@@ -60,9 +72,22 @@ public class Icon extends Canvas
 	{
 		Dimension dmSize = getSize();
 
-		int nXOffset = (dmSize.width  - m_rcBounds.width ) / 2;
-		int nYOffset = (dmSize.height - m_rcBounds.height) / 2;
+		// Default to top-left.
+		int nXOffset = 0;
+		int nYOffset = 0;
 
+		// Calculate image top-left corner.
+		if (m_nHorzAlign == ALIGN_CENTRE)
+			nXOffset = (dmSize.width - m_rcBounds.width) / 2;
+		else if (m_nHorzAlign == ALIGN_RIGHT)
+			nXOffset = dmSize.width - m_rcBounds.width;
+		
+		if (m_nVertAlign == ALIGN_MIDDLE)
+			nXOffset = (dmSize.height - m_rcBounds.height) / 2;
+		else if (m_nVertAlign == ALIGN_BOTTOM)
+			nYOffset = dmSize.height - m_rcBounds.height;
+		
+		// Draw icon, if set.
 		if (m_imgIcon != null)
 		{
 			g.drawImage(m_imgIcon, nXOffset, nYOffset,
@@ -77,14 +102,26 @@ public class Icon extends Canvas
 	** Constants.
 	*/
 
+	// Horizontal alignment.
+	public static final int ALIGN_LEFT   = 0x01;
+	public static final int ALIGN_CENTRE = 0x02;
+	public static final int ALIGN_RIGHT  = 0x04;
+
+	// Vertical alignment.
+	public static final int ALIGN_TOP    = 0x01;
+	public static final int ALIGN_MIDDLE = 0x02;
+	public static final int ALIGN_BOTTOM = 0x04;
+
 	// Default icon dimesions.
-	private static final int DEF_WIDTH  = 32;
-	private static final int DEF_HEIGHT = 32;
+	public static final int DEF_WIDTH  = 32;
+	public static final int DEF_HEIGHT = 32;
 
 	/********************************************************************************
 	** Members.
 	*/
 
-	private Image		m_imgIcon;
-	private Rectangle	m_rcBounds = new Rectangle(0, 0, DEF_WIDTH, DEF_HEIGHT);
+	private int			m_nHorzAlign = ALIGN_CENTRE;
+	private int			m_nVertAlign = ALIGN_MIDDLE;
+	private Image		m_imgIcon    = null;
+	private Rectangle	m_rcBounds   = new Rectangle(0, 0, DEF_WIDTH, DEF_HEIGHT);
 }
