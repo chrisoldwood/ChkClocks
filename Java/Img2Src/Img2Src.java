@@ -21,7 +21,7 @@ public class Img2Src extends WebApp
 	{
 		// Create the applet panel.
 		setLayout(new BorderLayout(5, 5));
-		setBackground(Color.black);
+		setBackground(SystemColor.control);
 
 		add(BorderLayout.NORTH, m_pnlParams);
 		add(BorderLayout.CENTER, m_pnlData);
@@ -30,10 +30,15 @@ public class Img2Src extends WebApp
 		m_pnlButtons.add(m_btnLoad);
 		m_pnlButtons.add(m_btnConvert);
 
+		m_pnlParams.add(BorderLayout.NORTH, m_oTitleBar);
+		m_pnlParams.add(BorderLayout.WEST,   m_txtFileLabel);
 		m_pnlParams.add(BorderLayout.CENTER, m_ebFileName);
 		m_pnlParams.add(BorderLayout.EAST,   m_pnlButtons);
 
-		m_pnlData.add(BorderLayout.CENTER, m_icnImage);
+		m_pnlImage.add(m_icnImage);
+		m_pnlImage.setSize(Icon.DEF_WIDTH, Icon.DEF_HEIGHT);
+			
+		m_pnlData.add(BorderLayout.CENTER, m_pnlImage);
 		m_pnlData.add(BorderLayout.SOUTH,  m_ebBytes);
 
 		// Setup child controls.
@@ -138,6 +143,9 @@ public class Img2Src extends WebApp
 		// Display the new image.
 		m_icnImage.setImage(m_imgImage);
 		m_btnConvert.setEnabled(true);
+		
+		// Force scrollpane to resize.
+		m_pnlImage.doLayout();
 	}
 
 	/********************************************************************************
@@ -183,8 +191,21 @@ public class Img2Src extends WebApp
 			{ }
 
 			// Convert the pixels to hex values.
-			StringBuffer strRow  = new StringBuffer(1024);
-			int			 nPixCnt = Dlg.m_nPerRow;
+			StringBuffer strOutput = new StringBuffer(4096);
+			StringBuffer strRow    = new StringBuffer(1024);
+			int			 nPixCnt   = Dlg.m_nPerRow;
+
+			// Set output header.
+			strOutput.append("public class InlineImage\n");
+			strOutput.append("{\n");
+			strOutput.append("\tpublic static final int WIDTH  = " + w + ";\n");
+			strOutput.append("\tpublic static final int HEIGHT = " + h + ";\n");
+			strOutput.append("\n");
+			strOutput.append("\tpublic static final int[] PIXELS = new int[]\n");
+			strOutput.append("\t{\n");
+
+			// Indent for 1st row.
+			strRow.append("\t\t");
 
 			// For each row of pixels...
 			for (int i = 0; i < h; i++)
@@ -219,11 +240,13 @@ public class Img2Src extends WebApp
 
 					if (--nPixCnt == 0)
 					{
-						// Add row to the output box.
+						// Add row to the output buffer.
 						strRow.setCharAt(strRow.length()-1, '\n');
-						m_ebBytes.append(strRow.toString());
+						strOutput.append(strRow.toString());
 
+						// Reset for next row.
 						strRow.setLength(0);
+						strRow.append("\t\t");
 						nPixCnt = Dlg.m_nPerRow;
 					}
 				}
@@ -233,8 +256,15 @@ public class Img2Src extends WebApp
 			if (strRow.length() > 0)
 			{
 				strRow.setCharAt(strRow.length()-1, '\n');
-				m_ebBytes.append(strRow.toString());
+				strOutput.append(strRow.toString());
 			}
+			
+			// Set output footer.
+			strOutput.append("\t};\n");
+			strOutput.append("}\n");
+
+			// Copy to output window.
+			m_ebBytes.setText(strOutput.toString());
 		}
 	}
 
@@ -252,14 +282,17 @@ public class Img2Src extends WebApp
 	private Panel		m_pnlParams  = new Panel(new BorderLayout(5, 5));
 	private Panel		m_pnlButtons = new Panel(new GridLayout(1, 0, 5, 5));
 	private Panel		m_pnlData    = new Panel(new BorderLayout(5, 5));
+	private ScrollPane  m_pnlImage   = new ScrollPane(ScrollPane.SCROLLBARS_AS_NEEDED);
 
 	// Child controls.
-	private TextField	m_ebFileName = new TextField(50);
-	private Button		m_btnLoad    = new Button("Load");
-	private Button		m_btnConvert = new Button("Convert");
+	private TitleBar	m_oTitleBar    = new TitleBar();
+	private Label		m_txtFileLabel = new Label("File:", Label.RIGHT);
+	private TextField	m_ebFileName   = new TextField(50);
+	private Button		m_btnLoad      = new Button("Load");
+	private Button		m_btnConvert   = new Button("Convert");
 
-	private Icon		m_icnImage   = new Icon();
-	private TextArea	m_ebBytes    = new TextArea(30, 40);
+	private Icon		m_icnImage = new Icon(Icon.ALIGN_LEFT, Icon.ALIGN_TOP);
+	private TextArea	m_ebBytes  = new TextArea(30, 40);
 
 	// Data members.
 	private Image		m_imgImage;
