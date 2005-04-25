@@ -33,9 +33,10 @@ public class JLogo extends WebApp
 		m_pnlRight.add(BorderLayout.SOUTH,  m_pnlBottom);
 
 		// Layout the bottom panel.
-		m_pnlBottom.add(m_pnlProgram);
-		m_pnlBottom.add(m_pnlTurtle);
-		m_pnlBottom.add(m_pnlDisplay);
+		m_pnlBotLeft.add(m_pnlProgram);
+		m_pnlBotLeft.add(m_pnlTurtle);
+		m_pnlBotLeft.add(m_pnlDisplay);
+		m_pnlBottom.add(BorderLayout.WEST,  m_pnlBotLeft);
 		
 		// Layout the applet panel.
 		add(BorderLayout.NORTH,  m_oTitleBar);
@@ -162,5 +163,6 @@ public class JLogo extends WebApp
 	private Panel		m_pnlLeftTop = new Panel(new BorderLayout());
 	private Panel		m_pnlLeft    = new Panel(new BorderLayout());
 	private Panel		m_pnlRight   = new Panel(new BorderLayout());
-	private Panel		m_pnlBottom  = new Panel(new FlowLayout(FlowLayout.CENTER));
+	private Panel		m_pnlBotLeft = new Panel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+	private Panel		m_pnlBottom  = new Panel(new BorderLayout(0, 0));
 }
