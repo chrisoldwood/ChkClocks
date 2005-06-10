@@ -63,6 +63,9 @@
 				RelativePath="Gort\java\gort.zip">
 			</File>
 			<File
+				RelativePath=".\Gort\java\house.txt">
+			</File>
+			<File
 				RelativePath="Gort\java\icons.gif">
 			</File>
 			<File
@@ -70,6 +73,9 @@
 			</File>
 			<File
 				RelativePath="Gort\java\img2src.htm">
+			</File>
+			<File
+				RelativePath=".\Gort\java\img2src.jar">
 			</File>
 			<File
 				RelativePath="Gort\java\img2srcs.zip">
@@ -81,7 +87,13 @@
 				RelativePath="Gort\java\jlogo.htm">
 			</File>
 			<File
+				RelativePath=".\Gort\java\jlogo.jar">
+			</File>
+			<File
 				RelativePath="Gort\java\jlogos.zip">
+			</File>
+			<File
+				RelativePath=".\Gort\java\star.txt">
 			</File>
 		</Filter>
 		<Filter
@@ -112,13 +124,13 @@
 				RelativePath=".\Gort\win32\ddequery.gif">
 			</File>
 			<File
-				RelativePath=".\Gort\win32\ddequery10d.zip">
+				RelativePath=".\Gort\win32\ddequery15d.zip">
 			</File>
 			<File
-				RelativePath=".\Gort\win32\ddequery10r.zip">
+				RelativePath=".\Gort\win32\ddequery15r.zip">
 			</File>
 			<File
-				RelativePath=".\Gort\win32\ddequery10s.zip">
+				RelativePath=".\Gort\win32\ddequery15s.zip">
 			</File>
 			<File
 				RelativePath=".\Gort\win32\fcmanager.gif">
