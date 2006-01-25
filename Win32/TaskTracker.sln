@@ -8,23 +8,28 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wcl", "WCL\Wcl.vcproj", "{9
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Core", "Lib\Core\Core.vcproj", "{0B095FEF-2586-4073-A9FC-486881645B14}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XML", "Lib\XML\XML.vcproj", "{706D3603-2D7F-4F20-8F15-3377188B0DF8}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
 Global
-	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
-		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
-	EndGlobalSection
 	GlobalSection(SourceCodeControl) = preSolution
 		SccNumberOfProjects = 3
-		SccProjectUniqueName0 = TaskTracker\\TaskTracker.vcproj
-		SccProjectName0 = \u0022$/Win32/TaskTracker\u0022,\u0020RAAAAAAA
-		SccLocalPath0 = TaskTracker
-		CanCheckoutShared = true
-		SccProjectUniqueName1 = WCL\\Wcl.vcproj
-		SccProjectName1 = \u0022$/Win32/Wcl\u0022,\u0020UAAAAAAA
-		SccLocalPath1 = WCL
-		CanCheckoutShared = true
-		SccLocalPath2 = .
+		SccLocalPath0 = .
 		CanCheckoutShared = true
 		SolutionUniqueID = {1C5717E7-3F57-4C19-87B5-DF1F012C5E6B}
+		SccProjectUniqueName1 = TaskTracker\\TaskTracker.vcproj
+		SccProjectName1 = \u0022$/Win32/TaskTracker\u0022,\u0020RAAAAAAA
+		SccLocalPath1 = TaskTracker
+		CanCheckoutShared = true
+		SccProjectUniqueName2 = WCL\\Wcl.vcproj
+		SccProjectName2 = \u0022$/Win32/Wcl\u0022,\u0020UAAAAAAA
+		SccLocalPath2 = WCL
+		CanCheckoutShared = true
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
@@ -39,9 +44,20 @@ Global
 		{9068908B-734E-49E3-931A-9C1D29F3E693}.Debug.Build.0 = Debug|Win32
 		{9068908B-734E-49E3-931A-9C1D29F3E693}.Release.ActiveCfg = Release|Win32
 		{9068908B-734E-49E3-931A-9C1D29F3E693}.Release.Build.0 = Release|Win32
+		{0B095FEF-2586-4073-A9FC-486881645B14}.Debug.ActiveCfg = Debug|Win32
+		{0B095FEF-2586-4073-A9FC-486881645B14}.Debug.Build.0 = Debug|Win32
+		{0B095FEF-2586-4073-A9FC-486881645B14}.Release.ActiveCfg = Release|Win32
+		{0B095FEF-2586-4073-A9FC-486881645B14}.Release.Build.0 = Release|Win32
+		{706D3603-2D7F-4F20-8F15-3377188B0DF8}.Debug.ActiveCfg = Debug|Win32
+		{706D3603-2D7F-4F20-8F15-3377188B0DF8}.Debug.Build.0 = Debug|Win32
+		{706D3603-2D7F-4F20-8F15-3377188B0DF8}.Release.ActiveCfg = Release|Win32
+		{706D3603-2D7F-4F20-8F15-3377188B0DF8}.Release.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection
 	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
 	EndGlobalSection
 EndGlobal

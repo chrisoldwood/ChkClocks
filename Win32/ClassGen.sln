@@ -8,23 +8,24 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wcl", "wcl\Wcl.vcproj", "{B
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Core", "Lib\Core\Core.vcproj", "{0B095FEF-2586-4073-A9FC-486881645B14}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
 Global
-	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
-		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
-	EndGlobalSection
 	GlobalSection(SourceCodeControl) = preSolution
 		SccNumberOfProjects = 3
-		SccProjectUniqueName0 = ClassGen\\ClassGen.vcproj
-		SccProjectName0 = \u0022$/Win32/ClassGen\u0022,\u0020CNCAAAAA
-		SccLocalPath0 = ClassGen
-		CanCheckoutShared = true
-		SccProjectUniqueName1 = wcl\\Wcl.vcproj
-		SccProjectName1 = \u0022$/Win32/Wcl\u0022,\u0020UAAAAAAA
-		SccLocalPath1 = wcl
-		CanCheckoutShared = true
-		SccLocalPath2 = .
+		SccLocalPath0 = .
 		CanCheckoutShared = true
 		SolutionUniqueID = {FD0FE997-5E59-4080-8D93-1B0AE66E3AC2}
+		SccProjectUniqueName1 = ClassGen\\ClassGen.vcproj
+		SccProjectName1 = \u0022$/Win32/ClassGen\u0022,\u0020CNCAAAAA
+		SccLocalPath1 = ClassGen
+		CanCheckoutShared = true
+		SccProjectUniqueName2 = wcl\\Wcl.vcproj
+		SccProjectName2 = \u0022$/Win32/Wcl\u0022,\u0020UAAAAAAA
+		SccLocalPath2 = wcl
+		CanCheckoutShared = true
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
@@ -39,9 +40,16 @@ Global
 		{BD32FFD4-7F49-471D-8435-53443A5F6F90}.Debug.Build.0 = Debug|Win32
 		{BD32FFD4-7F49-471D-8435-53443A5F6F90}.Release.ActiveCfg = Release|Win32
 		{BD32FFD4-7F49-471D-8435-53443A5F6F90}.Release.Build.0 = Release|Win32
+		{0B095FEF-2586-4073-A9FC-486881645B14}.Debug.ActiveCfg = Debug|Win32
+		{0B095FEF-2586-4073-A9FC-486881645B14}.Debug.Build.0 = Debug|Win32
+		{0B095FEF-2586-4073-A9FC-486881645B14}.Release.ActiveCfg = Release|Win32
+		{0B095FEF-2586-4073-A9FC-486881645B14}.Release.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection
 	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
 	EndGlobalSection
 EndGlobal
