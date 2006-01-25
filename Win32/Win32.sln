@@ -127,8 +127,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XML", "Lib\XML\XML.vcproj",
 	EndProjectSection
 EndProject
 Global
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 20
+		SccNumberOfProjects = 22
 		SccLocalPath0 = .
 		CanCheckoutShared = true
 		SolutionUniqueID = {B8FD6DEF-9015-4669-A676-FAD91B6EAA82}
@@ -206,6 +209,14 @@ Global
 		SccProjectUniqueName19 = NetDDE\\Shared\\NetDDEShared.vcproj
 		SccProjectName19 = \u0022$/Win32/NetDDE/Shared\u0022,\u0020IRCAAAAA
 		SccLocalPath19 = NetDDE\\Shared
+		CanCheckoutShared = true
+		SccProjectUniqueName20 = Lib\\Core\\Core.vcproj
+		SccProjectName20 = \u0022$/Win32/Lib/Core\u0022,\u0020QWDAAAAA
+		SccLocalPath20 = Lib\\Core
+		CanCheckoutShared = true
+		SccProjectUniqueName21 = Lib\\XML\\XML.vcproj
+		SccProjectName21 = \u0022$/Win32/Lib/XML\u0022,\u0020RWDAAAAA
+		SccLocalPath21 = Lib\\Xml
 		CanCheckoutShared = true
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
@@ -301,8 +312,5 @@ Global
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection
 	GlobalSection(ExtensibilityAddIns) = postSolution
-	EndGlobalSection
-	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
-		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
 	EndGlobalSection
 EndGlobal
