@@ -43,6 +43,8 @@ void TraceEx(const char* pszFormat, ...);
 // For tracking memory allocations.
 #define DBGCRT_NEW	new(_NORMAL_BLOCK, __FILE__, __LINE__)
 
+#define DEBUG_USE_ONLY(x)
+
 #else // NDEBUG
 
 /******************************************************************************
@@ -62,6 +64,8 @@ void TraceEx(const char* pszFormat, ...);
 #define TRACE3(x,a,b,c)
 #define TRACE4(x,a,b,c,d)
 #define TRACE5(x,a,b,c,d,e)
+
+#define DEBUG_USE_ONLY(x)	(x)
 
 #endif // _DEBUG
 
