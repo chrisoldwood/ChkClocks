@@ -1,10 +1,4 @@
 @ECHO OFF
-@ECHO Removing Java intermediate files...
-
-del /s /f *.class
-del /s /f *.jar
-del /s /f *.cab
-
 @ECHO Removing VC++ intermediate files...
 
 del /s /f *.pch
