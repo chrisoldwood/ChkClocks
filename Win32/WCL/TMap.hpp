@@ -34,6 +34,7 @@ public:
 	void  Add(K Key, V Value);
 	void  Remove(K Key);
 	bool  Find(K Key, V& Value) const;
+	V     Find(K Key) const;
 	bool  Exists(K Key) const;
 };
 
@@ -127,6 +128,15 @@ template<class K, class V> inline bool TMap<K, V>::Find(K Key, V& Value) const
 		Value = pItem->m_Value;
 
 	return (pItem != NULL);
+}
+
+template<class K, class V> inline V TMap<K, V>::Find(K Key) const
+{
+	TMapItem<K, V>* pItem = static_cast<TMapItem<K, V>*>(CMap::Find(TMapItem<K, V>(Key)));
+
+	ASSERT(pItem != NULL);
+
+	return pItem->m_Value;
 }
 
 template<class K, class V> inline bool TMap<K, V>::Exists(K Key) const
