@@ -99,7 +99,7 @@ void CFileFinder::Find(CFileTreeNode& oNode, const char* pszMask, bool bRecurse)
 {
 	HANDLE			hFind;
 	WIN32_FIND_DATA	oInfo;
-	CPath			strFind = oNode.m_oData.m_strPath + pszMask;
+	CPath			strFind = oNode.m_oData.m_strPath / pszMask;
 
 	// Find the files...
 	hFind = ::FindFirstFile(strFind, &oInfo);
@@ -137,7 +137,7 @@ void CFileFinder::Find(CFileTreeNode& oNode, const char* pszMask, bool bRecurse)
 			CFileTreeNode* pNode = new CFileTreeNode();
 
 			// Add new node to the tree.
-			pNode->m_oData.m_strPath = oNode.m_oData.m_strPath + oNode.m_oData.m_astrDirs[i];
+			pNode->m_oData.m_strPath = oNode.m_oData.m_strPath / oNode.m_oData.m_astrDirs[i];
 			oNode.AddNode(pNode);
 
 			// Enumerate sub-folder.
