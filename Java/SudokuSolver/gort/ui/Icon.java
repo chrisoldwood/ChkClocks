@@ -83,7 +83,7 @@ public class Icon extends Canvas
 			nXOffset = dmSize.width - m_rcBounds.width;
 		
 		if (m_nVertAlign == ALIGN_MIDDLE)
-			nXOffset = (dmSize.height - m_rcBounds.height) / 2;
+			nYOffset = (dmSize.height - m_rcBounds.height) / 2;
 		else if (m_nVertAlign == ALIGN_BOTTOM)
 			nYOffset = dmSize.height - m_rcBounds.height;
 		
