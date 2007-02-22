@@ -1,5 +1,9 @@
 Microsoft Visual Studio Solution File, Format Version 1.00
 Project("{66355F20-A65B-11D0-BFB5-00A0C91EBFA0}") = "SudokuSolver", "SudokuSolver.vjp", "{899ED4BC-A693-49D5-91E9-1263DA1A85EF}"
+	ProjectSection(SourceCodeControl) = preProject
+		SccProjectName = \u0022$/Java/SudokuSolver\u0022,\u0020NYDAAAAA
+		SccLocalPath = .
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(LocalDeployment) = postSolution
@@ -7,6 +11,10 @@ Global
 	EndGlobalSection
 	GlobalSection(BuildOrder) = postSolution
 		0 = {899ED4BC-A693-49D5-91E9-1263DA1A85EF}
+	EndGlobalSection
+	GlobalSection(SourceCodeControl) = preSolution
+		SccProjectName = \u0022$/Java/SudokuSolver\u0022,\u0020NYDAAAAA
+		SccLocalPath = .
 	EndGlobalSection
 	GlobalSection(DeploymentRoot) = postSolution
 	EndGlobalSection
