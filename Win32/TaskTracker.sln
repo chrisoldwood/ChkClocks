@@ -12,13 +12,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Core", "Lib\Core\Core.vcpro
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "XML", "Lib\XML\XML.vcproj", "{706D3603-2D7F-4F20-8F15-3377188B0DF8}"
-	ProjectSection(ProjectDependencies) = postProject
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 3
+		SccNumberOfProjects = 4
 		SccLocalPath0 = .
 		CanCheckoutShared = true
 		SolutionUniqueID = {1C5717E7-3F57-4C19-87B5-DF1F012C5E6B}
@@ -30,10 +26,16 @@ Global
 		SccProjectName2 = \u0022$/Win32/Wcl\u0022,\u0020UAAAAAAA
 		SccLocalPath2 = WCL
 		CanCheckoutShared = true
+		SccProjectUniqueName3 = Lib\\Core\\Core.vcproj
+		SccProjectName3 = \u0022$/Win32/Lib/Core\u0022,\u0020QWDAAAAA
+		SccLocalPath3 = Lib\\Core
+		CanCheckoutShared = true
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
 		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
 	EndGlobalSection
 	GlobalSection(ProjectConfiguration) = postSolution
 		{E72C4765-A010-4511-8E40-12A206F6FE7B}.Debug.ActiveCfg = Debug|Win32
@@ -48,10 +50,6 @@ Global
 		{0B095FEF-2586-4073-A9FC-486881645B14}.Debug.Build.0 = Debug|Win32
 		{0B095FEF-2586-4073-A9FC-486881645B14}.Release.ActiveCfg = Release|Win32
 		{0B095FEF-2586-4073-A9FC-486881645B14}.Release.Build.0 = Release|Win32
-		{706D3603-2D7F-4F20-8F15-3377188B0DF8}.Debug.ActiveCfg = Debug|Win32
-		{706D3603-2D7F-4F20-8F15-3377188B0DF8}.Debug.Build.0 = Debug|Win32
-		{706D3603-2D7F-4F20-8F15-3377188B0DF8}.Release.ActiveCfg = Release|Win32
-		{706D3603-2D7F-4F20-8F15-3377188B0DF8}.Release.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection
