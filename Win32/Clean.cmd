@@ -5,6 +5,7 @@ del /s /f *.pch
 del /s /f *.sbr
 del /s /f *.obj
 del /s /f *.res
+del /s /f BuildLog.htm
 
 @ECHO Removing VC++ target files...
 
@@ -38,5 +39,5 @@ del /s /f *.stt
 @ECHO Removing log files...
 
 del /s /f *.log
-del /s /f CrtReports.txt
+del /s /f TraceLog.txt
 del /s /f *.sup
