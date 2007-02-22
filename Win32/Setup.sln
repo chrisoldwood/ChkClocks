@@ -13,31 +13,38 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wcl", "wcl\Wcl.vcproj", "{C
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Core", "Lib\Core\Core.vcproj", "{0B095FEF-2586-4073-A9FC-486881645B14}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
 Global
-	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
-		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
-	EndGlobalSection
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 4
-		SccProjectUniqueName0 = MkSetup\\MkSetup.vcproj
-		SccProjectName0 = \u0022$/Win32/MkSetup\u0022,\u0020YLDAAAAA
-		SccLocalPath0 = MkSetup
-		CanCheckoutShared = true
-		SccProjectUniqueName1 = setup\\Setup.vcproj
-		SccProjectName1 = \u0022$/Win32/Setup\u0022,\u0020IIDAAAAA
-		SccLocalPath1 = setup
-		CanCheckoutShared = true
-		SccProjectUniqueName2 = wcl\\Wcl.vcproj
-		SccProjectName2 = \u0022$/Win32/Wcl\u0022,\u0020UAAAAAAA
-		SccLocalPath2 = wcl
-		CanCheckoutShared = true
-		SccLocalPath3 = .
+		SccNumberOfProjects = 5
+		SccLocalPath0 = .
 		CanCheckoutShared = true
 		SolutionUniqueID = {91C2E70E-32BA-4936-AF4B-E1A61191BDE4}
+		SccProjectUniqueName1 = MkSetup\\MkSetup.vcproj
+		SccProjectName1 = \u0022$/Win32/MkSetup\u0022,\u0020YLDAAAAA
+		SccLocalPath1 = MkSetup
+		CanCheckoutShared = true
+		SccProjectUniqueName2 = setup\\Setup.vcproj
+		SccProjectName2 = \u0022$/Win32/Setup\u0022,\u0020IIDAAAAA
+		SccLocalPath2 = setup
+		CanCheckoutShared = true
+		SccProjectUniqueName3 = wcl\\Wcl.vcproj
+		SccProjectName3 = \u0022$/Win32/Wcl\u0022,\u0020UAAAAAAA
+		SccLocalPath3 = wcl
+		CanCheckoutShared = true
+		SccProjectUniqueName4 = Lib\\Core\\Core.vcproj
+		SccProjectName4 = \u0022$/Win32/Lib/Core\u0022,\u0020QWDAAAAA
+		SccLocalPath4 = Lib\\Core
+		CanCheckoutShared = true
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
 		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
 	EndGlobalSection
 	GlobalSection(ProjectConfiguration) = postSolution
 		{5344202D-AE96-4006-A03E-E8FEFF17D736}.Debug.ActiveCfg = Debug|Win32
@@ -52,9 +59,16 @@ Global
 		{C54C8C8D-7443-4733-A7E8-B38CE6BA6D1C}.Debug.Build.0 = Debug|Win32
 		{C54C8C8D-7443-4733-A7E8-B38CE6BA6D1C}.Release.ActiveCfg = Release|Win32
 		{C54C8C8D-7443-4733-A7E8-B38CE6BA6D1C}.Release.Build.0 = Release|Win32
+		{0B095FEF-2586-4073-A9FC-486881645B14}.Debug.ActiveCfg = Debug|Win32
+		{0B095FEF-2586-4073-A9FC-486881645B14}.Debug.Build.0 = Debug|Win32
+		{0B095FEF-2586-4073-A9FC-486881645B14}.Release.ActiveCfg = Release|Win32
+		{0B095FEF-2586-4073-A9FC-486881645B14}.Release.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection
 	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
 	EndGlobalSection
 EndGlobal
