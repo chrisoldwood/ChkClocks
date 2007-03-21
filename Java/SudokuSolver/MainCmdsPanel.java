@@ -1,5 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.io.*;
+import java.net.*;
 import gort.ui.*;
 
 /********************************************************************************
@@ -95,7 +97,7 @@ public class MainCmdsPanel extends Panel
 		}
 		catch (Exception e)
 		{
-			MsgBox.fatal(m_oApplet, SudokuSolver.APPLET_NAME, e.toString());
+			MsgBox.fatal(e.toString());
 			e.printStackTrace();
 		}
 	}
@@ -109,6 +111,8 @@ public class MainCmdsPanel extends Panel
 		// Handle button press.
 		if (oButton == m_btnNew)
 		{
+			MsgBox.notify(NEW_MSG);
+
 			m_oPuzzle.definePuzzle();
 		}
 		else if (oButton == m_btnLoad)
@@ -121,7 +125,12 @@ public class MainCmdsPanel extends Panel
 		}
 		else if (oButton == m_btnStart)
 		{
-			m_oPuzzle.startPuzzle();
+			MsgBox.notify(START_MSG);
+
+			if (!m_oPuzzle.startPuzzle())
+			{
+				MsgBox.fatal(START_ERROR_MSG);
+			}
 		}
 		else if (oButton == m_btnReset)
 		{
@@ -131,13 +140,45 @@ public class MainCmdsPanel extends Panel
 		{
 			m_oPuzzle.checkPuzzle();
 		}
+		else if (oButton == m_btnHint)
+		{
+			m_oPuzzle.showHint();
+		}
+		else if (oButton == m_btnSolve)
+		{
+			m_oPuzzle.solvePuzzle();
+		}
 		else if (oButton == m_btnHelp)
 		{
-			MsgBox.notify(m_oApplet, SudokuSolver.APPLET_NAME, HELP);
+			try
+			{
+				URL          urlManual = new URL(m_oApplet.getCodeBase(), MANUAL_TXT);
+				StringBuffer sbManual  = new StringBuffer();
+				char[]       acBuffer  = new char[1024];
+				int          nRead     = -1;
+
+				// Load the HelpFile.
+				InputStreamReader oReader = new InputStreamReader(urlManual.openStream());
+
+				while ((nRead = oReader.read(acBuffer)) != -1)
+					sbManual.append(acBuffer, 0, nRead);
+
+				ManualDlg Dlg = new ManualDlg(m_oApplet, sbManual.toString());
+
+				Dlg.prompt();
+			}
+			catch (Exception e)
+			{
+				MsgBox.fatal(e.toString());
+				e.printStackTrace();
+			}
 		}
 
 		// Update UI.
 		UpdateButtons();
+
+		// Restore focus to grid.
+		m_oPuzzle.restoreFocus();
 	}
 
 	/********************************************************************************
@@ -178,6 +219,8 @@ public class MainCmdsPanel extends Panel
 			m_btnSave.setEnabled(true);
 			m_btnReset.setEnabled(true);
 			m_btnCheck.setEnabled(true);
+			m_btnHint.setEnabled(true);
+			m_btnSolve.setEnabled(true);
 		}
 	}
 
@@ -194,9 +237,9 @@ public class MainCmdsPanel extends Panel
 		if (bEntered)
 		{
 			if      (oButton == m_btnNew)
-				str = "Click to enter a new puzzle to solve";
+				str = "Click to enter a new puzzle that you want to solve";
 			else if (oButton == m_btnLoad)
-				str = "Click to load a puzzle";
+				str = "Click to load a puzzle previously saved from Sudoku Solver";
 			else if (oButton == m_btnSave)
 				str = "Click to save the current puzzle";
 			else if (oButton == m_btnStart)
@@ -204,11 +247,11 @@ public class MainCmdsPanel extends Panel
 			else if (oButton == m_btnReset)
 				str = "Click to remove your answers so that you can start again";
 			else if (oButton == m_btnCheck)
-				str = "Click to check that the numbers you have enetered are valid";
+				str = "Click to check that the numbers you have entered are valid";
 			else if (oButton == m_btnHint)
-				str = "Click to provide a hint about which square to answer next";
+				str = "Click to provide a hint about which square(s) to answer next";
 			else if (oButton == m_btnSolve)
-				str = "Click to automatically solve the puzzle";
+				str = "Click to show the partial solution based on the current puzzle state";
 			else if (oButton == m_btnHelp)
 				str = "Click to display the help window";
 		}
@@ -225,7 +268,7 @@ public class MainCmdsPanel extends Panel
 		if (bEntered)
 		{
 			if (m_oPuzzle.getUserState() == PuzzleGrid.DEFINING_PUZZLE)
-				str = "Press 1..9 to enter the predefined answer into the square or Delete to remove it";
+				str = "Press 1..9 to enter the number into the square or Delete to remove it";
 			else if (m_oPuzzle.getUserState() == PuzzleGrid.SOLVING_PUZZLE)
 				str = "Press 1..9 to enter an answer, Ctrl+1..9 to enter possible answers or Delete to remove it";
 		}
@@ -247,7 +290,7 @@ public class MainCmdsPanel extends Panel
 			}
 			catch (Exception e)
 			{
-				MsgBox.fatal(m_oApplet, SudokuSolver.APPLET_NAME, e.toString());
+				MsgBox.fatal(e.toString());
 				e.printStackTrace();
 			}
 		}
@@ -260,7 +303,7 @@ public class MainCmdsPanel extends Panel
 			}
 			catch (Exception e)
 			{
-				MsgBox.fatal(m_oApplet, SudokuSolver.APPLET_NAME, e.toString());
+				MsgBox.fatal(e.toString());
 				e.printStackTrace();
 			}
 		}
@@ -280,7 +323,7 @@ public class MainCmdsPanel extends Panel
 			}
 			catch (Exception e)
 			{
-				MsgBox.fatal(m_oApplet, SudokuSolver.APPLET_NAME, e.toString());
+				MsgBox.fatal(e.toString());
 				e.printStackTrace();
 			}
 		}
@@ -293,7 +336,7 @@ public class MainCmdsPanel extends Panel
 			}
 			catch (Exception e)
 			{
-				MsgBox.fatal(m_oApplet, SudokuSolver.APPLET_NAME, e.toString());
+				MsgBox.fatal(e.toString());
 				e.printStackTrace();
 			}
 		}
@@ -303,21 +346,26 @@ public class MainCmdsPanel extends Panel
 	** Contants.
 	*/
 
-	public static final String HELP =
+	private static final String NEW_MSG =
 
-	"First enter the predefined puzzle answers into the grid by clicking\n" +
-	"the relevant squares and using the number keys 1..9.\n" +
-	"\n" +
-	"Next click the 'Start' button to begin completing the puzzle. Once\n" +
-	"again click the squares (or use the cursor keys) and press the\n" +
-	"number keys 1..9 to enter your answers. You can remove an answer\n" +
-	"by pressing Delete. If you have more than one possible answer\n" +
-	"you can enter them all by pressing Ctrl and 1..9.\n" +
-	"\n" +
-	"If you want to check that you haven't made a mistake you can use\n" +
-	"the 'Check' button to highlight errors. You can start again by pressing\n" +
-	"'Reset', or enter a different puzzle by pressing 'New Puzzle'."+
-	"";
+	"Enter the numbers aleady provided by the puzzle author\n" +
+	"by using the keys 1..9. You can correct any mistakes by\n" +
+	"pressing Delete or just entring the correct number.\n\n" +
+	"Then press 'Start' when you are ready to begin solving it.";
+
+	private static final String START_MSG =
+
+	"Enter your final answers using the number keys 1..9.\n" +
+	"You can alse use Ctrl+1..9 to enter multiple different\n" +
+	"possible answers in the same square.\n" +
+	"Press Delete to remove an answer from a square.";
+
+	private static final String START_ERROR_MSG =
+
+	"The puzzle contained one or more errors which are highlighted.\n\n" +
+	"After you have corrected them press 'Start' again.";
+
+	public static final String MANUAL_TXT = "manual.txt";
 
 	/********************************************************************************
 	** Members.
