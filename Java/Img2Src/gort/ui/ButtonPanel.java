@@ -14,10 +14,18 @@ public class ButtonPanel extends Panel
 
 	public ButtonPanel()
 	{
-		super(new FlowLayout(FlowLayout.CENTER, 5, 5));
-
 		// Create this panel.
+		setLayout(m_lmLayout);
 		add(m_pnlButtons);
+	}
+
+	/********************************************************************************
+	** Sets the FlowLayout alignment of the buttons.
+	*/
+
+	public void setAlignment(int nAlignment)
+	{
+		m_lmLayout.setAlignment(nAlignment);
 	}
 
 	/********************************************************************************
@@ -37,5 +45,6 @@ public class ButtonPanel extends Panel
 	** Members.
 	*/
 
-	protected Panel	m_pnlButtons = new Panel(new GridLayout(1, 0, 5, 5));
+	protected Panel			m_pnlButtons = new Panel(new GridLayout(1, 0, 5, 5));
+	protected FlowLayout	m_lmLayout   = new FlowLayout(FlowLayout.CENTER, 5, 5);
 }
