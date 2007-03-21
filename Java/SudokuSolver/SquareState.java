@@ -43,6 +43,16 @@ public class SquareState
 	}
 
 	/********************************************************************************
+	** Query if the square has been answered, either by a predefined answer or by the
+	** user.
+	*/
+
+	public boolean isAnswered()
+	{
+		return ( (m_nState == PREDEFINED_ANSWER) || (m_nState == USER_ANSWER) );
+	}
+
+	/********************************************************************************
 	** Get the answer.
 	*/
 
