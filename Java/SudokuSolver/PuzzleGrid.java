@@ -84,7 +84,7 @@ public class PuzzleGrid extends Panel
 
 	public void loadPuzzle()
 	{
-		LoadSaveDlg Dlg = new LoadSaveDlg(m_oApplet, "Load Puzzle", "");
+		LoadSaveDlg Dlg = new LoadSaveDlg(m_oApplet);
 
 		if (Dlg.prompt() == Dlg.OK)
 		{
@@ -116,7 +116,7 @@ public class PuzzleGrid extends Panel
 	{
 		String str = PuzzleSerialiser.write(m_aoSquares);
 
-		LoadSaveDlg Dlg = new LoadSaveDlg(m_oApplet, "Save Puzzle", str);
+		LoadSaveDlg Dlg = new LoadSaveDlg(m_oApplet, str);
 
 		Dlg.prompt();
 	}
@@ -126,14 +126,16 @@ public class PuzzleGrid extends Panel
 	** trying to solve it themselves.
 	*/
 
-	public void startPuzzle()
+	public boolean startPuzzle()
 	{
 		if (!checkPuzzle())
-			return;
+			return false;
 
 		clearStyles();
 
 		m_nUserState = SOLVING_PUZZLE;
+
+		return true;
 	}
 
 	/********************************************************************************
@@ -183,6 +185,92 @@ public class PuzzleGrid extends Panel
 	}
 
 	/********************************************************************************
+	** Show a hint for those squares that can be answered given the current state of
+	** the puzzle.
+	*/
+
+	public void showHint()
+	{
+		SquareState[][]	aoStates   = new SquareState[PUZZLE_SIZE][PUZZLE_SIZE];
+		boolean[][][]	abSolution = new boolean[PUZZLE_SIZE][PUZZLE_SIZE][PUZZLE_SIZE];
+
+		// Populate the input array.
+		for (int y = 0; y < PUZZLE_SIZE; ++y)
+		{
+			for (int x = 0; x < PUZZLE_SIZE; ++x)
+			{
+				aoStates[x][y] = m_aoSquares[x][y].getState();
+			}
+		}
+
+		// Work out which squares can be solved.
+		PuzzleSolver oSolver = new PuzzleSolver(aoStates, abSolution);
+
+		oSolver.solveSquares();
+
+		// Show any hints...
+		for (int y = 0; y < PUZZLE_SIZE; ++y)
+		{
+			for (int x = 0; x < PUZZLE_SIZE; ++x)
+			{
+				// No answer yet?
+				if (!m_aoSquares[x][y].getState().isAnswered())
+				{
+					int nAnswer = oSolver.getAnswer(abSolution, x, y);
+
+					if (nAnswer != -1)
+						m_aoSquares[x][y].setStyle(PuzzleSquare.HINT_STYLE);
+				}
+			}
+		}
+	}
+
+	/********************************************************************************
+	** Show the solution for the puzzle in it's current state. This is essentially
+	** the same code as for the hint, but we display the list of possible answers
+	** for each square.
+	*/
+
+	public void solvePuzzle()
+	{
+		SquareState[][]	aoStates   = new SquareState[PUZZLE_SIZE][PUZZLE_SIZE];
+		boolean[][][]	abSolution = new boolean[PUZZLE_SIZE][PUZZLE_SIZE][PUZZLE_SIZE];
+
+		// Populate the input array.
+		for (int y = 0; y < PUZZLE_SIZE; ++y)
+		{
+			for (int x = 0; x < PUZZLE_SIZE; ++x)
+			{
+				aoStates[x][y] = m_aoSquares[x][y].getState();
+			}
+		}
+
+		// Work out which squares can be solved.
+		PuzzleSolver oSolver = new PuzzleSolver(aoStates, abSolution);
+
+		oSolver.solveSquares();
+
+		// Show the list of possible answers for each square...
+		for (int y = 0; y < PUZZLE_SIZE; ++y)
+		{
+			for (int x = 0; x < PUZZLE_SIZE; ++x)
+			{
+				// No answer yet?
+				if (!m_aoSquares[x][y].getState().isAnswered())
+				{
+					boolean[] abChoices = new boolean[PUZZLE_SIZE];
+
+					// Build the list of possibile answers..
+					for (int p = 0; p < PUZZLE_SIZE; ++p)
+						abChoices[p] = abSolution[x][y][p];
+
+					m_aoSquares[x][y].setChoices(abChoices);
+				}
+			}
+		}
+	}
+
+	/********************************************************************************
 	** Clear all styles.
 	*/
 
@@ -199,14 +287,14 @@ public class PuzzleGrid extends Panel
 	}
 
 	/********************************************************************************
-	** Restore the keyboard focus to the selected puzzle square as it may have been
-	** taken by a button click.
+	** Restore the keyboard focus to the prevusly selected puzzle square. This
+	** happens when the user clicks a button.
 	*/
 
 	public void restoreFocus()
 	{
-		if ( (m_ptSelection.x != -1) && (m_ptSelection.y != -1) )
-			m_aoSquares[m_ptSelection.x][m_ptSelection.y].requestFocus();
+		if ( (m_ptFocusLost.x != -1) && (m_ptFocusLost.y != -1) )
+			m_aoSquares[m_ptFocusLost.x][m_ptFocusLost.y].requestFocus();
 	}
 
 	/********************************************************************************
@@ -260,7 +348,7 @@ public class PuzzleGrid extends Panel
 	** The cursor keys were used within a squeare. Change the selected square.
 	*/
 
-	private void onCursorKeyReleased(PuzzleSquare oSquare, int nKey)
+	private void onCursorKeyPressed(PuzzleSquare oSquare, int nKey)
 	{
 		// Ignore if input not allowed yet.
 		if (m_nUserState == INITIALISED)
@@ -300,7 +388,7 @@ public class PuzzleGrid extends Panel
 	** puzzle.
 	*/
 
-	private void onNumberKeyReleased(PuzzleSquare oSquare, int nKey, boolean bShift, boolean bCtrl)
+	private void onNumberKeyPressed(PuzzleSquare oSquare, int nKey, boolean bShift, boolean bCtrl)
 	{
 		// Ignore if input not allowed yet.
 		if (m_nUserState == INITIALISED)
@@ -341,7 +429,7 @@ public class PuzzleGrid extends Panel
 	** The Delete key was used within a squeare. Delete any user provided answer.
 	*/
 
-	private void onDeleteKeyReleased(PuzzleSquare oSquare)
+	private void onDeleteKeyPressed(PuzzleSquare oSquare)
 	{
 		// Ignore if input not allowed yet.
 		if (m_nUserState == INITIALISED)
@@ -373,7 +461,7 @@ public class PuzzleGrid extends Panel
 			}
 			catch (Exception e)
 			{
-				MsgBox.fatal(m_oApplet, SudokuSolver.APPLET_NAME, e.toString());
+				MsgBox.fatal(e.toString());
 				e.printStackTrace();
 			}
 		}
@@ -385,7 +473,7 @@ public class PuzzleGrid extends Panel
 
 	private class SquareKeyListener extends KeyAdapter
 	{
-		public void keyReleased(KeyEvent oEvent)
+		public void keyPressed(KeyEvent oEvent)
 		{
 			try
 			{
@@ -399,26 +487,26 @@ public class PuzzleGrid extends Panel
 				{
 					PuzzleSquare oSquare = (PuzzleSquare)oEvent.getSource();
 
-					onCursorKeyReleased(oSquare, nKey);
+					onCursorKeyPressed(oSquare, nKey);
 				}
 				// Number key?
 				else if ( (nKey >= KeyEvent.VK_1) && (nKey <= KeyEvent.VK_9) )
 				{
 					PuzzleSquare oSquare = (PuzzleSquare)oEvent.getSource();
 
-					onNumberKeyReleased(oSquare, nKey, oEvent.isShiftDown(), oEvent.isControlDown());
+					onNumberKeyPressed(oSquare, nKey, oEvent.isShiftDown(), oEvent.isControlDown());
 				}
 				// Deleet key?
 				else if ( (nKey == KeyEvent.VK_DELETE) || (nKey == KeyEvent.VK_BACK_SPACE) )
 				{
 					PuzzleSquare oSquare = (PuzzleSquare)oEvent.getSource();
 
-					onDeleteKeyReleased(oSquare);
+					onDeleteKeyPressed(oSquare);
 				}
 			}
 			catch (Exception e)
 			{
-				MsgBox.fatal(m_oApplet, SudokuSolver.APPLET_NAME, e.toString());
+				MsgBox.fatal(e.toString());
 				e.printStackTrace();
 			}
 		}
@@ -453,11 +541,15 @@ public class PuzzleGrid extends Panel
 
 					m_ptSelection.x = -1;
 					m_ptSelection.y = -1;
+
+					// Remeber where selection was.
+					m_ptFocusLost.x = ptPosition.x;
+					m_ptFocusLost.y = ptPosition.y;
 				}
 			}
 			catch (Exception e)
 			{
-				MsgBox.fatal(m_oApplet, SudokuSolver.APPLET_NAME, e.toString());
+				MsgBox.fatal(e.toString());
 				e.printStackTrace();
 			}
 		}
@@ -483,10 +575,14 @@ public class PuzzleGrid extends Panel
 					m_ptSelection.x = ptPosition.x;
 					m_ptSelection.y = ptPosition.y;
 				}
+
+				// Clear old focus.
+				m_ptFocusLost.x = -1;
+				m_ptFocusLost.y = -1;
 			}
 			catch (Exception e)
 			{
-				MsgBox.fatal(m_oApplet, SudokuSolver.APPLET_NAME, e.toString());
+				MsgBox.fatal(e.toString());
 				e.printStackTrace();
 			}
 		}
@@ -496,7 +592,8 @@ public class PuzzleGrid extends Panel
 	** Contants.
 	*/
 
-	public static final int PUZZLE_SIZE		= 9;
+	public static final int BLOCK_SIZE	= 3;
+	public static final int PUZZLE_SIZE	= 9;
 
 	public static final int INITIALISED		= 1;
 	public static final int DEFINING_PUZZLE	= 2;
@@ -510,6 +607,7 @@ public class PuzzleGrid extends Panel
 	private SudokuSolver		m_oApplet     = null;
 	private PuzzleSquare[][]	m_aoSquares   = new PuzzleSquare[PUZZLE_SIZE][PUZZLE_SIZE];
 	private Point				m_ptSelection = new Point(-1, -1);
+	private Point				m_ptFocusLost = new Point(-1, -1);
 	private int					m_nUserState  = INITIALISED; 
 
 	// GUI members.
