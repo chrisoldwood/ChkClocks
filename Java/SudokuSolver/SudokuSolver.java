@@ -16,6 +16,9 @@ public class SudokuSolver extends Applet
 	{
 		try
 		{
+			// Set the message box defaults.
+			MsgBox.setDefaults(this, APPLET_NAME);
+
 			// Initialise the applets panel.
 			setLayout(new BorderLayout());
 			setBackground(SystemColor.control);
@@ -27,7 +30,7 @@ public class SudokuSolver extends Applet
 		}
 		catch (Exception e)
 		{
-			MsgBox.fatal(this, APPLET_NAME, e.toString());
+			MsgBox.fatal(e.toString());
 			e.printStackTrace();
 		}
 	}
