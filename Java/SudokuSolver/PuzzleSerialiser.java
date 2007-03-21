@@ -161,9 +161,35 @@ public class PuzzleSerialiser
 	}
 
 	/********************************************************************************
+	** Partially validate the text stream to check if it contains at least the right
+	** number of rows and columns.
+	*/
+
+	public static boolean validate(String str)
+	{
+		int nSquares = 0;
+
+		// Split the input into lines...
+		StringTokenizer oLineTok = new StringTokenizer(str, "\r\n", false);
+
+		while (oLineTok.hasMoreTokens())
+		{
+			String strLine = oLineTok.nextToken();
+
+			// Split the line into fields.
+			StringTokenizer oFieldTok = new StringTokenizer(strLine, ",", false);
+
+			nSquares += oFieldTok.countTokens();
+		}
+
+		return (nSquares == (PUZZLE_SIZE * PUZZLE_SIZE));
+	}
+
+	/********************************************************************************
 	** Contants.
 	*/
 
+	private static final int BLOCK_SIZE	 = PuzzleGrid.BLOCK_SIZE;
 	private static final int PUZZLE_SIZE = PuzzleGrid.PUZZLE_SIZE;
 
 	/********************************************************************************
