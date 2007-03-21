@@ -27,16 +27,16 @@ public class PuzzleChecker
 		{
 			for (int x = 0; x < PUZZLE_SIZE; ++x)
 			{
-				PuzzleSquare oSquare = m_aoSquares[x][y];
-				int          nState  = oSquare.getState().getState();
-
 				// Square contains an answer to validate?
-				if ( (nState == SquareState.PREDEFINED_ANSWER)
-				  || (nState == SquareState.USER_ANSWER) )
+				if (m_aoSquares[x][y].getState().isAnswered())
 				{
-					checkRow(x, y);
-					checkColumn(x, y);
-					checkBlock(x, y);
+					int r1 = (y / BLOCK_SIZE) * BLOCK_SIZE;
+					int r2 = r1 + BLOCK_SIZE;
+					int c1 = (x / BLOCK_SIZE) * BLOCK_SIZE;
+					int c2 = c1 + BLOCK_SIZE;
+
+					// Process 3x3 block.
+					checkRange(x, y, c1, r1, c2, r2);
 				}
 			}
 		}
@@ -57,98 +57,34 @@ public class PuzzleChecker
 	}
 
 	/********************************************************************************
-	** Checks the row that contains (x,y) for any errors.
+	** Checks the range (row, column or block) that contains (x,y) for any errors.
+	** The arguments represent the range [c1, c2) , [r1, r2).
 	*/
 
-	private void checkRow(int x, int y)
+	private void checkRange(int x, int y, int c1, int r1, int c2, int r2)
 	{
+		// Sanity check the arguments.
+		if ( ((r2-r1) * (c2-c1)) != PUZZLE_SIZE)
+			throw new IllegalArgumentException("[" + c1 + "," + r1  + ")-[" + c2 + "," + r2 + ")");
+
+		if ( (x < c1) || (x >= c2) || (y < r1) || (y >= r2) )
+			throw new IllegalArgumentException("(" + x + "," + y + ") ->" + "[" + c1 + "," + r1  + "),[" + c2 + "," + r2 + ")");
+
 		PuzzleSquare oSquare = m_aoSquares[x][y];
 		int          nAnswer = oSquare.getState().getAnswer();
 
-		for (int c = 0; c < PUZZLE_SIZE; ++c)
-		{
-			// Ignore ourself.
-			if (c != x)
-			{
-				PuzzleSquare oOtherSquare = m_aoSquares[c][y];
-				int          nOtherState  = oOtherSquare.getState().getState();
-								
-				// Square contains an answer to compare with?
-				if ( (nOtherState == SquareState.PREDEFINED_ANSWER)
-				  || (nOtherState == SquareState.USER_ANSWER) )
-				{
-					int nOtherAnswer = oOtherSquare.getState().getAnswer();
-
-					if (nAnswer == nOtherAnswer)
-					{
-						m_abErrors[x][y] = true;
-						m_abErrors[c][y] = true;
-					}
-				}
-			}
-		}
-	}
-
-	/********************************************************************************
-	** Checks the column that contains (x,y) for any errors.
-	*/
-
-	private void checkColumn(int x, int y)
-	{
-		PuzzleSquare oSquare = m_aoSquares[x][y];
-		int          nAnswer = oSquare.getState().getAnswer();
-
-		for (int r = 0; r < PUZZLE_SIZE; ++r)
-		{
-			// Ignore ourself.
-			if (r != y)
-			{
-				PuzzleSquare oOtherSquare = m_aoSquares[x][r];
-				int          nOtherState  = oOtherSquare.getState().getState();
-								
-				// Square contains an answer to compare with?
-				if ( (nOtherState == SquareState.PREDEFINED_ANSWER)
-				  || (nOtherState == SquareState.USER_ANSWER) )
-				{
-					int nOtherAnswer = oOtherSquare.getState().getAnswer();
-
-					if (nAnswer == nOtherAnswer)
-					{
-						m_abErrors[x][y] = true;
-						m_abErrors[x][r] = true;
-					}
-				}
-			}
-		}
-	}
-
-	/********************************************************************************
-	** Checks the 3x3 block that contains (x,y) for any errors.
-	*/
-
-	private void checkBlock(int x, int y)
-	{
-		PuzzleSquare oSquare = m_aoSquares[x][y];
-		int          nAnswer = oSquare.getState().getAnswer();
-		int          r1      = (y/3)*3;
-		int          r2      = r1 + 3;
-		int          c1      = (x/3)*3;
-		int          c2      = c1 + 3;
-
-		// For all squares in the 3x3 block...
+		// For all squares in the range...
 		for (int r = r1; r < r2; ++r)
 		{
 			for (int c = c1; c < c2; ++c)
 			{
 				// Ignore ourself.
-				if ( (c != x) && (r != y) )
+				if ( (c != x) || (r != y) )
 				{
 					PuzzleSquare oOtherSquare = m_aoSquares[c][r];
-					int          nOtherState  = oOtherSquare.getState().getState();
 									
 					// Square contains an answer to compare with?
-					if ( (nOtherState == SquareState.PREDEFINED_ANSWER)
-					  || (nOtherState == SquareState.USER_ANSWER) )
+					if (m_aoSquares[c][r].getState().isAnswered())
 					{
 						int nOtherAnswer = oOtherSquare.getState().getAnswer();
 
@@ -167,6 +103,7 @@ public class PuzzleChecker
 	** Contants.
 	*/
 
+	private static final int BLOCK_SIZE	 = PuzzleGrid.BLOCK_SIZE;
 	private static final int PUZZLE_SIZE = PuzzleGrid.PUZZLE_SIZE;
 
 	/********************************************************************************
