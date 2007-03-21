@@ -19,7 +19,7 @@ public class PuzzleSquare extends Canvas
 		m_bSelected  = false;;
 
 		// Initialise UI.
-		setBackground(SystemColor.white);
+		setBackground(NORMAL_BG_CLR);
 	}
 
 	/********************************************************************************
@@ -78,9 +78,9 @@ public class PuzzleSquare extends Canvas
 
 		// Update UI.
 		if (m_oState.isPredefinedValue())
-			setBackground(Color.white /*lightGray*/);
+			setBackground(FIXED_BG_CLR);
 		else
-			setBackground(Color.white);
+			setBackground(NORMAL_BG_CLR);
 
 		repaint();
 	}
@@ -97,9 +97,9 @@ public class PuzzleSquare extends Canvas
 
 		// Update UI.
 		if (bPredefined)
-			setBackground(Color.white /*lightGray*/);
+			setBackground(FIXED_BG_CLR);
 		else
-			setBackground(Color.white);
+			setBackground(NORMAL_BG_CLR);
 
 		repaint();
 	}
@@ -114,7 +114,7 @@ public class PuzzleSquare extends Canvas
 		m_oState.setChoices(abChoices);
 
 		// Update UI.
-		setBackground(Color.white);
+		setBackground(NORMAL_BG_CLR);
 
 		repaint();
 	}
@@ -132,17 +132,17 @@ public class PuzzleSquare extends Canvas
 		if (nStyle == NORMAL_STYLE)
 		{
 			if (m_oState.isPredefinedValue())
-				setBackground(Color.white /*lightGray*/);
+				setBackground(FIXED_BG_CLR);
 			else
-				setBackground(Color.white);
+				setBackground(NORMAL_BG_CLR);
 		}
 		else if (nStyle == ERROR_STYLE)
 		{
-			setBackground(Color.red);
+			setBackground(ERROR_BG_CLR);
 		}
 		else if (nStyle == HINT_STYLE)
 		{
-			setBackground(Color.green);
+			setBackground(HINT_BG_CLR);
 		}
 
 		repaint();
@@ -176,33 +176,53 @@ public class PuzzleSquare extends Canvas
 	{
 		Rectangle rcRect = new Rectangle(getSize());
 
+		// At startup only draw the outer edges.
+		if (m_oPuzzle.getUserState() == PuzzleGrid.INITIALISED)
+		{
+			g.setColor(OUTER_BORDER_CLR);
+
+			if (m_ptPosition.x == 0)
+				g.drawLine(rcRect.x, rcRect.y, rcRect.x, rcRect.y+rcRect.height-1);
+
+			if (m_ptPosition.x == PuzzleGrid.PUZZLE_SIZE-1)
+				g.drawLine(rcRect.x+rcRect.width-1, rcRect.y, rcRect.x+rcRect.width-1, rcRect.y+rcRect.height-1);
+
+			if (m_ptPosition.y == 0)
+				g.drawLine(rcRect.x, rcRect.y, rcRect.x+rcRect.width-1, rcRect.y);
+
+			if (m_ptPosition.y == PuzzleGrid.PUZZLE_SIZE-1)
+				g.drawLine(rcRect.x, rcRect.y+rcRect.height-1, rcRect.x+rcRect.width-1, rcRect.y+rcRect.height-1);
+
+			return;
+		}
+		
 		// Draw left border
 		if ((m_ptPosition.x % 3) == 0)
-			g.setColor(SystemColor.black);
+			g.setColor(OUTER_BORDER_CLR);
 		else
-			g.setColor(SystemColor.lightGray);
+			g.setColor(INNER_BORDER_CLR);
 
 		g.drawLine(rcRect.x, rcRect.y, rcRect.x, rcRect.y+rcRect.height-1);
 	
 		// Draw right border?
 		if (m_ptPosition.x == PuzzleGrid.PUZZLE_SIZE-1)
 		{
-			g.setColor(SystemColor.black);
+			g.setColor(OUTER_BORDER_CLR);
 			g.drawLine(rcRect.x+rcRect.width-1, rcRect.y, rcRect.x+rcRect.width-1, rcRect.y+rcRect.height-1);
 		}
 
 		// Draw top border
 		if ((m_ptPosition.y % 3) == 0)
-			g.setColor(SystemColor.black);
+			g.setColor(OUTER_BORDER_CLR);
 		else
-			g.setColor(SystemColor.lightGray);
+			g.setColor(INNER_BORDER_CLR);
 
 		g.drawLine(rcRect.x, rcRect.y, rcRect.x+rcRect.width-1, rcRect.y);
 
 		// Draw bottom border?
 		if (m_ptPosition.y == PuzzleGrid.PUZZLE_SIZE-1)
 		{
-			g.setColor(SystemColor.black);
+			g.setColor(OUTER_BORDER_CLR);
 			g.drawLine(rcRect.x, rcRect.y+rcRect.height-1, rcRect.x+rcRect.width-1, rcRect.y+rcRect.height-1);
 		}
 
@@ -211,7 +231,7 @@ public class PuzzleSquare extends Canvas
 		{
 			for (int i = 0; i < FOCUS_WIDTH; ++i)
 			{
-				g.setColor(SystemColor.black);
+				g.setColor(FOCUS_BORDER_CLR);
 				g.drawRect(rcRect.x, rcRect.y, rcRect.width-1, rcRect.height-1);
 
 				rcRect.grow(-1, -1);
@@ -242,10 +262,10 @@ public class PuzzleSquare extends Canvas
 
 			// Paint the answer.
 			if (nState == SquareState.PREDEFINED_ANSWER)
-				g.setColor(Color.black);
+				g.setColor(FIXED_TEXT_CLR);
 
 			if (nState == SquareState.USER_ANSWER)
-				g.setColor(Color.blue);
+				g.setColor(USER_TEXT_CLR);
 
 			g.setFont(oBigFont);
 			g.drawString(strNumber, nX, nY);
@@ -263,7 +283,7 @@ public class PuzzleSquare extends Canvas
 			int         nYBorder   = (rcRect.height - (nHeight * 3)) / 4;
 
 			// Paint the choices.
-			g.setColor(Color.blue);
+			g.setColor(USER_TEXT_CLR);
 			g.setFont(oSmallFont);
 
 			for (int y = 0; y < 3; ++y)
@@ -297,6 +317,18 @@ public class PuzzleSquare extends Canvas
 	public static final int NORMAL_STYLE	= 1;
 	public static final int ERROR_STYLE		= 2;
 	public static final int HINT_STYLE		= 3;
+
+	private static final Color NORMAL_BG_CLR = Color.white;
+	private static final Color FIXED_BG_CLR  = Color.white; /*lightGray;*/
+	private static final Color ERROR_BG_CLR  = Color.red;
+	private static final Color HINT_BG_CLR   = Color.green;
+
+	private static final Color OUTER_BORDER_CLR = Color.black;
+	private static final Color INNER_BORDER_CLR = Color.lightGray;
+	private static final Color FOCUS_BORDER_CLR = Color.black;
+
+	private static final Color FIXED_TEXT_CLR = Color.black;
+	private static final Color USER_TEXT_CLR  = Color.blue;
 
 	/********************************************************************************
 	** Members.
