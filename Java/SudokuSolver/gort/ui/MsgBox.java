@@ -30,6 +30,8 @@ public class MsgBox extends ModalDialog
 		m_pnlBody.add(BorderLayout.WEST,   m_icnIcon);
 		m_pnlBody.add(BorderLayout.CENTER, m_lblText);
 		m_pnlControls.add(BorderLayout.CENTER, m_pnlBody);
+
+		setButtonAlignment(FlowLayout.CENTER);
 		setButtons(nButtons);
 
 		// Setup the icon and message.
@@ -150,6 +152,37 @@ public class MsgBox extends ModalDialog
 	}
 
 	/********************************************************************************
+	** More helper methods for common types of message boxes that use the same
+	** parent and title.
+	*/
+
+	public static void setDefaults(Component oDefParent, String oDefTitle)
+	{
+		s_oDefParent = oDefParent;
+		s_oDefTitle  = oDefTitle;
+	}
+
+	public static int query(String strMsg, int nButtons)
+	{
+		return display(s_oDefParent, s_oDefTitle, strMsg, nButtons, QUESTION);
+	}
+
+	public static void notify(String strMsg)
+	{
+		display(s_oDefParent, s_oDefTitle, strMsg, OK, INFORMATION);
+	}
+
+	public static void alert(String strMsg)
+	{
+		display(s_oDefParent, s_oDefTitle, strMsg, OK, EXCLAMATION);
+	}
+
+	public static void fatal(String strMsg)
+	{
+		display(s_oDefParent, s_oDefTitle, strMsg, OK, STOP);
+	}
+
+	/********************************************************************************
 	** Constants.
 	*/
 
@@ -179,6 +212,13 @@ public class MsgBox extends ModalDialog
 	// Icon dims.
 	public static final int ICON_WIDTH  = 32;
 	public static final int ICON_HEIGHT = 32;
+
+	/********************************************************************************
+	** Class members.
+	*/
+
+	private static Component s_oDefParent = null;
+	private static String    s_oDefTitle  = null;
 
 	/********************************************************************************
 	** Members.
