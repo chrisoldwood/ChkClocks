@@ -25,6 +25,8 @@ public class ModalDialog extends Dialog
 		// Create this panel.
 		add(BorderLayout.CENTER, m_pnlControls);
 		add(BorderLayout.SOUTH,  m_pnlButtons);
+
+		setButtonAlignment(FlowLayout.RIGHT);
 		setButtons(nButtons);
 
 		// Add handler for the "X" close button.
@@ -121,6 +123,15 @@ public class ModalDialog extends Dialog
 	public Insets getInsets()
 	{
 		return new Insets(30, 15, 20, 15);
+	}
+
+	/********************************************************************************
+	** Sets the alignment of the buttons.
+	*/
+
+	public void setButtonAlignment(int nAlignment)
+	{
+		m_pnlButtons.setAlignment(nAlignment);
 	}
 
 	/********************************************************************************
