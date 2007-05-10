@@ -1,0 +1,3 @@
+- Faster lookup of DDE conversations and links.
+
+- WinInet classes.
