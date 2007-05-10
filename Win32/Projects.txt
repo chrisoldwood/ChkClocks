@@ -3,3 +3,7 @@
 - DDE Recorder/Playback.
 
 - Net File Finder.
+
+- COM based DDE library.
+
+- File version info comparer.
