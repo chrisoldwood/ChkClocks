@@ -1,0 +1,63 @@
+/******************************************************************************
+** (C) Chris Oldwood
+**
+** MODULE:		LOGFONT.HPP
+** COMPONENT:	Windows C++ Library.
+** DESCRIPTION:	The CLogFont class declaration.
+**
+*******************************************************************************
+*/
+
+// Check for previous inclusion
+#ifndef LOGFONT_HPP
+#define LOGFONT_HPP
+
+/******************************************************************************
+** 
+** A thin wrapper around the LOGFONT structure.
+**
+*******************************************************************************
+*/
+
+class CLogFont : public LOGFONT
+{
+public:
+	//
+	// Constructors/Destructor.
+	//
+	CLogFont();
+	CLogFont(HFONT hFont);
+	~CLogFont();
+	
+	//
+	// Methods.
+	//
+	bool Select(const CWnd& rParent);
+
+	//
+	// Serialisation formats.
+	//
+	enum FontFormat
+	{
+		FMT_MINIMAL	= 2,	// Facename + Height.
+		FMT_SHORT	= 6,	// + Weight + Italic + Underline + Strikeout
+		FMT_FULL	= 14	// All fields.
+	};
+
+	CString Format(FontFormat eFormat) const;
+	static bool Parse(const char* pszFont, CLogFont& oLogFont);
+
+protected:
+	//
+	// Members.
+	//
+};
+
+/******************************************************************************
+**
+** Implementation of inline functions.
+**
+*******************************************************************************
+*/
+
+#endif //LOGFONT_HPP
