@@ -3,10 +3,11 @@
 	ProjectType="Visual C++"
 	Version="7.10"
 	Name="All"
-	SccProjectName="&quot;$/Win32&quot;, YOAAAAAA"
-	SccAuxPath=""
-	SccLocalPath="."
-	SccProvider="MSSCCI:Microsoft Visual SourceSafe"
+	ProjectGUID="{D38025B7-60E5-41aa-B226-3824D98D3F65}"
+	SccProjectName="SAK"
+	SccAuxPath="SAK"
+	SccLocalPath="SAK"
+	SccProvider="SAK"
 	Keyword="MakeFileProj">
 	<Platforms>
 		<Platform
