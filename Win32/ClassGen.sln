@@ -2,9 +2,10 @@ Microsoft Visual Studio Solution File, Format Version 8.00
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ClassGen", "ClassGen\ClassGen.vcproj", "{87D352CB-42BE-4FFF-B98A-F435A6D9C329}"
 	ProjectSection(ProjectDependencies) = postProject
 		{BD32FFD4-7F49-471D-8435-53443A5F6F90} = {BD32FFD4-7F49-471D-8435-53443A5F6F90}
+		{0B095FEF-2586-4073-A9FC-486881645B14} = {0B095FEF-2586-4073-A9FC-486881645B14}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wcl", "wcl\Wcl.vcproj", "{BD32FFD4-7F49-471D-8435-53443A5F6F90}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wcl", "Lib\wcl\Wcl.vcproj", "{BD32FFD4-7F49-471D-8435-53443A5F6F90}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
@@ -14,22 +15,28 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Core", "Lib\Core\Core.vcpro
 EndProject
 Global
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 3
+		SccNumberOfProjects = 4
 		SccLocalPath0 = .
 		CanCheckoutShared = true
-		SolutionUniqueID = {FD0FE997-5E59-4080-8D93-1B0AE66E3AC2}
+		SolutionUniqueID = {E353DA86-5B7F-4922-BD65-1E2334593970}
 		SccProjectUniqueName1 = ClassGen\\ClassGen.vcproj
 		SccProjectName1 = \u0022$/Win32/ClassGen\u0022,\u0020CNCAAAAA
 		SccLocalPath1 = ClassGen
 		CanCheckoutShared = true
-		SccProjectUniqueName2 = wcl\\Wcl.vcproj
+		SccProjectUniqueName2 = Lib\\wcl\\Wcl.vcproj
 		SccProjectName2 = \u0022$/Win32/Wcl\u0022,\u0020UAAAAAAA
-		SccLocalPath2 = wcl
+		SccLocalPath2 = Lib\\wcl
+		CanCheckoutShared = true
+		SccProjectUniqueName3 = Lib\\Core\\Core.vcproj
+		SccProjectName3 = \u0022$/Win32/Lib/Core\u0022,\u0020QWDAAAAA
+		SccLocalPath3 = Lib\\Core
 		CanCheckoutShared = true
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
 		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
 	EndGlobalSection
 	GlobalSection(ProjectConfiguration) = postSolution
 		{87D352CB-42BE-4FFF-B98A-F435A6D9C329}.Debug.ActiveCfg = Debug|Win32

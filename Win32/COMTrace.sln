@@ -1,11 +1,5 @@
 Microsoft Visual Studio Solution File, Format Version 8.00
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "COMTrace", "COMTrace\COMTrace.vcproj", "{D647F3B4-E48F-46A7-80C6-A0FB053326A1}"
-	ProjectSection(ProjectDependencies) = postProject
-		{E74F146C-18AD-4083-BA5D-805DDF5CA2B3} = {E74F146C-18AD-4083-BA5D-805DDF5CA2B3}
-		{0905D2E8-A1A9-4ADD-93EB-8566758D50C6} = {0905D2E8-A1A9-4ADD-93EB-8566758D50C6}
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wcl", "WCL\Wcl.vcproj", "{E74F146C-18AD-4083-BA5D-805DDF5CA2B3}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wcl", "Lib\WCL\Wcl.vcproj", "{E74F146C-18AD-4083-BA5D-805DDF5CA2B3}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
@@ -17,18 +11,45 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Core", "Lib\Core\Core.vcpro
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test", "COMTrace\Test\Test.vcproj", "{0F363877-6D64-4609-B522-8C251D83C2BD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E74F146C-18AD-4083-BA5D-805DDF5CA2B3} = {E74F146C-18AD-4083-BA5D-805DDF5CA2B3}
+		{D647F3B4-E48F-46A7-80C6-A0FB053326A1} = {D647F3B4-E48F-46A7-80C6-A0FB053326A1}
+		{0B095FEF-2586-4073-A9FC-486881645B14} = {0B095FEF-2586-4073-A9FC-486881645B14}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "COMTrace", "COMTrace\COMTrace.vcproj", "{D647F3B4-E48F-46A7-80C6-A0FB053326A1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E74F146C-18AD-4083-BA5D-805DDF5CA2B3} = {E74F146C-18AD-4083-BA5D-805DDF5CA2B3}
+		{0905D2E8-A1A9-4ADD-93EB-8566758D50C6} = {0905D2E8-A1A9-4ADD-93EB-8566758D50C6}
+		{0B095FEF-2586-4073-A9FC-486881645B14} = {0B095FEF-2586-4073-A9FC-486881645B14}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 2
-		SccProjectUniqueName0 = WCL\\Wcl.vcproj
-		SccProjectName0 = \u0022$/Win32/Wcl\u0022,\u0020UAAAAAAA
-		SccLocalPath0 = WCL
-		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		SccNumberOfProjects = 6
+		SccLocalPath0 = .
 		CanCheckoutShared = true
-		SccProjectUniqueName1 = Lib\\Core\\Core.vcproj
-		SccProjectName1 = \u0022$/Win32/Lib/Core\u0022,\u0020QWDAAAAA
-		SccLocalPath1 = Lib\\Core
-		SccProvider1 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		SolutionUniqueID = {6F9F5E7C-23AE-4BA3-A1FB-143D987DE2FB}
+		SccProjectUniqueName1 = Lib\\WCL\\Wcl.vcproj
+		SccProjectName1 = \u0022$/Win32/Lib/WCL\u0022,\u0020HPAAAAAA
+		SccLocalPath1 = Lib\\WCL
+		CanCheckoutShared = true
+		SccProjectUniqueName2 = Lib\\COM\\COM.vcproj
+		SccProjectName2 = \u0022$/Win32/Lib/COM\u0022,\u0020FCEAAAAA
+		SccLocalPath2 = Lib\\COM
+		CanCheckoutShared = true
+		SccProjectUniqueName3 = Lib\\Core\\Core.vcproj
+		SccProjectName3 = \u0022$/Win32/Lib/Core\u0022,\u0020QWDAAAAA
+		SccLocalPath3 = Lib\\Core
+		CanCheckoutShared = true
+		SccProjectUniqueName4 = COMTrace\\Test\\Test.vcproj
+		SccProjectName4 = \u0022$/Win32/COMTrace/Test\u0022,\u0020EDEAAAAA
+		SccLocalPath4 = COMTrace\\Test
+		CanCheckoutShared = true
+		SccProjectUniqueName5 = COMTrace\\COMTrace.vcproj
+		SccProjectName5 = \u0022$/Win32/COMTrace\u0022,\u0020GCEAAAAA
+		SccLocalPath5 = COMTrace
 		CanCheckoutShared = true
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
@@ -38,10 +59,6 @@ Global
 	GlobalSection(ProjectDependencies) = postSolution
 	EndGlobalSection
 	GlobalSection(ProjectConfiguration) = postSolution
-		{D647F3B4-E48F-46A7-80C6-A0FB053326A1}.Debug.ActiveCfg = Debug|Win32
-		{D647F3B4-E48F-46A7-80C6-A0FB053326A1}.Debug.Build.0 = Debug|Win32
-		{D647F3B4-E48F-46A7-80C6-A0FB053326A1}.Release.ActiveCfg = Release|Win32
-		{D647F3B4-E48F-46A7-80C6-A0FB053326A1}.Release.Build.0 = Release|Win32
 		{E74F146C-18AD-4083-BA5D-805DDF5CA2B3}.Debug.ActiveCfg = Debug|Win32
 		{E74F146C-18AD-4083-BA5D-805DDF5CA2B3}.Debug.Build.0 = Debug|Win32
 		{E74F146C-18AD-4083-BA5D-805DDF5CA2B3}.Release.ActiveCfg = Release|Win32
@@ -54,6 +71,14 @@ Global
 		{0B095FEF-2586-4073-A9FC-486881645B14}.Debug.Build.0 = Debug|Win32
 		{0B095FEF-2586-4073-A9FC-486881645B14}.Release.ActiveCfg = Release|Win32
 		{0B095FEF-2586-4073-A9FC-486881645B14}.Release.Build.0 = Release|Win32
+		{0F363877-6D64-4609-B522-8C251D83C2BD}.Debug.ActiveCfg = Debug|Win32
+		{0F363877-6D64-4609-B522-8C251D83C2BD}.Debug.Build.0 = Debug|Win32
+		{0F363877-6D64-4609-B522-8C251D83C2BD}.Release.ActiveCfg = Release|Win32
+		{0F363877-6D64-4609-B522-8C251D83C2BD}.Release.Build.0 = Release|Win32
+		{D647F3B4-E48F-46A7-80C6-A0FB053326A1}.Debug.ActiveCfg = Debug|Win32
+		{D647F3B4-E48F-46A7-80C6-A0FB053326A1}.Debug.Build.0 = Debug|Win32
+		{D647F3B4-E48F-46A7-80C6-A0FB053326A1}.Release.ActiveCfg = Release|Win32
+		{D647F3B4-E48F-46A7-80C6-A0FB053326A1}.Release.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection

@@ -1,43 +1,52 @@
 Microsoft Visual Studio Solution File, Format Version 8.00
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MDBL", "MDBL\MDBL.vcproj", "{F449D18C-D53D-4565-A2FA-E5CB80D4A549}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MDBL", "Lib\MDBL\MDBL.vcproj", "{F449D18C-D53D-4565-A2FA-E5CB80D4A549}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PQT", "PQT\PQT.vcproj", "{3FA5F489-FDA1-452B-9E7D-0175EDB4B269}"
 	ProjectSection(ProjectDependencies) = postProject
+		{790BC113-52FB-4565-8968-79B8B011C520} = {790BC113-52FB-4565-8968-79B8B011C520}
 		{399DF470-C0D2-4B8D-9036-555795B57B9D} = {399DF470-C0D2-4B8D-9036-555795B57B9D}
 		{F449D18C-D53D-4565-A2FA-E5CB80D4A549} = {F449D18C-D53D-4565-A2FA-E5CB80D4A549}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wcl", "WCL\Wcl.vcproj", "{399DF470-C0D2-4B8D-9036-555795B57B9D}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wcl", "Lib\WCL\Wcl.vcproj", "{399DF470-C0D2-4B8D-9036-555795B57B9D}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Core", "Lib\Core\Core.vcproj", "{790BC113-52FB-4565-8968-79B8B011C520}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
 Global
-	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
-		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
-	EndGlobalSection
 	GlobalSection(SourceCodeControl) = preSolution
 		SccNumberOfProjects = 4
-		SccProjectUniqueName0 = MDBL\\MDBL.vcproj
+		SccProjectUniqueName0 = Lib\\MDBL\\MDBL.vcproj
 		SccProjectName0 = \u0022$/Win32/MDBL\u0022,\u0020OAAAAAAA
-		SccLocalPath0 = MDBL
+		SccLocalPath0 = Lib\\MDBL
+		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
 		SccProjectUniqueName1 = PQT\\PQT.vcproj
 		SccProjectName1 = \u0022$/Win32/PQT\u0022,\u0020PAAAAAAA
 		SccLocalPath1 = PQT
+		SccProvider1 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
-		SccProjectUniqueName2 = WCL\\Wcl.vcproj
+		SccProjectUniqueName2 = Lib\\WCL\\Wcl.vcproj
 		SccProjectName2 = \u0022$/Win32/Wcl\u0022,\u0020UAAAAAAA
-		SccLocalPath2 = WCL
+		SccLocalPath2 = Lib\\WCL
+		SccProvider2 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
-		SccLocalPath3 = .
+		SccProjectUniqueName3 = Lib\\Core\\Core.vcproj
+		SccProjectName3 = \u0022$/Win32/Lib/Core\u0022,\u0020QWDAAAAA
+		SccLocalPath3 = Lib\\Core
+		SccProvider3 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
-		SolutionUniqueID = {42731DF9-78BE-44CC-AE59-266622F2D82D}
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
 		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
 	EndGlobalSection
 	GlobalSection(ProjectConfiguration) = postSolution
 		{F449D18C-D53D-4565-A2FA-E5CB80D4A549}.Debug.ActiveCfg = Debug|Win32
@@ -52,9 +61,16 @@ Global
 		{399DF470-C0D2-4B8D-9036-555795B57B9D}.Debug.Build.0 = Debug|Win32
 		{399DF470-C0D2-4B8D-9036-555795B57B9D}.Release.ActiveCfg = Release|Win32
 		{399DF470-C0D2-4B8D-9036-555795B57B9D}.Release.Build.0 = Release|Win32
+		{790BC113-52FB-4565-8968-79B8B011C520}.Debug.ActiveCfg = Debug|Win32
+		{790BC113-52FB-4565-8968-79B8B011C520}.Debug.Build.0 = Debug|Win32
+		{790BC113-52FB-4565-8968-79B8B011C520}.Release.ActiveCfg = Release|Win32
+		{790BC113-52FB-4565-8968-79B8B011C520}.Release.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection
 	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
 	EndGlobalSection
 EndGlobal

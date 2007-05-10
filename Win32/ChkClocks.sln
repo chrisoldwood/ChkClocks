@@ -1,61 +1,76 @@
 Microsoft Visual Studio Solution File, Format Version 8.00
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ChkClocks", "ChkClocks\ChkClocks.vcproj", "{B4524B49-0A8B-472C-A2E8-58BD16C695E7}"
 	ProjectSection(ProjectDependencies) = postProject
-		{B40DFE2B-5B7A-42BD-901A-5368F0C386B2} = {B40DFE2B-5B7A-42BD-901A-5368F0C386B2}
-		{18F7FCAE-6AD0-4EBC-BE42-94618F8C93CE} = {18F7FCAE-6AD0-4EBC-BE42-94618F8C93CE}
+		{9E405156-9B1D-483A-9BBD-B86240FA86BE} = {9E405156-9B1D-483A-9BBD-B86240FA86BE}
+		{9B0335B6-93BE-4604-8497-27431874D758} = {9B0335B6-93BE-4604-8497-27431874D758}
+		{0B095FEF-2586-4073-A9FC-486881645B14} = {0B095FEF-2586-4073-A9FC-486881645B14}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MDBL", "mdbl\MDBL.vcproj", "{18F7FCAE-6AD0-4EBC-BE42-94618F8C93CE}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Core", "Lib\Core\Core.vcproj", "{0B095FEF-2586-4073-A9FC-486881645B14}"
 	ProjectSection(ProjectDependencies) = postProject
-		{B40DFE2B-5B7A-42BD-901A-5368F0C386B2} = {B40DFE2B-5B7A-42BD-901A-5368F0C386B2}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wcl", "wcl\Wcl.vcproj", "{B40DFE2B-5B7A-42BD-901A-5368F0C386B2}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wcl", "Lib\WCL\Wcl.vcproj", "{9B0335B6-93BE-4604-8497-27431874D758}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MDBL", "Lib\MDBL\MDBL.vcproj", "{9E405156-9B1D-483A-9BBD-B86240FA86BE}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
 Global
-	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
-		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
-	EndGlobalSection
 	GlobalSection(SourceCodeControl) = preSolution
 		SccNumberOfProjects = 4
 		SccProjectUniqueName0 = ChkClocks\\ChkClocks.vcproj
 		SccProjectName0 = \u0022$/Win32/ChkClocks\u0022,\u0020DNCAAAAA
 		SccLocalPath0 = ChkClocks
+		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
-		SccProjectUniqueName1 = mdbl\\MDBL.vcproj
-		SccProjectName1 = \u0022$/Win32/MDBL\u0022,\u0020OAAAAAAA
-		SccLocalPath1 = mdbl
+		SccProjectUniqueName1 = Lib\\Core\\Core.vcproj
+		SccProjectName1 = \u0022$/Win32/Lib/Core\u0022,\u0020QWDAAAAA
+		SccLocalPath1 = Lib\\Core
+		SccProvider1 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
-		SccProjectUniqueName2 = wcl\\Wcl.vcproj
+		SccProjectUniqueName2 = Lib\\WCL\\Wcl.vcproj
 		SccProjectName2 = \u0022$/Win32/Wcl\u0022,\u0020UAAAAAAA
-		SccLocalPath2 = wcl
+		SccLocalPath2 = Lib\\WCL
+		SccProvider2 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
-		SccLocalPath3 = .
+		SccProjectUniqueName3 = Lib\\MDBL\\MDBL.vcproj
+		SccProjectName3 = \u0022$/Win32/MDBL\u0022,\u0020OAAAAAAA
+		SccLocalPath3 = Lib\\MDBL
+		SccProvider3 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
-		SolutionUniqueID = {5787E018-1D70-43C4-9114-CE078A070834}
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
 		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
 	EndGlobalSection
 	GlobalSection(ProjectConfiguration) = postSolution
 		{B4524B49-0A8B-472C-A2E8-58BD16C695E7}.Debug.ActiveCfg = Debug|Win32
 		{B4524B49-0A8B-472C-A2E8-58BD16C695E7}.Debug.Build.0 = Debug|Win32
 		{B4524B49-0A8B-472C-A2E8-58BD16C695E7}.Release.ActiveCfg = Release|Win32
 		{B4524B49-0A8B-472C-A2E8-58BD16C695E7}.Release.Build.0 = Release|Win32
-		{18F7FCAE-6AD0-4EBC-BE42-94618F8C93CE}.Debug.ActiveCfg = Debug|Win32
-		{18F7FCAE-6AD0-4EBC-BE42-94618F8C93CE}.Debug.Build.0 = Debug|Win32
-		{18F7FCAE-6AD0-4EBC-BE42-94618F8C93CE}.Release.ActiveCfg = Release|Win32
-		{18F7FCAE-6AD0-4EBC-BE42-94618F8C93CE}.Release.Build.0 = Release|Win32
-		{B40DFE2B-5B7A-42BD-901A-5368F0C386B2}.Debug.ActiveCfg = Debug|Win32
-		{B40DFE2B-5B7A-42BD-901A-5368F0C386B2}.Debug.Build.0 = Debug|Win32
-		{B40DFE2B-5B7A-42BD-901A-5368F0C386B2}.Release.ActiveCfg = Release|Win32
-		{B40DFE2B-5B7A-42BD-901A-5368F0C386B2}.Release.Build.0 = Release|Win32
+		{0B095FEF-2586-4073-A9FC-486881645B14}.Debug.ActiveCfg = Debug|Win32
+		{0B095FEF-2586-4073-A9FC-486881645B14}.Debug.Build.0 = Debug|Win32
+		{0B095FEF-2586-4073-A9FC-486881645B14}.Release.ActiveCfg = Release|Win32
+		{0B095FEF-2586-4073-A9FC-486881645B14}.Release.Build.0 = Release|Win32
+		{9B0335B6-93BE-4604-8497-27431874D758}.Debug.ActiveCfg = Debug|Win32
+		{9B0335B6-93BE-4604-8497-27431874D758}.Debug.Build.0 = Debug|Win32
+		{9B0335B6-93BE-4604-8497-27431874D758}.Release.ActiveCfg = Release|Win32
+		{9B0335B6-93BE-4604-8497-27431874D758}.Release.Build.0 = Release|Win32
+		{9E405156-9B1D-483A-9BBD-B86240FA86BE}.Debug.ActiveCfg = Debug|Win32
+		{9E405156-9B1D-483A-9BBD-B86240FA86BE}.Debug.Build.0 = Debug|Win32
+		{9E405156-9B1D-483A-9BBD-B86240FA86BE}.Release.ActiveCfg = Release|Win32
+		{9E405156-9B1D-483A-9BBD-B86240FA86BE}.Release.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection
 	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
 	EndGlobalSection
 EndGlobal

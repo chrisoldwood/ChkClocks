@@ -2,14 +2,16 @@ Microsoft Visual Studio Solution File, Format Version 8.00
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MkSetup", "MkSetup\MkSetup.vcproj", "{5344202D-AE96-4006-A03E-E8FEFF17D736}"
 	ProjectSection(ProjectDependencies) = postProject
 		{C54C8C8D-7443-4733-A7E8-B38CE6BA6D1C} = {C54C8C8D-7443-4733-A7E8-B38CE6BA6D1C}
+		{0B095FEF-2586-4073-A9FC-486881645B14} = {0B095FEF-2586-4073-A9FC-486881645B14}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Setup", "setup\Setup.vcproj", "{2928AEA9-D7A7-48F3-9F72-8E36E685A913}"
 	ProjectSection(ProjectDependencies) = postProject
 		{C54C8C8D-7443-4733-A7E8-B38CE6BA6D1C} = {C54C8C8D-7443-4733-A7E8-B38CE6BA6D1C}
+		{0B095FEF-2586-4073-A9FC-486881645B14} = {0B095FEF-2586-4073-A9FC-486881645B14}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wcl", "wcl\Wcl.vcproj", "{C54C8C8D-7443-4733-A7E8-B38CE6BA6D1C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wcl", "Lib\wcl\Wcl.vcproj", "{C54C8C8D-7443-4733-A7E8-B38CE6BA6D1C}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
@@ -19,25 +21,21 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Core", "Lib\Core\Core.vcpro
 EndProject
 Global
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 5
-		SccLocalPath0 = .
+		SccNumberOfProjects = 3
+		SccProjectUniqueName0 = MkSetup\\MkSetup.vcproj
+		SccProjectName0 = \u0022$/Win32/MkSetup\u0022,\u0020YLDAAAAA
+		SccLocalPath0 = MkSetup
+		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
-		SolutionUniqueID = {91C2E70E-32BA-4936-AF4B-E1A61191BDE4}
-		SccProjectUniqueName1 = MkSetup\\MkSetup.vcproj
-		SccProjectName1 = \u0022$/Win32/MkSetup\u0022,\u0020YLDAAAAA
-		SccLocalPath1 = MkSetup
+		SccProjectUniqueName1 = setup\\Setup.vcproj
+		SccProjectName1 = \u0022$/Win32/Setup\u0022,\u0020IIDAAAAA
+		SccLocalPath1 = setup
+		SccProvider1 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
-		SccProjectUniqueName2 = setup\\Setup.vcproj
-		SccProjectName2 = \u0022$/Win32/Setup\u0022,\u0020IIDAAAAA
-		SccLocalPath2 = setup
-		CanCheckoutShared = true
-		SccProjectUniqueName3 = wcl\\Wcl.vcproj
-		SccProjectName3 = \u0022$/Win32/Wcl\u0022,\u0020UAAAAAAA
-		SccLocalPath3 = wcl
-		CanCheckoutShared = true
-		SccProjectUniqueName4 = Lib\\Core\\Core.vcproj
-		SccProjectName4 = \u0022$/Win32/Lib/Core\u0022,\u0020QWDAAAAA
-		SccLocalPath4 = Lib\\Core
+		SccProjectUniqueName2 = Lib\\wcl\\Wcl.vcproj
+		SccProjectName2 = \u0022$/Win32/Wcl\u0022,\u0020UAAAAAAA
+		SccLocalPath2 = Lib\\wcl
+		SccProvider2 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution

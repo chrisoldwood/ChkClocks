@@ -1,11 +1,12 @@
 Microsoft Visual Studio Solution File, Format Version 8.00
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NCL", "NCL\NCL.vcproj", "{F08A23C9-FE88-4F33-8EA5-12698CD8C9F5}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NCL", "Lib\NCL\NCL.vcproj", "{F08A23C9-FE88-4F33-8EA5-12698CD8C9F5}"
 	ProjectSection(ProjectDependencies) = postProject
 		{14B83F3C-A167-4BD5-BB3D-E5BA21FAE2B3} = {14B83F3C-A167-4BD5-BB3D-E5BA21FAE2B3}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NetDDEClient", "NetDDE\Client\NetDDEClient.vcproj", "{4B147C1C-7D8C-4902-9EB6-0AA8237AA8B4}"
 	ProjectSection(ProjectDependencies) = postProject
+		{790BC113-52FB-4565-8968-79B8B011C520} = {790BC113-52FB-4565-8968-79B8B011C520}
 		{FF44612A-69E1-42B8-B8B2-E1E3CDF9ADA0} = {FF44612A-69E1-42B8-B8B2-E1E3CDF9ADA0}
 		{14B83F3C-A167-4BD5-BB3D-E5BA21FAE2B3} = {14B83F3C-A167-4BD5-BB3D-E5BA21FAE2B3}
 		{F08A23C9-FE88-4F33-8EA5-12698CD8C9F5} = {F08A23C9-FE88-4F33-8EA5-12698CD8C9F5}
@@ -13,12 +14,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NetDDEClient", "NetDDE\Clie
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NetDDEServer", "NetDDE\Server\NetDDEServer.vcproj", "{4EEF4FBB-6C94-4D80-B54C-7EA0D36655B7}"
 	ProjectSection(ProjectDependencies) = postProject
+		{790BC113-52FB-4565-8968-79B8B011C520} = {790BC113-52FB-4565-8968-79B8B011C520}
 		{FF44612A-69E1-42B8-B8B2-E1E3CDF9ADA0} = {FF44612A-69E1-42B8-B8B2-E1E3CDF9ADA0}
 		{14B83F3C-A167-4BD5-BB3D-E5BA21FAE2B3} = {14B83F3C-A167-4BD5-BB3D-E5BA21FAE2B3}
 		{F08A23C9-FE88-4F33-8EA5-12698CD8C9F5} = {F08A23C9-FE88-4F33-8EA5-12698CD8C9F5}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wcl", "wcl\Wcl.vcproj", "{14B83F3C-A167-4BD5-BB3D-E5BA21FAE2B3}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wcl", "Lib\wcl\Wcl.vcproj", "{14B83F3C-A167-4BD5-BB3D-E5BA21FAE2B3}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
@@ -26,49 +28,44 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NetDDEShared", "NetDDE\Shar
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DDEQuery", "DDEQuery\DDEQuery.vcproj", "{E480C39E-6C7E-47F5-AAD1-C809157B487C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Core", "Lib\Core\Core.vcproj", "{790BC113-52FB-4565-8968-79B8B011C520}"
 	ProjectSection(ProjectDependencies) = postProject
-		{14B83F3C-A167-4BD5-BB3D-E5BA21FAE2B3} = {14B83F3C-A167-4BD5-BB3D-E5BA21FAE2B3}
-		{F08A23C9-FE88-4F33-8EA5-12698CD8C9F5} = {F08A23C9-FE88-4F33-8EA5-12698CD8C9F5}
 	EndProjectSection
 EndProject
 Global
-	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
-		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
-	EndGlobalSection
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 7
-		SccProjectUniqueName0 = NCL\\NCL.vcproj
+		SccNumberOfProjects = 5
+		SccProjectUniqueName0 = Lib\\NCL\\NCL.vcproj
 		SccProjectName0 = \u0022$/Win32/NCL\u0022,\u0020JRCAAAAA
-		SccLocalPath0 = NCL
+		SccLocalPath0 = Lib\\NCL
+		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
 		SccProjectUniqueName1 = NetDDE\\Client\\NetDDEClient.vcproj
 		SccProjectName1 = \u0022$/Win32/NetDDE/Client\u0022,\u0020FRCAAAAA
 		SccLocalPath1 = NetDDE\\Client
+		SccProvider1 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
 		SccProjectUniqueName2 = NetDDE\\Server\\NetDDEServer.vcproj
 		SccProjectName2 = \u0022$/Win32/NetDDE/Server\u0022,\u0020HRCAAAAA
 		SccLocalPath2 = NetDDE\\Server
+		SccProvider2 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
-		SccProjectUniqueName3 = wcl\\Wcl.vcproj
+		SccProjectUniqueName3 = Lib\\wcl\\Wcl.vcproj
 		SccProjectName3 = \u0022$/Win32/Wcl\u0022,\u0020UAAAAAAA
-		SccLocalPath3 = wcl
+		SccLocalPath3 = Lib\\wcl
+		SccProvider3 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
-		SccProjectUniqueName4 = NetDDE\\Shared\\NetDDEShared.vcproj
-		SccProjectName4 = \u0022$/Win32/NetDDE/Shared\u0022,\u0020IRCAAAAA
-		SccLocalPath4 = NetDDE\\Shared
+		SccProjectUniqueName4 = Lib\\Core\\Core.vcproj
+		SccProjectName4 = \u0022$/Win32/Lib/Core\u0022,\u0020QWDAAAAA
+		SccLocalPath4 = Lib\\Core
+		SccProvider4 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
-		SccProjectUniqueName5 = DDEQuery\\DDEQuery.vcproj
-		SccProjectName5 = \u0022$/Win32/DDEQuery\u0022,\u0020SNDAAAAA
-		SccLocalPath5 = DDEQuery
-		CanCheckoutShared = true
-		SccLocalPath6 = .
-		CanCheckoutShared = true
-		SolutionUniqueID = {458E712F-DA22-4C15-AE16-1E30F49EC858}
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
 		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
 	EndGlobalSection
 	GlobalSection(ProjectConfiguration) = postSolution
 		{F08A23C9-FE88-4F33-8EA5-12698CD8C9F5}.Debug.ActiveCfg = Debug|Win32
@@ -91,13 +88,16 @@ Global
 		{FF44612A-69E1-42B8-B8B2-E1E3CDF9ADA0}.Debug.Build.0 = Debug|Win32
 		{FF44612A-69E1-42B8-B8B2-E1E3CDF9ADA0}.Release.ActiveCfg = Release|Win32
 		{FF44612A-69E1-42B8-B8B2-E1E3CDF9ADA0}.Release.Build.0 = Release|Win32
-		{E480C39E-6C7E-47F5-AAD1-C809157B487C}.Debug.ActiveCfg = Debug|Win32
-		{E480C39E-6C7E-47F5-AAD1-C809157B487C}.Debug.Build.0 = Debug|Win32
-		{E480C39E-6C7E-47F5-AAD1-C809157B487C}.Release.ActiveCfg = Release|Win32
-		{E480C39E-6C7E-47F5-AAD1-C809157B487C}.Release.Build.0 = Release|Win32
+		{790BC113-52FB-4565-8968-79B8B011C520}.Debug.ActiveCfg = Debug|Win32
+		{790BC113-52FB-4565-8968-79B8B011C520}.Debug.Build.0 = Debug|Win32
+		{790BC113-52FB-4565-8968-79B8B011C520}.Release.ActiveCfg = Release|Win32
+		{790BC113-52FB-4565-8968-79B8B011C520}.Release.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection
 	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
 	EndGlobalSection
 EndGlobal
