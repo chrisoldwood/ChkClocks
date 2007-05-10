@@ -5,6 +5,9 @@ del /s /f *.pch
 del /s /f *.sbr
 del /s /f *.obj
 del /s /f *.res
+del /s /f *.tlh
+del /s /f *.tli
+del /s /f *.tlb
 del /s /f BuildLog.htm
 
 @ECHO Removing VC++ target files...
@@ -25,7 +28,7 @@ del /s /f *.ncb
 del /s /f *.opt
 del /s /f *.aps
 del /s /f *.bsc
-REM del /s /f *.scc
+del /s /f *.scc
 
 @ECHO Removing VC++ profiling/instrumentation files...
 
@@ -41,3 +44,9 @@ del /s /f *.stt
 del /s /f *.log
 del /s /f TraceLog.txt
 del /s /f *.sup
+
+@ECHO Removing Doxygen documentation
+del /s Docs\*.html
+del /s Docs\*.png
+del /s Docs\*.gif
+del /s Docs\*.css
