@@ -15,16 +15,21 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Core", "Lib\Core\Core.vcpro
 EndProject
 Global
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 2
-		SccProjectUniqueName0 = TaskTracker\\TaskTracker.vcproj
-		SccProjectName0 = \u0022$/Win32/TaskTracker\u0022,\u0020RAAAAAAA
-		SccLocalPath0 = TaskTracker
-		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		SccNumberOfProjects = 4
+		SccLocalPath0 = .
 		CanCheckoutShared = true
-		SccProjectUniqueName1 = Lib\\WCL\\Wcl.vcproj
-		SccProjectName1 = \u0022$/Win32/Wcl\u0022,\u0020UAAAAAAA
-		SccLocalPath1 = Lib\\WCL
-		SccProvider1 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+		SolutionUniqueID = {3E4D5F15-966A-4435-823A-38479AD22821}
+		SccProjectUniqueName1 = TaskTracker\\TaskTracker.vcproj
+		SccProjectName1 = \u0022$/Win32/TaskTracker\u0022,\u0020RAAAAAAA
+		SccLocalPath1 = TaskTracker
+		CanCheckoutShared = true
+		SccProjectUniqueName2 = Lib\\WCL\\Wcl.vcproj
+		SccProjectName2 = \u0022$/Win32/Lib/WCL\u0022,\u0020HPAAAAAA
+		SccLocalPath2 = Lib\\WCL
+		CanCheckoutShared = true
+		SccProjectUniqueName3 = Lib\\Core\\Core.vcproj
+		SccProjectName3 = \u0022$/Win32/Lib/Core\u0022,\u0020QWDAAAAA
+		SccLocalPath3 = Lib\\Core
 		CanCheckoutShared = true
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution

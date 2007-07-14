@@ -21,27 +21,26 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Core", "Lib\Core\Core.vcpro
 EndProject
 Global
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 4
+		SccNumberOfProjects = 5
 		SccProjectUniqueName0 = MkSetup\\MkSetup.vcproj
 		SccProjectName0 = \u0022$/Win32/MkSetup\u0022,\u0020YLDAAAAA
 		SccLocalPath0 = MkSetup
-		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
 		SccProjectUniqueName1 = Setup\\Setup.vcproj
 		SccProjectName1 = \u0022$/Win32/Setup\u0022,\u0020IIDAAAAA
 		SccLocalPath1 = Setup
-		SccProvider1 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
 		SccProjectUniqueName2 = Lib\\WCL\\Wcl.vcproj
-		SccProjectName2 = \u0022$/Win32/Wcl\u0022,\u0020UAAAAAAA
+		SccProjectName2 = \u0022$/Win32/Lib/WCL\u0022,\u0020HPAAAAAA
 		SccLocalPath2 = Lib\\WCL
-		SccProvider2 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
 		SccProjectUniqueName3 = Lib\\Core\\Core.vcproj
 		SccProjectName3 = \u0022$/Win32/Lib/Core\u0022,\u0020QWDAAAAA
 		SccLocalPath3 = Lib\\Core
-		SccProvider3 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
+		SccLocalPath4 = .
+		CanCheckoutShared = true
+		SolutionUniqueID = {65B06ACD-816A-495B-B0B0-AE7A1D27B3D0}
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug

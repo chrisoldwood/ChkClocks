@@ -20,27 +20,26 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MDBL", "Lib\MDBL\MDBL.vcpro
 EndProject
 Global
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 4
+		SccNumberOfProjects = 5
 		SccProjectUniqueName0 = ChkClocks\\ChkClocks.vcproj
 		SccProjectName0 = \u0022$/Win32/ChkClocks\u0022,\u0020DNCAAAAA
 		SccLocalPath0 = ChkClocks
-		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
 		SccProjectUniqueName1 = Lib\\Core\\Core.vcproj
 		SccProjectName1 = \u0022$/Win32/Lib/Core\u0022,\u0020QWDAAAAA
 		SccLocalPath1 = Lib\\Core
-		SccProvider1 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
 		SccProjectUniqueName2 = Lib\\WCL\\Wcl.vcproj
-		SccProjectName2 = \u0022$/Win32/Wcl\u0022,\u0020UAAAAAAA
+		SccProjectName2 = \u0022$/Win32/Lib/WCL\u0022,\u0020HPAAAAAA
 		SccLocalPath2 = Lib\\WCL
-		SccProvider2 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
 		SccProjectUniqueName3 = Lib\\MDBL\\MDBL.vcproj
-		SccProjectName3 = \u0022$/Win32/MDBL\u0022,\u0020OAAAAAAA
+		SccProjectName3 = \u0022$/Win32/Lib/MDBL\u0022,\u0020BPAAAAAA
 		SccLocalPath3 = Lib\\MDBL
-		SccProvider3 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
+		SccLocalPath4 = .
+		CanCheckoutShared = true
+		SolutionUniqueID = {D63EB59B-529C-4CD9-B3FB-159DE4F88566}
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug

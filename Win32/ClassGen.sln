@@ -24,7 +24,7 @@ Global
 		SccLocalPath1 = ClassGen
 		CanCheckoutShared = true
 		SccProjectUniqueName2 = Lib\\wcl\\Wcl.vcproj
-		SccProjectName2 = \u0022$/Win32/Wcl\u0022,\u0020UAAAAAAA
+		SccProjectName2 = \u0022$/Win32/Lib/WCL\u0022,\u0020HPAAAAAA
 		SccLocalPath2 = Lib\\wcl
 		CanCheckoutShared = true
 		SccProjectUniqueName3 = Lib\\Core\\Core.vcproj

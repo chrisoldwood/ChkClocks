@@ -21,27 +21,26 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Core", "Lib\Core\Core.vcpro
 EndProject
 Global
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 4
+		SccNumberOfProjects = 5
 		SccProjectUniqueName0 = HttpQuery\\HttpQuery.vcproj
 		SccProjectName0 = \u0022$/Win32/HttpQuery\u0022,\u0020ZWCAAAAA
 		SccLocalPath0 = HttpQuery
-		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
 		SccProjectUniqueName1 = Lib\\NCL\\NCL.vcproj
-		SccProjectName1 = \u0022$/Win32/NCL\u0022,\u0020JRCAAAAA
+		SccProjectName1 = \u0022$/Win32/Lib/NCL\u0022,\u0020JRCAAAAA
 		SccLocalPath1 = Lib\\NCL
-		SccProvider1 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
 		SccProjectUniqueName2 = Lib\\WCL\\Wcl.vcproj
-		SccProjectName2 = \u0022$/Win32/Wcl\u0022,\u0020UAAAAAAA
+		SccProjectName2 = \u0022$/Win32/Lib/WCL\u0022,\u0020HPAAAAAA
 		SccLocalPath2 = Lib\\WCL
-		SccProvider2 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
 		SccProjectUniqueName3 = Lib\\Core\\Core.vcproj
 		SccProjectName3 = \u0022$/Win32/Lib/Core\u0022,\u0020QWDAAAAA
 		SccLocalPath3 = Lib\\Core
-		SccProvider3 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
+		SccLocalPath4 = .
+		CanCheckoutShared = true
+		SolutionUniqueID = {01982328-9DF5-4DA7-9C78-5BA2CF98C5F7}
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
