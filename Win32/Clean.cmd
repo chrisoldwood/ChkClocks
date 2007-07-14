@@ -8,6 +8,8 @@ del /s /f *.res
 del /s /f *.tlh
 del /s /f *.tli
 del /s /f *.tlb
+del /s /f *_p.c
+del /s /f *_h.h
 del /s /f BuildLog.htm
 
 @ECHO Removing VC++ target files...
@@ -28,7 +30,7 @@ del /s /f *.ncb
 del /s /f *.opt
 del /s /f *.aps
 del /s /f *.bsc
-del /s /f *.scc
+rem del /s /f *.scc
 
 @ECHO Removing VC++ profiling/instrumentation files...
 
