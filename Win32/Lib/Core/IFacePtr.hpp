@@ -22,10 +22,12 @@ template <typename T>
 T** AttachTo(IFacePtr<T>& ptr);
 
 ////////////////////////////////////////////////////////////////////////////////
-//! A smart-pointer type for use with COM interfaces.
+//! A smart-pointer type for use with COM interfaces. This class can only be
+//! used to manage the lifetime of COM interfaces, to create COM objects use
+//! the ComPtr<T> class in the Windows C++ Library.
 
 template <typename T>
-class IFacePtr
+class IFacePtr : public SmartPtr<T>
 {
 public:
 	//! Default constructor.
@@ -47,37 +49,17 @@ public:
 	//! Assignment operator.
 	IFacePtr& operator=(const IFacePtr<T>& oPtr);
 
-	//! Pointer dereference operator.
-	T& operator*() const;
-
-	//! Pointer-to-member operator.
-	const T* operator->() const;
-
-	//! Pointer-to-member operator.
-	T* operator->();
-
-	//! Not operator.
-    bool operator!() const;
-
 	//
 	// Methods.
 	//
 
-	//! Access owned interface.
-	T* Get() const;
-
-	//! Access owned pointer as a reference.
-	T& GetRef() const;
-
 	//! Release the interface.
 	void Release();
 	
+	//! Take ownership of the interface.
+	T* Detach();
+	
 private:
-	//
-	// Members.
-	//
-	T*	m_pInterface;		//!< The interface.
-
 	//! Allow attachment via an output parameter.
 	friend T** AttachTo<>(IFacePtr<T>& ptr);
 };
@@ -87,7 +69,6 @@ private:
 
 template <typename T>
 inline IFacePtr<T>::IFacePtr()
-	: m_pInterface(nullptr)
 {
 }
 
@@ -96,13 +77,13 @@ inline IFacePtr<T>::IFacePtr()
 
 template <typename T>
 inline IFacePtr<T>::IFacePtr(T* pInterface, bool bAddRef)
-	: m_pInterface(pInterface)
+	: SmartPtr<T>(pInterface)
 {
 	if (bAddRef)
 	{
-		ASSERT(m_pInterface != nullptr);
+		ASSERT(m_pPointer != nullptr);
 
-		m_pInterface->AddRef();
+		m_pPointer->AddRef();
 	}
 }
 
@@ -111,10 +92,10 @@ inline IFacePtr<T>::IFacePtr(T* pInterface, bool bAddRef)
 
 template <typename T>
 inline IFacePtr<T>::IFacePtr(const IFacePtr<T>& oPtr)
-	: m_pInterface(oPtr.m_pInterface)
+	: SmartPtr<T>(oPtr.m_pPointer)
 {
-	if (m_pInterface != nullptr)
-		m_pInterface->AddRef();
+	if (m_pPointer != nullptr)
+		m_pPointer->AddRef();
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -133,71 +114,17 @@ template <typename T>
 inline IFacePtr<T>& IFacePtr<T>::operator=(const IFacePtr<T>& oPtr)
 {
 	// Check for self-assignment.
-	if ( (this != &oPtr) && (this->m_pInterface != oPtr.m_pInterface) )
+	if ( (this != &oPtr) && (this->m_pPointer != oPtr.m_pPointer) )
 	{
 		Release();
 
-		m_pInterface = oPtr.m_pInterface;
+		m_pPointer = oPtr.m_pPointer;
 
-		if (m_pInterface != nullptr)
-			m_pInterface->AddRef();
+		if (m_pPointer != nullptr)
+			m_pPointer->AddRef();
 	}
 
 	return *this;
-}
-
-////////////////////////////////////////////////////////////////////////////////
-//! Pointer dereference operator. Returns the currently owned interface.
-
-template <typename T>
-inline T& IFacePtr<T>::operator*() const
-{
-	return *m_pInterface;
-}
-
-////////////////////////////////////////////////////////////////////////////////
-//! Pointer-to-member operator. Returns the currently owned interface.
-
-template <typename T>
-inline const T* IFacePtr<T>::operator->() const
-{
-	return m_pInterface;
-}
-
-////////////////////////////////////////////////////////////////////////////////
-//! Pointer-to-member operator. Returns the currently owned interface.
-
-template <typename T>
-inline T* IFacePtr<T>::operator->()
-{
-	return m_pInterface;
-}
-
-////////////////////////////////////////////////////////////////////////////////
-//! Not operator. Tests for a NULL pointer.
-
-template <typename T>
-bool IFacePtr<T>::operator!() const
-{
-	return (m_pInterface == nullptr);
-}
-
-////////////////////////////////////////////////////////////////////////////////
-//! Access owned interface. Returns the currently owned interface.
-
-template <typename T>
-inline T* IFacePtr<T>::Get() const
-{
-	return m_pInterface;
-}
-
-////////////////////////////////////////////////////////////////////////////////
-//! Access owned pointer as a reference.
-
-template <typename T>
-inline T& IFacePtr<T>::GetRef() const
-{
-	return *m_pInterface;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -206,21 +133,34 @@ inline T& IFacePtr<T>::GetRef() const
 template <typename T>
 inline void IFacePtr<T>::Release()
 {
-	if (m_pInterface != nullptr)
+	if (m_pPointer != nullptr)
 	{
-		m_pInterface->Release();
-		m_pInterface = nullptr;
+		m_pPointer->Release();
+		m_pPointer = nullptr;
 	}
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+//! Take ownership of the interface.
+
+template <typename T>
+inline T* IFacePtr<T>::Detach()
+{
+	T* pPointer = m_pPointer;
+	m_pPointer = nullptr;
+
+	return pPointer;
+}
+
+////////////////////////////////////////////////////////////////////////////////
 //! Helper function to gain access to the internal member so that it can be
-//! passed as an output parameter, e.g. LoadTypeLib().
+//! passed as an output parameter, without overloading the & operator.
+//! e.g. LoadTypeLib(..., AttachTo(p)).
 
 template <typename T>
 inline T** AttachTo(IFacePtr<T>& ptr)
 {
-	return &ptr.m_pInterface;
+	return &ptr.m_pPointer;
 }
 
 //namespace Core
