@@ -342,7 +342,7 @@ CString CChkClocksApp::FmtError(CRow& oRow)
 
 	// Error occurred?
 	if (oRow[CClocks::ERROR_CODE] != NERR_Success)
-		str = App.FormatError(oRow[CClocks::ERROR_CODE].GetInt());
+		str = CStrCvt::FormatError(oRow[CClocks::ERROR_CODE].GetInt());
 
 	return str;
 }
