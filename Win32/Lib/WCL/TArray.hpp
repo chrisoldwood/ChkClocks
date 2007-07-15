@@ -9,8 +9,10 @@
 */
 
 // Check for previous inclusion
-#ifndef TARRAY_HPP
-#define TARRAY_HPP
+#ifndef WCL_TARRAY_HPP
+#define WCL_TARRAY_HPP
+
+#include "Array.hpp"
 
 /******************************************************************************
 ** 
@@ -50,6 +52,20 @@ public:
 	void Swap(int nIndex1, int nIndex2);
 
 	void Sort(PFNCOMPARE pfnCompare);
+
+	//
+	// std::vector compatibility types and methods.
+	//
+	typedef T*       iterator;
+	typedef const T* const_iterator;
+
+	size_t size() const;
+
+	const_iterator begin() const;
+	const_iterator end() const;
+
+	iterator begin();
+	iterator end();
 
 private:
 	// Disallow copies for now.
@@ -209,6 +225,47 @@ template<class T> inline void TArray<T>::Sort(PFNCOMPARE pfnCompare)
 	CArray::Sort((PFNQSCOMPARE)pfnCompare);
 }
 
+////////////////////////////////////////////////////////////////////////////////
+// std::vector compatibility methods.
+
+template<class T>
+inline size_t TArray<T>::size() const
+{
+	return m_nSize;
+}
+
+template<class T>
+inline typename TArray<T>::const_iterator TArray<T>::begin() const
+{
+	const T* base = reinterpret_cast<const T*>(m_pData);
+
+	return base;
+}
+
+template<class T>
+inline typename TArray<T>::const_iterator TArray<T>::end() const
+{
+	const T* base = reinterpret_cast<const T*>(m_pData);
+
+	return (base+m_nSize);
+}
+
+template<class T>
+inline typename TArray<T>::iterator TArray<T>::begin()
+{
+	T* base = reinterpret_cast<T*>(m_pData);
+
+	return base;
+}
+
+template<class T>
+inline typename TArray<T>::iterator TArray<T>::end()
+{
+	T* base = reinterpret_cast<T*>(m_pData);
+
+	return (base+m_nSize);
+}
+
 /******************************************************************************
 **
 ** Implementation of TPtrArray inline functions.
@@ -321,4 +378,4 @@ template<class T> inline void TRefArray<T>::Insert(int nIndex, T* pItem)
 #undef new
 #endif
 
-#endif //TARRAY_HPP
+#endif // WCL_TARRAY_HPP
