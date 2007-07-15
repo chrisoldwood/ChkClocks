@@ -9,8 +9,10 @@
 */
 
 // Check for previous inclusion
-#ifndef TMAP_HPP
-#define TMAP_HPP
+#ifndef WCL_TMAP_HPP
+#define WCL_TMAP_HPP
+
+#include "Map.hpp"
 
 /******************************************************************************
 ** 
@@ -175,4 +177,4 @@ template<class K, class V> inline bool TMapItem<K, V>::operator==(const CMapItem
 #undef new
 #endif
 
-#endif // TMAP_HPP
+#endif // WCL_TMAP_HPP
