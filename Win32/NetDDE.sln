@@ -51,17 +51,17 @@ Global
 		SccProjectName3 = \u0022$/Win32/Lib/WCL\u0022,\u0020HPAAAAAA
 		SccLocalPath3 = Lib\\wcl
 		CanCheckoutShared = true
-		SccProjectUniqueName4 = Lib\\Core\\Core.vcproj
-		SccProjectName4 = \u0022$/Win32/Lib/Core\u0022,\u0020QWDAAAAA
-		SccLocalPath4 = Lib\\Core
+		SccProjectUniqueName4 = NetDDE\\Shared\\NetDDEShared.vcproj
+		SccProjectName4 = \u0022$/Win32/NetDDE/Shared\u0022,\u0020IRCAAAAA
+		SccLocalPath4 = NetDDE\\Shared
 		CanCheckoutShared = true
-		SccProjectUniqueName5 = NetDDE\\Shared\\NetDDEShared.vcproj
-		SccProjectName5 = \u0022$/Win32/NetDDE/Shared\u0022,\u0020IRCAAAAA
-		SccLocalPath5 = NetDDE\\Shared
+		SccProjectUniqueName5 = Lib\\Core\\Core.vcproj
+		SccProjectName5 = \u0022$/Win32/Lib/Core\u0022,\u0020QWDAAAAA
+		SccLocalPath5 = Lib\\Core
 		CanCheckoutShared = true
 		SccLocalPath6 = .
 		CanCheckoutShared = true
-		SolutionUniqueID = {37AE865C-0CBC-4FB3-8771-C3E2E61D02A5}
+		SolutionUniqueID = {247A6A5B-5B2E-415F-AC27-B6080D5CE053}
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug

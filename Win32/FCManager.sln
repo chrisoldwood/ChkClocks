@@ -23,7 +23,7 @@ Global
 	GlobalSection(SourceCodeControl) = preSolution
 		SccNumberOfProjects = 5
 		SccProjectUniqueName0 = FCManager\\FCManager.vcproj
-		SccProjectName0 = \u0022$/Win32/FCManager\u0022,\u0020MAAAAAAA
+		SccProjectName0 = \u0022$/Win32/FCManager\u0022,\u0020ZOAAAAAA
 		SccLocalPath0 = FCManager
 		CanCheckoutShared = true
 		SccProjectUniqueName1 = Lib\\MDBL\\MDBL.vcproj
@@ -40,7 +40,7 @@ Global
 		CanCheckoutShared = true
 		SccLocalPath4 = .
 		CanCheckoutShared = true
-		SolutionUniqueID = {C024E99A-BDCB-4246-AA71-4184646B305D}
+		SolutionUniqueID = {B43DDC71-D57E-4378-A347-802B712AA12C}
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug

@@ -16,21 +16,21 @@ EndProject
 Global
 	GlobalSection(SourceCodeControl) = preSolution
 		SccNumberOfProjects = 4
-		SccLocalPath0 = .
+		SccProjectUniqueName0 = ClassGen\\ClassGen.vcproj
+		SccProjectName0 = \u0022$/Win32/ClassGen\u0022,\u0020CNCAAAAA
+		SccLocalPath0 = ClassGen
 		CanCheckoutShared = true
-		SolutionUniqueID = {E353DA86-5B7F-4922-BD65-1E2334593970}
-		SccProjectUniqueName1 = ClassGen\\ClassGen.vcproj
-		SccProjectName1 = \u0022$/Win32/ClassGen\u0022,\u0020CNCAAAAA
-		SccLocalPath1 = ClassGen
+		SccProjectUniqueName1 = Lib\\wcl\\Wcl.vcproj
+		SccProjectName1 = \u0022$/Win32/Lib/WCL\u0022,\u0020HPAAAAAA
+		SccLocalPath1 = Lib\\wcl
 		CanCheckoutShared = true
-		SccProjectUniqueName2 = Lib\\wcl\\Wcl.vcproj
-		SccProjectName2 = \u0022$/Win32/Lib/WCL\u0022,\u0020HPAAAAAA
-		SccLocalPath2 = Lib\\wcl
+		SccProjectUniqueName2 = Lib\\Core\\Core.vcproj
+		SccProjectName2 = \u0022$/Win32/Lib/Core\u0022,\u0020QWDAAAAA
+		SccLocalPath2 = Lib\\Core
 		CanCheckoutShared = true
-		SccProjectUniqueName3 = Lib\\Core\\Core.vcproj
-		SccProjectName3 = \u0022$/Win32/Lib/Core\u0022,\u0020QWDAAAAA
-		SccLocalPath3 = Lib\\Core
+		SccLocalPath3 = .
 		CanCheckoutShared = true
+		SolutionUniqueID = {A6FA64FA-BAC8-4F30-AB1B-14FDF794ADB7}
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug

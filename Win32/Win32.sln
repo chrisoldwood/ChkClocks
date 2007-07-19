@@ -161,10 +161,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DDECOMClient", "DDECOMClien
 EndProject
 Global
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 24
+		SccNumberOfProjects = 25
 		SccLocalPath0 = .
 		CanCheckoutShared = true
-		SolutionUniqueID = {29466F71-2F39-499A-B104-6BEA94E33735}
+		SolutionUniqueID = {67464F89-4ED5-44BD-A522-84E53EF9C738}
 		SccProjectUniqueName1 = All.vcproj
 		SccLocalPath1 = .
 		CanCheckoutShared = true
@@ -255,6 +255,10 @@ Global
 		SccProjectUniqueName23 = NetDDE\\Shared\\NetDDEShared.vcproj
 		SccProjectName23 = \u0022$/Win32/NetDDE/Shared\u0022,\u0020IRCAAAAA
 		SccLocalPath23 = NetDDE\\Shared
+		CanCheckoutShared = true
+		SccProjectUniqueName24 = DDECOMClient\\DDECOMClient.vcproj
+		SccProjectName24 = \u0022$/Win32/DDECOMClient\u0022,\u0020VFEAAAAA
+		SccLocalPath24 = DDECOMClient
 		CanCheckoutShared = true
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution

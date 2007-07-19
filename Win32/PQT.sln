@@ -26,7 +26,7 @@ Global
 		SccLocalPath0 = Lib\\MDBL
 		CanCheckoutShared = true
 		SccProjectUniqueName1 = PQT\\PQT.vcproj
-		SccProjectName1 = \u0022$/Win32/PQT\u0022,\u0020PAAAAAAA
+		SccProjectName1 = \u0022$/Win32/PQT\u0022,\u0020CPAAAAAA
 		SccLocalPath1 = PQT
 		CanCheckoutShared = true
 		SccProjectUniqueName2 = Lib\\WCL\\Wcl.vcproj
@@ -39,7 +39,7 @@ Global
 		CanCheckoutShared = true
 		SccLocalPath4 = .
 		CanCheckoutShared = true
-		SolutionUniqueID = {7C60187E-04AA-4B5D-BF2E-762004E92C1D}
+		SolutionUniqueID = {579D62FC-5778-4B9A-A623-0313776808F2}
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug

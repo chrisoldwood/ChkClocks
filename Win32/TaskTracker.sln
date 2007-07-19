@@ -16,21 +16,21 @@ EndProject
 Global
 	GlobalSection(SourceCodeControl) = preSolution
 		SccNumberOfProjects = 4
-		SccLocalPath0 = .
+		SccProjectUniqueName0 = TaskTracker\\TaskTracker.vcproj
+		SccProjectName0 = \u0022$/Win32/TaskTracker\u0022,\u0020EPAAAAAA
+		SccLocalPath0 = TaskTracker
 		CanCheckoutShared = true
-		SolutionUniqueID = {3E4D5F15-966A-4435-823A-38479AD22821}
-		SccProjectUniqueName1 = TaskTracker\\TaskTracker.vcproj
-		SccProjectName1 = \u0022$/Win32/TaskTracker\u0022,\u0020RAAAAAAA
-		SccLocalPath1 = TaskTracker
+		SccProjectUniqueName1 = Lib\\WCL\\Wcl.vcproj
+		SccProjectName1 = \u0022$/Win32/Lib/WCL\u0022,\u0020HPAAAAAA
+		SccLocalPath1 = Lib\\WCL
 		CanCheckoutShared = true
-		SccProjectUniqueName2 = Lib\\WCL\\Wcl.vcproj
-		SccProjectName2 = \u0022$/Win32/Lib/WCL\u0022,\u0020HPAAAAAA
-		SccLocalPath2 = Lib\\WCL
+		SccProjectUniqueName2 = Lib\\Core\\Core.vcproj
+		SccProjectName2 = \u0022$/Win32/Lib/Core\u0022,\u0020QWDAAAAA
+		SccLocalPath2 = Lib\\Core
 		CanCheckoutShared = true
-		SccProjectUniqueName3 = Lib\\Core\\Core.vcproj
-		SccProjectName3 = \u0022$/Win32/Lib/Core\u0022,\u0020QWDAAAAA
-		SccLocalPath3 = Lib\\Core
+		SccLocalPath3 = .
 		CanCheckoutShared = true
+		SolutionUniqueID = {B4DAC0C7-D4D5-4BA0-ACDC-35E3A0CA2242}
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
