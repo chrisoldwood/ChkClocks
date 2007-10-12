@@ -10,6 +10,8 @@ del /s /f *.tli
 del /s /f *.tlb
 del /s /f *_p.c
 del /s /f *_h.h
+del /s /f *_i.c
+del /s /f dlldata.c
 del /s /f BuildLog.htm
 
 @ECHO Removing VC++ target files...
