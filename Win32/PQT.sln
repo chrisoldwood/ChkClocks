@@ -1,16 +1,5 @@
 Microsoft Visual Studio Solution File, Format Version 8.00
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MDBL", "Lib\MDBL\MDBL.vcproj", "{F449D18C-D53D-4565-A2FA-E5CB80D4A549}"
-	ProjectSection(ProjectDependencies) = postProject
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PQT", "PQT\PQT.vcproj", "{3FA5F489-FDA1-452B-9E7D-0175EDB4B269}"
-	ProjectSection(ProjectDependencies) = postProject
-		{790BC113-52FB-4565-8968-79B8B011C520} = {790BC113-52FB-4565-8968-79B8B011C520}
-		{399DF470-C0D2-4B8D-9036-555795B57B9D} = {399DF470-C0D2-4B8D-9036-555795B57B9D}
-		{F449D18C-D53D-4565-A2FA-E5CB80D4A549} = {F449D18C-D53D-4565-A2FA-E5CB80D4A549}
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wcl", "Lib\WCL\Wcl.vcproj", "{399DF470-C0D2-4B8D-9036-555795B57B9D}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PQT", "PQT\PQT.vcproj", "{B48800FE-15ED-48DD-90E9-E993A2973BA3}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
@@ -18,28 +7,43 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Core", "Lib\Core\Core.vcpro
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wcl", "Lib\WCL\Wcl.vcproj", "{9B0335B6-93BE-4604-8497-27431874D758}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MDBL", "Lib\MDBL\MDBL.vcproj", "{9E405156-9B1D-483A-9BBD-B86240FA86BE}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Legacy", "Lib\Legacy\Legacy.vcproj", "{AED77F84-49CF-4B84-B319-2D07025ECA06}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
 	GlobalSection(SourceCodeControl) = preSolution
 		SccNumberOfProjects = 5
-		SccProjectUniqueName0 = Lib\\MDBL\\MDBL.vcproj
-		SccProjectName0 = \u0022$/Win32/Lib/MDBL\u0022,\u0020BPAAAAAA
-		SccLocalPath0 = Lib\\MDBL
+		SccLocalPath0 = .
 		CanCheckoutShared = true
+		SolutionUniqueID = {579D62FC-5778-4B9A-A623-0313776808F2}
 		SccProjectUniqueName1 = PQT\\PQT.vcproj
 		SccProjectName1 = \u0022$/Win32/PQT\u0022,\u0020CPAAAAAA
 		SccLocalPath1 = PQT
 		CanCheckoutShared = true
-		SccProjectUniqueName2 = Lib\\WCL\\Wcl.vcproj
-		SccProjectName2 = \u0022$/Win32/Lib/WCL\u0022,\u0020HPAAAAAA
-		SccLocalPath2 = Lib\\WCL
+		SccProjectUniqueName2 = Lib\\Core\\Core.vcproj
+		SccProjectName2 = \u0022$/Win32/Lib/Core\u0022,\u0020QWDAAAAA
+		SccLocalPath2 = Lib\\Core
 		CanCheckoutShared = true
-		SccProjectUniqueName3 = Lib\\Core\\Core.vcproj
-		SccProjectName3 = \u0022$/Win32/Lib/Core\u0022,\u0020QWDAAAAA
-		SccLocalPath3 = Lib\\Core
+		SccProjectUniqueName3 = Lib\\WCL\\Wcl.vcproj
+		SccProjectName3 = \u0022$/Win32/Lib/WCL\u0022,\u0020HPAAAAAA
+		SccLocalPath3 = Lib\\WCL
 		CanCheckoutShared = true
-		SccLocalPath4 = .
+		SccProjectUniqueName4 = Lib\\MDBL\\MDBL.vcproj
+		SccProjectName4 = \u0022$/Win32/Lib/MDBL\u0022,\u0020BPAAAAAA
+		SccLocalPath4 = Lib\\MDBL
 		CanCheckoutShared = true
-		SolutionUniqueID = {579D62FC-5778-4B9A-A623-0313776808F2}
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
@@ -48,28 +52,29 @@ Global
 	GlobalSection(ProjectDependencies) = postSolution
 	EndGlobalSection
 	GlobalSection(ProjectConfiguration) = postSolution
-		{F449D18C-D53D-4565-A2FA-E5CB80D4A549}.Debug.ActiveCfg = Debug|Win32
-		{F449D18C-D53D-4565-A2FA-E5CB80D4A549}.Debug.Build.0 = Debug|Win32
-		{F449D18C-D53D-4565-A2FA-E5CB80D4A549}.Release.ActiveCfg = Release|Win32
-		{F449D18C-D53D-4565-A2FA-E5CB80D4A549}.Release.Build.0 = Release|Win32
-		{3FA5F489-FDA1-452B-9E7D-0175EDB4B269}.Debug.ActiveCfg = Debug|Win32
-		{3FA5F489-FDA1-452B-9E7D-0175EDB4B269}.Debug.Build.0 = Debug|Win32
-		{3FA5F489-FDA1-452B-9E7D-0175EDB4B269}.Release.ActiveCfg = Release|Win32
-		{3FA5F489-FDA1-452B-9E7D-0175EDB4B269}.Release.Build.0 = Release|Win32
-		{399DF470-C0D2-4B8D-9036-555795B57B9D}.Debug.ActiveCfg = Debug|Win32
-		{399DF470-C0D2-4B8D-9036-555795B57B9D}.Debug.Build.0 = Debug|Win32
-		{399DF470-C0D2-4B8D-9036-555795B57B9D}.Release.ActiveCfg = Release|Win32
-		{399DF470-C0D2-4B8D-9036-555795B57B9D}.Release.Build.0 = Release|Win32
+		{B48800FE-15ED-48DD-90E9-E993A2973BA3}.Debug.ActiveCfg = Debug|Win32
+		{B48800FE-15ED-48DD-90E9-E993A2973BA3}.Debug.Build.0 = Debug|Win32
+		{B48800FE-15ED-48DD-90E9-E993A2973BA3}.Release.ActiveCfg = Release|Win32
+		{B48800FE-15ED-48DD-90E9-E993A2973BA3}.Release.Build.0 = Release|Win32
 		{790BC113-52FB-4565-8968-79B8B011C520}.Debug.ActiveCfg = Debug|Win32
 		{790BC113-52FB-4565-8968-79B8B011C520}.Debug.Build.0 = Debug|Win32
 		{790BC113-52FB-4565-8968-79B8B011C520}.Release.ActiveCfg = Release|Win32
 		{790BC113-52FB-4565-8968-79B8B011C520}.Release.Build.0 = Release|Win32
+		{9B0335B6-93BE-4604-8497-27431874D758}.Debug.ActiveCfg = Debug|Win32
+		{9B0335B6-93BE-4604-8497-27431874D758}.Debug.Build.0 = Debug|Win32
+		{9B0335B6-93BE-4604-8497-27431874D758}.Release.ActiveCfg = Release|Win32
+		{9B0335B6-93BE-4604-8497-27431874D758}.Release.Build.0 = Release|Win32
+		{9E405156-9B1D-483A-9BBD-B86240FA86BE}.Debug.ActiveCfg = Debug|Win32
+		{9E405156-9B1D-483A-9BBD-B86240FA86BE}.Debug.Build.0 = Debug|Win32
+		{9E405156-9B1D-483A-9BBD-B86240FA86BE}.Release.ActiveCfg = Release|Win32
+		{9E405156-9B1D-483A-9BBD-B86240FA86BE}.Release.Build.0 = Release|Win32
+		{AED77F84-49CF-4B84-B319-2D07025ECA06}.Debug.ActiveCfg = Debug|Win32
+		{AED77F84-49CF-4B84-B319-2D07025ECA06}.Debug.Build.0 = Debug|Win32
+		{AED77F84-49CF-4B84-B319-2D07025ECA06}.Release.ActiveCfg = Release|Win32
+		{AED77F84-49CF-4B84-B319-2D07025ECA06}.Release.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection
 	GlobalSection(ExtensibilityAddIns) = postSolution
-	EndGlobalSection
-	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
-		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
 	EndGlobalSection
 EndGlobal

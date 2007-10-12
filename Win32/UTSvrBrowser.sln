@@ -1,23 +1,5 @@
 Microsoft Visual Studio Solution File, Format Version 8.00
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MDBL", "Lib\MDBL\MDBL.vcproj", "{821794FF-E200-475D-8C05-E68F87E29CBD}"
-	ProjectSection(ProjectDependencies) = postProject
-		{8DA8BCB1-DC42-46F0-BF57-AF6260386D2F} = {8DA8BCB1-DC42-46F0-BF57-AF6260386D2F}
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NCL", "Lib\NCL\NCL.vcproj", "{73409F1F-0D6C-4291-B17B-57F61D2F2227}"
-	ProjectSection(ProjectDependencies) = postProject
-		{8DA8BCB1-DC42-46F0-BF57-AF6260386D2F} = {8DA8BCB1-DC42-46F0-BF57-AF6260386D2F}
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UTSvrBrowser", "UTSvrBrowser\UTSvrBrowser.vcproj", "{320A407B-ED04-4C79-AEC0-3FA2076105D7}"
-	ProjectSection(ProjectDependencies) = postProject
-		{790BC113-52FB-4565-8968-79B8B011C520} = {790BC113-52FB-4565-8968-79B8B011C520}
-		{73409F1F-0D6C-4291-B17B-57F61D2F2227} = {73409F1F-0D6C-4291-B17B-57F61D2F2227}
-		{8DA8BCB1-DC42-46F0-BF57-AF6260386D2F} = {8DA8BCB1-DC42-46F0-BF57-AF6260386D2F}
-		{821794FF-E200-475D-8C05-E68F87E29CBD} = {821794FF-E200-475D-8C05-E68F87E29CBD}
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wcl", "Lib\WCL\Wcl.vcproj", "{8DA8BCB1-DC42-46F0-BF57-AF6260386D2F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UTSvrBrowser", "UTSvrBrowser\UTSvrBrowser.vcproj", "{107E920C-AD29-44AB-9BF6-BDECC643C33E}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
@@ -25,32 +7,51 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Core", "Lib\Core\Core.vcpro
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wcl", "Lib\WCL\Wcl.vcproj", "{9B0335B6-93BE-4604-8497-27431874D758}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MDBL", "Lib\MDBL\MDBL.vcproj", "{9E405156-9B1D-483A-9BBD-B86240FA86BE}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NCL", "Lib\NCL\NCL.vcproj", "{FAB8D717-85EC-4896-B5DC-FDF0A0B67C92}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Legacy", "Lib\Legacy\Legacy.vcproj", "{AED77F84-49CF-4B84-B319-2D07025ECA06}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
 	GlobalSection(SourceCodeControl) = preSolution
 		SccNumberOfProjects = 6
-		SccProjectUniqueName0 = Lib\\MDBL\\MDBL.vcproj
-		SccProjectName0 = \u0022$/Win32/Lib/MDBL\u0022,\u0020BPAAAAAA
-		SccLocalPath0 = Lib\\MDBL
+		SccLocalPath0 = .
 		CanCheckoutShared = true
-		SccProjectUniqueName1 = Lib\\NCL\\NCL.vcproj
-		SccProjectName1 = \u0022$/Win32/Lib/NCL\u0022,\u0020JRCAAAAA
-		SccLocalPath1 = Lib\\NCL
+		SolutionUniqueID = {CF34B062-C589-49C9-85CD-93C20D46F99F}
+		SccProjectUniqueName1 = UTSvrBrowser\\UTSvrBrowser.vcproj
+		SccProjectName1 = \u0022$/Win32/UTSvrBrowser\u0022,\u0020FADAAAAA
+		SccLocalPath1 = UTSvrBrowser
 		CanCheckoutShared = true
-		SccProjectUniqueName2 = UTSvrBrowser\\UTSvrBrowser.vcproj
-		SccProjectName2 = \u0022$/Win32/UTSvrBrowser\u0022,\u0020FADAAAAA
-		SccLocalPath2 = UTSvrBrowser
+		SccProjectUniqueName2 = Lib\\Core\\Core.vcproj
+		SccProjectName2 = \u0022$/Win32/Lib/Core\u0022,\u0020QWDAAAAA
+		SccLocalPath2 = Lib\\Core
 		CanCheckoutShared = true
 		SccProjectUniqueName3 = Lib\\WCL\\Wcl.vcproj
 		SccProjectName3 = \u0022$/Win32/Lib/WCL\u0022,\u0020HPAAAAAA
 		SccLocalPath3 = Lib\\WCL
 		CanCheckoutShared = true
-		SccProjectUniqueName4 = Lib\\Core\\Core.vcproj
-		SccProjectName4 = \u0022$/Win32/Lib/Core\u0022,\u0020QWDAAAAA
-		SccLocalPath4 = Lib\\Core
+		SccProjectUniqueName4 = Lib\\MDBL\\MDBL.vcproj
+		SccProjectName4 = \u0022$/Win32/Lib/MDBL\u0022,\u0020BPAAAAAA
+		SccLocalPath4 = Lib\\MDBL
 		CanCheckoutShared = true
-		SccLocalPath5 = .
+		SccProjectUniqueName5 = Lib\\NCL\\NCL.vcproj
+		SccProjectName5 = \u0022$/Win32/Lib/NCL\u0022,\u0020JRCAAAAA
+		SccLocalPath5 = Lib\\NCL
 		CanCheckoutShared = true
-		SolutionUniqueID = {CF34B062-C589-49C9-85CD-93C20D46F99F}
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
@@ -59,32 +60,33 @@ Global
 	GlobalSection(ProjectDependencies) = postSolution
 	EndGlobalSection
 	GlobalSection(ProjectConfiguration) = postSolution
-		{821794FF-E200-475D-8C05-E68F87E29CBD}.Debug.ActiveCfg = Debug|Win32
-		{821794FF-E200-475D-8C05-E68F87E29CBD}.Debug.Build.0 = Debug|Win32
-		{821794FF-E200-475D-8C05-E68F87E29CBD}.Release.ActiveCfg = Release|Win32
-		{821794FF-E200-475D-8C05-E68F87E29CBD}.Release.Build.0 = Release|Win32
-		{73409F1F-0D6C-4291-B17B-57F61D2F2227}.Debug.ActiveCfg = Debug|Win32
-		{73409F1F-0D6C-4291-B17B-57F61D2F2227}.Debug.Build.0 = Debug|Win32
-		{73409F1F-0D6C-4291-B17B-57F61D2F2227}.Release.ActiveCfg = Release|Win32
-		{73409F1F-0D6C-4291-B17B-57F61D2F2227}.Release.Build.0 = Release|Win32
-		{320A407B-ED04-4C79-AEC0-3FA2076105D7}.Debug.ActiveCfg = Debug|Win32
-		{320A407B-ED04-4C79-AEC0-3FA2076105D7}.Debug.Build.0 = Debug|Win32
-		{320A407B-ED04-4C79-AEC0-3FA2076105D7}.Release.ActiveCfg = Release|Win32
-		{320A407B-ED04-4C79-AEC0-3FA2076105D7}.Release.Build.0 = Release|Win32
-		{8DA8BCB1-DC42-46F0-BF57-AF6260386D2F}.Debug.ActiveCfg = Debug|Win32
-		{8DA8BCB1-DC42-46F0-BF57-AF6260386D2F}.Debug.Build.0 = Debug|Win32
-		{8DA8BCB1-DC42-46F0-BF57-AF6260386D2F}.Release.ActiveCfg = Release|Win32
-		{8DA8BCB1-DC42-46F0-BF57-AF6260386D2F}.Release.Build.0 = Release|Win32
+		{107E920C-AD29-44AB-9BF6-BDECC643C33E}.Debug.ActiveCfg = Debug|Win32
+		{107E920C-AD29-44AB-9BF6-BDECC643C33E}.Debug.Build.0 = Debug|Win32
+		{107E920C-AD29-44AB-9BF6-BDECC643C33E}.Release.ActiveCfg = Release|Win32
+		{107E920C-AD29-44AB-9BF6-BDECC643C33E}.Release.Build.0 = Release|Win32
 		{790BC113-52FB-4565-8968-79B8B011C520}.Debug.ActiveCfg = Debug|Win32
 		{790BC113-52FB-4565-8968-79B8B011C520}.Debug.Build.0 = Debug|Win32
 		{790BC113-52FB-4565-8968-79B8B011C520}.Release.ActiveCfg = Release|Win32
 		{790BC113-52FB-4565-8968-79B8B011C520}.Release.Build.0 = Release|Win32
+		{9B0335B6-93BE-4604-8497-27431874D758}.Debug.ActiveCfg = Debug|Win32
+		{9B0335B6-93BE-4604-8497-27431874D758}.Debug.Build.0 = Debug|Win32
+		{9B0335B6-93BE-4604-8497-27431874D758}.Release.ActiveCfg = Release|Win32
+		{9B0335B6-93BE-4604-8497-27431874D758}.Release.Build.0 = Release|Win32
+		{9E405156-9B1D-483A-9BBD-B86240FA86BE}.Debug.ActiveCfg = Debug|Win32
+		{9E405156-9B1D-483A-9BBD-B86240FA86BE}.Debug.Build.0 = Debug|Win32
+		{9E405156-9B1D-483A-9BBD-B86240FA86BE}.Release.ActiveCfg = Release|Win32
+		{9E405156-9B1D-483A-9BBD-B86240FA86BE}.Release.Build.0 = Release|Win32
+		{FAB8D717-85EC-4896-B5DC-FDF0A0B67C92}.Debug.ActiveCfg = Debug|Win32
+		{FAB8D717-85EC-4896-B5DC-FDF0A0B67C92}.Debug.Build.0 = Debug|Win32
+		{FAB8D717-85EC-4896-B5DC-FDF0A0B67C92}.Release.ActiveCfg = Release|Win32
+		{FAB8D717-85EC-4896-B5DC-FDF0A0B67C92}.Release.Build.0 = Release|Win32
+		{AED77F84-49CF-4B84-B319-2D07025ECA06}.Debug.ActiveCfg = Debug|Win32
+		{AED77F84-49CF-4B84-B319-2D07025ECA06}.Debug.Build.0 = Debug|Win32
+		{AED77F84-49CF-4B84-B319-2D07025ECA06}.Release.ActiveCfg = Release|Win32
+		{AED77F84-49CF-4B84-B319-2D07025ECA06}.Release.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection
 	GlobalSection(ExtensibilityAddIns) = postSolution
-	EndGlobalSection
-	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
-		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
 	EndGlobalSection
 EndGlobal

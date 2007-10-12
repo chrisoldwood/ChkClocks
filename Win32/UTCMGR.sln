@@ -1,17 +1,5 @@
 Microsoft Visual Studio Solution File, Format Version 8.00
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MDBL", "Lib\MDBL\MDBL.vcproj", "{F17AA7FA-8CB2-4F0F-B737-8C65CCD4B97C}"
-	ProjectSection(ProjectDependencies) = postProject
-		{37E6738A-07C6-45F3-8DCD-B5C4A2DB7407} = {37E6738A-07C6-45F3-8DCD-B5C4A2DB7407}
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UTCacheMgr", "UTCacheMgr\UTCacheMgr.vcproj", "{7280F645-3FE6-45DC-8D03-6F8923D96232}"
-	ProjectSection(ProjectDependencies) = postProject
-		{790BC113-52FB-4565-8968-79B8B011C520} = {790BC113-52FB-4565-8968-79B8B011C520}
-		{37E6738A-07C6-45F3-8DCD-B5C4A2DB7407} = {37E6738A-07C6-45F3-8DCD-B5C4A2DB7407}
-		{F17AA7FA-8CB2-4F0F-B737-8C65CCD4B97C} = {F17AA7FA-8CB2-4F0F-B737-8C65CCD4B97C}
-	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wcl", "Lib\WCL\Wcl.vcproj", "{37E6738A-07C6-45F3-8DCD-B5C4A2DB7407}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UTCacheMgr", "UTCacheMgr\UTCacheMgr.vcproj", "{628E489B-3F3C-4522-889E-3200AB1837ED}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
@@ -19,28 +7,43 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Core", "Lib\Core\Core.vcpro
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Wcl", "Lib\WCL\Wcl.vcproj", "{9B0335B6-93BE-4604-8497-27431874D758}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MDBL", "Lib\MDBL\MDBL.vcproj", "{9E405156-9B1D-483A-9BBD-B86240FA86BE}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Legacy", "Lib\Legacy\Legacy.vcproj", "{AED77F84-49CF-4B84-B319-2D07025ECA06}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
+		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
 	GlobalSection(SourceCodeControl) = preSolution
 		SccNumberOfProjects = 5
-		SccProjectUniqueName0 = Lib\\MDBL\\MDBL.vcproj
-		SccProjectName0 = \u0022$/Win32/Lib/MDBL\u0022,\u0020BPAAAAAA
-		SccLocalPath0 = Lib\\MDBL
+		SccLocalPath0 = .
 		CanCheckoutShared = true
+		SolutionUniqueID = {8853E44C-42EB-4007-979D-907CC911FF0E}
 		SccProjectUniqueName1 = UTCacheMgr\\UTCacheMgr.vcproj
 		SccProjectName1 = \u0022$/Win32/UTCacheMgr\u0022,\u0020QICAAAAA
 		SccLocalPath1 = UTCacheMgr
 		CanCheckoutShared = true
-		SccProjectUniqueName2 = Lib\\WCL\\Wcl.vcproj
-		SccProjectName2 = \u0022$/Win32/Lib/WCL\u0022,\u0020HPAAAAAA
-		SccLocalPath2 = Lib\\WCL
+		SccProjectUniqueName2 = Lib\\Core\\Core.vcproj
+		SccProjectName2 = \u0022$/Win32/Lib/Core\u0022,\u0020QWDAAAAA
+		SccLocalPath2 = Lib\\Core
 		CanCheckoutShared = true
-		SccProjectUniqueName3 = Lib\\Core\\Core.vcproj
-		SccProjectName3 = \u0022$/Win32/Lib/Core\u0022,\u0020QWDAAAAA
-		SccLocalPath3 = Lib\\Core
+		SccProjectUniqueName3 = Lib\\WCL\\Wcl.vcproj
+		SccProjectName3 = \u0022$/Win32/Lib/WCL\u0022,\u0020HPAAAAAA
+		SccLocalPath3 = Lib\\WCL
 		CanCheckoutShared = true
-		SccLocalPath4 = .
+		SccProjectUniqueName4 = Lib\\MDBL\\MDBL.vcproj
+		SccProjectName4 = \u0022$/Win32/Lib/MDBL\u0022,\u0020BPAAAAAA
+		SccLocalPath4 = Lib\\MDBL
 		CanCheckoutShared = true
-		SolutionUniqueID = {8853E44C-42EB-4007-979D-907CC911FF0E}
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
@@ -49,28 +52,29 @@ Global
 	GlobalSection(ProjectDependencies) = postSolution
 	EndGlobalSection
 	GlobalSection(ProjectConfiguration) = postSolution
-		{F17AA7FA-8CB2-4F0F-B737-8C65CCD4B97C}.Debug.ActiveCfg = Debug|Win32
-		{F17AA7FA-8CB2-4F0F-B737-8C65CCD4B97C}.Debug.Build.0 = Debug|Win32
-		{F17AA7FA-8CB2-4F0F-B737-8C65CCD4B97C}.Release.ActiveCfg = Release|Win32
-		{F17AA7FA-8CB2-4F0F-B737-8C65CCD4B97C}.Release.Build.0 = Release|Win32
-		{7280F645-3FE6-45DC-8D03-6F8923D96232}.Debug.ActiveCfg = Debug|Win32
-		{7280F645-3FE6-45DC-8D03-6F8923D96232}.Debug.Build.0 = Debug|Win32
-		{7280F645-3FE6-45DC-8D03-6F8923D96232}.Release.ActiveCfg = Release|Win32
-		{7280F645-3FE6-45DC-8D03-6F8923D96232}.Release.Build.0 = Release|Win32
-		{37E6738A-07C6-45F3-8DCD-B5C4A2DB7407}.Debug.ActiveCfg = Debug|Win32
-		{37E6738A-07C6-45F3-8DCD-B5C4A2DB7407}.Debug.Build.0 = Debug|Win32
-		{37E6738A-07C6-45F3-8DCD-B5C4A2DB7407}.Release.ActiveCfg = Release|Win32
-		{37E6738A-07C6-45F3-8DCD-B5C4A2DB7407}.Release.Build.0 = Release|Win32
+		{628E489B-3F3C-4522-889E-3200AB1837ED}.Debug.ActiveCfg = Debug|Win32
+		{628E489B-3F3C-4522-889E-3200AB1837ED}.Debug.Build.0 = Debug|Win32
+		{628E489B-3F3C-4522-889E-3200AB1837ED}.Release.ActiveCfg = Release|Win32
+		{628E489B-3F3C-4522-889E-3200AB1837ED}.Release.Build.0 = Release|Win32
 		{790BC113-52FB-4565-8968-79B8B011C520}.Debug.ActiveCfg = Debug|Win32
 		{790BC113-52FB-4565-8968-79B8B011C520}.Debug.Build.0 = Debug|Win32
 		{790BC113-52FB-4565-8968-79B8B011C520}.Release.ActiveCfg = Release|Win32
 		{790BC113-52FB-4565-8968-79B8B011C520}.Release.Build.0 = Release|Win32
+		{9B0335B6-93BE-4604-8497-27431874D758}.Debug.ActiveCfg = Debug|Win32
+		{9B0335B6-93BE-4604-8497-27431874D758}.Debug.Build.0 = Debug|Win32
+		{9B0335B6-93BE-4604-8497-27431874D758}.Release.ActiveCfg = Release|Win32
+		{9B0335B6-93BE-4604-8497-27431874D758}.Release.Build.0 = Release|Win32
+		{9E405156-9B1D-483A-9BBD-B86240FA86BE}.Debug.ActiveCfg = Debug|Win32
+		{9E405156-9B1D-483A-9BBD-B86240FA86BE}.Debug.Build.0 = Debug|Win32
+		{9E405156-9B1D-483A-9BBD-B86240FA86BE}.Release.ActiveCfg = Release|Win32
+		{9E405156-9B1D-483A-9BBD-B86240FA86BE}.Release.Build.0 = Release|Win32
+		{AED77F84-49CF-4B84-B319-2D07025ECA06}.Debug.ActiveCfg = Debug|Win32
+		{AED77F84-49CF-4B84-B319-2D07025ECA06}.Debug.Build.0 = Debug|Win32
+		{AED77F84-49CF-4B84-B319-2D07025ECA06}.Release.ActiveCfg = Release|Win32
+		{AED77F84-49CF-4B84-B319-2D07025ECA06}.Release.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection
 	GlobalSection(ExtensibilityAddIns) = postSolution
-	EndGlobalSection
-	GlobalSection(DPCodeReviewSolutionGUID) = preSolution
-		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
 	EndGlobalSection
 EndGlobal
