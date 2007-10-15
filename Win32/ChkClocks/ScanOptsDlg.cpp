@@ -8,14 +8,10 @@
 *******************************************************************************
 */
 
-#include "AppHeaders.hpp"
+#include "Common.hpp"
 #include "ScanOptsDlg.hpp"
 #include "NameDlg.hpp"
-
-#ifdef _DEBUG
-// For memory leak detection.
-#define new DBGCRT_NEW
-#endif
+#include <WCL/StrCvt.hpp>
 
 /******************************************************************************
 ** Method:		Default constructor.

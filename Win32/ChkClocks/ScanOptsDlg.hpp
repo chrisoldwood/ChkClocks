@@ -12,6 +12,13 @@
 #ifndef SCANOPTSDLG_HPP
 #define SCANOPTSDLG_HPP
 
+#if _MSC_VER > 1000
+#pragma once
+#endif
+
+#include <WCL/CommonUI.hpp>
+#include <WCL/StrArray.hpp>
+
 /******************************************************************************
 ** 
 ** The scanning options dialog.

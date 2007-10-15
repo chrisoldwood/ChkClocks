@@ -8,8 +8,11 @@
 *******************************************************************************
 */
 
-#include "AppHeaders.hpp"
+#include "Common.hpp"
+#include "AppDlg.hpp"
+#include "ChkClocksApp.hpp"
 #include <lm.h>
+#include <MDBL/ResultSet.hpp>
 
 /******************************************************************************
 ** Method:		Default constructor.

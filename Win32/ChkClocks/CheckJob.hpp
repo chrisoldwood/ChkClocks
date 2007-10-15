@@ -12,6 +12,15 @@
 #ifndef CHECKJOB_HPP
 #define CHECKJOB_HPP
 
+#if _MSC_VER > 1000
+#pragma once
+#endif
+
+#include <WCL/ThreadJob.hpp>
+
+// Forward declarations.
+class CRow;
+
 /******************************************************************************
 ** 
 ** The background job used to check the clock on a computer.

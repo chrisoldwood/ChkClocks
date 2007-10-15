@@ -8,20 +8,16 @@
 *******************************************************************************
 */
 
-#include "AppHeaders.hpp"
+#include "Common.hpp"
+#include "CheckJob.hpp"
+#include "Clocks.hpp"
 #include <lm.h>
+#include <Core/AnsiWide.hpp>
+#include <time.h>
 
 #ifndef _DEBUG
 #define	ATLASSERT
 #endif
-
-// conditional expression is constant
-#pragma warning ( disable : 4127 )
-
-#include <atlconv.h>
-
-// conditional expression is constant
-#pragma warning ( default : 4127 )
 
 /******************************************************************************
 ** Method:		Constructor.
@@ -70,8 +66,6 @@ CCheckJob::~CCheckJob()
 
 void CCheckJob::Run()
 {
-	USES_CONVERSION;
-
 	// Get the remote time.
 	const char*         paszComputer = m_oRow[CClocks::COMPUTER];
 	const wchar_t*      pwszComputer = A2W(paszComputer);

@@ -12,6 +12,18 @@
 #ifndef CHKCLOCKSAPP_HPP
 #define CHKCLOCKSAPP_HPP
 
+#if _MSC_VER > 1000
+#pragma once
+#endif
+
+#include <WCL/App.hpp>
+#include <MDBL/MDB.hpp>
+#include <WCL/StrArray.hpp>
+#include <WCL/IniFile.hpp>
+#include "AppWnd.hpp"
+#include "AppCmds.hpp"
+#include "Clocks.hpp"
+
 /******************************************************************************
 ** 
 ** The application class.

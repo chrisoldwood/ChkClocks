@@ -8,13 +8,10 @@
 *******************************************************************************
 */
 
-#include "AppHeaders.hpp"
+#include "Common.hpp"
 #include "ReportOptsDlg.hpp"
-
-#ifdef _DEBUG
-// For memory leak detection.
-#define new DBGCRT_NEW
-#endif
+#include "ChkClocksApp.hpp"
+#include <WCL/StrCvt.hpp>
 
 /******************************************************************************
 ** Method:		Default constructor.

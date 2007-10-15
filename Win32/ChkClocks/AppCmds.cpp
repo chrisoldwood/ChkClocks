@@ -8,12 +8,25 @@
 *******************************************************************************
 */
 
-#include "AppHeaders.hpp"
+#include "Common.hpp"
+#include "AppCmds.hpp"
+#include "ChkClocksApp.hpp"
 #include "AboutDlg.hpp"
 #include "ScanOptsDlg.hpp"
 #include "ReportOptsDlg.hpp"
 #include "ProgressDlg.hpp"
+#include "CheckJob.hpp"
 #include <lm.h>
+#include <WCL/BusyCursor.hpp>
+#include <WCL/ThreadPool.hpp>
+#include <WCL/NetFinder.hpp>
+#include <WCL/Clipboard.hpp>
+#include <WCL/File.hpp>
+#include <WCL/FileException.hpp>
+#include <WCL/Printer.hpp>
+#include <WCL/PrinterDC.hpp>
+#include <MDBL/WhereCmp.hpp>
+#include <MDBL/ResultSet.hpp>
 
 /******************************************************************************
 **
@@ -298,7 +311,7 @@ void CAppCmds::OnReportFile()
 		oFile.Write(strReport, strReport.Length());
 		oFile.Close();
 	}
-	catch (CFileException& e)
+	catch (const CFileException& e)
 	{
 		// Notify user.
 		App.AlertMsg(e.ErrorText());

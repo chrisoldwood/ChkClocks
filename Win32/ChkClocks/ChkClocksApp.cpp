@@ -8,8 +8,11 @@
 *******************************************************************************
 */
 
-#include "AppHeaders.hpp"
+#include "Common.hpp"
+#include "ChkClocksApp.hpp"
 #include <lm.h>
+#include <WCL/Time.hpp>
+#include <WCL/StrCvt.hpp>
 
 /******************************************************************************
 **
