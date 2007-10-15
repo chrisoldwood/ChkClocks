@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="7.10"
 	Name="ChkClocks"
-	ProjectGUID="{191AEF0E-2FB1-482f-9337-D41AA0B30CAA}"
+	ProjectGUID="{191AEF0E-2FB1-482F-9337-D41AA0B30CAA}"
 	SccProjectName="SAK"
 	SccAuxPath="SAK"
 	SccLocalPath="SAK"
@@ -24,16 +24,16 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="2"
-				InlineFunctionExpansion="1"
+				InlineFunctionExpansion="0"
 				AdditionalIncludeDirectories="../Lib"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
 				StringPooling="TRUE"
 				RuntimeLibrary="0"
-				EnableFunctionLevelLinking="TRUE"
+				EnableFunctionLevelLinking="FALSE"
 				ForceConformanceInForLoopScope="TRUE"
 				RuntimeTypeInfo="TRUE"
-				UsePrecompiledHeader="2"
-				PrecompiledHeaderThrough="AppHeaders.hpp"
+				UsePrecompiledHeader="3"
+				PrecompiledHeaderThrough="Common.hpp"
 				PrecompiledHeaderFile=".\Release/ChkClocks.pch"
 				AssemblerListingLocation=".\Release/"
 				ObjectFile=".\Release/"
@@ -41,6 +41,7 @@
 				WarningLevel="4"
 				WarnAsError="TRUE"
 				SuppressStartupBanner="TRUE"
+				DebugInformationFormat="3"
 				CompileAs="0"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
@@ -101,11 +102,11 @@
 				SmallerTypeCheck="TRUE"
 				RuntimeLibrary="1"
 				BufferSecurityCheck="TRUE"
-				EnableFunctionLevelLinking="TRUE"
+				EnableFunctionLevelLinking="FALSE"
 				ForceConformanceInForLoopScope="TRUE"
 				RuntimeTypeInfo="TRUE"
-				UsePrecompiledHeader="2"
-				PrecompiledHeaderThrough="AppHeaders.hpp"
+				UsePrecompiledHeader="3"
+				PrecompiledHeaderThrough="Common.hpp"
 				PrecompiledHeaderFile=".\Debug/ChkClocks.pch"
 				AssemblerListingLocation=".\Debug/"
 				ObjectFile=".\Debug/"
@@ -114,7 +115,7 @@
 				WarningLevel="4"
 				WarnAsError="TRUE"
 				SuppressStartupBanner="TRUE"
-				DebugInformationFormat="4"
+				DebugInformationFormat="3"
 				CompileAs="0"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
@@ -160,6 +161,18 @@
 		</Configuration>
 	</Configurations>
 	<References>
+		<ProjectReference
+			ReferencedProjectIdentifier="{790BC113-52FB-4565-8968-79B8B011C520}"
+			Name="Core"/>
+		<ProjectReference
+			ReferencedProjectIdentifier="{AED77F84-49CF-4B84-B319-2D07025ECA06}"
+			Name="Legacy"/>
+		<ProjectReference
+			ReferencedProjectIdentifier="{9E405156-9B1D-483A-9BBD-B86240FA86BE}"
+			Name="MDBL"/>
+		<ProjectReference
+			ReferencedProjectIdentifier="{9B0335B6-93BE-4604-8497-27431874D758}"
+			Name="Wcl"/>
 	</References>
 	<Files>
 		<Filter
@@ -184,9 +197,6 @@
 				RelativePath="CheckJob.cpp">
 			</File>
 			<File
-				RelativePath="ChkClocks.rc">
-			</File>
-			<File
 				RelativePath="ChkClocksApp.cpp">
 			</File>
 			<File
@@ -194,6 +204,21 @@
 			</File>
 			<File
 				RelativePath="NameDlg.cpp">
+			</File>
+			<File
+				RelativePath=".\pch.cpp">
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath="ProgressDlg.cpp">
@@ -218,9 +243,6 @@
 				RelativePath="AppDlg.hpp">
 			</File>
 			<File
-				RelativePath="AppHeaders.hpp">
-			</File>
-			<File
 				RelativePath="AppToolBar.hpp">
 			</File>
 			<File
@@ -236,6 +258,9 @@
 				RelativePath="Clocks.hpp">
 			</File>
 			<File
+				RelativePath=".\Common.hpp">
+			</File>
+			<File
 				RelativePath="NameDlg.hpp">
 			</File>
 			<File
@@ -243,9 +268,6 @@
 			</File>
 			<File
 				RelativePath=".\ReportOptsDlg.hpp">
-			</File>
-			<File
-				RelativePath="Resource.h">
 			</File>
 			<File
 				RelativePath=".\ScanOptsDlg.hpp">
@@ -259,6 +281,12 @@
 			</File>
 			<File
 				RelativePath="App.rcv">
+			</File>
+			<File
+				RelativePath="ChkClocks.rc">
+			</File>
+			<File
+				RelativePath="Resource.h">
 			</File>
 			<File
 				RelativePath="Toolbar.bmp">
