@@ -18,10 +18,8 @@
 
 #include <WCL/MainDlg.hpp>
 #include <WCL/ListView.hpp>
+#include <MDBL/FwdDecls.hpp>
 #include <MDBL/SortColumns.hpp>
-
-// Forward declarations.
-class CRow;
 
 /******************************************************************************
 ** 

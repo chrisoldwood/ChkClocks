@@ -17,9 +17,7 @@
 #endif
 
 #include <WCL/ThreadJob.hpp>
-
-// Forward declarations.
-class CRow;
+#include <MDBL/FwdDecls.hpp>
 
 /******************************************************************************
 ** 
