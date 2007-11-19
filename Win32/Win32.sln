@@ -96,7 +96,7 @@ Global
 		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
 	EndGlobalSection
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 23
+		SccNumberOfProjects = 24
 		SccLocalPath0 = .
 		CanCheckoutShared = true
 		SolutionUniqueID = {67464F89-4ED5-44BD-A522-84E53EF9C738}
@@ -187,6 +187,10 @@ Global
 		SccProjectUniqueName22 = UTSvrBrowser\\UTSvrBrowser.vcproj
 		SccProjectName22 = \u0022$/Win32/UTSvrBrowser\u0022,\u0020FADAAAAA
 		SccLocalPath22 = UTSvrBrowser
+		CanCheckoutShared = true
+		SccProjectUniqueName23 = Lib\\Legacy\\Legacy.vcproj
+		SccProjectName23 = \u0022$/Win32/Lib/Legacy\u0022,\u0020JHEAAAAA
+		SccLocalPath23 = Lib\\Legacy
 		CanCheckoutShared = true
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
@@ -288,6 +292,12 @@ Global
 		{107E920C-AD29-44AB-9BF6-BDECC643C33E}.Debug.Build.0 = Debug|Win32
 		{107E920C-AD29-44AB-9BF6-BDECC643C33E}.Release.ActiveCfg = Release|Win32
 		{107E920C-AD29-44AB-9BF6-BDECC643C33E}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionItems) = postSolution
+		BuildAll.cmd = BuildAll.cmd
+		Clean.cmd = Clean.cmd
+		Projects.txt = Projects.txt
+		SetVars.cmd = SetVars.cmd
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection
