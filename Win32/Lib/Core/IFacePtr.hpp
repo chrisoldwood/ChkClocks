@@ -60,6 +60,9 @@ public:
 	T* Detach();
 	
 private:
+	//! Access the underlying pointer member.
+	T** GetPtrMember();
+
 	//! Allow attachment via an output parameter.
 	friend T** AttachTo<>(IFacePtr<T>& ptr);
 };
@@ -153,6 +156,16 @@ inline T* IFacePtr<T>::Detach()
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+//! Access the underlying pointer member. This is used by the AttachTo() friend
+//! function to access the underlying SmartPtr<T> member variable.
+
+template <typename T>
+inline T** IFacePtr<T>::GetPtrMember()
+{
+	return &m_pPointer;
+}
+
+////////////////////////////////////////////////////////////////////////////////
 //! Helper function to gain access to the internal member so that it can be
 //! passed as an output parameter, without overloading the & operator.
 //! e.g. LoadTypeLib(..., AttachTo(p)).
@@ -160,7 +173,7 @@ inline T* IFacePtr<T>::Detach()
 template <typename T>
 inline T** AttachTo(IFacePtr<T>& ptr)
 {
-	return &ptr.m_pPointer;
+	return ptr.GetPtrMember();
 }
 
 //namespace Core
