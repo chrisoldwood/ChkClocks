@@ -25,6 +25,8 @@ del /s /f *_h.h
 del /s /f *_i.c
 del /s /f dlldata.c
 del /s /f BuildLog.htm
+del /s /f *.manifest
+del /s /f mt.dep
 
 ECHO Removing VC++ target files...
 
@@ -68,3 +70,8 @@ del /s Docs\*.html
 del /s Docs\*.png
 del /s Docs\*.gif
 del /s Docs\*.css
+
+ECHO Removing Debug and Release directories
+
+FOR /D /R %%I IN (debug)   DO rmdir %%I
+FOR /D /R %%I IN (release) DO rmdir %%I
