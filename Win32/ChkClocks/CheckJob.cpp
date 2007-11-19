@@ -80,7 +80,7 @@ void CCheckJob::Run()
 		// Get Local and Remote times and compare.
 		time_t tLocal  = time(NULL);
 		time_t tRemote = pTimeInfo->tod_elapsedt;
-		int    nDiff   = tRemote - tLocal;
+		int    nDiff   = static_cast<int>(tRemote - tLocal);
 
 		m_oRow[CClocks::ABS_DIFF] = abs(nDiff);
 		m_oRow[CClocks::REL_DIFF] = nDiff;

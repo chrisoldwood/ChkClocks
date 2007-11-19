@@ -58,20 +58,20 @@ CAppCmds::CAppCmds()
 	// Define the command table.
 	DEFINE_CMD_TABLE
 		// File menu.
-		CMD_ENTRY(ID_FILE_CHECK,		OnFileCheck,		NULL,				 0)
-		CMD_ENTRY(ID_FILE_EXIT,			OnFileExit,			NULL,				-1)
+		CMD_ENTRY(ID_FILE_CHECK,		&CAppCmds::OnFileCheck,			NULL,				 0)
+		CMD_ENTRY(ID_FILE_EXIT,			&CAppCmds::OnFileExit,			NULL,				-1)
 		// Report menu.
-		CMD_ENTRY(ID_REPORT_CLIPBOARD,	OnReportClipboard,	NULL,				 7)
-		CMD_ENTRY(ID_REPORT_FILE,		OnReportFile,		NULL,				 9)
-		CMD_ENTRY(ID_REPORT_PRINT,		OnReportPrint,		NULL,				 8)
+		CMD_ENTRY(ID_REPORT_CLIPBOARD,	&CAppCmds::OnReportClipboard,	NULL,				 7)
+		CMD_ENTRY(ID_REPORT_FILE,		&CAppCmds::OnReportFile,		NULL,				 9)
+		CMD_ENTRY(ID_REPORT_PRINT,		&CAppCmds::OnReportPrint,		NULL,				 8)
 		// Options menu.
-		CMD_ENTRY(ID_OPTIONS_SCANNING,	OnOptionsScan,		NULL,				-1)
-		CMD_ENTRY(ID_OPTIONS_REPORTING,	OnOptionsReport,	NULL,				-1)
+		CMD_ENTRY(ID_OPTIONS_SCANNING,	&CAppCmds::OnOptionsScan,		NULL,				-1)
+		CMD_ENTRY(ID_OPTIONS_REPORTING,	&CAppCmds::OnOptionsReport,		NULL,				-1)
 		// Help menu.
-		CMD_ENTRY(ID_HELP_ABOUT,		OnHelpAbout,		NULL,				10)
+		CMD_ENTRY(ID_HELP_ABOUT,		&CAppCmds::OnHelpAbout,			NULL,				10)
 		// Context menu.
-		CMD_ENTRY(ID_EXCLUDE_COMPUTER,	OnExcludeComputer,	NULL,				-1)
-		CMD_ENTRY(ID_EXCLUDE_DOMAIN,	OnExcludeDomain,	NULL,				-1)
+		CMD_ENTRY(ID_EXCLUDE_COMPUTER,	&CAppCmds::OnExcludeComputer,	NULL,				-1)
+		CMD_ENTRY(ID_EXCLUDE_DOMAIN,	&CAppCmds::OnExcludeDomain,		NULL,				-1)
 	END_CMD_TABLE
 }
 
