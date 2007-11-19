@@ -442,7 +442,13 @@
 			RelativePath="Gort\java.htm">
 		</File>
 		<File
+			RelativePath=".\Gort\javascript.js">
+		</File>
+		<File
 			RelativePath="Gort\links.htm">
+		</File>
+		<File
+			RelativePath=".\Gort\stylesheet.css">
 		</File>
 		<File
 			RelativePath="Gort\TODO.txt">
