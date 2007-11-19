@@ -4,6 +4,12 @@
 
 - Net File Finder.
 
-- COM based DDE library.
-
 - File version info comparer.
+
+- WMI Library
+
+- WinInet Library
+
+- WMI Browser.
+
+- WMI based cluster farm monitor.
