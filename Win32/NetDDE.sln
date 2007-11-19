@@ -32,7 +32,7 @@ Global
 		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
 	EndGlobalSection
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 7
+		SccNumberOfProjects = 8
 		SccLocalPath0 = .
 		CanCheckoutShared = true
 		SolutionUniqueID = {247A6A5B-5B2E-415F-AC27-B6080D5CE053}
@@ -59,6 +59,10 @@ Global
 		SccProjectUniqueName6 = Lib\\NCL\\NCL.vcproj
 		SccProjectName6 = \u0022$/Win32/Lib/NCL\u0022,\u0020JRCAAAAA
 		SccLocalPath6 = Lib\\NCL
+		CanCheckoutShared = true
+		SccProjectUniqueName7 = Lib\\Legacy\\Legacy.vcproj
+		SccProjectName7 = \u0022$/Win32/Lib/Legacy\u0022,\u0020JHEAAAAA
+		SccLocalPath7 = Lib\\Legacy
 		CanCheckoutShared = true
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution

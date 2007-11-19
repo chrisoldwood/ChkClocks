@@ -32,7 +32,7 @@ Global
 		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
 	EndGlobalSection
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 7
+		SccNumberOfProjects = 8
 		SccLocalPath0 = .
 		CanCheckoutShared = true
 		SolutionUniqueID = {3F7BE083-BB60-471B-98CC-64FD5336EE38}
@@ -59,6 +59,10 @@ Global
 		SccProjectUniqueName6 = DDECOMClient\\Test\\Test.vcproj
 		SccProjectName6 = \u0022$/Win32/DDECOMClient/Test\u0022,\u0020XFEAAAAA
 		SccLocalPath6 = DDECOMClient\\Test
+		CanCheckoutShared = true
+		SccProjectUniqueName7 = Lib\\Legacy\\Legacy.vcproj
+		SccProjectName7 = \u0022$/Win32/Lib/Legacy\u0022,\u0020JHEAAAAA
+		SccLocalPath7 = Lib\\Legacy
 		CanCheckoutShared = true
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
