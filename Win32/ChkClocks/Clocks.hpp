@@ -41,7 +41,7 @@ public:
 	{
 		ID,
 		COMPUTER,
-		DOMAIN,
+		NTDOMAIN,
 		ABS_DIFF,
 		REL_DIFF,
 		ERROR_CODE,
