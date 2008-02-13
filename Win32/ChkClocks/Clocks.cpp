@@ -24,15 +24,15 @@
 */
 
 CClocks::CClocks(CMDB& oDB)
-	: CTable(oDB, "Clocks")
+	: CTable(oDB, TXT("Clocks"))
 {
 	// Create the table schema.
-	AddColumn("ID",        MDCT_IDENTITY, 0,            CColumn::IDENTITY);
-	AddColumn("Computer",  MDCT_FXDSTR,   COMPUTER_LEN, CColumn::DEFAULTS);
-	AddColumn("Domain",    MDCT_FXDSTR,   DOMAIN_LEN,   CColumn::DEFAULTS);
-	AddColumn("AbsDiff",   MDCT_INT,      0,            CColumn::DEFAULTS);
-	AddColumn("RelDiff",   MDCT_INT,      0,            CColumn::DEFAULTS);
-	AddColumn("ErrorCode", MDCT_INT,      0,            CColumn::DEFAULTS);
+	AddColumn(TXT("ID"),        MDCT_IDENTITY, 0,            CColumn::IDENTITY);
+	AddColumn(TXT("Computer"),  MDCT_FXDSTR,   COMPUTER_LEN, CColumn::DEFAULTS);
+	AddColumn(TXT("Domain"),    MDCT_FXDSTR,   DOMAIN_LEN,   CColumn::DEFAULTS);
+	AddColumn(TXT("AbsDiff"),   MDCT_INT,      0,            CColumn::DEFAULTS);
+	AddColumn(TXT("RelDiff"),   MDCT_INT,      0,            CColumn::DEFAULTS);
+	AddColumn(TXT("ErrorCode"), MDCT_INT,      0,            CColumn::DEFAULTS);
 }
 
 /******************************************************************************
@@ -69,7 +69,7 @@ CRow& CClocks::CreateRow()
 
 //	oRow[ID]         = 
 //	oRow[COMPUTER]   =
-	oRow[DOMAIN]     = "";
+	oRow[NTDOMAIN]   = TXT("");
 	oRow[ABS_DIFF]   = 0;
 	oRow[REL_DIFF]   = 0;
 	oRow[ERROR_CODE] = 0;

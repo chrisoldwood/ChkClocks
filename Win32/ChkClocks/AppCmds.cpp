@@ -35,11 +35,11 @@
 *******************************************************************************
 */
 
-static char szExts[] = {	"Text Files (*.txt)\0*.txt\0"
-							"All Files (*.*)\0*.*\0"
-							"\0\0"							};
+static tchar szExts[] = {	TXT("Text Files (*.txt)\0*.txt\0")
+							TXT("All Files (*.*)\0*.*\0")
+							TXT("\0\0")							};
 
-static char szDefExt[] = { "txt" };
+static tchar szDefExt[] = { TXT("txt") };
 
 /******************************************************************************
 ** Method:		Constructor.
@@ -110,23 +110,23 @@ void CAppCmds::OnFileCheck()
 	// Trash old table.
 	App.m_oClocks.Truncate();
 
-	App.m_strDefStatus = "";
+	App.m_strDefStatus = TXT("");
 
 	// Show the progress dialog.
 	CProgressDlg Dlg;
 
 	Dlg.RunModeless(App.m_AppWnd);
-	Dlg.Title("Checking");
+	Dlg.Title(TXT("Checking"));
 	App.m_AppWnd.Enable(false);
 
-	Dlg.UpdateLabel("Initialising...");
+	Dlg.UpdateLabel(TXT("Initialising..."));
 
 	// Create a thread pool.
 	CThreadPool	oThreadPool(App.m_nThreads);
 
 	oThreadPool.Start();
 
-	Dlg.UpdateLabel("Finding Domains...");
+	Dlg.UpdateLabel(TXT("Finding Domains..."));
 
 	// Find all domains.
 	CStrArray astrDomains;
@@ -134,9 +134,9 @@ void CAppCmds::OnFileCheck()
 	CNetFinder::FindDomains(astrDomains);
 
 	// Find all domain computers...
-	for (int i = 0; (i < astrDomains.Size()) && (!Dlg.Abort()); ++i)
+	for (size_t i = 0; (i < astrDomains.Size()) && (!Dlg.Abort()); ++i)
 	{
-		const char* pszDomain = astrDomains[i];
+		const tchar* pszDomain = astrDomains[i];
 		CStrArray   astrComputers;
 		CString     strProgress;
 
@@ -145,15 +145,15 @@ void CAppCmds::OnFileCheck()
 			continue;
 
 		// Update progress.
-		strProgress.Format("Finding %s Computers...", pszDomain);
+		strProgress.Format(TXT("Finding %s Computers..."), pszDomain);
 		Dlg.UpdateLabel(strProgress);
 
 		CNetFinder::FindComputers(pszDomain, astrComputers);
 
 		// Add all computers to the table.
-		for (int j = 0; j < astrComputers.Size(); ++j)
+		for (size_t j = 0; j < astrComputers.Size(); ++j)
 		{
-			const char* pszComputer = astrComputers[j];
+			const tchar* pszComputer = astrComputers[j];
 
 			// Ignore, if on the exclude list.
 			if (App.m_astrExclude.Find(pszComputer, true) != -1)
@@ -162,7 +162,7 @@ void CAppCmds::OnFileCheck()
 			CRow& oRow = App.m_oClocks.CreateRow();
 
 			oRow[CClocks::COMPUTER] = pszComputer;
-			oRow[CClocks::DOMAIN]   = pszDomain;
+			oRow[CClocks::NTDOMAIN] = pszDomain;
 
 			App.m_oClocks.InsertRow(oRow);
 		}
@@ -176,7 +176,7 @@ void CAppCmds::OnFileCheck()
 	}
 
 	// Append those on the include list.
-	for (int i = 0; (i < App.m_astrInclude.Size()) && (!Dlg.Abort()); ++i)
+	for (size_t i = 0; (i < App.m_astrInclude.Size()) && (!Dlg.Abort()); ++i)
 	{
 		CRow& oRow = App.m_oClocks.CreateRow();
 
@@ -186,14 +186,17 @@ void CAppCmds::OnFileCheck()
 	}
 
 	Dlg.InitMeter(App.m_oClocks.RowCount());
-	Dlg.UpdateLabel("Checking Clocks...");
+	Dlg.UpdateLabel(TXT("Checking Clocks..."));
 
 	// Start jobs to check all computers.
-	for (int i = 0; (i < App.m_oClocks.RowCount()) && (!Dlg.Abort()); ++i)
-		oThreadPool.AddJob(new CCheckJob(App.m_oClocks[i]));
+	for (size_t i = 0; (i < App.m_oClocks.RowCount()) && (!Dlg.Abort()); ++i)
+	{
+		ThreadJobPtr pJob(new CCheckJob(App.m_oClocks[i]));
+		oThreadPool.AddJob(pJob);
+	}
 
 	// Wait for jobs to complete OR user to cancel.
-	while (oThreadPool.CompletedJobCount() != App.m_oClocks.RowCount())
+	while (oThreadPool.CompletedJobCount() != static_cast<size_t>(App.m_oClocks.RowCount()))
 	{
 		Dlg.UpdateMeter(oThreadPool.CompletedJobCount());
 
@@ -202,7 +205,7 @@ void CAppCmds::OnFileCheck()
 
 		if (Dlg.Abort())
 		{
-			Dlg.UpdateLabel("Cancelling check...");
+			Dlg.UpdateLabel(TXT("Cancelling check..."));
 			oThreadPool.CancelAllJobs();
 		}
 
@@ -223,7 +226,7 @@ void CAppCmds::OnFileCheck()
 
 	// Format status bar text.
 	if (!Dlg.Abort())
-		App.m_strDefStatus.Format("%d computer(s) checked", App.m_oClocks.RowCount());
+		App.m_strDefStatus.Format(TXT("%d computer(s) checked"), App.m_oClocks.RowCount());
 
 	// Update UI.
 	App.m_AppWnd.m_AppDlg.RefreshView();
@@ -314,7 +317,7 @@ void CAppCmds::OnReportFile()
 	catch (const CFileException& e)
 	{
 		// Notify user.
-		App.AlertMsg(e.ErrorText());
+		App.AlertMsg(TXT("%s"), e.ErrorText());
 	}
 }
 
@@ -352,11 +355,11 @@ void CAppCmds::OnReportPrint()
 
 	// Get printer attributes.
 	CRect rcRect = oDC.PrintableArea();
-	CSize dmFont = oDC.TextExtents("Wy");
+	CSize dmFont = oDC.TextExtents(TXT("Wy"));
 
 	// Calculate number of pages.
 	int nPageSize  = rcRect.Height() / dmFont.cy;
-	int nRptLines  = strReport.Count('\n');
+	int nRptLines  = strReport.Count(TXT('\n'));
 	int nPages     = nRptLines / nPageSize;
 	int nLineStart = 0;
 
@@ -365,7 +368,7 @@ void CAppCmds::OnReportPrint()
 		nPages++;
 
 	// Start printing.
-	oDC.Start("ChkClocks Report");
+	oDC.Start(TXT("ChkClocks Report"));
 
 	// For all pages.
 	for (int p = 0; p < nPages; ++p)
@@ -388,7 +391,7 @@ void CAppCmds::OnReportPrint()
 		for (int l = nFirstLine; l < nLastLine; ++l)
 		{
 			// Find the end of the report line.
-			int nLineEnd = strReport.Find('\n', nLineStart);
+			int nLineEnd = strReport.Find(TXT('\n'), nLineStart);
 
 			// Extract report line.
 			CString strLine = strReport.Mid(nLineStart, nLineEnd-nLineStart-1);
@@ -444,18 +447,18 @@ CString CAppCmds::GenerateReport()
 	uint nErrorWidth    = 0;
 
 	// Calculate report column widths.
-	for (int i = 0; i < oRS.Count(); ++i)
+	for (size_t i = 0; i < oRS.Count(); ++i)
 	{
 		CRow& oRow = oRS[i];
 
-		nComputerWidth = max(nComputerWidth, strlen(oRow[CClocks::COMPUTER]));
-		nDomainWidth   = max(nDomainWidth,   strlen(oRow[CClocks::DOMAIN])  );
-		nDiffWidth     = max(nDiffWidth,     strlen(App.FmtDifference(oRow)));
-		nErrorWidth    = max(nErrorWidth,    strlen(App.FmtError(oRow))     );
+		nComputerWidth = max(nComputerWidth, tstrlen(oRow[CClocks::COMPUTER]));
+		nDomainWidth   = max(nDomainWidth,   tstrlen(oRow[CClocks::NTDOMAIN]));
+		nDiffWidth     = max(nDiffWidth,     tstrlen(App.FmtDifference(oRow)));
+		nErrorWidth    = max(nErrorWidth,    tstrlen(App.FmtError(oRow))     );
 	}
 
 	// Generate the report.
-	for (int i = 0; i < oRS.Count(); ++i)
+	for (size_t i = 0; i < oRS.Count(); ++i)
 	{
 		CString strLine;
 		CRow&   oRow   = oRS[i];
@@ -471,9 +474,9 @@ CString CAppCmds::GenerateReport()
 			continue;
 
 
-		strLine.Format("%-*s %-*s %*s %-*s\r\n",
+		strLine.Format(TXT("%-*s %-*s %*s %-*s\r\n"),
 						nComputerWidth, oRow[CClocks::COMPUTER].GetString(),
-						nDomainWidth,   oRow[CClocks::DOMAIN].GetString(),
+						nDomainWidth,   oRow[CClocks::NTDOMAIN].GetString(),
 						nDiffWidth,     App.FmtDifference(oRow),
 						nErrorWidth,    App.FmtError(oRow));
 
@@ -588,7 +591,7 @@ void CAppCmds::OnExcludeComputer()
 
 	ASSERT(pRow != NULL);
 
-	const char* pszComputer = pRow->Field(CClocks::COMPUTER);
+	const tchar* pszComputer = pRow->Field(CClocks::COMPUTER);
 
 	// Add if not already included.
 	if (App.m_astrExclude.Find(pszComputer, true) == -1)
@@ -620,14 +623,14 @@ void CAppCmds::OnExcludeDomain()
 
 	ASSERT(pRow != NULL);
 
-	const char* pszDomain = pRow->Field(CClocks::DOMAIN);
+	const tchar* pszDomain = pRow->Field(CClocks::NTDOMAIN);
 
 	// Add if not already included.
 	if (App.m_astrExclude.Find(pszDomain, true) == -1)
 		App.m_astrExclude.Add(pszDomain);
 
 	// Remove all domain computers from the results.
-	App.m_oClocks.DeleteRows(App.m_oClocks.Select(CWhereCmp(CClocks::DOMAIN, CWhereCmp::EQUALS, pszDomain)));
+	App.m_oClocks.DeleteRows(App.m_oClocks.Select(CWhereCmp(CClocks::NTDOMAIN, CWhereCmp::EQUALS, pszDomain)));
 
 	// Redisplay results.
 	App.m_AppWnd.m_AppDlg.RefreshView();

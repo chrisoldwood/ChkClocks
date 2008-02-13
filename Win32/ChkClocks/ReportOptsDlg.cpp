@@ -78,13 +78,13 @@ bool CReportOptsDlg::OnOk()
 {
 	// Get and validate the report options.
 	m_nFormat      = m_rbFmtFixed.IsChecked() ? CChkClocksApp::FMT_FIXED : CChkClocksApp::FMT_VARIABLE;
-	m_nTolerance   = atoi(m_ebTolerance.Text());
+	m_nTolerance   = CStrCvt::ParseInt(m_ebTolerance.Text());
 	m_bHideCorrect = m_ckHideCorrect.IsChecked();
 	m_bHideFailed  = m_ckHideFailed.IsChecked();
 
 	if ( (m_ebTolerance.TextLength() == 0) || (m_nTolerance < 0) )
 	{
-		AlertMsg("The tolerance should be a positive number.");
+		AlertMsg(TXT("The tolerance should be a positive number."));
 		return false;
 	}
 

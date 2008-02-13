@@ -65,10 +65,10 @@ void CAppDlg::OnInitDialog()
 //	m_lvGrid.GridLines(true);
 
 	// Create grid columns.
-	m_lvGrid.InsertColumn(0, "Computer",   125, LVCFMT_LEFT );
-	m_lvGrid.InsertColumn(1, "Domain",     100, LVCFMT_LEFT );
-	m_lvGrid.InsertColumn(2, "Difference", 100, LVCFMT_RIGHT);
-	m_lvGrid.InsertColumn(3, "Error",      200, LVCFMT_LEFT );
+	m_lvGrid.InsertColumn(0, TXT("Computer"),   125, LVCFMT_LEFT );
+	m_lvGrid.InsertColumn(1, TXT("Domain"),     100, LVCFMT_LEFT );
+	m_lvGrid.InsertColumn(2, TXT("Difference"), 100, LVCFMT_RIGHT);
+	m_lvGrid.InsertColumn(3, TXT("Error"),      200, LVCFMT_LEFT );
 }
 
 /******************************************************************************
@@ -94,7 +94,7 @@ void CAppDlg::RefreshView()
 	oRS.OrderBy(CSortColumns(m_nSortColumn, m_eSortOrder));
 
 	// For all rows.
-	for (int i = 0; i < oRS.Count(); ++i)
+	for (size_t i = 0; i < oRS.Count(); ++i)
 	{
 		CRow& oRow = oRS[i];
 		int   nError = oRow[CClocks::ERROR_CODE];
@@ -112,7 +112,7 @@ void CAppDlg::RefreshView()
 
 		// Add to the grid.
 		m_lvGrid.InsertItem(nRow,    oRow[CClocks::COMPUTER]);
-		m_lvGrid.ItemText  (nRow, 1, oRow[CClocks::DOMAIN]);
+		m_lvGrid.ItemText  (nRow, 1, oRow[CClocks::NTDOMAIN]);
 		m_lvGrid.ItemText  (nRow, 2, App.FmtDifference(oRow));
 		m_lvGrid.ItemText  (nRow, 3, App.FmtError(oRow));
 		m_lvGrid.ItemPtr   (nRow,    &oRow);
@@ -210,7 +210,7 @@ int CAppDlg::GetTableColumn(int nGridColumn) const
 	switch (nGridColumn)
 	{
 		case 0:		return CClocks::COMPUTER;
-		case 1:		return CClocks::DOMAIN;
+		case 1:		return CClocks::NTDOMAIN;
 		case 2:		return CClocks::ABS_DIFF;
 		case 3:		return CClocks::ERROR_CODE;
 	}

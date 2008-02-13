@@ -32,11 +32,11 @@ CChkClocksApp App;
 */
 
 #ifdef _DEBUG
-const char* CChkClocksApp::VERSION      = "v1.2 [Debug]";
+const tchar* CChkClocksApp::VERSION = TXT("v1.2 [Debug]");
 #else
-const char* CChkClocksApp::VERSION      = "v1.2";
+const tchar* CChkClocksApp::VERSION = TXT("v1.2");
 #endif
-const char* CChkClocksApp::INI_FILE_VER     = "1.0";
+const tchar* CChkClocksApp::INI_FILE_VER    = TXT("1.0");
 const bool  CChkClocksApp::DEF_AUTO_EXCLUDE = true;
 const int   CChkClocksApp::DEF_THREADS      = 10;
 const int   CChkClocksApp::DEF_TOLERANCE    = 1;
@@ -101,7 +101,7 @@ CChkClocksApp::~CChkClocksApp()
 bool CChkClocksApp::OnOpen()
 {
 	// Set the app title.
-	m_strTitle = "Check Clocks";
+	m_strTitle = TXT("Check Clocks");
 
 	// Load settings.
 	LoadConfig();
@@ -161,31 +161,31 @@ bool CChkClocksApp::OnClose()
 void CChkClocksApp::LoadConfig()
 {
 	// Read the file version.
-	CString strVer = m_oIniFile.ReadString("Version", "Version", INI_FILE_VER);
+	CString strVer = m_oIniFile.ReadString(TXT("Version"), TXT("Version"), INI_FILE_VER);
 
 	// Read the window pos and size.
-	m_rcLastPos.left   = m_oIniFile.ReadInt("UI", "Left",   0);
-	m_rcLastPos.top    = m_oIniFile.ReadInt("UI", "Top",    0);
-	m_rcLastPos.right  = m_oIniFile.ReadInt("UI", "Right",  0);
-	m_rcLastPos.bottom = m_oIniFile.ReadInt("UI", "Bottom", 0);
+	m_rcLastPos.left   = m_oIniFile.ReadInt(TXT("UI"), TXT("Left"),   0);
+	m_rcLastPos.top    = m_oIniFile.ReadInt(TXT("UI"), TXT("Top"),    0);
+	m_rcLastPos.right  = m_oIniFile.ReadInt(TXT("UI"), TXT("Right"),  0);
+	m_rcLastPos.bottom = m_oIniFile.ReadInt(TXT("UI"), TXT("Bottom"), 0);
 
 	// Read the misc settings.
-	m_bAutoExclude = m_oIniFile.ReadBool("Main", "AutoExclude", m_bAutoExclude);
-	m_nThreads     = m_oIniFile.ReadInt ("Main", "Threads",     m_nThreads);
-	m_nFormat      = m_oIniFile.ReadInt ("Main", "Format",      m_nFormat);
-	m_nTolerance   = m_oIniFile.ReadInt ("Main", "Tolerance",   m_nTolerance);
-	m_bHideCorrect = m_oIniFile.ReadBool("Main", "HideCorrect", m_bHideCorrect);
-	m_bHideFailed  = m_oIniFile.ReadBool("Main", "HideFailed",  m_bHideFailed);
+	m_bAutoExclude = m_oIniFile.ReadBool(TXT("Main"), TXT("AutoExclude"), m_bAutoExclude);
+	m_nThreads     = m_oIniFile.ReadInt (TXT("Main"), TXT("Threads"),     m_nThreads);
+	m_nFormat      = m_oIniFile.ReadInt (TXT("Main"), TXT("Format"),      m_nFormat);
+	m_nTolerance   = m_oIniFile.ReadInt (TXT("Main"), TXT("Tolerance"),   m_nTolerance);
+	m_bHideCorrect = m_oIniFile.ReadBool(TXT("Main"), TXT("HideCorrect"), m_bHideCorrect);
+	m_bHideFailed  = m_oIniFile.ReadBool(TXT("Main"), TXT("HideFailed"),  m_bHideFailed);
 
 	// Load the list of computers to include.
-	int nIncCount = m_oIniFile.ReadInt("Include", "Count", 0);
+	int nIncCount = m_oIniFile.ReadInt(TXT("Include"), TXT("Count"), 0);
 
 	for (int i = 0; i < nIncCount; ++i)
 	{
 		CString strEntry, strValue;
 
-		strEntry.Format("Include[%d]", i);
-		strValue = m_oIniFile.ReadString("Include", strEntry, "");
+		strEntry.Format(TXT("Include[%d]"), i);
+		strValue = m_oIniFile.ReadString(TXT("Include"), strEntry, TXT(""));
 
 		// Add if not empty AND unique.
 		if ((strValue.Length() > 0) && (m_astrInclude.Find(strValue, true) == -1))
@@ -193,14 +193,14 @@ void CChkClocksApp::LoadConfig()
 	}
 
 	// Load the list of computers to exclude.
-	int nExcCount = m_oIniFile.ReadInt("Exclude", "Count", 0);
+	int nExcCount = m_oIniFile.ReadInt(TXT("Exclude"), TXT("Count"), 0);
 
 	for (int i = 0; i < nExcCount; ++i)
 	{
 		CString strEntry, strValue;
 
-		strEntry.Format("Exclude[%d]", i);
-		strValue = m_oIniFile.ReadString("Exclude", strEntry, "");
+		strEntry.Format(TXT("Exclude[%d]"), i);
+		strValue = m_oIniFile.ReadString(TXT("Exclude"), strEntry, TXT(""));
 
 		// Add if not empty AND unique.
 		if ((strValue.Length() > 0) && (m_astrExclude.Find(strValue, true) == -1))
@@ -223,42 +223,42 @@ void CChkClocksApp::LoadConfig()
 void CChkClocksApp::SaveConfig()
 {
 	// Write the file version.
-	m_oIniFile.WriteString("Version", "Version", INI_FILE_VER);
+	m_oIniFile.WriteString(TXT("Version"), TXT("Version"), INI_FILE_VER);
 
 	// Write the window pos and size.
-	m_oIniFile.WriteInt("UI", "Left",   m_rcLastPos.left  );
-	m_oIniFile.WriteInt("UI", "Top",    m_rcLastPos.top   );
-	m_oIniFile.WriteInt("UI", "Right",  m_rcLastPos.right );
-	m_oIniFile.WriteInt("UI", "Bottom", m_rcLastPos.bottom);
+	m_oIniFile.WriteInt(TXT("UI"), TXT("Left"),   m_rcLastPos.left  );
+	m_oIniFile.WriteInt(TXT("UI"), TXT("Top"),    m_rcLastPos.top   );
+	m_oIniFile.WriteInt(TXT("UI"), TXT("Right"),  m_rcLastPos.right );
+	m_oIniFile.WriteInt(TXT("UI"), TXT("Bottom"), m_rcLastPos.bottom);
 
 	// Write the misc settings.
-	m_oIniFile.WriteBool("Main", "AutoExclude", m_bAutoExclude);
-	m_oIniFile.WriteInt ("Main", "Threads",     m_nThreads);
-	m_oIniFile.WriteInt ("Main", "Format",      m_nFormat);
-	m_oIniFile.WriteInt ("Main", "Tolerance",   m_nTolerance);
-	m_oIniFile.WriteBool("Main", "HideCorrect", m_bHideCorrect);
-	m_oIniFile.WriteBool("Main", "HideFailed",  m_bHideFailed);
+	m_oIniFile.WriteBool(TXT("Main"), TXT("AutoExclude"), m_bAutoExclude);
+	m_oIniFile.WriteInt (TXT("Main"), TXT("Threads"),     m_nThreads);
+	m_oIniFile.WriteInt (TXT("Main"), TXT("Format"),      m_nFormat);
+	m_oIniFile.WriteInt (TXT("Main"), TXT("Tolerance"),   m_nTolerance);
+	m_oIniFile.WriteBool(TXT("Main"), TXT("HideCorrect"), m_bHideCorrect);
+	m_oIniFile.WriteBool(TXT("Main"), TXT("HideFailed"),  m_bHideFailed);
 
 	// Save the list of computers to include.
-	m_oIniFile.WriteInt("Include", "Count", m_astrInclude.Size());
+	m_oIniFile.WriteInt(TXT("Include"), TXT("Count"), m_astrInclude.Size());
 
-	for (int i = 0; i < m_astrInclude.Size(); ++i)
+	for (size_t i = 0; i < m_astrInclude.Size(); ++i)
 	{
 		CString strEntry;
 
-		strEntry.Format("Include[%d]", i);
-		m_oIniFile.WriteString("Include", strEntry, m_astrInclude[i]);
+		strEntry.Format(TXT("Include[%d]"), i);
+		m_oIniFile.WriteString(TXT("Include"), strEntry, m_astrInclude[i]);
 	}
 
 	// Save the list of computers to exclude.
-	m_oIniFile.WriteInt("Exclude", "Count", m_astrExclude.Size());
+	m_oIniFile.WriteInt(TXT("Exclude"), TXT("Count"), m_astrExclude.Size());
 
-	for (int i = 0; i < m_astrExclude.Size(); ++i)
+	for (size_t i = 0; i < m_astrExclude.Size(); ++i)
 	{
 		CString strEntry;
 
-		strEntry.Format("Exclude[%d]", i);
-		m_oIniFile.WriteString("Exclude", strEntry, m_astrExclude[i]);
+		strEntry.Format(TXT("Exclude[%d]"), i);
+		m_oIniFile.WriteString(TXT("Exclude"), strEntry, m_astrExclude[i]);
 	}
 }
 
@@ -290,12 +290,12 @@ CString CChkClocksApp::FmtDifference(CRow& oRow)
 			if (m_nFormat == FMT_FIXED)
 			{
 				// Format as seconds with +- sign.
-				str.Format("%+d s", nDiff);
+				str.Format(TXT("%+d s"), nDiff);
 			}
 			else // (m_nFormat == FMT_VARIABLE)
 			{
 				// Get sign character.
-				char cSign = (nDiff >= 0) ? '+' : '-';
+				tchar cSign = (nDiff >= 0) ? TXT('+') : TXT('-');
 
 				// Calculate off +ve value.
 				nDiff = abs(nDiff);
@@ -315,11 +315,11 @@ CString CChkClocksApp::FmtDifference(CRow& oRow)
 
 				// Format difference.
 				if (nHours > 0)
-					str.Format("%c%d h %02d m %02d s", cSign, nHours, nMins, nSecs);
+					str.Format(TXT("%c%d h %02d m %02d s"), cSign, nHours, nMins, nSecs);
 				else if (nMins > 0)
-					str.Format("%c%d m %02d s", cSign, nMins, nSecs);
+					str.Format(TXT("%c%d m %02d s"), cSign, nMins, nSecs);
 				else
-					str.Format("%c%d s", cSign, nSecs);
+					str.Format(TXT("%c%d s"), cSign, nSecs);
 			}
 		}
 	}

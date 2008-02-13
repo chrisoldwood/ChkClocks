@@ -70,8 +70,8 @@ public:
 	//
 	// Constants.
 	//
-	static const char* VERSION;
-	static const char* INI_FILE_VER;
+	static const tchar* VERSION;
+	static const tchar* INI_FILE_VER;
 	static const bool  DEF_AUTO_EXCLUDE;
 	static const int   DEF_THREADS;
 	static const int   DEF_TOLERANCE;

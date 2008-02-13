@@ -48,9 +48,9 @@ void CNameDlg::OnInitDialog()
 {
 	// Set title.
 	if (m_bInclude)
-		Title("Computer Name");
+		Title(TXT("Computer Name"));
 	else
-		Title("Computer/Domain Name");
+		Title(TXT("Computer/Domain Name"));
 }
 
 /******************************************************************************
@@ -72,7 +72,7 @@ bool CNameDlg::OnOk()
 	// Validate name.
 	if (m_strName.Length() == 0)
 	{
-		AlertMsg("Please supply the name.");
+		AlertMsg(TXT("Please supply the name."));
 		return false;
 	}
 
