@@ -47,6 +47,7 @@ del /s /f *.opt
 del /s /f *.aps
 del /s /f *.bsc
 rem del /s /f *.suo
+rem del /s /f *.vcproj.*.user
 rem del /s /f *.scc
 
 ECHO Removing VC++ profiling/instrumentation files...
