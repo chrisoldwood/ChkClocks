@@ -20,6 +20,38 @@ Lib\WCL\Test\Debug\Test.exe
 IF errorlevel 1 goto :failed
 
 ECHO.
+
+ECHO ========================================
+ECHO Running 'NCL' library tests...
+ECHO ========================================
+Lib\NCL\Test\Debug\Test.exe
+IF errorlevel 1 goto :failed
+
+ECHO.
+
+ECHO ========================================
+ECHO Running 'MDBL' library tests...
+ECHO ========================================
+Lib\MDBL\Test\Debug\Test.exe
+IF errorlevel 1 goto :failed
+
+ECHO.
+
+ECHO ========================================
+ECHO Running 'COM' library tests...
+ECHO ========================================
+Lib\COM\Test\Debug\Test.exe
+IF errorlevel 1 goto :failed
+
+ECHO.
+
+ECHO ========================================
+ECHO Running 'XML' library tests...
+ECHO ========================================
+Lib\XML\Test\Debug\Test.exe
+IF errorlevel 1 goto :failed
+
+ECHO.
 ECHO The suite of tests PASSED
 
 goto :done
