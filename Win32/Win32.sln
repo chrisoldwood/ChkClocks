@@ -297,6 +297,7 @@ Global
 		BuildAll.cmd = BuildAll.cmd
 		Clean.cmd = Clean.cmd
 		Projects.txt = Projects.txt
+		RunTests.cmd = RunTests.cmd
 		SetVars.cmd = SetVars.cmd
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
