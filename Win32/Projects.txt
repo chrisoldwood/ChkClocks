@@ -13,3 +13,9 @@
 - WMI Browser.
 
 - WMI based cluster farm monitor.
+
+- XML Editor.
+
+- AutoSys Studio
+
+- VC++ Project Settings Comparer.
