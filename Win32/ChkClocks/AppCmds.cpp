@@ -196,7 +196,7 @@ void CAppCmds::OnFileCheck()
 	}
 
 	// Wait for jobs to complete OR user to cancel.
-	while (oThreadPool.CompletedJobCount() != static_cast<size_t>(App.m_oClocks.RowCount()))
+	while (oThreadPool.CompletedJobCount() != App.m_oClocks.RowCount())
 	{
 		Dlg.UpdateMeter(oThreadPool.CompletedJobCount());
 
