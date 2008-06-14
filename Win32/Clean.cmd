@@ -13,66 +13,66 @@ REM ************************************************************
 
 ECHO Removing VC++ intermediate files...
 
-del /s /f *.pch
-del /s /f *.sbr
-del /s /f *.obj
-del /s /f *.res
-del /s /f *.tlh
-del /s /f *.tli
-del /s /f *.tlb
-del /s /f *_p.c
-del /s /f *_h.h
-del /s /f *_i.c
-del /s /f dlldata.c
-del /s /f BuildLog.htm
-del /s /f *.manifest
-del /s /f mt.dep
+del /s /f *.pch 2> nul
+del /s /f *.sbr 2> nul
+del /s /f *.obj 2> nul
+del /s /f *.res 2> nul
+del /s /f *.tlh 2> nul
+del /s /f *.tli 2> nul
+del /s /f *.tlb 2> nul
+del /s /f *_p.c 2> nul
+del /s /f *_h.h 2> nul
+del /s /f *_i.c 2> nul
+del /s /f dlldata.c 2> nul
+del /s /f BuildLog.htm 2> nul
+del /s /f *.manifest 2> nul
+del /s /f mt.dep 2> nul
 
 ECHO Removing VC++ target files...
 
-del /s /f *.pdb
-del /s /f *.idb
-del /s /f *.ilk
-del /s /f *.exe
-del /s /f *.dll
-del /s /f *.lib
-del /s /f *.plg
-del /s /f *.map
-del /s /f *.exp
+del /s /f *.pdb 2> nul
+del /s /f *.idb 2> nul
+del /s /f *.ilk 2> nul
+del /s /f *.exe 2> nul
+del /s /f *.dll 2> nul
+del /s /f *.lib 2> nul
+del /s /f *.plg 2> nul
+del /s /f *.map 2> nul
+del /s /f *.exp 2> nul
 
 ECHO Removing VC++ workspace files...
 
-del /s /f *.ncb
-del /s /f *.opt
-del /s /f *.aps
-del /s /f *.bsc
-rem del /s /f *.suo
-rem del /s /f *.vcproj.*.user
-rem del /s /f *.scc
+del /s /f *.ncb 2> nul
+del /s /f *.opt 2> nul
+del /s /f *.aps 2> nul
+del /s /f *.bsc 2> nul
+rem del /s /f *.suo 2> nul
+rem del /s /f *.vcproj.*.user 2> nul
+rem del /s /f *.scc 2> nul
 
 ECHO Removing VC++ profiling/instrumentation files...
 
-del /s /f *.pbi
-del /s /f *.pbo
-del /s /f *.pbt
-del /s /f *._xe
-del /s /f *.pcc
-del /s /f *.stt
+del /s /f *.pbi 2> nul
+del /s /f *.pbo 2> nul
+del /s /f *.pbt 2> nul
+del /s /f *._xe 2> nul
+del /s /f *.pcc 2> nul
+del /s /f *.stt 2> nul
 
 ECHO Removing log files...
 
-del /s /f *.log
-del /s /f TraceLog.txt
-del /s /f *.sup
+del /s /f *.log 2> nul
+del /s /f TraceLog.txt 2> nul
+del /s /f *.sup 2> nul
 
 ECHO Removing Doxygen documentation
 
-del /s Docs\*.html
-del /s Docs\*.png
-del /s Docs\*.gif
-del /s Docs\*.css
+del /s Docs\*.html 2> nul
+del /s Docs\*.png 2> nul
+del /s Docs\*.gif 2> nul
+del /s Docs\*.css 2> nul
 
 ECHO Removing Debug and Release directories
 
-FOR /D /R %%I IN (debug)   DO rmdir %%I
-FOR /D /R %%I IN (release) DO rmdir %%I
+FOR /D /R %%I IN (debug)   DO rmdir %%I 2> nul
+FOR /D /R %%I IN (release) DO rmdir %%I 2> nul
