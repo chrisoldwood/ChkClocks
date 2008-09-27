@@ -7,17 +7,41 @@ REM one.
 REM
 REM ************************************************************
 
+REM 
+REM Check command line..
+REM
+
 :check_args
 IF /I "%1" == "" GOTO :invalid_args
+IF /I "%2" == "" GOTO :invalid_args
 
-SET INCLUDE=%1\stlport;%INCLUDE%
-SET LIB=%1\lib;%LIB%
-SET PATH=%PATH%;%1\bin;
+REM
+REM Setup the Visual Studio environment variables.
+REM
+
+CALL ..\SetVars.cmd %1
+IF errorlevel 1 GOTO :set_vars_failed
+
+REM
+REM Prepend the STLport environment variables.
+REM
+
+SET INCLUDE=%2\stlport;%INCLUDE%
+SET LIB=%2\lib;%LIB%
+SET PATH=%PATH%;%2\bin;
 
 GOTO :done
 
+REM
+REM Report errors.
+REM
+
+:set_vars_failed
+ECHO ERROR: Failed to set the environment variables
+GOTO :done
+
 :invalid_args
-ECHO Usage: SetVars [STLport root folder]
+ECHO Usage: SetVars [vc71 or vc80 or vc90] [STLport root folder]
 GOTO :done
 
 :done
