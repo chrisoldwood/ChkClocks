@@ -5,36 +5,61 @@ REM Configure and build STLport for Visual C++.
 REM
 REM ************************************************************
 
+REM 
+REM Check command line..
+REM
+
 :check_args
 IF /I "%1" == "" GOTO :invalid_args
+IF /I "%2" == "" GOTO :invalid_args
+
+REM
+REM Setup environment variables for VC++/STLport.
+REM
 
 SETLOCAL
+
+CALL "SetVars.cmd" %1 %2
+IF errorlevel 1 GOTO :failed
+
 SET CWD=%CD%
-CD %1
+CD %2
 
+REM 
+REM Determine compiler.
 REM
-REM Setup environment variables for VC++.
-REM
-:set_vars
-CALL "%VS71COMNTOOLS%\vsvars32.bat"
-IF errorlevel 1 GOTO :failed
 
-CALL "%CWD%\SetVars.cmd"
-IF errorlevel 1 GOTO :failed
+:set_compiler
+IF /I "%1" == "vc71" GOTO :do_vc71
+IF /I "%1" == "vc80" GOTO :do_vc80
+IF /I "%1" == "vc90" GOTO :do_vc90
+goto :invalid_args
+
+:do_vc71
+SET COMPILER=msvc71
+goto :configure
+:do_vc80
+SET COMPILER=msvc8
+goto :configure
+:do_vc90
+SET COMPILER=msvc9
+goto :configure
 
 REM
 REM Configure STLport build.
 REM
+
 :configure
 CD build\lib
 IF errorlevel 1 GOTO :failed
 
-CALL configure --compiler msvc71 --extra-cxxflag /Zc:wchar_t --extra-cxxflag /Zc:forScope
+CALL configure --compiler %COMPILER% --extra-cxxflag /Zc:wchar_t --extra-cxxflag /Zc:forScope
 IF errorlevel 1 GOTO :failed
 
 REM
 REM Build it.
 REM
+
 :build
 nmake /f msvc.mak
 IF errorlevel 1 GOTO :failed
@@ -44,8 +69,12 @@ IF errorlevel 1 GOTO :failed
 
 GOTO :cleanup
 
+REM
+REM Report errors.
+REM
+
 :invalid_args
-ECHO Usage: Build [STLport root folder]
+ECHO Usage: Build [vc71 or vc80 or vc90] [STLport root folder]
 GOTO :done
 
 :failed
