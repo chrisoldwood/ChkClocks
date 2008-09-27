@@ -1,7 +1,3 @@
-- XML library.
-
-- DDE Recorder/Playback.
-
 - Net File Finder.
 
 - File version info comparer.
@@ -14,8 +10,6 @@
 
 - WMI based cluster farm monitor.
 
-- XML Editor.
-
 - AutoSys Studio
 
-- VC++ Project Settings Comparer.
+- DDEUtil console tool
