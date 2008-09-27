@@ -6,22 +6,35 @@ REM for use with STLport.
 REM
 REM ************************************************************
 
+REM 
+REM Check command line..
+REM
+
 :check_args
 IF /I "%1" == "" GOTO :invalid_args
 IF /I "%2" == "" GOTO :invalid_args
 
+REM
+REM Setup environment variables for VC++.
+REM
+
 SETLOCAL
 
-CALL ..\SetVars.cmd %1
+CALL SetVars.cmd %1 %2
 IF errorlevel 1 GOTO :set_vars_failed
 
-CALL SetVars.cmd %2
-IF errorlevel 1 GOTO :set_vars_failed
+REM
+REM Start VC++.
+REM
 
-start devenv /useenv
+start devenv.exe /useenv
 IF errorlevel 1 GOTO :devenv_failed
 
 GOTO :done
+
+REM
+REM Report errors.
+REM
 
 :invalid_args
 ECHO Usage: VC++ [vc71 or vc80 or vc90] [STLport root folder]
