@@ -19,6 +19,9 @@
 #define	ATLASSERT
 #endif
 
+// Add .lib to linker.
+#pragma comment(lib, "netapi32")
+
 /******************************************************************************
 ** Method:		Constructor.
 **
