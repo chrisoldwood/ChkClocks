@@ -5,7 +5,7 @@ REM Script to execute all Unit Tests.
 REM
 REM ************************************************************
 
-:check_build
+:check_args
 IF /I "%1" == "" GOTO :invalid_args
 
 :set_debug_build
@@ -85,14 +85,15 @@ IF errorlevel 1 goto :failed
 ECHO.
 ECHO The suite of tests PASSED
 
-goto :done
+GOTO :done
 
 :failed
 ECHO.
 ECHO ERROR: The suite of tests FAILED.
-goto :done
+GOTO :done
 
 :invalid_args
 ECHO Usage: RunTests [debug or release]
+GOTO :done
 
 :done
