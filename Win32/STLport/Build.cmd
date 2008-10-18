@@ -33,17 +33,19 @@ REM
 IF /I "%1" == "vc71" GOTO :do_vc71
 IF /I "%1" == "vc80" GOTO :do_vc80
 IF /I "%1" == "vc90" GOTO :do_vc90
-goto :invalid_args
+GOTO :invalid_args
 
 :do_vc71
 SET COMPILER=msvc71
-goto :configure
+GOTO :configure
+
 :do_vc80
 SET COMPILER=msvc8
-goto :configure
+GOTO :configure
+
 :do_vc90
 SET COMPILER=msvc9
-goto :configure
+GOTO :configure
 
 REM
 REM Configure STLport build.
