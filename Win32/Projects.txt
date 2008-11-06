@@ -13,3 +13,5 @@
 - AutoSys Studio
 
 - DDEUtil console tool
+
+- Check 64-bit builds.
