@@ -1,9 +1,0 @@
-- Better handling of binary data.
-
-- Add handling of cookie data.
-
-- MRU list for connections.
-
-- Disable UI when not connected.
-
-- Support for handling forms.

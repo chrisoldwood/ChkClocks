@@ -1,3 +1,0 @@
-- Add a few more toolbar buttons
-
-- Add a help file.

@@ -1,9 +1,0 @@
-- Icon for the DOCTYPE and CDATA tags.
-
-- Sort attributes by name.
-
-- Hide namespace names
-
-- Font selection
-
-- Change the app icon.
