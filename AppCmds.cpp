@@ -451,10 +451,10 @@ CString CAppCmds::GenerateReport()
 	{
 		CRow& oRow = oRS[i];
 
-		nComputerWidth = max(nComputerWidth, tstrlen(oRow[CClocks::COMPUTER]));
-		nDomainWidth   = max(nDomainWidth,   tstrlen(oRow[CClocks::NTDOMAIN]));
-		nDiffWidth     = max(nDiffWidth,     tstrlen(App.FmtDifference(oRow)));
-		nErrorWidth    = max(nErrorWidth,    tstrlen(App.FmtError(oRow))     );
+		nComputerWidth = std::max(nComputerWidth, tstrlen(oRow[CClocks::COMPUTER]));
+		nDomainWidth   = std::max(nDomainWidth,   tstrlen(oRow[CClocks::NTDOMAIN]));
+		nDiffWidth     = std::max(nDiffWidth,     tstrlen(App.FmtDifference(oRow)));
+		nErrorWidth    = std::max(nErrorWidth,    tstrlen(App.FmtError(oRow))     );
 	}
 
 	// Generate the report.
