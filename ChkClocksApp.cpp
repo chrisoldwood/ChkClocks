@@ -303,12 +303,12 @@ CString CChkClocksApp::FmtDifference(CRow& oRow)
 				int nHours, nMins, nSecs;
 
 				// Calculate hours out.
-				nHours = nDiff / SECS_PER_HOUR;
-				nDiff -= nHours * SECS_PER_HOUR;
+				nHours = nDiff  / WCL::SECS_PER_HOUR;
+				nDiff -= nHours * WCL::SECS_PER_HOUR;
 
 				// Calculate minutes out.
-				nMins = nDiff / SECS_PER_MIN;
-				nDiff -= nMins * SECS_PER_MIN;
+				nMins  = nDiff / WCL::SECS_PER_MIN;
+				nDiff -= nMins * WCL::SECS_PER_MIN;
 
 				// Calculate seconds out.
 				nSecs = nDiff;
