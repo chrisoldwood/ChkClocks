@@ -317,7 +317,7 @@ void CAppCmds::OnReportFile()
 	catch (const CFileException& e)
 	{
 		// Notify user.
-		App.AlertMsg(TXT("%s"), e.What());
+		App.AlertMsg(TXT("%s"), e.twhat());
 	}
 }
 
