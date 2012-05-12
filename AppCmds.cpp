@@ -185,7 +185,7 @@ void CAppCmds::OnFileCheck()
 		App.m_oClocks.InsertRow(oRow);
 	}
 
-	Dlg.InitMeter(App.m_oClocks.RowCount());
+	Dlg.InitMeter(static_cast<uint>(App.m_oClocks.RowCount()));
 	Dlg.UpdateLabel(TXT("Checking Clocks..."));
 
 	// Start jobs to check all computers.
@@ -198,7 +198,7 @@ void CAppCmds::OnFileCheck()
 	// Wait for jobs to complete OR user to cancel.
 	while (oThreadPool.CompletedJobCount() != App.m_oClocks.RowCount())
 	{
-		Dlg.UpdateMeter(oThreadPool.CompletedJobCount());
+		Dlg.UpdateMeter(static_cast<uint>(oThreadPool.CompletedJobCount()));
 
 		// Check for "Cancel" button.
 		App.m_MainThread.ProcessMsgQueue();
@@ -358,10 +358,10 @@ void CAppCmds::OnReportPrint()
 	CSize dmFont = oDC.TextExtents(TXT("Wy"));
 
 	// Calculate number of pages.
-	int nPageSize  = rcRect.Height() / dmFont.cy;
-	int nRptLines  = strReport.Count(TXT('\n'));
-	int nPages     = nRptLines / nPageSize;
-	int nLineStart = 0;
+	size_t nPageSize  = rcRect.Height() / dmFont.cy;
+	size_t nRptLines  = strReport.Count(TXT('\n'));
+	size_t nPages     = nRptLines / nPageSize;
+	size_t nLineStart = 0;
 
 	// Doesn't end on a page?
 	if ((nRptLines % nPageSize) != 0)
@@ -371,7 +371,7 @@ void CAppCmds::OnReportPrint()
 	oDC.Start(TXT("ChkClocks Report"));
 
 	// For all pages.
-	for (int p = 0; p < nPages; ++p)
+	for (size_t p = 0; p < nPages; ++p)
 	{
 		oDC.StartPage();
 
@@ -380,18 +380,18 @@ void CAppCmds::OnReportPrint()
 		rcLine.bottom = rcLine.top + dmFont.cy;
 
 		// Calculate lines on this page.
-		int nFirstLine = p * nPageSize;
-		int nLastLine  = nFirstLine + nPageSize;
+		size_t nFirstLine = p * nPageSize;
+		size_t nLastLine  = nFirstLine + nPageSize;
 
 		// Adjust rows, if last page.
 		if (nLastLine > nRptLines)
 			nLastLine = nRptLines;
 
 		// For all lines on the page.
-		for (int l = nFirstLine; l < nLastLine; ++l)
+		for (size_t l = nFirstLine; l < nLastLine; ++l)
 		{
 			// Find the end of the report line.
-			int nLineEnd = strReport.Find(TXT('\n'), nLineStart);
+			size_t nLineEnd = strReport.Find(TXT('\n'), nLineStart);
 
 			// Extract report line.
 			CString strLine = strReport.Mid(nLineStart, nLineEnd-nLineStart-1);
@@ -451,10 +451,10 @@ CString CAppCmds::GenerateReport()
 	{
 		CRow& oRow = oRS[i];
 
-		nComputerWidth = std::max(nComputerWidth, tstrlen(oRow[CClocks::COMPUTER]));
-		nDomainWidth   = std::max(nDomainWidth,   tstrlen(oRow[CClocks::NTDOMAIN]));
-		nDiffWidth     = std::max(nDiffWidth,     tstrlen(App.FmtDifference(oRow)));
-		nErrorWidth    = std::max(nErrorWidth,    tstrlen(App.FmtError(oRow))     );
+		nComputerWidth = std::max(nComputerWidth, static_cast<uint>(tstrlen(oRow[CClocks::COMPUTER])));
+		nDomainWidth   = std::max(nDomainWidth,   static_cast<uint>(tstrlen(oRow[CClocks::NTDOMAIN])));
+		nDiffWidth     = std::max(nDiffWidth,     static_cast<uint>(tstrlen(App.FmtDifference(oRow))));
+		nErrorWidth    = std::max(nErrorWidth,    static_cast<uint>(tstrlen(App.FmtError(oRow)))     );
 	}
 
 	// Generate the report.

@@ -108,7 +108,7 @@ void CAppDlg::RefreshView()
 		if ( (App.m_bHideFailed) && (nError != NERR_Success) )
 			continue;
 
-		int nRow = m_lvGrid.ItemCount();
+		size_t nRow = m_lvGrid.ItemCount();
 
 		// Add to the grid.
 		m_lvGrid.InsertItem(nRow,    oRow[CClocks::COMPUTER]);

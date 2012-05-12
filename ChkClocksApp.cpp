@@ -240,7 +240,7 @@ void CChkClocksApp::SaveConfig()
 	m_oIniFile.WriteBool(TXT("Main"), TXT("HideFailed"),  m_bHideFailed);
 
 	// Save the list of computers to include.
-	m_oIniFile.WriteInt(TXT("Include"), TXT("Count"), m_astrInclude.Size());
+	m_oIniFile.WriteInt(TXT("Include"), TXT("Count"), static_cast<int>(m_astrInclude.Size()));
 
 	for (size_t i = 0; i < m_astrInclude.Size(); ++i)
 	{
@@ -251,7 +251,7 @@ void CChkClocksApp::SaveConfig()
 	}
 
 	// Save the list of computers to exclude.
-	m_oIniFile.WriteInt(TXT("Exclude"), TXT("Count"), m_astrExclude.Size());
+	m_oIniFile.WriteInt(TXT("Exclude"), TXT("Count"), static_cast<int>(m_astrExclude.Size()));
 
 	for (size_t i = 0; i < m_astrExclude.Size(); ++i)
 	{

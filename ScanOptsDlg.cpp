@@ -59,13 +59,15 @@ CScanOptsDlg::CScanOptsDlg()
 
 void CScanOptsDlg::OnInitDialog()
 {
+	const size_t first = 0;
+
 	// Load the existing list of included computers.
 	for (size_t i = 0; i < m_astrInclude.Size(); ++i)
 		m_lbInclude.Add(m_astrInclude[i]);
 
 	// Select 1st by default.
 	if (m_lbInclude.Count() > 0)
-		m_lbInclude.CurSel(0U);
+		m_lbInclude.CurSel(first);
 
 	// Load the existing list of excluded computers.
 	for (size_t i = 0; i < m_astrExclude.Size(); ++i)
@@ -73,7 +75,7 @@ void CScanOptsDlg::OnInitDialog()
 
 	// Select 1st by default.
 	if (m_lbExclude.Count() > 0)
-		m_lbExclude.CurSel(0U);
+		m_lbExclude.CurSel(first);
 
 	// Initialise other options.
 	m_ebThreads.Text(CStrCvt::FormatInt(m_nThreads));
@@ -122,6 +124,8 @@ bool CScanOptsDlg::OnOk()
 
 void CScanOptsDlg::OnAddInclude()
 {
+	const size_t first = 0;
+
 	CNameDlg Dlg;
 
 	Dlg.m_bInclude = true;
@@ -138,7 +142,7 @@ void CScanOptsDlg::OnAddInclude()
 
 			// Select, if 1st item.
 			if (m_lbInclude.Count() == 1)
-				m_lbInclude.CurSel(0U);
+				m_lbInclude.CurSel(first);
 		}
 	}
 }
@@ -190,6 +194,8 @@ void CScanOptsDlg::OnRemoveInclude()
 
 void CScanOptsDlg::OnAddExclude()
 {
+	const size_t first = 0;
+
 	CNameDlg Dlg;
 
 	Dlg.m_bInclude = false;
@@ -206,7 +212,7 @@ void CScanOptsDlg::OnAddExclude()
 
 			// Select, if 1st item.
 			if (m_lbExclude.Count() == 1)
-				m_lbExclude.CurSel(0U);
+				m_lbExclude.CurSel(first);
 		}
 	}
 }
