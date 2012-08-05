@@ -57,6 +57,8 @@ const bool  CChkClocksApp::DEF_HIDE_FAILED  = false;
 
 CChkClocksApp::CChkClocksApp()
 	: CApp(m_AppWnd, m_AppCmds)
+	, m_AppWnd(m_MainThread, m_AppCmds)
+	, m_AppCmds()
 	, m_oClocks(m_oMDB)
 	, m_bAutoExclude(DEF_AUTO_EXCLUDE)
 	, m_nThreads(DEF_THREADS)
@@ -105,9 +107,6 @@ bool CChkClocksApp::OnOpen()
 
 	// Load settings.
 	LoadConfig();
-	
-	// Load the toolbar bitmap.
-	m_rCmdControl.CmdBitmap().LoadRsc(IDR_APPTOOLBAR);
 
 	// Create the main window.
 	if (!m_AppWnd.Create())
@@ -120,8 +119,7 @@ bool CChkClocksApp::OnOpen()
 	// Show it.
 	m_AppWnd.Show(m_iCmdShow);
 
-	// Update UI.
-	m_AppCmds.UpdateUI();
+	m_AppCmds.InitialiseUI();
 
 	return true;
 }
