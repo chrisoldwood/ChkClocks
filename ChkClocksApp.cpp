@@ -58,7 +58,7 @@ const bool  CChkClocksApp::DEF_HIDE_FAILED  = false;
 CChkClocksApp::CChkClocksApp()
 	: CApp(m_AppWnd, m_AppCmds)
 	, m_AppWnd(m_MainThread, m_AppCmds)
-	, m_AppCmds()
+	, m_AppCmds(m_AppWnd)
 	, m_oClocks(m_oMDB)
 	, m_bAutoExclude(DEF_AUTO_EXCLUDE)
 	, m_nThreads(DEF_THREADS)
@@ -113,7 +113,7 @@ bool CChkClocksApp::OnOpen()
 		return false;
 
 	// Show it.
-	if (ShowNormal() && !m_rcLastPos.Empty())
+	if (!m_rcLastPos.Empty())
 		m_AppWnd.Move(m_rcLastPos);
 
 	// Show it.
