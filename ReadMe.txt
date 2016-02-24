@@ -1,21 +1,34 @@
 Check Clocks v1.2
 =================
 
-1) Installation.
-
-Run Setup.exe or copy the file ChkClocks.exe to a folder.
-
-
-2) Uninstallation.
-
-Delete the files ChkClocks.*
-
-
-3) Manual.
+Introduction
+------------
 
 This is a utility that scans all the computers on the network and checks the
 time against the machine that the utility is running on. It uses the API
 NetRemoteTOD() so may not return the time for 9x or non-windows based machines.
+
+Releases
+--------
+
+Stable releases are formally packaged and made available from my Win32 tools page:
+http://www.chrisoldwood.com/win32.htm
+
+The latest code is available from my GitHub repo:
+https://github.com/chrisoldwood/ChkClocks
+
+Installation
+------------
+
+Run Setup.exe or copy the file ChkClocks.exe to a folder.
+
+Uninstallation
+--------------
+
+Delete the files ChkClocks.*
+
+Documentation
+-------------
 
 To run a check use the "File | Check" command. You can abort a check during
 the actual checking process (not the enumeration of domains) but it may take
@@ -38,14 +51,16 @@ displayed if the "Hide If Correct" option is ticked.
 The "Report | ..." menu items allow you to send a copy of the report to the
 clipboard, save to a file or send it to a printer.
 
+Development
+-----------
 
-4) Contact Details.
+See DevNotes.txt
 
-EMail: gort@cix.co.uk
-Web:   http://www.cix.co.uk/~gort
+Contact Details
+---------------
 
+Email: gort@cix.co.uk
+Web:   http://www.chrisoldwood.com
 
 Chris Oldwood 
-(gort@cix.co.uk)
-
 22nd November 2004
