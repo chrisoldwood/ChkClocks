@@ -77,7 +77,7 @@ protected:
 
 inline CRow* CAppDlg::SelectedRow()
 {
-	CRow* pRow = NULL;
+	CRow* pRow = nullptr;
 
 	if (m_lvGrid.IsSelection())
 		pRow = static_cast<CRow*>(m_lvGrid.ItemPtr(m_lvGrid.Selection()));

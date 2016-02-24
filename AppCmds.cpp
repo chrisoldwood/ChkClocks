@@ -59,20 +59,20 @@ CAppCmds::CAppCmds(CAppWnd& appWnd)
 	// Define the command table.
 	DEFINE_CMD_TABLE
 		// File menu.
-		CMD_ENTRY(ID_FILE_CHECK,		&CAppCmds::OnFileCheck,			NULL,				 0)
-		CMD_ENTRY(ID_FILE_EXIT,			&CAppCmds::OnFileExit,			NULL,				-1)
+		CMD_ENTRY(ID_FILE_CHECK,		&CAppCmds::OnFileCheck,			nullptr,				 0)
+		CMD_ENTRY(ID_FILE_EXIT,			&CAppCmds::OnFileExit,			nullptr,				-1)
 		// Report menu.
-		CMD_ENTRY(ID_REPORT_CLIPBOARD,	&CAppCmds::OnReportClipboard,	NULL,				 7)
-		CMD_ENTRY(ID_REPORT_FILE,		&CAppCmds::OnReportFile,		NULL,				 9)
-		CMD_ENTRY(ID_REPORT_PRINT,		&CAppCmds::OnReportPrint,		NULL,				 8)
+		CMD_ENTRY(ID_REPORT_CLIPBOARD,	&CAppCmds::OnReportClipboard,	nullptr,				 7)
+		CMD_ENTRY(ID_REPORT_FILE,		&CAppCmds::OnReportFile,		nullptr,				 9)
+		CMD_ENTRY(ID_REPORT_PRINT,		&CAppCmds::OnReportPrint,		nullptr,				 8)
 		// Options menu.
-		CMD_ENTRY(ID_OPTIONS_SCANNING,	&CAppCmds::OnOptionsScan,		NULL,				-1)
-		CMD_ENTRY(ID_OPTIONS_REPORTING,	&CAppCmds::OnOptionsReport,		NULL,				-1)
+		CMD_ENTRY(ID_OPTIONS_SCANNING,	&CAppCmds::OnOptionsScan,		nullptr,				-1)
+		CMD_ENTRY(ID_OPTIONS_REPORTING,	&CAppCmds::OnOptionsReport,		nullptr,				-1)
 		// Help menu.
-		CMD_ENTRY(ID_HELP_ABOUT,		&CAppCmds::OnHelpAbout,			NULL,				10)
+		CMD_ENTRY(ID_HELP_ABOUT,		&CAppCmds::OnHelpAbout,			nullptr,				10)
 		// Context menu.
-		CMD_ENTRY(ID_EXCLUDE_COMPUTER,	&CAppCmds::OnExcludeComputer,	NULL,				-1)
-		CMD_ENTRY(ID_EXCLUDE_DOMAIN,	&CAppCmds::OnExcludeDomain,		NULL,				-1)
+		CMD_ENTRY(ID_EXCLUDE_COMPUTER,	&CAppCmds::OnExcludeComputer,	nullptr,				-1)
+		CMD_ENTRY(ID_EXCLUDE_DOMAIN,	&CAppCmds::OnExcludeDomain,		nullptr,				-1)
 	END_CMD_TABLE
 }
 
@@ -590,7 +590,7 @@ void CAppCmds::OnExcludeComputer()
 	// Get the selected computer.
 	CRow* pRow = App.m_AppWnd.m_AppDlg.SelectedRow();
 
-	ASSERT(pRow != NULL);
+	ASSERT(pRow != nullptr);
 
 	const tchar* pszComputer = pRow->Field(CClocks::COMPUTER);
 
@@ -622,7 +622,7 @@ void CAppCmds::OnExcludeDomain()
 	// Get the selected domain.
 	CRow* pRow = App.m_AppWnd.m_AppDlg.SelectedRow();
 
-	ASSERT(pRow != NULL);
+	ASSERT(pRow != nullptr);
 
 	const tchar* pszDomain = pRow->Field(CClocks::NTDOMAIN);
 

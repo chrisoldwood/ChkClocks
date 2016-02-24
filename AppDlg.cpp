@@ -187,7 +187,7 @@ LRESULT CAppDlg::OnRightClick(NMHDR& /*rMsgHdr*/)
 		uint nCmdID = oMenu.TrackMenu(App.m_AppWnd, CPoint(oCurrMsg.pt.x, oCurrMsg.pt.y));
 
 		// Dispatch command.
-		if (nCmdID != NULL)
+		if (nCmdID != 0)
 			App.m_AppWnd.PostCommand(nCmdID);
 	}
 

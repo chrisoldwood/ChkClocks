@@ -71,16 +71,16 @@ void CCheckJob::Run()
 {
 	// Get the remote time.
 	const tchar*        pszComputer  = m_oRow[CClocks::COMPUTER];
-	LPTIME_OF_DAY_INFO	pTimeInfo    = NULL;
+	LPTIME_OF_DAY_INFO	pTimeInfo    = nullptr;
 	NET_API_STATUS		nStatus      = NERR_Success;
 
 	nStatus = ::NetRemoteTOD(T2W(pszComputer), reinterpret_cast<LPBYTE*>(&pTimeInfo));
 
 	// Success?
-	if ( (nStatus == NERR_Success) && (pTimeInfo != NULL) )
+	if ( (nStatus == NERR_Success) && (pTimeInfo != nullptr) )
 	{
 		// Get Local and Remote times and compare.
-		time_t tLocal  = time(NULL);
+		time_t tLocal  = time(nullptr);
 		time_t tRemote = pTimeInfo->tod_elapsedt;
 		int    nDiff   = static_cast<int>(tRemote - tLocal);
 
@@ -96,6 +96,6 @@ void CCheckJob::Run()
 	}
 
 	// Cleanup.
-	if (pTimeInfo != NULL)
+	if (pTimeInfo != nullptr)
 		::NetApiBufferFree(pTimeInfo);
 }
