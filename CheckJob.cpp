@@ -14,6 +14,7 @@
 #include <lm.h>
 #include <Core/AnsiWide.hpp>
 #include <time.h>
+#include <Core/Scoped.hpp>
 
 #ifndef _DEBUG
 #define	ATLASSERT
@@ -55,6 +56,15 @@ CCheckJob::~CCheckJob()
 {
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//! Wrapper to use as the deleter for the buffer because NetApiBufferFree()
+//! doesn't return void.
+
+static void FreeTimeOfDayInfo(TIME_OF_DAY_INFO* buffer)
+{
+	::NetApiBufferFree(buffer);
+}
+
 /******************************************************************************
 ** Method:		Run()
 **
@@ -69,19 +79,20 @@ CCheckJob::~CCheckJob()
 
 void CCheckJob::Run()
 {
-	// Get the remote time.
-	const tchar*        pszComputer  = m_oRow[CClocks::COMPUTER];
-	LPTIME_OF_DAY_INFO	pTimeInfo    = nullptr;
-	NET_API_STATUS		nStatus      = NERR_Success;
+	typedef Core::Scoped<TIME_OF_DAY_INFO*> TimeOfDayInfoPtr;
 
-	nStatus = ::NetRemoteTOD(T2W(pszComputer), reinterpret_cast<LPBYTE*>(&pTimeInfo));
+	// Get the remote time.
+	const tchar*     pszComputer  = m_oRow[CClocks::COMPUTER];
+	TimeOfDayInfoPtr pTimeInfo(FreeTimeOfDayInfo);
+
+	NET_API_STATUS nStatus = ::NetRemoteTOD(T2W(pszComputer), reinterpret_cast<LPBYTE*>(attachTo(pTimeInfo)));
 
 	// Success?
-	if ( (nStatus == NERR_Success) && (pTimeInfo != nullptr) )
+	if ( (nStatus == NERR_Success) && (!pTimeInfo.empty()) )
 	{
 		// Get Local and Remote times and compare.
 		time_t tLocal  = time(nullptr);
-		time_t tRemote = pTimeInfo->tod_elapsedt;
+		time_t tRemote = pTimeInfo.get()->tod_elapsedt;
 		int    nDiff   = static_cast<int>(tRemote - tLocal);
 
 		m_oRow[CClocks::ABS_DIFF] = abs(nDiff);
@@ -94,8 +105,4 @@ void CCheckJob::Run()
 		m_oRow[CClocks::REL_DIFF]   = 0;
 		m_oRow[CClocks::ERROR_CODE] = static_cast<int>(nStatus);
 	}
-
-	// Cleanup.
-	if (pTimeInfo != nullptr)
-		::NetApiBufferFree(pTimeInfo);
 }

@@ -1,3 +1,5 @@
 - Allow domain searching to be cancelled.
 
 - Handle "Access Denied" by prompting for account to use.
+
+- Allow domain searching to be bypassed so that it only uses a whilstlist.
