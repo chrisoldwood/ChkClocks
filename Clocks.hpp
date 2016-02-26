@@ -31,7 +31,7 @@ public:
 	//
 	// Constructors/Destructor.
 	//
-	CClocks(CMDB& oDB);
+	CClocks();
 	~CClocks();
 	
 	//

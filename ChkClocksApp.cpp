@@ -59,7 +59,7 @@ CChkClocksApp::CChkClocksApp()
 	: CApp(m_AppWnd, m_AppCmds)
 	, m_AppWnd(m_MainThread, m_AppCmds)
 	, m_AppCmds(m_AppWnd)
-	, m_oClocks(m_oMDB)
+	, m_oClocks()
 	, m_bAutoExclude(DEF_AUTO_EXCLUDE)
 	, m_nThreads(DEF_THREADS)
 	, m_nFormat(FMT_FIXED)
@@ -67,8 +67,6 @@ CChkClocksApp::CChkClocksApp()
 	, m_bHideCorrect(DEF_HIDE_CORRECT)
 	, m_bHideFailed(DEF_HIDE_FAILED)
 {
-	// Create the MDB.
-	m_oMDB.AddTable(m_oClocks);
 }
 
 /******************************************************************************

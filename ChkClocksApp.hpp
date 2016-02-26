@@ -17,7 +17,7 @@
 #endif
 
 #include <WCL/App.hpp>
-#include <MDBL/MDB.hpp>
+#include <MDBL/Table.hpp>
 #include <WCL/StrArray.hpp>
 #include <WCL/IniFile.hpp>
 #include "AppWnd.hpp"
@@ -46,7 +46,6 @@ public:
 	CAppWnd		m_AppWnd;			// Main window.
 	CAppCmds	m_AppCmds;			// Command handler.
 
-	CMDB		m_oMDB;				// Memory database.
 	CClocks		m_oClocks;			// Clocks table.
 	CString		m_strDefStatus;		// Default status bar string.
 

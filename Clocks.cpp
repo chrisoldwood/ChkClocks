@@ -23,8 +23,8 @@
 *******************************************************************************
 */
 
-CClocks::CClocks(CMDB& oDB)
-	: CTable(oDB, TXT("Clocks"))
+CClocks::CClocks()
+	: CTable(TXT("Clocks"))
 {
 	// Create the table schema.
 	AddColumn(TXT("ID"),        MDCT_IDENTITY, 0,            CColumn::IDENTITY);
