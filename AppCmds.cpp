@@ -478,8 +478,8 @@ CString CAppCmds::GenerateReport()
 		strLine.Format(TXT("%-*s %-*s %*s %-*s\r\n"),
 						nComputerWidth, oRow[CClocks::COMPUTER].GetString(),
 						nDomainWidth,   oRow[CClocks::NTDOMAIN].GetString(),
-						nDiffWidth,     App.FmtDifference(oRow),
-						nErrorWidth,    App.FmtError(oRow));
+						nDiffWidth,     App.FmtDifference(oRow).c_str(),
+						nErrorWidth,    App.FmtError(oRow).c_str());
 
 		strReport += strLine;		
 	}

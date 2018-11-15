@@ -14,7 +14,10 @@
 #include <lm.h>
 #include <Core/AnsiWide.hpp>
 #include <time.h>
+// declaration of 'null' hides global declaration in <MDBL\MDBLTypes.hpp>
+#pragma warning ( disable : 4459 )
 #include <Core/Scoped.hpp>
+#pragma warning ( default : 4459 )
 
 #ifndef _DEBUG
 #define	ATLASSERT
