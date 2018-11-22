@@ -270,14 +270,14 @@ void CChkClocksApp::SaveConfig()
 *******************************************************************************
 */
 
-CString CChkClocksApp::FmtDifference(CRow& oRow)
+CString CChkClocksApp::FmtDifference(Clock& clock)
 {
 	CString str;
 
 	// Check was successful?
-	if (oRow[CClocks::ERROR_CODE] == NERR_Success)
+	if (clock.ErrorCode == NERR_Success)
 	{
-		int nDiff = oRow[CClocks::REL_DIFF];
+		int nDiff = clock.RelativeDiff;
 
 		// Outside "zero" tolerace?
 		if (abs(nDiff) > m_nTolerance)
@@ -335,13 +335,13 @@ CString CChkClocksApp::FmtDifference(CRow& oRow)
 *******************************************************************************
 */
 
-CString CChkClocksApp::FmtError(CRow& oRow)
+CString CChkClocksApp::FmtError(Clock& clock)
 {
 	CString str;
 
 	// Error occurred?
-	if (oRow[CClocks::ERROR_CODE] != NERR_Success)
-		str = CStrCvt::FormatError(oRow[CClocks::ERROR_CODE].GetInt());
+	if (clock.ErrorCode != NERR_Success)
+		str = CStrCvt::FormatError(clock.ErrorCode);
 
 	return str;
 }

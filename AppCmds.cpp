@@ -25,8 +25,9 @@
 #include <WCL/FileException.hpp>
 #include <WCL/Printer.hpp>
 #include <WCL/PrinterDC.hpp>
-#include <MDBL/WhereCmp.hpp>
-#include <MDBL/ResultSet.hpp>
+#include <Core/Algorithm.hpp>
+#include <Core/Functor.hpp>
+#include <algorithm>
 
 /******************************************************************************
 **
@@ -109,7 +110,7 @@ void CAppCmds::OnFileCheck()
 	CBusyCursor oCursor;
 
 	// Trash old table.
-	App.m_oClocks.Truncate();
+	App.m_oClocks.clear();
 
 	App.m_strDefStatus = TXT("");
 
@@ -160,12 +161,12 @@ void CAppCmds::OnFileCheck()
 			if (App.m_astrExclude.Find(pszComputer, true) != -1)
 				continue;
 
-			CRow& oRow = App.m_oClocks.CreateRow();
+			ClockPtr clock(new Clock);
 
-			oRow[CClocks::COMPUTER] = pszComputer;
-			oRow[CClocks::NTDOMAIN] = pszDomain;
+			clock->Computer = pszComputer;
+			clock->Domain = pszDomain;
 
-			App.m_oClocks.InsertRow(oRow);
+			App.m_oClocks.push_back(clock);
 		}
 
 		// Exclude domain, if domain empty AND auto-exlude is on.
@@ -179,25 +180,25 @@ void CAppCmds::OnFileCheck()
 	// Append those on the include list.
 	for (size_t i = 0; (i < App.m_astrInclude.Size()) && (!Dlg.Abort()); ++i)
 	{
-		CRow& oRow = App.m_oClocks.CreateRow();
+		ClockPtr clock(new Clock);
 
-		oRow[CClocks::COMPUTER] = App.m_astrInclude[i];
+		clock->Computer = App.m_astrInclude[i];
 
-		App.m_oClocks.InsertRow(oRow);
+		App.m_oClocks.push_back(clock);
 	}
 
-	Dlg.InitMeter(static_cast<uint>(App.m_oClocks.RowCount()));
+	Dlg.InitMeter(App.m_oClocks.size());
 	Dlg.UpdateLabel(TXT("Checking Clocks..."));
 
 	// Start jobs to check all computers.
-	for (size_t i = 0; (i < App.m_oClocks.RowCount()) && (!Dlg.Abort()); ++i)
+	for (size_t i = 0; (i < App.m_oClocks.size()) && (!Dlg.Abort()); ++i)
 	{
-		ThreadJobPtr pJob(new CCheckJob(App.m_oClocks[i]));
+		ThreadJobPtr pJob(new CCheckJob(App.m_oClocks[i].getRef()));
 		oThreadPool.AddJob(pJob);
 	}
 
 	// Wait for jobs to complete OR user to cancel.
-	while (oThreadPool.CompletedJobCount() != App.m_oClocks.RowCount())
+	while (oThreadPool.CompletedJobCount() != App.m_oClocks.size())
 	{
 		Dlg.UpdateMeter(static_cast<uint>(oThreadPool.CompletedJobCount()));
 
@@ -223,11 +224,11 @@ void CAppCmds::OnFileCheck()
 
 	// Trash table, if aborted.
 	if (Dlg.Abort())
-		App.m_oClocks.Truncate();
+		App.m_oClocks.clear();
 
 	// Format status bar text.
 	if (!Dlg.Abort())
-		App.m_strDefStatus.Format(TXT("%d computer(s) checked"), App.m_oClocks.RowCount());
+		App.m_strDefStatus.Format(TXT("%d computer(s) checked"), App.m_oClocks.size());
 
 	// Update UI.
 	App.m_AppWnd.m_AppDlg.RefreshView();
@@ -265,7 +266,7 @@ void CAppCmds::OnFileExit()
 void CAppCmds::OnReportClipboard()
 {
 	// Ignore if nothing to report.
-	if (App.m_oClocks.RowCount() == 0)
+	if (App.m_oClocks.empty())
 		return;
 
 	CBusyCursor oCursor;
@@ -292,7 +293,7 @@ void CAppCmds::OnReportClipboard()
 void CAppCmds::OnReportFile()
 {
 	// Ignore if nothing to report.
-	if (App.m_oClocks.RowCount() == 0)
+	if (App.m_oClocks.empty())
 		return;
 
 	CPath strFileName;
@@ -337,7 +338,7 @@ void CAppCmds::OnReportFile()
 void CAppCmds::OnReportPrint()
 {
 	// Ignore if nothing to report.
-	if (App.m_oClocks.RowCount() == 0)
+	if (App.m_oClocks.empty())
 		return;
 
 	CPrinter oPrinter;
@@ -415,6 +416,14 @@ void CAppCmds::OnReportPrint()
 	oDC.End();
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//! Comparison function for order by the absolute clock difference.
+
+static bool ClockDifferenceDescending(ClockPtr lhs, ClockPtr rhs)
+{
+	return rhs->AbsoluteDiff < lhs->AbsoluteDiff;
+}
+
 /******************************************************************************
 ** Method:		GenerateReport()
 **
@@ -432,14 +441,14 @@ CString CAppCmds::GenerateReport()
 	CString strReport;
 
 	// Ignore if nothing to report.
-	if (App.m_oClocks.RowCount() == 0)
+	if (App.m_oClocks.empty())
 		return strReport;
 
 	// Get the report details.
-	CResultSet oRS = App.m_oClocks.SelectAll();
+	Clocks clocks = App.m_oClocks;
 
 	// Sort by difference.
-	oRS.OrderBy(CSortColumns(CClocks::ABS_DIFF, CSortColumns::DESC));
+	std::sort(clocks.begin(), clocks.end(), ClockDifferenceDescending);
 
 	// Report column widths.
 	uint nComputerWidth = 0;
@@ -448,23 +457,23 @@ CString CAppCmds::GenerateReport()
 	uint nErrorWidth    = 0;
 
 	// Calculate report column widths.
-	for (size_t i = 0; i < oRS.Count(); ++i)
+	for (size_t i = 0; i < clocks.size(); ++i)
 	{
-		CRow& oRow = oRS[i];
+		Clock& clock = clocks[i].getRef();
 
-		nComputerWidth = std::max(nComputerWidth, static_cast<uint>(tstrlen(oRow[CClocks::COMPUTER])));
-		nDomainWidth   = std::max(nDomainWidth,   static_cast<uint>(tstrlen(oRow[CClocks::NTDOMAIN])));
-		nDiffWidth     = std::max(nDiffWidth,     static_cast<uint>(tstrlen(App.FmtDifference(oRow))));
-		nErrorWidth    = std::max(nErrorWidth,    static_cast<uint>(tstrlen(App.FmtError(oRow)))     );
+		nComputerWidth = std::max(nComputerWidth, static_cast<uint>(clock.Computer.length()));
+		nDomainWidth   = std::max(nDomainWidth,   static_cast<uint>(clock.Domain.length()));
+		nDiffWidth     = std::max(nDiffWidth,     static_cast<uint>(App.FmtDifference(clock).Length()));
+		nErrorWidth    = std::max(nErrorWidth,    static_cast<uint>(App.FmtError(clock).Length()));
 	}
 
 	// Generate the report.
-	for (size_t i = 0; i < oRS.Count(); ++i)
+	for (size_t i = 0; i < clocks.size(); ++i)
 	{
 		CString strLine;
-		CRow&   oRow   = oRS[i];
-		int     nError = oRow[CClocks::ERROR_CODE];
-		int     nDiff  = oRow[CClocks::ABS_DIFF];
+		Clock&  clock  = clocks[i].getRef();
+		DWORD   nError = clock.ErrorCode;
+		int     nDiff  = clock.AbsoluteDiff;
 
 		// Filter out correct clocks?
 		if ( (App.m_bHideCorrect) && (nError == NERR_Success) && (nDiff <= App.m_nTolerance) )
@@ -476,10 +485,10 @@ CString CAppCmds::GenerateReport()
 
 
 		strLine.Format(TXT("%-*s %-*s %*s %-*s\r\n"),
-						nComputerWidth, oRow[CClocks::COMPUTER].GetString(),
-						nDomainWidth,   oRow[CClocks::NTDOMAIN].GetString(),
-						nDiffWidth,     App.FmtDifference(oRow).c_str(),
-						nErrorWidth,    App.FmtError(oRow).c_str());
+						nComputerWidth, clock.Computer.c_str(),
+						nDomainWidth,   clock.Domain.c_str(),
+						nDiffWidth,     App.FmtDifference(clock).c_str(),
+						nErrorWidth,    App.FmtError(clock).c_str());
 
 		strReport += strLine;		
 	}
@@ -573,6 +582,15 @@ void CAppCmds::OnHelpAbout()
 	Dlg.RunModal(App.m_rMainWnd);
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//! Predicate for comparing two Clock pointers: one raw, one smart.
+
+CORE_DEFINE_PREDICATE_EX(ClockEquals, Clock*, Clock*, value, ClockPtr, rhs)
+{
+	return rhs.get() == value;
+}
+CORE_END_PREDICATE_EX
+
 /******************************************************************************
 ** Method:		OnExcludeComputer()
 **
@@ -588,22 +606,29 @@ void CAppCmds::OnHelpAbout()
 void CAppCmds::OnExcludeComputer()
 {
 	// Get the selected computer.
-	CRow* pRow = App.m_AppWnd.m_AppDlg.SelectedRow();
+	Clock* clock = App.m_AppWnd.m_AppDlg.SelectedRow();
 
-	ASSERT(pRow != nullptr);
-
-	const tchar* pszComputer = pRow->Field(CClocks::COMPUTER);
+	ASSERT(clock != nullptr);
 
 	// Add if not already included.
-	if (App.m_astrExclude.Find(pszComputer, true) == -1)
-		App.m_astrExclude.Add(pszComputer);
+	if (App.m_astrExclude.Find(clock->Computer.c_str(), true) == -1)
+		App.m_astrExclude.Add(clock->Computer.c_str());
 
 	// Remove from results.
-	App.m_oClocks.DeleteRow(*pRow);
+	Core::erase_if(App.m_oClocks, ClockEquals(clock));
 
 	// Redisplay results.
 	App.m_AppWnd.m_AppDlg.RefreshView();
 }
+
+////////////////////////////////////////////////////////////////////////////////
+//! Predicate for comparing two 
+
+CORE_DEFINE_PREDICATE_EX(DomainEquals, tstring, const tstring&, value, ClockPtr, rhs)
+{
+	return rhs->Domain == value;
+}
+CORE_END_PREDICATE_EX
 
 /******************************************************************************
 ** Method:		OnHelpAbout()
@@ -620,18 +645,16 @@ void CAppCmds::OnExcludeComputer()
 void CAppCmds::OnExcludeDomain()
 {
 	// Get the selected domain.
-	CRow* pRow = App.m_AppWnd.m_AppDlg.SelectedRow();
+	Clock* clock = App.m_AppWnd.m_AppDlg.SelectedRow();
 
-	ASSERT(pRow != nullptr);
-
-	const tchar* pszDomain = pRow->Field(CClocks::NTDOMAIN);
+	ASSERT(clock != nullptr);
 
 	// Add if not already included.
-	if (App.m_astrExclude.Find(pszDomain, true) == -1)
-		App.m_astrExclude.Add(pszDomain);
+	if (App.m_astrExclude.Find(clock->Domain.c_str(), true) == -1)
+		App.m_astrExclude.Add(clock->Domain.c_str());
 
 	// Remove all domain computers from the results.
-	App.m_oClocks.DeleteRows(App.m_oClocks.Select(CWhereCmp(CClocks::NTDOMAIN, CWhereCmp::EQUALS, pszDomain)));
+	Core::erase_if(App.m_oClocks, DomainEquals(clock->Domain));
 
 	// Redisplay results.
 	App.m_AppWnd.m_AppDlg.RefreshView();

@@ -16,57 +16,26 @@
 #pragma once
 #endif
 
-#include <MDBL/Table.hpp>
+#include <vector>
 
-/******************************************************************************
-** 
-** The table used to store the clocks checked.
-**
-*******************************************************************************
-*/
+////////////////////////////////////////////////////////////////////////////////
+//! The type used to store a clock that needs checking.
 
-class CClocks : public CTable
+struct Clock
 {
-public:
-	//
-	// Constructors/Destructor.
-	//
-	CClocks();
-	~CClocks();
-	
-	//
-	// Column indices.
-	//
-	enum
-	{
-		ID,
-		COMPUTER,
-		NTDOMAIN,
-		ABS_DIFF,
-		REL_DIFF,
-		ERROR_CODE,
-	};
+	int		Id;
+	tstring	Computer;
+	tstring	Domain;
+	int		AbsoluteDiff;
+	int		RelativeDiff;
+	DWORD	ErrorCode;
 
-	//
-	// Column lengths.
-	//
-	enum
-	{
-		COMPUTER_LEN = MAX_PATH,
-		DOMAIN_LEN   = MAX_PATH,
-	};
-
-	//
-	// Methods (overriden).
-	//
-	virtual CRow& CreateRow();
+	Clock();
 };
 
-/******************************************************************************
-**
-** Implementation of inline functions.
-**
-*******************************************************************************
-*/
+//! The default Clock smart pointer type.
+typedef Core::SharedPtr<Clock> ClockPtr;
+//! The default Clock collection type.
+typedef std::vector<ClockPtr> Clocks;
 
 #endif // CLOCKS_HPP

@@ -38,8 +38,8 @@
 *******************************************************************************
 */
 
-CCheckJob::CCheckJob(CRow& oRow)
-	: m_oRow(oRow)
+CCheckJob::CCheckJob(Clock& clock)
+	: m_clock(clock)
 {
 }
 
@@ -85,10 +85,10 @@ void CCheckJob::Run()
 	typedef Core::Scoped<TIME_OF_DAY_INFO*> TimeOfDayInfoPtr;
 
 	// Get the remote time.
-	const tchar*     pszComputer  = m_oRow[CClocks::COMPUTER];
+	std::wstring computer = T2W(m_clock.Computer);
 	TimeOfDayInfoPtr pTimeInfo(FreeTimeOfDayInfo);
 
-	NET_API_STATUS nStatus = ::NetRemoteTOD(T2W(pszComputer), reinterpret_cast<LPBYTE*>(attachTo(pTimeInfo)));
+	NET_API_STATUS nStatus = ::NetRemoteTOD(computer.c_str(), reinterpret_cast<LPBYTE*>(attachTo(pTimeInfo)));
 
 	// Success?
 	if ( (nStatus == NERR_Success) && (!pTimeInfo.empty()) )
@@ -98,14 +98,14 @@ void CCheckJob::Run()
 		time_t tRemote = pTimeInfo.get()->tod_elapsedt;
 		int    nDiff   = static_cast<int>(tRemote - tLocal);
 
-		m_oRow[CClocks::ABS_DIFF] = abs(nDiff);
-		m_oRow[CClocks::REL_DIFF] = nDiff;
+		m_clock.AbsoluteDiff = abs(nDiff);
+		m_clock.RelativeDiff = nDiff;
 	}
 	// Error.
 	else 
 	{
-		m_oRow[CClocks::ABS_DIFF]   = -1;
-		m_oRow[CClocks::REL_DIFF]   = 0;
-		m_oRow[CClocks::ERROR_CODE] = static_cast<int>(nStatus);
+		m_clock.AbsoluteDiff = -1;
+		m_clock.RelativeDiff = 0;
+		m_clock.ErrorCode    = nStatus;
 	}
 }

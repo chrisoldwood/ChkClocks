@@ -18,8 +18,8 @@
 
 #include <WCL/MainDlg.hpp>
 #include <WCL/ListView.hpp>
-#include <MDBL/FwdDecls.hpp>
-#include <MDBL/SortColumns.hpp>
+
+struct Clock;
 
 /******************************************************************************
 ** 
@@ -41,7 +41,16 @@ public:
 	//
 	void RefreshView();
 
-	CRow* SelectedRow();
+	Clock* SelectedRow();
+
+	// Data columns.
+	enum
+	{
+		COMPUTER,
+		NTDOMAIN,
+		CLOCK_DIFF,
+		ERROR_CODE,
+	};
 
 protected:
 	//
@@ -52,8 +61,8 @@ protected:
 	//
 	// Members.
 	//
-	uint				m_nSortColumn;
-	CSortColumns::Dir	m_eSortOrder;
+	uint	m_nSortColumn;
+	bool	m_descendingOrder;
 
 	//
 	// Message handlers.
@@ -75,14 +84,14 @@ protected:
 *******************************************************************************
 */
 
-inline CRow* CAppDlg::SelectedRow()
+inline Clock* CAppDlg::SelectedRow()
 {
-	CRow* pRow = nullptr;
+	Clock* clock = nullptr;
 
 	if (m_lvGrid.IsSelection())
-		pRow = static_cast<CRow*>(m_lvGrid.ItemPtr(m_lvGrid.Selection()));
+		clock = static_cast<Clock*>(m_lvGrid.ItemPtr(m_lvGrid.Selection()));
 
-	return pRow;
+	return clock;
 }
 
 #endif //APPDLG_HPP

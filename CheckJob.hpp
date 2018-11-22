@@ -17,7 +17,7 @@
 #endif
 
 #include <WCL/ThreadJob.hpp>
-#include <MDBL/FwdDecls.hpp>
+#include "Clocks.hpp"
 
 /******************************************************************************
 ** 
@@ -32,7 +32,7 @@ public:
 	//
 	// Constructors/Destructor.
 	//
-	CCheckJob(CRow& oRow);
+	CCheckJob(Clock& clock);
 	~CCheckJob();
 	
 	//
@@ -44,7 +44,7 @@ protected:
 	//
 	// Members.
 	//
-	CRow&	m_oRow;
+	Clock&	m_clock;
 };
 
 /******************************************************************************

@@ -12,7 +12,7 @@
 #include "AppDlg.hpp"
 #include "ChkClocksApp.hpp"
 #include <lm.h>
-#include <MDBL/ResultSet.hpp>
+#include <algorithm>
 
 /******************************************************************************
 ** Method:		Default constructor.
@@ -28,8 +28,8 @@
 
 CAppDlg::CAppDlg()
 	: CMainDlg(IDD_MAIN)
-	, m_nSortColumn(CClocks::ABS_DIFF)
-	, m_eSortOrder(CSortColumns::DESC)
+	, m_nSortColumn(CLOCK_DIFF)
+	, m_descendingOrder(true)
 {
 	DEFINE_CTRL_TABLE
 		CTRL(IDC_GRID,	&m_lvGrid)
@@ -71,6 +71,47 @@ void CAppDlg::OnInitDialog()
 	m_lvGrid.InsertColumn(3, TXT("Error"),      200, LVCFMT_LEFT );
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//! Predicate for ordering the clocks by a view column.
+
+class OrderBy
+{
+public:
+	OrderBy(uint sortColumn, bool descendingOrder)
+		: m_sortColumn(sortColumn)
+		, m_descendingOrder(descendingOrder)
+	{ }
+
+	bool operator()(ClockPtr& lhs, ClockPtr& rhs)
+	{
+		switch (m_sortColumn)
+		{
+			case CAppDlg::COMPUTER:
+				return (m_descendingOrder) ? (rhs->Computer < lhs->Computer)
+				                           : (lhs->Computer < rhs->Computer);
+
+			case CAppDlg::NTDOMAIN:
+				return (m_descendingOrder) ? (rhs->Domain < lhs->Domain)
+				                           : (lhs->Domain < rhs->Domain);
+
+			case CAppDlg::CLOCK_DIFF:
+				return (m_descendingOrder) ? (rhs->AbsoluteDiff < lhs->AbsoluteDiff)
+				                           : (lhs->AbsoluteDiff < rhs->AbsoluteDiff);
+
+			case CAppDlg::ERROR_CODE:
+				return (m_descendingOrder) ? (rhs->ErrorCode < lhs->ErrorCode)
+				                           : (lhs->ErrorCode < rhs->ErrorCode);
+		}
+
+		ASSERT_FALSE();
+		return false;
+	}
+
+private:
+	uint	m_sortColumn;
+	bool	m_descendingOrder;
+};
+
 /******************************************************************************
 ** Method:		RefreshView()
 **
@@ -89,16 +130,15 @@ void CAppDlg::RefreshView()
 	m_lvGrid.DeleteAllItems();
 
 	// Get the cache details and sort.
-	CResultSet oRS = App.m_oClocks.SelectAll();
-
-	oRS.OrderBy(CSortColumns(m_nSortColumn, m_eSortOrder));
+	Clocks clocks = App.m_oClocks;
+	std::sort(clocks.begin(), clocks.end(), OrderBy(m_nSortColumn, m_descendingOrder));
 
 	// For all rows.
-	for (size_t i = 0; i < oRS.Count(); ++i)
+	for (size_t i = 0; i < clocks.size(); ++i)
 	{
-		CRow& oRow = oRS[i];
-		int   nError = oRow[CClocks::ERROR_CODE];
-		int   nDiff  = oRow[CClocks::ABS_DIFF];
+		Clock& clock = clocks[i].getRef();
+		DWORD  nError = clock.ErrorCode;
+		int    nDiff  = clock.AbsoluteDiff;
 
 		// Filter out correct clocks?
 		if ( (App.m_bHideCorrect) && (nError == NERR_Success) && (nDiff <= App.m_nTolerance) )
@@ -111,11 +151,11 @@ void CAppDlg::RefreshView()
 		size_t nRow = m_lvGrid.ItemCount();
 
 		// Add to the grid.
-		m_lvGrid.InsertItem(nRow,    oRow[CClocks::COMPUTER]);
-		m_lvGrid.ItemText  (nRow, 1, oRow[CClocks::NTDOMAIN]);
-		m_lvGrid.ItemText  (nRow, 2, App.FmtDifference(oRow));
-		m_lvGrid.ItemText  (nRow, 3, App.FmtError(oRow));
-		m_lvGrid.ItemPtr   (nRow,    &oRow);
+		m_lvGrid.InsertItem(nRow,    clock.Computer);
+		m_lvGrid.ItemText  (nRow, 1, clock.Domain);
+		m_lvGrid.ItemText  (nRow, 2, App.FmtDifference(clock));
+		m_lvGrid.ItemText  (nRow, 3, App.FmtError(clock));
+		m_lvGrid.ItemPtr   (nRow,    &clock);
 	}
 }
 
@@ -141,19 +181,19 @@ LRESULT CAppDlg::OnClickColumn(NMHDR& rMsgHdr)
 	// Reverse sort order?
 	if (nColumn == m_nSortColumn)
 	{
-		m_eSortOrder = (m_eSortOrder == CSortColumns::ASC) ? CSortColumns::DESC : CSortColumns::ASC;
+		m_descendingOrder = !m_descendingOrder;
 	}
 	// Change sort column.
 	else
 	{
 		// Default to ascending sort.
 		m_nSortColumn = nColumn;
-		m_eSortOrder  = CSortColumns::ASC;
+		m_descendingOrder = false;
 
 		// For difference and error columns
 		// use a descending sort.
-		if ( (m_nSortColumn == CClocks::ABS_DIFF) || (m_nSortColumn == CClocks::ERROR_CODE) )
-			m_eSortOrder  = CSortColumns::DESC;
+		if ( (m_nSortColumn == CLOCK_DIFF) || (m_nSortColumn == ERROR_CODE) )
+			m_descendingOrder = true;
 	}
 
 	RefreshView();
@@ -209,13 +249,13 @@ int CAppDlg::GetTableColumn(int nGridColumn) const
 {
 	switch (nGridColumn)
 	{
-		case 0:		return CClocks::COMPUTER;
-		case 1:		return CClocks::NTDOMAIN;
-		case 2:		return CClocks::ABS_DIFF;
-		case 3:		return CClocks::ERROR_CODE;
+		case 0:		return COMPUTER;
+		case 1:		return NTDOMAIN;
+		case 2:		return CLOCK_DIFF;
+		case 3:		return ERROR_CODE;
 	}
 
 	ASSERT_FALSE();
 
-	return CClocks::COMPUTER;
+	return COMPUTER;
 }

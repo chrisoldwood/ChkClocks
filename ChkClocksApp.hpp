@@ -17,7 +17,6 @@
 #endif
 
 #include <WCL/App.hpp>
-#include <MDBL/Table.hpp>
 #include <WCL/StrArray.hpp>
 #include <WCL/IniFile.hpp>
 #include "AppWnd.hpp"
@@ -46,7 +45,7 @@ public:
 	CAppWnd		m_AppWnd;			// Main window.
 	CAppCmds	m_AppCmds;			// Command handler.
 
-	CClocks		m_oClocks;			// Clocks table.
+	Clocks		m_oClocks;			// Clocks being checked.
 	CString		m_strDefStatus;		// Default status bar string.
 
 	CStrArray	m_astrInclude;		// List of computers to include.
@@ -63,8 +62,8 @@ public:
 	//
 	// String formatting methods.
 	//
-	CString FmtDifference(CRow& oRow);
-	CString FmtError(CRow& oRow);
+	CString FmtDifference(Clock& clock);
+	CString FmtError(Clock& clock);
 
 	//
 	// Constants.
